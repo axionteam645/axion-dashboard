@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AXION Dashboard</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
@@ -22,7 +21,6 @@
       --pink:#ff4fd8;
       --green:#2dd99f;
       --yellow:#ffc857;
-      --red:#ff6b81;
       --shadow:0 24px 60px rgba(0,0,0,.34);
       --radius:20px;
       --max:1440px;
@@ -668,8 +666,8 @@
 
         <div>
           <div class="hero-actions">
-            <button class="btn secondary">Treasury Balance</button>
-            <button class="btn secondary">APY 45.2%</button>
+            <button class="btn secondary">WalletConnect Enabled</button>
+            <button class="btn secondary">BSC Network</button>
           </div>
         </div>
       </div>
@@ -875,13 +873,18 @@
     </div>
   </div>
 
-  <script>
+  <script type="module">
+    import { ethers } from "https://esm.sh/ethers@5.7.2";
+    import EthereumProvider from "https://esm.sh/@walletconnect/ethereum-provider@2.17.0";
+
+    const WC_PROJECT_ID = "44e7b575eead4c444613bf481554ba7d";
     const CONTRACT_ADDRESS = "0x0F18990414D8f58890301ded2C371F2619C67896";
     const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
     const PRESALE_WALLET = "0x570ecca843baa357502c1e24c508576cff49f47c";
     const TOKEN_SYMBOL = "AX";
     const TOKEN_DECIMALS = 18;
     const PRESALE_RATE = 10000;
+    const BSC_CHAIN_ID = 56;
     const BSC_RPC = "https://bsc-dataseed.binance.org/";
     const TRANSFER_TOPIC = ethers.utils.id("Transfer(address,address,uint256)");
 
@@ -897,6 +900,8 @@
     let signer = null;
     let currentAddress = null;
     let feeChart = null;
+    let wcProvider = null;
+    let isWalletConnectSession = false;
 
     const walletBtn = document.getElementById("walletBtn");
 
@@ -956,8 +961,31 @@
       provider = null;
       signer = null;
       currentAddress = null;
+      isWalletConnectSession = false;
 
       updateWalletButton();
+    }
+
+    async function ensureBscNetwork(activeProvider){
+      const network = await activeProvider.getNetwork();
+      if(network.chainId === BSC_CHAIN_ID) return true;
+
+      if(window.ethereum && activeProvider.provider === window.ethereum){
+        try{
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: "0x38" }]
+          });
+          return true;
+        }catch(err){
+          console.error(err);
+          alert("Please switch your wallet to BNB Smart Chain.");
+          return false;
+        }
+      }
+
+      alert("Please switch your wallet to BNB Smart Chain in your wallet app.");
+      return false;
     }
 
     async function refreshWalletData(){
@@ -985,54 +1013,154 @@
       updateWalletButton();
     }
 
-    async function connectWallet(){
-      if(!window.ethereum){
-        alert("Please install MetaMask or a compatible wallet.");
+    async function initWalletConnect(){
+      if(wcProvider) return wcProvider;
+
+      wcProvider = await EthereumProvider.init({
+        projectId: WC_PROJECT_ID,
+        chains: [BSC_CHAIN_ID],
+        showQrModal: true,
+        optionalChains: [BSC_CHAIN_ID],
+        methods: [
+          "eth_sendTransaction",
+          "personal_sign",
+          "eth_signTypedData",
+          "eth_signTypedData_v4"
+        ],
+        events: ["chainChanged", "accountsChanged", "disconnect"],
+        rpcMap: {
+          56: BSC_RPC
+        },
+        metadata: {
+          name: "AXION Dashboard",
+          description: "AXION Dashboard",
+          url: "https://axiondefi.com",
+          icons: ["https://raw.githubusercontent.com/axionteam645/axion-dashboard/b7fc0b534aff332ced004e2e1015e2dea2fcbf1d/axion-logo.png"]
+        }
+      });
+
+      wcProvider.on("accountsChanged", async (accounts) => {
+        if(accounts && accounts.length){
+          provider = new ethers.providers.Web3Provider(wcProvider, "any");
+          signer = provider.getSigner();
+          currentAddress = ethers.utils.getAddress(accounts[0]);
+          isWalletConnectSession = true;
+          await refreshWalletData();
+        }else{
+          await disconnectWallet();
+        }
+      });
+
+      wcProvider.on("chainChanged", async () => {
+        if(provider && currentAddress){
+          await refreshWalletData();
+        }
+      });
+
+      wcProvider.on("disconnect", async () => {
+        await disconnectWallet();
+      });
+
+      return wcProvider;
+    }
+
+    async function connectInjectedWallet(){
+      provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+      await provider.send("eth_requestAccounts", []);
+      const ok = await ensureBscNetwork(provider);
+      if(!ok){
+        resetWalletUI();
         return;
       }
+      signer = provider.getSigner();
+      currentAddress = await signer.getAddress();
+      isWalletConnectSession = false;
+      await refreshWalletData();
+    }
 
+    async function connectWalletConnect(){
+      const wc = await initWalletConnect();
+      await wc.connect();
+      provider = new ethers.providers.Web3Provider(wc, "any");
+      const accounts = wc.accounts || [];
+      if(!accounts.length){
+        throw new Error("No WalletConnect account returned");
+      }
+      signer = provider.getSigner();
+      currentAddress = ethers.utils.getAddress(accounts[0]);
+      isWalletConnectSession = true;
+      await refreshWalletData();
+    }
+
+    async function connectWallet(){
       try{
-        provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send("eth_requestAccounts", []);
-        signer = provider.getSigner();
-        currentAddress = await signer.getAddress();
-        await refreshWalletData();
+        if(window.ethereum){
+          await connectInjectedWallet();
+        }else{
+          await connectWalletConnect();
+        }
       }catch(error){
         console.error(error);
-        alert("Connection failed or rejected.");
+        alert("Wallet connection failed or was rejected.");
       }
     }
 
-    function disconnectWallet(){
-      resetWalletUI();
+    async function disconnectWallet(){
+      try{
+        if(isWalletConnectSession && wcProvider){
+          await wcProvider.disconnect();
+        }
+      }catch(error){
+        console.error(error);
+      }finally{
+        resetWalletUI();
+      }
     }
 
     async function handleWalletButton(){
       if(currentAddress){
-        disconnectWallet();
+        await disconnectWallet();
       }else{
         await connectWallet();
       }
     }
 
     async function silentWalletRefresh(){
-      if(!window.ethereum) return;
+      if(window.ethereum){
+        try{
+          const injectedProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
+          const accounts = await injectedProvider.listAccounts();
+          if(accounts.length){
+            provider = injectedProvider;
+            signer = provider.getSigner();
+            currentAddress = accounts[0];
+            isWalletConnectSession = false;
+            await refreshWalletData();
+            return;
+          }
+        }catch(error){
+          console.error(error);
+        }
+      }
 
       try{
-        provider = new ethers.providers.Web3Provider(window.ethereum);
-        const accounts = await provider.listAccounts();
-
-        if(accounts.length){
-          signer = provider.getSigner();
-          currentAddress = accounts[0];
-          await refreshWalletData();
-        }else{
-          resetWalletUI();
+        const wc = await initWalletConnect();
+        if(wc.session){
+          provider = new ethers.providers.Web3Provider(wc, "any");
+          const accounts = wc.accounts || [];
+          if(accounts.length){
+            signer = provider.getSigner();
+            currentAddress = ethers.utils.getAddress(accounts[0]);
+            isWalletConnectSession = true;
+            await refreshWalletData();
+            return;
+          }
         }
       }catch(error){
         console.error(error);
-        resetWalletUI();
       }
+
+      resetWalletUI();
     }
 
     async function loadFeeWalletBalance(){
@@ -1159,10 +1287,13 @@
     }
 
     async function buyManualPresale(){
-      if(!window.ethereum || !signer || !currentAddress){
+      if(!provider || !signer || !currentAddress){
         alert("Connect wallet first.");
         return;
       }
+
+      const ok = await ensureBscNetwork(provider);
+      if(!ok) return;
 
       const bnbAmount = document.getElementById("manualPresaleBnb").value.trim();
       if(!bnbAmount || Number(bnbAmount) <= 0){
@@ -1193,7 +1324,7 @@
 
     async function addTokenToMetaMask(){
       if(!window.ethereum){
-        alert("MetaMask is required.");
+        alert("Use MetaMask or an injected wallet for this feature.");
         return;
       }
 
@@ -1247,10 +1378,13 @@
     }
 
     async function sendAxion(){
-      if(!signer){
+      if(!provider || !signer){
         alert("Connect wallet first.");
         return;
       }
+
+      const ok = await ensureBscNetwork(provider);
+      if(!ok) return;
 
       const to = document.getElementById("sendToInput").value.trim();
       const amount = document.getElementById("sendAmountInput").value.trim();
@@ -1293,9 +1427,10 @@
     if(window.ethereum){
       window.ethereum.on("accountsChanged", async (accounts) => {
         if(accounts && accounts.length){
-          provider = new ethers.providers.Web3Provider(window.ethereum);
+          provider = new ethers.providers.Web3Provider(window.ethereum, "any");
           signer = provider.getSigner();
           currentAddress = accounts[0];
+          isWalletConnectSession = false;
           await refreshWalletData();
         }else{
           resetWalletUI();
