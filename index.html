@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AXION Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top, rgba(0, 212, 255, 0.08), transparent 30%),
+        radial-gradient(circle at bottom, rgba(255, 0, 255, 0.06), transparent 30%),
+        #050814;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, #ffffff, #87d8ff, #d4a2ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .cards {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(8, 14, 32, 0.8);
+      border-radius: 18px;
+      padding: 28px 22px;
+      min-height: 200px;
+      backdrop-filter: blur(8px);
+      transition: transform 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blue {
+      border: 1px solid #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.32);
+    }
+
+    .purple {
+      border: 1px solid #ff00ff;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.28);
+    }
+
+    .green {
+      border: 1px solid #00ff88;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.28);
+    }
+
+    .gold {
+      border: 1px solid #ffcc33;
+      box-shadow: 0 0 20px rgba(255, 204, 51, 0.22);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .value {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      word-break: break-word;
+    }
+
+    .small {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      margin-top: 14px;
+    }
+
+    button {
+      margin: 6px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      background: #111827;
+      color: #fff;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      background: #1f2937;
+      transform: scale(1.03);
+    }
+
+    a {
+      color: #8ddcff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 42px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    @media (max-width: 640px) {
+      .title {
+        font-size: 30px;
+      }
+
+      .value {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">AXION DASHBOARD</div>
+    <div class="subtitle">BNB Smart Chain • Live On-Chain Data</div>
+
+    <div class="cards">
+      <div class="card blue">
+        <h3>Total Supply</h3>
+        <div class="value" id="supply">Loading...</div>
+        <div class="small">Live token supply from BscScan</div>
+      </div>
+
+      <div class="card purple">
+        <h3>Transfers</h3>
+        <div class="value" id="tx">Loading...</div>
+        <div class="small">Total token transfer records</div>
+      </div>
+
+      <div class="card green">
+        <h3>Bot Status</h3>
+        <div class="value" id="status">OFF</div>
+        <div class="buttons">
+          <button onclick="startBot()">Start</button>
+          <button onclick="stopBot()">Stop</button>
+        </div>
+      </div>
+
+      <div class="card gold">
+        <h3>Contract</h3>
+        <div class="value" id="contractShort">Loading...</div>
+        <div class="small">
+          <a id="contractLink" href="#" target="_blank" rel="noopener noreferrer">View on BscScan</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">AXION Ecosystem • Transparent • Immutable • On-Chain</div>
+  </div>
+
+  <script>
+    const CONTRACT = "0x0F18990414D8f58890301ded2C371F2619C67896";
+    const API_KEY = "UCM1QBCHACQYG1UE5M6IYR5MX5Z2P94UZQ";
+
+    function shortAddress(addr) {
+      return addr.slice(0, 8) + "..." + addr.slice(-6);
+    }
+
+    function startBot() {
+      document.getElementById("status").innerText = "ON";
+    }
+
+    function stopBot() {
+      document.getElementById("status").innerText = "OFF";
+    }
+
+    async function loadSupply() {
+      try {
+        const res = await fetch(
+          `https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=${CONTRACT}&apikey=${API_KEY}`
+        );
+        const data = await res.json();
+
+        const raw = data && data.result ? Number(data.result) : 0;
+
+        if (Number.isFinite(raw) && raw > 0) {
+          const formatted = (raw / 1e18).toLocaleString("en-US", {
+            maximumFractionDigits: 0
+          });
+          document.getElementById("supply").innerText = formatted;
+        } else {
+          document.getElementById("supply").innerText = "0";
+        }
+      } catch (error) {
+        document.getElementById("supply").innerText = "0";
+      }
+    }
+
+    async function loadTransfers() {
+      try {
+        const res = await fetch(
+          `https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=${CONTRACT}&startblock=0&endblock=99999999&sort=asc&apikey=${API_KEY}`
+        );
+        const data = await res.json();
+
+        if (data && Array.isArray(data.result)) {
+          document.getElementById("tx").innerText = data.result.length.toLocaleString("en-US");
+        } else {
+          document.getElementById("tx").innerText = "0";
+        }
+      } catch (error) {
+        document.getElementById("tx").innerText = "0";
+      }
+    }
+
+    function loadContractInfo() {
+      document.getElementById("contractShort").innerText = shortAddress(CONTRACT);
+      document.getElementById("contractLink").href = `https://bscscan.com/token/${CONTRACT}`;
+    }
+
+    async function initDashboard() {
+      loadContractInfo();
+      await Promise.all([loadSupply(), loadTransfers()]);
+    }
+
+    initDashboard();
+  </script>
+</body>
+</html>
