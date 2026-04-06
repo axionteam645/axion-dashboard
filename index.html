@@ -64,25 +64,60 @@ body {
 </div>
 </div>
 
-<script>
-const CONTRACT="0x0F18990414D8f58890301ded2C371F2619C67896";
-const API_KEY="UCM1QBCHACQYG1UE5M6IYR5MX5Z2P94UZQ";
+const CONTRACT = "0x0F18990414D8f58890301ded2C371F2619C67896";
+const API_KEY = "UCM1QBCHACQYG1UE5M6IYR5MX5Z2P94UZQ";
 
-async function load(){
-let s=await fetch(`https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=${CONTRACT}&apikey=${API_KEY}`);
-let sd=await s.json();
-document.getElementById("supply").innerText=(sd.result/1e18).toLocaleString();
+async function load() {
+  // SUPPLY
+  try {
+    const res = await fetch(`https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=${CONTRACT}&apikey=${API_KEY}`);
+    const data = await res.json();
 
-let t=await fetch(`https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=${CONTRACT}&apikey=${API_KEY}`);
-let td=await t.json();
-document.getElementById("tx").innerText=td.result.length;
+    if (data && data.result) {
+      const supplyRaw = parseFloat(data.result);
+
+      if (!isNaN(supplyRaw) && supplyRaw > 0) {
+        const supplyFormatted = (supplyRaw / 1e18).toLocaleString("en-US", {
+          maximumFractionDigits: 0
+        });
+
+        document.getElementById("supply").innerText = supplyFormatted;
+      } else {
+        document.getElementById("supply").innerText = "0";
+      }
+    } else {
+      document.getElementById("supply").innerText = "0";
+    }
+
+  } catch (err) {
+    document.getElementById("supply").innerText = "0";
+  }
+
+  // TRANSFER
+  try {
+    const txRes = await fetch(`https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=${CONTRACT}&apikey=${API_KEY}`);
+    const txData = await txRes.json();
+
+    if (txData && Array.isArray(txData.result)) {
+      document.getElementById("tx").innerText =
+        txData.result.length.toLocaleString("en-US");
+    } else {
+      document.getElementById("tx").innerText = "0";
+    }
+
+  } catch (err) {
+    document.getElementById("tx").innerText = "0";
+  }
 }
 
-function startBot(){document.getElementById("status").innerText="ON";}
-function stopBot(){document.getElementById("status").innerText="OFF";}
+// BOT
+function startBot() {
+  document.getElementById("status").innerText = "AKTİF";
+}
 
+function stopBot() {
+  document.getElementById("status").innerText = "KAPALI";
+}
+
+// ÇALIŞTIR
 load();
-</script>
-
-</body>
-</html>
