@@ -10,22 +10,23 @@
 
   <style>
     :root{
-      --bg:#060b14;
-      --bg2:#09111e;
-      --card:#0f1726;
-      --card2:#111b2d;
+      --bg:#060914;
+      --bg2:#0b1120;
+      --panel:#0d1526;
+      --panel2:#101a2f;
       --line:rgba(255,255,255,.08);
       --text:#f5f8ff;
-      --muted:#90a0c0;
-      --cyan:#00e7ff;
+      --muted:#94a2c4;
+      --cyan:#34dfff;
       --violet:#8b5cf6;
       --pink:#ff4fd8;
-      --green:#33d69f;
+      --blue:#4d7cff;
+      --green:#32d89f;
       --yellow:#ffc857;
       --red:#ff6b81;
-      --shadow:0 20px 50px rgba(0,0,0,.28);
-      --radius:20px;
-      --max:1320px;
+      --shadow:0 22px 60px rgba(0,0,0,.32);
+      --radius:22px;
+      --max:1340px;
     }
 
     *{box-sizing:border-box}
@@ -35,9 +36,9 @@
       font-family:Inter,Arial,Helvetica,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 10% 8%, rgba(0,231,255,.11), transparent 20%),
-        radial-gradient(circle at 90% 8%, rgba(139,92,246,.15), transparent 24%),
-        radial-gradient(circle at 50% 100%, rgba(255,79,216,.08), transparent 28%),
+        radial-gradient(circle at 8% 10%, rgba(52,223,255,.13), transparent 20%),
+        radial-gradient(circle at 92% 8%, rgba(139,92,246,.16), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(255,79,216,.08), transparent 30%),
         linear-gradient(180deg,var(--bg) 0%, var(--bg2) 45%, var(--bg) 100%);
       min-height:100vh;
       overflow-x:hidden;
@@ -46,10 +47,26 @@
     a{text-decoration:none;color:inherit}
     button,input{font-family:inherit}
 
+    .glow{
+      position:fixed;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      filter:blur(90px);
+      pointer-events:none;
+      z-index:0;
+      opacity:.22;
+    }
+    .g1{top:-140px;left:-120px;background:rgba(52,223,255,.35)}
+    .g2{top:0;right:-150px;background:rgba(139,92,246,.35)}
+    .g3{bottom:-180px;left:30%;background:rgba(255,79,216,.22)}
+
     .wrap{
+      position:relative;
+      z-index:1;
       width:min(calc(100% - 28px), var(--max));
       margin:0 auto;
-      padding:16px 0 28px;
+      padding:16px 0 30px;
     }
 
     .topbar{
@@ -60,8 +77,8 @@
       flex-wrap:wrap;
       padding:14px 16px;
       margin-bottom:16px;
-      border-radius:20px;
-      background:rgba(9,14,25,.78);
+      border-radius:22px;
+      background:rgba(10,16,28,.78);
       backdrop-filter:blur(14px);
       border:1px solid rgba(255,255,255,.06);
       box-shadow:var(--shadow);
@@ -74,29 +91,26 @@
       min-width:0;
     }
 
-    .logo{
-      width:48px;
-      height:48px;
+    .brand-logo{
+      width:50px;
+      height:50px;
       border-radius:50%;
-      display:grid;
-      place-items:center;
+      object-fit:cover;
+      display:block;
       flex:0 0 auto;
-      font-size:18px;
-      font-weight:900;
-      color:#fff;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 34%),
-        linear-gradient(135deg,var(--cyan),var(--violet) 58%,var(--pink));
-      box-shadow:0 0 22px rgba(0,231,255,.16);
+      box-shadow:
+        0 0 0 2px rgba(255,255,255,.05),
+        0 0 22px rgba(52,223,255,.18);
+      background:#111;
     }
 
-    .brand h1{
+    .brand-text h1{
       margin:0;
       font-size:21px;
       letter-spacing:.2px;
     }
 
-    .brand p{
+    .brand-text p{
       margin:4px 0 0;
       color:var(--muted);
       font-size:12px;
@@ -105,9 +119,9 @@
     .navWrap{
       display:flex;
       align-items:center;
-      gap:10px;
-      flex:1 1 auto;
       justify-content:space-between;
+      gap:12px;
+      flex:1 1 auto;
       min-width:280px;
       flex-wrap:wrap;
     }
@@ -121,23 +135,25 @@
 
     .menu a{
       font-size:13px;
-      color:#bcc8e8;
+      color:#c1ccec;
       padding:10px 12px;
       border-radius:12px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.06);
-      transition:.2s;
+      transition:.2s ease;
       white-space:nowrap;
     }
 
     .menu a:hover{
       color:#fff;
       background:rgba(255,255,255,.08);
+      border-color:rgba(255,255,255,.12);
     }
 
     .menu a.active{
-      background:linear-gradient(135deg, rgba(0,231,255,.18), rgba(139,92,246,.18));
+      background:linear-gradient(135deg, rgba(52,223,255,.16), rgba(139,92,246,.16));
       color:#fff;
+      border-color:rgba(255,255,255,.1);
     }
 
     .actions{
@@ -153,7 +169,7 @@
       padding:12px 16px;
       font-weight:800;
       color:#fff;
-      background:linear-gradient(135deg,var(--cyan),var(--violet) 60%,var(--pink));
+      background:linear-gradient(135deg,var(--cyan),var(--violet) 58%,var(--pink));
       box-shadow:0 10px 24px rgba(79,70,229,.18);
       transition:.2s ease;
     }
@@ -170,11 +186,11 @@
       overflow:hidden;
       background:
         linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)),
-        linear-gradient(180deg, var(--card2), var(--card));
+        linear-gradient(180deg, var(--panel2), var(--panel));
       border:1px solid var(--line);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      padding:16px;
+      padding:18px;
     }
 
     .card::before{
@@ -183,8 +199,15 @@
       inset:0;
       pointer-events:none;
       background:
-        radial-gradient(circle at top right, rgba(139,92,246,.10), transparent 26%),
-        radial-gradient(circle at bottom left, rgba(0,231,255,.06), transparent 22%);
+        radial-gradient(circle at top right, rgba(139,92,246,.11), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(52,223,255,.08), transparent 20%);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.18fr .82fr;
+      gap:16px;
+      margin-bottom:16px;
     }
 
     .eyebrow{
@@ -205,19 +228,12 @@
       height:8px;
       border-radius:50%;
       background:var(--green);
-      box-shadow:0 0 12px rgba(51,214,159,.85);
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:16px;
-      margin-bottom:16px;
+      box-shadow:0 0 12px rgba(50,216,159,.85);
     }
 
     .hero h2{
-      margin:16px 0 10px;
-      font-size:clamp(28px,4vw,46px);
+      margin:18px 0 10px;
+      font-size:clamp(30px,4vw,48px);
       line-height:1.02;
       letter-spacing:-1px;
       max-width:760px;
@@ -226,7 +242,7 @@
     .hero p{
       margin:0;
       color:var(--muted);
-      line-height:1.7;
+      line-height:1.72;
       font-size:15px;
       max-width:760px;
     }
@@ -261,10 +277,10 @@
       border-radius:16px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(255,255,255,.06);
-      min-height:96px;
+      min-height:100px;
     }
 
-    .featureBox .title,
+    .titleSmall,
     .metricCard .mTitle,
     .label{
       font-size:12px;
@@ -272,7 +288,7 @@
       margin-bottom:8px;
     }
 
-    .featureBox .big,
+    .bigValue,
     .metricCard .mValue,
     .value{
       font-size:22px;
@@ -281,9 +297,8 @@
       word-break:break-word;
     }
 
-    .featureBox .sub,
-    .metricCard .mSub,
-    .sub{
+    .sub,
+    .metricCard .mSub{
       margin-top:6px;
       color:var(--muted);
       font-size:12px;
@@ -309,7 +324,6 @@
       border-radius:50%;
       background:var(--yellow);
     }
-
     .dot.connected{background:var(--green)}
     .dot.error{background:var(--red)}
 
@@ -397,16 +411,16 @@
     }
 
     .feeBadge{
-      width:54px;
-      height:54px;
+      width:56px;
+      height:56px;
       border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-size:18px;
-      font-weight:900;
-      background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));
-      box-shadow:0 0 22px rgba(0,231,255,.16);
+      object-fit:cover;
+      display:block;
       flex:0 0 auto;
+      box-shadow:
+        0 0 0 2px rgba(255,255,255,.05),
+        0 0 22px rgba(52,223,255,.18);
+      background:#111;
     }
 
     .feeValue{
@@ -448,7 +462,7 @@
       font-weight:900;
       color:#fff;
       text-align:left;
-      background:linear-gradient(135deg, rgba(0,231,255,.20), rgba(139,92,246,.24), rgba(255,79,216,.20));
+      background:linear-gradient(135deg, rgba(52,223,255,.20), rgba(139,92,246,.24), rgba(255,79,216,.20));
       border:1px solid rgba(255,255,255,.10);
     }
 
@@ -482,6 +496,20 @@
       background:#111;
       border:1px solid rgba(255,255,255,.08);
       flex:0 0 auto;
+    }
+
+    .bnbIcon{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      font-size:11px;
+      font-weight:900;
+      color:#111;
+      background:#f3ba2f;
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .assetName,
@@ -520,7 +548,7 @@
       display:grid;
       place-items:center;
       font-weight:900;
-      background:linear-gradient(135deg, rgba(0,231,255,.16), rgba(139,92,246,.18));
+      background:linear-gradient(135deg, rgba(52,223,255,.16), rgba(139,92,246,.18));
       border:1px solid rgba(255,255,255,.08);
     }
 
@@ -557,7 +585,7 @@
       border-radius:18px;
       background:
         linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)),
-        linear-gradient(180deg, var(--card2), var(--card));
+        linear-gradient(180deg, var(--panel2), var(--panel));
       border:1px solid var(--line);
       box-shadow:var(--shadow);
     }
@@ -591,7 +619,7 @@
       width:min(100%, 460px);
       background:
         linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
-        var(--card);
+        var(--panel);
       border:1px solid rgba(255,255,255,.08);
       border-radius:20px;
       padding:18px;
@@ -643,11 +671,19 @@
   </style>
 </head>
 <body>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="glow g3"></div>
+
   <div class="wrap">
     <div class="topbar">
       <div class="brand">
-        <div class="logo">AX</div>
-        <div>
+        <img
+          class="brand-logo"
+          src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/b7fc0b534aff332ced004e2e1015e2dea2fcbf1d/axion-logo.png"
+          alt="AXION Logo"
+        />
+        <div class="brand-text">
           <h1>AXION Dashboard</h1>
           <p>AI-powered DeFi ecosystem on BNB Smart Chain</p>
         </div>
@@ -680,10 +716,10 @@
           AXION Features
         </div>
 
-        <h2>Secure, simple, and fee-driven dashboard structure for AXION.</h2>
+        <h2>Built around the AXION identity. Clean, premium, and trust-focused.</h2>
         <p>
-          This final version focuses on AXION’s core strengths, Wallet Lite utility,
-          live fee wallet tracking, and a manual presale panel.
+          This redesigned dashboard follows the AXION logo style with a cleaner,
+          stronger visual identity while keeping all current product features active.
         </p>
 
         <div class="pillRow">
@@ -696,33 +732,33 @@
 
         <div class="featureGrid">
           <div class="featureBox">
-            <div class="title">Transaction Fee</div>
-            <div class="big">1%</div>
+            <div class="titleSmall">Transaction Fee</div>
+            <div class="bigValue">1%</div>
             <div class="sub">Applied to transfers</div>
           </div>
           <div class="featureBox">
-            <div class="title">Total Supply</div>
-            <div class="big">1,000,000,000</div>
+            <div class="titleSmall">Total Supply</div>
+            <div class="bigValue">1,000,000,000</div>
             <div class="sub">Manual fixed supply</div>
           </div>
           <div class="featureBox">
-            <div class="title">Mint Status</div>
-            <div class="big">No Mint</div>
+            <div class="titleSmall">Mint Status</div>
+            <div class="bigValue">No Mint</div>
             <div class="sub">No inflation logic</div>
           </div>
           <div class="featureBox">
-            <div class="title">Pause Status</div>
-            <div class="big">No Pause</div>
+            <div class="titleSmall">Pause Status</div>
+            <div class="bigValue">No Pause</div>
             <div class="sub">No pause control</div>
           </div>
           <div class="featureBox">
-            <div class="title">Ownership</div>
-            <div class="big">Renounced</div>
+            <div class="titleSmall">Ownership</div>
+            <div class="bigValue">Renounced</div>
             <div class="sub">Trust-focused structure</div>
           </div>
           <div class="featureBox">
-            <div class="title">Fee Model</div>
-            <div class="big">Transparent</div>
+            <div class="titleSmall">Fee Model</div>
+            <div class="bigValue">Transparent</div>
             <div class="sub">Tracked fee wallet</div>
           </div>
         </div>
@@ -816,7 +852,11 @@
 
           <div class="feeTop">
             <div class="feeLive">
-              <div class="feeBadge">%</div>
+              <img
+                class="feeBadge"
+                src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/b7fc0b534aff332ced004e2e1015e2dea2fcbf1d/axion-logo.png"
+                alt="AXION Logo"
+              />
               <div>
                 <div class="feeValue" id="feeWalletBalance">0 AX</div>
                 <div class="sub">Accumulated 1% transaction fees</div>
@@ -929,7 +969,11 @@
             <div class="walletLiteRow" style="display:block;">
               <div class="assetRow" style="margin-bottom:10px;">
                 <div class="assetLeft">
-                  <img class="assetIcon" src="axion-logo.png" alt="AXION Logo" onerror="this.style.display='none';this.nextElementSibling.style.marginLeft='0'">
+                  <img
+                    class="assetIcon"
+                    src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/b7fc0b534aff332ced004e2e1015e2dea2fcbf1d/axion-logo.png"
+                    alt="AXION Logo"
+                  />
                   <div class="assetName">AXION</div>
                 </div>
                 <div class="assetValue" id="walletLiteAxion">0 AX</div>
@@ -937,7 +981,7 @@
 
               <div class="assetRow">
                 <div class="assetLeft">
-                  <img class="assetIcon" src="bnb-logo.png" alt="BNB Logo" onerror="this.style.display='none';this.nextElementSibling.style.marginLeft='0'">
+                  <div class="bnbIcon">BNB</div>
                   <div class="assetName">BNB</div>
                 </div>
                 <div class="assetValue" id="walletLiteBnb">0</div>
@@ -1173,8 +1217,8 @@
       ].map(v => Math.max(0, Number(v.toFixed(2))));
 
       const gradient = ctx.createLinearGradient(0, 0, 0, 320);
-      gradient.addColorStop(0, "rgba(0,231,255,.26)");
-      gradient.addColorStop(1, "rgba(0,231,255,.02)");
+      gradient.addColorStop(0, "rgba(52,223,255,.28)");
+      gradient.addColorStop(1, "rgba(52,223,255,.02)");
 
       feeChart = new Chart(ctx, {
         type: "line",
@@ -1182,7 +1226,7 @@
           labels: ["1","2","3","4","5","6","7","8","9","10","Now"],
           datasets: [{
             data: points,
-            borderColor: "#00e7ff",
+            borderColor: "#34dfff",
             backgroundColor: gradient,
             fill: true,
             tension: 0.35,
