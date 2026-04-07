@@ -10,7 +10,7 @@
   />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -31,11 +31,10 @@
       --max:1280px;
     }
 
-    *{box-sizing:border-box}
+    *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0;
-      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      font-family:'Inter',sans-serif;
       background:
         radial-gradient(circle at 20% 0%, rgba(78,216,255,.16), transparent 24%),
         radial-gradient(circle at 80% 10%, rgba(168,92,255,.15), transparent 26%),
@@ -488,6 +487,12 @@
       border:1px solid rgba(255,255,255,.08);
     }
 
+    .token-line{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
     .token-icon{
       width:28px;
       height:28px;
@@ -496,12 +501,6 @@
       border:1px solid rgba(255,255,255,.12);
       background:#0b1224;
       flex-shrink:0;
-    }
-
-    .token-line{
-      display:flex;
-      align-items:center;
-      gap:12px;
     }
 
     .token-line .meta{
@@ -742,22 +741,6 @@
       line-height:1.7;
     }
 
-    .whitepaper-embed-wrap{
-      width:100%;
-      min-height:900px;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
-    }
-
-    .whitepaper-embed-wrap iframe{
-      width:100%;
-      height:900px;
-      border:none;
-      background:#0b1224;
-    }
-
     .buy-inputs{
       display:grid;
       gap:12px;
@@ -917,7 +900,6 @@
       }
 
       .nav-links.open{display:flex}
-
       .grid-3,
       .whitepaper-nav,
       .phase-grid{
@@ -925,14 +907,6 @@
       }
 
       .hero-copy h1{font-size:48px}
-
-      .whitepaper-embed-wrap{
-        min-height:700px;
-      }
-
-      .whitepaper-embed-wrap iframe{
-        height:700px;
-      }
     }
 
     @media (max-width: 640px){
@@ -993,14 +967,6 @@
 
       .mobile-toggle{
         font-size:22px;
-      }
-
-      .whitepaper-embed-wrap{
-        min-height:560px;
-      }
-
-      .whitepaper-embed-wrap iframe{
-        height:560px;
       }
     }
   </style>
@@ -1087,7 +1053,7 @@
             </p>
 
             <div class="hero-actions">
-              <a class="btn" href="#whitepaper">Whitepaper</a>
+              <a class="btn btn-buy" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
               <a class="btn btn-buy" href="#presale">BUY AX</a>
               <button class="btn btn-secondary" id="addTokenBtn" type="button">Add AX to Wallet</button>
               <a class="btn btn-secondary" href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener noreferrer">View on BscScan</a>
@@ -1618,7 +1584,7 @@
           </div>
 
           <div class="inline-actions" style="margin-top:0;">
-            <a class="btn btn-buy" href="#whitepaper-embed">View Whitepaper</a>
+            <a class="btn btn-buy" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
           </div>
         </div>
 
@@ -1633,32 +1599,9 @@
           </div>
           <div class="whitepaper-link reveal">
             <strong>Whitepaper Access</strong>
-            <p>The full whitepaper can now be viewed directly inside the website through the embedded PDF section below.</p>
+            <p>The full whitepaper can be opened directly with the button above for fast viewing and download.</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="whitepaper-embed">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Embedded Whitepaper</div>
-            <h2>Read the full <span class="gradient-title">AXION whitepaper.</span></h2>
-          </div>
-
-          <div class="inline-actions" style="margin-top:0;">
-            <a class="btn btn-secondary" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf" target="_blank" rel="noopener noreferrer">Open PDF in New Tab</a>
-          </div>
-        </div>
-
-        <article class="card reveal">
-          <div class="card-inner">
-            <div class="whitepaper-embed-wrap">
-              <iframe src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf" title="AXION Whitepaper PDF" loading="lazy"></iframe>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -2000,7 +1943,7 @@
         <div class="footer-links">
           <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
           <a href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">X</a>
-          <a href="#whitepaper-embed">Whitepaper</a>
+          <a href="#whitepaper">Whitepaper</a>
           <a href="#presale">BUY AX</a>
           <a href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener noreferrer">BscScan</a>
         </div>
