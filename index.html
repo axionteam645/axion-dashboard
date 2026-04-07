@@ -31,7 +31,7 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Inter,Arial,Helvetica,sans-serif;
+      font-family:Inter, Arial, Helvetica, sans-serif;
       color:var(--text);
       background:
         radial-gradient(circle at 12% 8%, rgba(103,236,255,.18), transparent 18%),
@@ -119,6 +119,7 @@
       margin:0;
       font-size:20px;
       letter-spacing:.2px;
+      font-weight:900;
     }
 
     .nav-center{
@@ -221,6 +222,7 @@
       font-size:30px;
       line-height:1.08;
       letter-spacing:-.6px;
+      font-weight:900;
     }
 
     .hero .headline{
@@ -313,6 +315,7 @@
     .title-row h3{
       margin:0;
       font-size:18px;
+      font-weight:800;
     }
 
     .sub{
@@ -577,10 +580,11 @@
 
     .orbit-card{
       position:relative;
-      min-height:420px;
+      min-height:520px;
       display:flex;
+      flex-direction:column;
       align-items:center;
-      justify-content:center;
+      justify-content:flex-start;
       overflow:hidden;
     }
 
@@ -588,6 +592,7 @@
       position:relative;
       width:300px;
       height:300px;
+      margin-top:10px;
     }
 
     .center-logo{
@@ -634,6 +639,38 @@
     .n3{left:50%;bottom:0;transform:translate(-50%,0)}
     .n4{left:0;top:50%;transform:translate(0,-50%)}
     .n5{left:50%;top:50%;transform:translate(-50%,-50%); margin-top:-145px; margin-left:100px;}
+
+    .social-links{
+      width:100%;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .social-link{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 12px;
+      border-radius:14px;
+      background:linear-gradient(135deg, rgba(103,236,255,.10), rgba(139,92,246,.12), rgba(255,79,216,.10));
+      border:1px solid rgba(255,255,255,.09);
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .social-link:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 24px rgba(103,236,255,.08);
+    }
+
+    .social-icon{
+      font-size:18px;
+    }
 
     .input{
       width:100%;
@@ -769,6 +806,7 @@
       .fee-layout,
       .presale-grid,
       .right-mini-grid,
+      .social-links,
       .feature-grid-bottom{grid-template-columns:1fr}
       .topbar{padding:12px 14px}
       .nav-center a{font-size:11px;padding:8px 10px}
@@ -778,6 +816,7 @@
       .orbit-wrap{width:260px;height:260px}
       .orbit-node{width:82px;min-height:82px;font-size:10px}
       .n5{margin-top:-124px;margin-left:84px}
+      .orbit-card{min-height:560px}
     }
   </style>
 </head>
@@ -1038,6 +1077,17 @@
               <div class="orbit-icon">🔒</div>
               <div>Renounced</div>
             </div>
+          </div>
+
+          <div class="social-links">
+            <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">
+              <span class="social-icon">✈️</span>
+              <span>Telegram</span>
+            </a>
+            <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">
+              <span class="social-icon">𝕏</span>
+              <span>X</span>
+            </a>
           </div>
         </div>
       </div>
