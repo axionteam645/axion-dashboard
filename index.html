@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AXION | Intelligent Layer for DeFi</title>
-  <meta name="description" content="AXION single-file premium dashboard with live crypto cards, wallet tools, presale, roadmap, tokenomics, and ecosystem visuals." />
+  <meta name="description" content="AXION single-file premium dashboard with live crypto cards, wallet tools, presale, roadmap, tokenomics, and swap panels." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -134,8 +134,26 @@
       background:#08101d;box-shadow:0 0 30px rgba(103,227,255,.18);flex:0 0 auto;
     }
     .brand-logo img{width:100%;height:100%;object-fit:cover}
-    .brand-text strong{display:block;font-size:15px;letter-spacing:.15em}
-    .brand-text span{display:block;margin-top:3px;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.12em}
+    .brand-text strong{
+      display:block;
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:.2em;
+      background:linear-gradient(90deg,#d7f8ff 0%, #ffffff 35%, #d8ddff 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+    .brand-text span{
+      display:block;
+      margin-top:3px;
+      color:#d9e2ff;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
 
     .nav-links{
       display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;
@@ -188,35 +206,55 @@
       background:radial-gradient(circle, rgba(125,140,255,.28), transparent 68%);filter:blur(18px);
     }
 
-    .hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .hero-top{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
     .hero-logo{
-      width:112px;height:112px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.14);
+      width:118px;height:118px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.14);
       background:#05070e;box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 0 40px rgba(103,227,255,.14);
       flex:0 0 auto;
     }
     .hero-logo img{width:100%;height:100%;object-fit:cover}
 
-    .hero-title-wrap{position:relative;display:inline-block}
-    .hero-title-wrap::before{
-      content:"";position:absolute;inset:-20px -30px;
-      background:radial-gradient(circle, rgba(106,226,255,0.16), transparent 65%);
-      filter:blur(26px);z-index:-1;
+    .hero-title-group{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-width:0;
     }
 
     .hero-title{
-      margin:18px 0 0;font-size:clamp(52px, 10vw, 118px);line-height:.95;letter-spacing:-0.06em;font-weight:900;
-      background:linear-gradient(90deg, #6ae2ff 0%, #7a8cff 45%, #d46cff 100%);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;
-      text-shadow:0 0 30px rgba(106,226,255,0.18),0 0 60px rgba(122,140,255,0.12);
-      filter:drop-shadow(0 0 18px rgba(106,226,255,0.12));
+      margin:0;
+      font-size:clamp(58px, 10vw, 122px);
+      line-height:.9;
+      letter-spacing:-.06em;
+      font-weight:900;
+      background:linear-gradient(90deg, #f5f7ff 0%, #ffffff 28%, #cfd9ff 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+      text-shadow:
+        0 0 30px rgba(106,226,255,0.12),
+        0 0 60px rgba(122,140,255,0.08);
+      filter:drop-shadow(0 0 14px rgba(106,226,255,0.08));
     }
 
     .hero-subtitle{
-      margin:10px 0 0;font-size:clamp(18px, 2.2vw, 30px);font-weight:700;letter-spacing:.18em;
-      text-transform:uppercase;color:#dfe7ff;opacity:.95;
+      margin:8px 0 0;
+      font-size:clamp(16px, 2vw, 28px);
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#dfe7ff;
+      opacity:.97;
     }
 
-    .lead{margin:18px 0 0;color:var(--muted);font-size:17px;line-height:1.8;max-width:760px}
+    .lead{margin:20px 0 0;color:var(--muted);font-size:17px;line-height:1.8;max-width:760px}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
     .social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
@@ -227,9 +265,17 @@
 
     .side-stack{display:grid;gap:20px}
     .section{padding:22px 0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:16px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+      min-height:30px;
+    }
     .section-head h2{margin:0;font-size:clamp(24px,3vw,40px);letter-spacing:-.04em}
-    .section-head p{margin:0;max-width:760px;color:var(--muted);line-height:1.75}
+    .section-head p{margin:0;max-width:760px;color:transparent;min-height:0;font-size:0;line-height:0}
 
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -282,10 +328,6 @@
     .feature{
       display:flex;align-items:flex-start;gap:12px;padding:15px 16px;border-radius:18px;
       background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
-    }
-    .feature-dot{
-      width:11px;height:11px;border-radius:50%;margin-top:7px;background:linear-gradient(135deg,var(--primary),var(--pink));
-      box-shadow:0 0 18px rgba(103,227,255,.34);flex:0 0 auto;
     }
     .feature-icon{
       width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
@@ -486,13 +528,19 @@
     .phase h4{margin:0;font-size:18px;letter-spacing:-.03em}
     .phase ul{margin:0;padding-left:18px;color:#dbe3ff;line-height:1.8}
 
-    .tokenomics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
-    .tokenomics-item{
-      padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden;
+    .tokenomics-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .tokenomics-card{
+      padding:24px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      position:relative;overflow:hidden;
     }
-    .tokenomics-item::after{
-      content:"";position:absolute;inset:auto -15% -35% auto;width:120px;height:120px;border-radius:50%;
+    .tokenomics-card::after{
+      content:"";position:absolute;right:-30px;bottom:-30px;width:150px;height:150px;border-radius:50%;
       background:radial-gradient(circle, rgba(125,140,255,.16), transparent 70%);filter:blur(12px);
+    }
+
+    .metric-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .metric-box{
+      padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
     }
 
     .bar-grid{display:grid;gap:12px;margin-top:18px}
@@ -503,6 +551,81 @@
     }
     .bar > span{
       display:block;height:100%;border-radius:999px;background:linear-gradient(90deg, var(--primary), var(--secondary), var(--pink));
+    }
+
+    .donut-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+    .donut{
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:
+        conic-gradient(
+          #67e3ff 0% 30%,
+          #7d8cff 30% 55%,
+          #d96dff 55% 75%,
+          #57f1bb 75% 100%
+        );
+      position:relative;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.08) inset,
+        0 0 40px rgba(103,227,255,.12);
+    }
+    .donut::before{
+      content:"";
+      position:absolute;
+      inset:34px;
+      border-radius:50%;
+      background:linear-gradient(180deg, rgba(8,12,24,.98), rgba(15,19,38,.98));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 0 28px rgba(103,227,255,.08) inset;
+      z-index:1;
+    }
+    .donut-center{
+      position:absolute;
+      inset:68px;
+      border-radius:50%;
+      overflow:hidden;
+      z-index:2;
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow:0 0 24px rgba(103,227,255,.12);
+    }
+    .donut-center img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .legend{
+      display:grid;
+      gap:12px;
+      min-width:220px;
+    }
+    .legend-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .legend-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .legend-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      flex:0 0 auto;
     }
 
     .eco-card{
@@ -519,6 +642,85 @@
       border:1px solid rgba(255,255,255,.08);margin-bottom:14px;
     }
 
+    .swap-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:22px;
+    }
+    .swap-panel{
+      padding:22px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      position:relative;
+      overflow:hidden;
+      text-align:left;
+    }
+    .swap-panel::after{
+      content:"";
+      position:absolute;
+      width:150px;
+      height:150px;
+      right:-36px;
+      bottom:-36px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(103,227,255,.16), transparent 68%);
+      filter:blur(14px);
+    }
+    .swap-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:18px;
+    }
+    .pair-icons{
+      display:flex;
+      align-items:center;
+    }
+    .pair-icon{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.1);
+      background:#09101f;
+      box-shadow:0 10px 24px rgba(0,0,0,.28);
+    }
+    .pair-icon + .pair-icon{
+      margin-left:-12px;
+    }
+    .pair-icon img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .pair-name{
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .swap-field{
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .swap-field strong{
+      font-size:15px;
+    }
+    .swap-field span{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+
     .swap-box{text-align:center;padding:30px 24px}
     footer{padding:28px 0 54px}
     .footer-box{
@@ -532,19 +734,22 @@
     @media (max-width:1180px){
       .nav{padding:10px 0 14px;align-items:flex-start;flex-direction:column}
       .nav-links,.nav-actions{justify-content:flex-start}
-      .hero-grid,.dashboard-grid,.grid-2,.grid-3,.grid-4,.phase-grid,.ticker-grid,.info-strip{grid-template-columns:1fr}
-      .wallet-grid,.presale-grid,.tokenomics-grid{grid-template-columns:1fr}
+      .hero-grid,.dashboard-grid,.grid-2,.grid-3,.grid-4,.phase-grid,.ticker-grid,.info-strip,.swap-wrap,.tokenomics-grid{grid-template-columns:1fr}
+      .wallet-grid,.presale-grid,.metric-grid{grid-template-columns:1fr}
     }
     @media (max-width:720px){
       .container{width:min(var(--max), calc(100% - 18px))}
       .hero{padding-top:24px}
-      .hero-card,.panel,.mini-card,.orbit-card,.eco-card,.presale-panel,.visual-card{padding:18px}
+      .hero-card,.panel,.mini-card,.orbit-card,.eco-card,.presale-panel,.visual-card,.tokenomics-card,.swap-panel{padding:18px}
       .hero-logo{width:88px;height:88px;border-radius:20px}
       .hero-title{font-size:56px}
-      .hero-subtitle{font-size:17px;letter-spacing:.12em}
+      .hero-subtitle{font-size:15px;letter-spacing:.12em}
       .orbit{width:220px;height:220px}
       .core{width:88px;height:88px}
       .sat{font-size:11px}
+      .donut{width:220px;height:220px}
+      .donut::before{inset:28px}
+      .donut-center{inset:56px}
     }
   </style>
 </head>
@@ -591,16 +796,15 @@
         <div class="container hero-grid">
           <div class="card hero-card reveal">
             <div class="hero-top">
-              <div></div>
               <div class="hero-logo">
                 <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION">
               </div>
-            </div>
 
-            <div class="hero-title-wrap">
-              <h1 class="hero-title">AXION</h1>
+              <div class="hero-title-group">
+                <h1 class="hero-title">AXION</h1>
+                <h2 class="hero-subtitle">Intelligent Layer for DeFi</h2>
+              </div>
             </div>
-            <h2 class="hero-subtitle">Intelligent Layer for DeFi</h2>
 
             <p class="lead">
               Trustless. Transparent. Autonomous financial infrastructure built for the next generation of DeFi.
@@ -641,7 +845,6 @@
             </div>
 
             <div class="card panel reveal">
-              <h3>Live Market Cards</h3>
               <div class="ticker-grid">
                 <div class="ticker-card">
                   <div class="ticker-top">
@@ -694,7 +897,7 @@
         <div class="container">
           <div class="section-head reveal">
             <h2>About AXION</h2>
-            <p>Project sections below use branded visual cards instead of repeated explanatory text blocks.</p>
+            <p></p>
           </div>
 
           <div class="grid-3">
@@ -702,21 +905,18 @@
               <span class="visual-badge">Trust Layer</span>
               <div class="visual-figure"></div>
               <h3 style="margin:16px 0 10px;">Immutable Core</h3>
-              <div class="muted">Built around fixed supply, transparent fee visibility, and a cleaner on-chain narrative.</div>
             </div>
 
             <div class="visual-card reveal">
               <span class="visual-badge">AI Direction</span>
               <div class="visual-figure"></div>
               <h3 style="margin:16px 0 10px;">Intelligent Expansion</h3>
-              <div class="muted">Prepared for future analytics, automation, and ecosystem intelligence modules.</div>
             </div>
 
             <div class="visual-card reveal">
               <span class="visual-badge">Brand System</span>
               <div class="visual-figure"></div>
               <h3 style="margin:16px 0 10px;">AXION Identity</h3>
-              <div class="muted">A product-style interface designed to feel stronger than a standard token page.</div>
             </div>
           </div>
         </div>
@@ -725,16 +925,14 @@
       <section id="summary" class="section">
         <div class="container grid-2">
           <div class="card panel reveal">
-            <h3>Project Summary</h3>
             <div class="feature-list">
-              <div class="feature"><div class="feature-icon">🛡️</div><div><strong>Trustless Logic</strong><br>Simple token architecture with clear presentation.</div></div>
-              <div class="feature"><div class="feature-icon">🌐</div><div><strong>BNB Smart Chain</strong><br>Built for a globally readable DeFi-facing experience.</div></div>
-              <div class="feature"><div class="feature-icon">💠</div><div><strong>AXION Token</strong><br>Fixed-supply structure designed around clarity and control reduction.</div></div>
+              <div class="feature"><div class="feature-icon">🛡️</div><div><strong>Trustless Logic</strong></div></div>
+              <div class="feature"><div class="feature-icon">🌐</div><div><strong>BNB Smart Chain</strong></div></div>
+              <div class="feature"><div class="feature-icon">💠</div><div><strong>AXION Token</strong></div></div>
             </div>
           </div>
 
           <div class="card panel reveal">
-            <h3>AXION Panels</h3>
             <div class="grid-2" style="gap:14px;">
               <div class="visual-card" style="min-height:180px;padding:18px;">
                 <span class="visual-badge">Presale</span>
@@ -761,13 +959,12 @@
         <div class="container">
           <div class="section-head reveal">
             <h2>Dashboard</h2>
-            <p>Wallet tools, presale access, ecosystem modules, and branded visual support in a single interface.</p>
+            <p></p>
           </div>
 
           <div class="dashboard-grid">
             <div class="card panel reveal">
               <h3>Wallet Lite</h3>
-              <div class="muted">Connect your wallet to view AX, BNB, and USDT balances on BNB Smart Chain.</div>
 
               <div class="wallet-grid">
                 <div class="asset-box">
@@ -832,9 +1029,6 @@
                     <span>Offline</span>
                   </div>
                 </div>
-                <div class="helper" style="margin-top:10px;">
-                  Use the top-right button to connect or disconnect your wallet.
-                </div>
               </div>
             </div>
 
@@ -844,7 +1038,6 @@
                   <div>
                     <div class="presale-badge">Highlighted Presale</div>
                     <h3 style="margin:12px 0 4px;">AXION Presale</h3>
-                    <div class="helper" style="color:#d7ddff;">High-contrast panel designed to stand out immediately.</div>
                   </div>
                   <a href="#home" class="btn btn-secondary">Back to Top</a>
                 </div>
@@ -876,9 +1069,6 @@
                   <input id="bnbInput" class="input" type="number" min="0" step="0.001" placeholder="Enter BNB amount">
                   <input id="axOutput" class="input" type="text" readonly placeholder="Estimated AX amount">
                   <button id="sendBNBBtn" class="btn btn-presale">Buy AX</button>
-                  <div class="helper" style="color:#d7ddff;">
-                    AX estimate is calculated instantly from your BNB input.
-                  </div>
                 </div>
               </div>
 
@@ -888,7 +1078,6 @@
                 <div class="mini-card" style="margin-top:16px;min-height:auto;padding:18px;">
                   <div class="metric-label">Fee Wallet AX Balance</div>
                   <div id="feeWalletAX" class="big">Loading...</div>
-                  <div class="helper">Transparent ecosystem wallet display.</div>
                 </div>
               </div>
             </div>
@@ -896,8 +1085,7 @@
 
           <div class="dashboard-grid" style="margin-top:22px;">
             <div class="card panel reveal">
-              <h3>AXION Visual Market Panel</h3>
-              <div class="market-panel" style="margin-top:16px;">
+              <div class="market-panel" style="margin-top:0;">
                 <div class="chart-wrap">
                   <svg viewBox="0 0 1000 240" preserveAspectRatio="none">
                     <defs>
@@ -924,13 +1112,11 @@
               <div class="mini-card reveal">
                 <div class="tag">AXION Craft</div>
                 <div class="big">Coming Soon</div>
-                <div class="muted">Reserved for future ecosystem feature rollout.</div>
               </div>
 
               <div class="mini-card reveal">
                 <div class="tag">Connected Wallets</div>
                 <div id="connectedWalletCount" class="big">0</div>
-                <div class="muted">Session-based local counter for connected wallets on this device.</div>
               </div>
 
               <div class="card orbit-card reveal">
@@ -960,7 +1146,7 @@
         <div class="container">
           <div class="section-head reveal">
             <h2>Roadmap</h2>
-            <p>Text-heavy blocks were replaced with visual roadmap cards.</p>
+            <p></p>
           </div>
 
           <div class="phase-grid">
@@ -1067,42 +1253,82 @@
         <div class="container">
           <div class="section-head reveal">
             <h2>Tokenomics</h2>
-            <p>Explanatory paragraphs were replaced with cleaner metrics and visual bars.</p>
+            <p></p>
           </div>
 
-          <div class="grid-2">
-            <div class="card panel reveal">
-              <h3>Core Metrics</h3>
-              <div class="tokenomics-grid">
-                <div class="tokenomics-item">
-                  <div class="metric-label">Token Name</div>
-                  <div style="font-size:21px;font-weight:900;">AXION Token</div>
+          <div class="tokenomics-grid">
+            <div class="tokenomics-card reveal">
+              <div class="donut-wrap">
+                <div class="donut">
+                  <div class="donut-center">
+                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION">
+                  </div>
                 </div>
-                <div class="tokenomics-item">
-                  <div class="metric-label">Symbol</div>
-                  <div style="font-size:21px;font-weight:900;">AX</div>
-                </div>
-                <div class="tokenomics-item">
-                  <div class="metric-label">Network</div>
-                  <div style="font-size:21px;font-weight:900;">BNB Smart Chain</div>
-                </div>
-                <div class="tokenomics-item">
-                  <div class="metric-label">Total Supply</div>
-                  <div style="font-size:21px;font-weight:900;">1,000,000,000</div>
-                </div>
-                <div class="tokenomics-item">
-                  <div class="metric-label">Transaction Fee</div>
-                  <div style="font-size:21px;font-weight:900;">1%</div>
-                </div>
-                <div class="tokenomics-item">
-                  <div class="metric-label">Model</div>
-                  <div style="font-size:21px;font-weight:900;">Fixed Supply</div>
+
+                <div class="legend">
+                  <div class="legend-item">
+                    <div class="legend-left">
+                      <span class="legend-dot" style="background:#67e3ff;"></span>
+                      <strong>Fund</strong>
+                    </div>
+                    <span>30%</span>
+                  </div>
+
+                  <div class="legend-item">
+                    <div class="legend-left">
+                      <span class="legend-dot" style="background:#7d8cff;"></span>
+                      <strong>Liquidity</strong>
+                    </div>
+                    <span>25%</span>
+                  </div>
+
+                  <div class="legend-item">
+                    <div class="legend-left">
+                      <span class="legend-dot" style="background:#d96dff;"></span>
+                      <strong>Marketing</strong>
+                    </div>
+                    <span>20%</span>
+                  </div>
+
+                  <div class="legend-item">
+                    <div class="legend-left">
+                      <span class="legend-dot" style="background:#57f1bb;"></span>
+                      <strong>CEX Listings</strong>
+                    </div>
+                    <span>25%</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="card panel reveal">
-              <h3>Allocation Visual</h3>
+            <div class="tokenomics-card reveal">
+              <div class="metric-grid">
+                <div class="metric-box">
+                  <div class="metric-label">Token Name</div>
+                  <div style="font-size:21px;font-weight:900;">AXION Token</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">Symbol</div>
+                  <div style="font-size:21px;font-weight:900;">AX</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">Network</div>
+                  <div style="font-size:21px;font-weight:900;">BNB Smart Chain</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">Total Supply</div>
+                  <div style="font-size:21px;font-weight:900;">1,000,000,000</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">Transaction Fee</div>
+                  <div style="font-size:21px;font-weight:900;">1%</div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-label">Model</div>
+                  <div style="font-size:21px;font-weight:900;">Fixed Supply</div>
+                </div>
+              </div>
+
               <div class="bar-grid">
                 <div class="bar-item">
                   <div class="bar-top"><span>Fund</span><span>30%</span></div>
@@ -1121,17 +1347,6 @@
                   <div class="bar"><span style="width:25%"></span></div>
                 </div>
               </div>
-
-              <div class="grid-2" style="margin-top:18px;gap:14px;">
-                <div class="visual-card" style="min-height:160px;padding:18px;">
-                  <span class="visual-badge">Supply</span>
-                  <div class="visual-figure" style="height:62px;"></div>
-                </div>
-                <div class="visual-card" style="min-height:160px;padding:18px;">
-                  <span class="visual-badge">Fee Flow</span>
-                  <div class="visual-figure" style="height:62px;"></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -1141,32 +1356,28 @@
         <div class="container">
           <div class="section-head reveal">
             <h2>Ecosystem Features</h2>
-            <p>Project-relevant cards now support the full site visually.</p>
+            <p></p>
           </div>
 
           <div class="grid-4">
             <div class="eco-card reveal">
               <div class="eco-icon">📈</div>
               <h3 style="margin:0 0 10px;font-size:22px;">Analytics Layer</h3>
-              <div class="muted">Market visibility, wallet metrics, and future data modules.</div>
             </div>
 
             <div class="eco-card reveal">
               <div class="eco-icon">🐋</div>
               <h3 style="margin:0 0 10px;font-size:22px;">Whale Awareness</h3>
-              <div class="muted">Future-ready structure for expanded wallet activity insights.</div>
             </div>
 
             <div class="eco-card reveal">
               <div class="eco-icon">⚙️</div>
               <h3 style="margin:0 0 10px;font-size:22px;">DeFi Tools</h3>
-              <div class="muted">AXION Craft and related product modules can grow from here.</div>
             </div>
 
             <div class="eco-card reveal">
               <div class="eco-icon">🧠</div>
               <h3 style="margin:0 0 10px;font-size:22px;">AI Powered</h3>
-              <div class="muted">The intelligent DeFi direction remains visible across the interface.</div>
             </div>
           </div>
         </div>
@@ -1177,9 +1388,76 @@
           <div class="card swap-box reveal">
             <span class="tag">Swap</span>
             <h2 style="margin:16px 0 10px;font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;">COMING SOON</h2>
-            <p class="muted" style="max-width:760px;margin:0 auto;">
-              The swap module remains part of the approved AXION structure for future rollout.
-            </p>
+          </div>
+
+          <div class="swap-wrap">
+            <div class="swap-panel reveal">
+              <div class="swap-head">
+                <div>
+                  <div class="pair-name">AX / BNB</div>
+                </div>
+                <div class="pair-icons">
+                  <div class="pair-icon">
+                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION">
+                  </div>
+                  <div class="pair-icon">
+                    <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png" alt="BNB">
+                  </div>
+                </div>
+              </div>
+
+              <div class="swap-field">
+                <div>
+                  <strong>You Pay</strong><br>
+                  <span>BNB</span>
+                </div>
+                <div>0.00</div>
+              </div>
+
+              <div class="swap-field">
+                <div>
+                  <strong>You Receive</strong><br>
+                  <span>AX</span>
+                </div>
+                <div>0.00</div>
+              </div>
+
+              <button class="btn btn-secondary" style="width:100%;margin-top:8px;">AX / BNB Coming Soon</button>
+            </div>
+
+            <div class="swap-panel reveal">
+              <div class="swap-head">
+                <div>
+                  <div class="pair-name">AX / USDT</div>
+                </div>
+                <div class="pair-icons">
+                  <div class="pair-icon">
+                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION">
+                  </div>
+                  <div class="pair-icon">
+                    <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png" alt="USDT">
+                  </div>
+                </div>
+              </div>
+
+              <div class="swap-field">
+                <div>
+                  <strong>You Pay</strong><br>
+                  <span>USDT</span>
+                </div>
+                <div>0.00</div>
+              </div>
+
+              <div class="swap-field">
+                <div>
+                  <strong>You Receive</strong><br>
+                  <span>AX</span>
+                </div>
+                <div>0.00</div>
+              </div>
+
+              <button class="btn btn-secondary" style="width:100%;margin-top:8px;">AX / USDT Coming Soon</button>
+            </div>
           </div>
         </div>
       </section>
