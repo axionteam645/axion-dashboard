@@ -3,72 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AXION Dashboard v3</title>
-  <meta name="description" content="AXION Dashboard v3 - Premium space-themed dashboard for AXION on BNB Smart Chain." />
+  <title>AXION Dashboard</title>
+  <meta name="description" content="AXION premium dashboard with wallet connection, presale panel, fee wallet tracker, and space-themed UI." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
-  <script type="module">
-    import { createWeb3Modal, defaultConfig } from "https://unpkg.com/@web3modal/ethers@5.1.11/dist/index.js?module";
-
-    window.__axionBoot = async function () {
-      const projectId = "44e7b575eead4c444613bf481554ba7d";
-
-      const metadata = {
-        name: "AXION Dashboard",
-        description: "AXION Dashboard v3",
-        url: window.location.origin,
-        icons: ["https://www.axiondefi.com/favicon.ico"]
-      };
-
-      const mainnet = {
-        chainId: 56,
-        name: "BNB Smart Chain",
-        currency: "BNB",
-        explorerUrl: "https://bscscan.com",
-        rpcUrl: "https://bsc-dataseed.binance.org"
-      };
-
-      const ethersConfig = defaultConfig({
-        metadata
-      });
-
-      const modal = createWeb3Modal({
-        ethersConfig,
-        chains: [mainnet],
-        projectId,
-        enableAnalytics: false,
-        enableOnramp: false,
-        themeMode: "dark",
-        themeVariables: {
-          "--w3m-accent": "#7c9cff",
-          "--w3m-border-radius-master": "18px"
-        }
-      });
-
-      window.axionW3m = modal;
-    };
-  </script>
 
   <style>
     :root{
-      --bg:#060816;
-      --bg2:#0b1122;
-      --card:rgba(13,19,38,0.72);
-      --card-strong:rgba(17,24,48,0.92);
-      --stroke:rgba(255,255,255,0.08);
-      --text:#f5f7ff;
-      --muted:#99a4c7;
-      --primary:#7c9cff;
-      --primary2:#8c7cff;
-      --cyan:#62e7ff;
-      --pink:#f36cff;
-      --green:#6cffb8;
-      --warning:#ffc56c;
-      --shadow:0 20px 60px rgba(0,0,0,0.45);
+      --bg:#04050d;
+      --bg2:#090d1f;
+      --card:rgba(11,16,33,.72);
+      --card2:rgba(16,22,44,.86);
+      --stroke:rgba(255,255,255,.08);
+      --text:#f6f8ff;
+      --muted:#9aa8d4;
+      --primary:#6ae2ff;
+      --primary2:#7a8cff;
+      --pink:#d46cff;
+      --yellow:#f4c542;
+      --green:#49e1b3;
+      --danger:#ff6b7c;
+      --shadow:0 18px 60px rgba(0,0,0,.45);
       --radius:24px;
-      --max:1280px;
+      --max:1320px;
     }
 
     *{box-sizing:border-box}
@@ -78,220 +37,242 @@
       font-family:'Inter',sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 20% 20%, rgba(124,156,255,0.20), transparent 25%),
-        radial-gradient(circle at 80% 10%, rgba(243,108,255,0.14), transparent 25%),
-        radial-gradient(circle at 70% 70%, rgba(98,231,255,0.12), transparent 20%),
-        linear-gradient(180deg,#040612 0%,#060816 34%,#091022 100%);
+        radial-gradient(circle at 15% 20%, rgba(0,220,255,.12), transparent 20%),
+        radial-gradient(circle at 85% 15%, rgba(212,108,255,.14), transparent 20%),
+        radial-gradient(circle at 50% 70%, rgba(122,140,255,.12), transparent 22%),
+        linear-gradient(180deg,#03040a 0%,#060916 35%,#0a1020 100%);
       overflow-x:hidden;
     }
 
-    body::before{
-      content:"";
+    .space-bg{
       position:fixed;
       inset:0;
-      pointer-events:none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size: 80px 80px;
-      mask-image: radial-gradient(circle at center, black 35%, transparent 95%);
-      opacity:.28;
       z-index:0;
-    }
-
-    .stars{
-      position:fixed;
-      inset:0;
       pointer-events:none;
-      z-index:0;
       overflow:hidden;
     }
-    .stars::before,
-    .stars::after{
+
+    .space-bg::before,
+    .space-bg::after{
       content:"";
       position:absolute;
-      inset:-20%;
+      inset:-10%;
       background:
-        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.9), transparent 60%),
-        radial-gradient(2px 2px at 70% 20%, rgba(255,255,255,.8), transparent 60%),
-        radial-gradient(1.5px 1.5px at 85% 70%, rgba(255,255,255,.7), transparent 60%),
-        radial-gradient(2px 2px at 50% 80%, rgba(255,255,255,.65), transparent 60%),
-        radial-gradient(1.5px 1.5px at 15% 75%, rgba(255,255,255,.8), transparent 60%);
+        radial-gradient(2px 2px at 8% 22%, rgba(255,255,255,.95), transparent 55%),
+        radial-gradient(2px 2px at 16% 72%, rgba(255,255,255,.85), transparent 55%),
+        radial-gradient(1.5px 1.5px at 26% 42%, rgba(255,255,255,.75), transparent 55%),
+        radial-gradient(1.5px 1.5px at 39% 14%, rgba(255,255,255,.7), transparent 55%),
+        radial-gradient(2px 2px at 52% 63%, rgba(255,255,255,.95), transparent 55%),
+        radial-gradient(1.5px 1.5px at 66% 33%, rgba(255,255,255,.7), transparent 55%),
+        radial-gradient(2px 2px at 74% 78%, rgba(255,255,255,.82), transparent 55%),
+        radial-gradient(2px 2px at 88% 24%, rgba(255,255,255,.95), transparent 55%),
+        radial-gradient(1.5px 1.5px at 93% 59%, rgba(255,255,255,.75), transparent 55%);
+      opacity:.55;
       animation: drift 28s linear infinite;
+    }
+
+    .space-bg::after{
+      transform:scale(1.18);
+      opacity:.28;
+      animation-duration:42s;
+    }
+
+    .grid-fade{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:80px 80px;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 20%, transparent 78%);
       opacity:.55;
     }
-    .stars::after{
-      transform:scale(1.15);
-      animation-duration: 44s;
-      opacity:.35;
+
+    .nebula{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(70px);
+      opacity:.23;
+      animation: floaty 14s ease-in-out infinite;
     }
+    .neb1{width:420px;height:420px;left:-80px;top:40px;background:#00d8ff}
+    .neb2{width:380px;height:380px;right:-60px;top:110px;background:#c76cff;animation-delay:-5s}
+    .neb3{width:460px;height:460px;left:30%;bottom:-180px;background:#5975ff;animation-delay:-8s}
 
     @keyframes drift{
       from{transform:translateY(0)}
       to{transform:translateY(-60px)}
     }
-
-    .glow-orb{
-      position:fixed;
-      width:560px;height:560px;
-      border-radius:50%;
-      filter:blur(70px);
-      opacity:.18;
-      pointer-events:none;
-      z-index:0;
-      animation: floatOrb 14s ease-in-out infinite;
-    }
-    .orb1{top:-160px;left:-120px;background:var(--primary)}
-    .orb2{right:-120px;top:120px;background:var(--pink);animation-delay:-6s}
-    .orb3{bottom:-180px;left:30%;background:var(--cyan);animation-delay:-3s}
-    @keyframes floatOrb{
+    @keyframes floaty{
       0%,100%{transform:translate(0,0) scale(1)}
-      50%{transform:translate(30px,-20px) scale(1.08)}
+      50%{transform:translate(24px,-20px) scale(1.08)}
     }
 
+    img{display:block;max-width:100%}
     a{text-decoration:none;color:inherit}
-    .wrap{position:relative;z-index:1}
-    .container{width:min(var(--max),calc(100% - 32px));margin:0 auto}
+    .app{position:relative;z-index:1}
+    .container{width:min(var(--max),calc(100% - 28px));margin:0 auto}
 
     header{
       position:sticky;
       top:0;
-      z-index:50;
-      backdrop-filter: blur(16px);
-      background:rgba(5,9,22,.55);
+      z-index:60;
+      background:rgba(3,6,16,.65);
+      backdrop-filter:blur(16px);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
 
     .nav{
+      min-height:78px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
-      min-height:78px;
+      gap:18px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:14px;
-      font-weight:800;
-      letter-spacing:.12em;
+      min-width:0;
     }
 
-    .brand-mark{
-      width:46px;height:46px;
+    .brand-logo{
+      width:50px;
+      height:50px;
       border-radius:50%;
-      position:relative;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 28%),
-        linear-gradient(135deg, var(--cyan), var(--primary), var(--pink));
-      box-shadow:
-        0 0 0 2px rgba(255,255,255,.08) inset,
-        0 0 30px rgba(124,156,255,.35);
-      display:grid;
-      place-items:center;
-      font-weight:900;
-      color:white;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:#0a0f1d;
+      box-shadow:0 0 30px rgba(106,226,255,.18);
+      flex:0 0 auto;
     }
-    .brand-mark span{
+
+    .brand-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+
+    .brand-text strong{
+      display:block;
       font-size:15px;
-      letter-spacing:.08em;
+      letter-spacing:.15em;
+    }
+
+    .brand-text span{
+      display:block;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+      margin-top:3px;
+      white-space:nowrap;
     }
 
     .nav-links{
       display:flex;
       align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
       justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
     }
 
     .nav-links a{
+      font-size:14px;
+      font-weight:700;
+      color:var(--muted);
       padding:10px 14px;
       border-radius:999px;
-      color:var(--muted);
       border:1px solid transparent;
-      transition:.25s ease;
-      font-size:14px;
-      font-weight:600;
+      transition:.22s ease;
     }
+
     .nav-links a:hover{
       color:var(--text);
       background:rgba(255,255,255,.04);
       border-color:rgba(255,255,255,.06);
     }
 
-    .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
     .btn{
+      appearance:none;
       border:none;
       outline:none;
       cursor:pointer;
       border-radius:16px;
-      padding:13px 18px;
-      font-weight:700;
+      padding:14px 18px;
       font-family:inherit;
-      transition:.25s ease;
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.01em;
+      transition:.22s ease;
     }
 
     .btn-primary{
-      color:white;
-      background:
-        linear-gradient(135deg, var(--primary), var(--primary2));
-      box-shadow:0 12px 30px rgba(124,156,255,.28);
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--primary2),var(--pink));
+      box-shadow:0 14px 34px rgba(106,226,255,.18);
     }
-    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(124,156,255,.35)}
+
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      box-shadow:0 16px 42px rgba(106,226,255,.24);
+    }
 
     .btn-secondary{
       color:var(--text);
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
     }
+
     .btn-secondary:hover{background:rgba(255,255,255,.08)}
 
     .hero{
-      padding:68px 0 24px;
+      padding:40px 0 22px;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:24px;
+      grid-template-columns:1.08fr .92fr;
+      gap:22px;
       align-items:stretch;
     }
 
     .card{
       background:var(--card);
       border:1px solid var(--stroke);
-      box-shadow:var(--shadow);
       border-radius:var(--radius);
-      backdrop-filter: blur(18px);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
     }
 
     .hero-card{
-      padding:34px;
       position:relative;
       overflow:hidden;
+      padding:34px;
+      background:
+        radial-gradient(circle at 85% 18%, rgba(0,220,255,.13), transparent 24%),
+        radial-gradient(circle at 92% 32%, rgba(212,108,255,.12), transparent 24%),
+        linear-gradient(180deg, rgba(16,22,44,.82), rgba(8,12,28,.82));
     }
 
-    .hero-card::before{
+    .hero-card::after{
       content:"";
       position:absolute;
-      inset:auto -20% -35% auto;
-      width:280px;
-      height:280px;
+      right:-60px;
+      bottom:-60px;
+      width:260px;
+      height:260px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(124,156,255,.25), transparent 65%);
+      background:radial-gradient(circle, rgba(122,140,255,.28), transparent 66%);
       filter:blur(18px);
     }
 
-    .eyebrow{
+    .pill{
       display:inline-flex;
       align-items:center;
       gap:8px;
@@ -299,116 +280,156 @@
       border-radius:999px;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
-      color:#d7defc;
+      color:#d7e0ff;
       font-size:12px;
-      font-weight:700;
+      font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
     }
 
+    .hero-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .hero-logo{
+      width:112px;
+      height:112px;
+      border-radius:26px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.04) inset,
+        0 0 38px rgba(0,220,255,.12);
+      background:#05070e;
+      flex:0 0 auto;
+    }
+
+    .hero-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
     h1{
       margin:18px 0 14px;
-      font-size:clamp(34px,5vw,62px);
+      font-size:clamp(34px,5vw,64px);
       line-height:1.02;
-      letter-spacing:-.04em;
+      letter-spacing:-.045em;
+      max-width:850px;
     }
 
     .lead{
       margin:0;
+      color:var(--muted);
       font-size:17px;
       line-height:1.8;
-      color:var(--muted);
       max-width:760px;
     }
 
     .hero-actions{
       display:flex;
-      flex-wrap:wrap;
       gap:12px;
+      flex-wrap:wrap;
       margin-top:24px;
     }
 
-    .socials{
+    .social-row{
       display:flex;
-      gap:12px;
-      margin-top:24px;
+      gap:10px;
       flex-wrap:wrap;
+      margin-top:18px;
     }
 
     .chip-link{
-      padding:11px 14px;
+      padding:10px 14px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
       background:rgba(255,255,255,.04);
-      color:var(--text);
+      border:1px solid rgba(255,255,255,.07);
+      color:#e7edff;
       font-size:14px;
-      font-weight:600;
+      font-weight:700;
     }
 
-    .stats-grid{
+    .side-stack{
+      display:grid;
+      gap:20px;
+    }
+
+    .hero-metrics{
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:16px;
-      padding:22px;
+      padding:20px;
     }
 
     .metric{
+      min-height:124px;
       padding:18px;
       border-radius:20px;
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.07);
-      min-height:118px;
     }
+
     .metric-label{
       color:var(--muted);
       font-size:13px;
-      font-weight:600;
+      font-weight:700;
       margin-bottom:10px;
     }
+
     .metric-value{
       font-size:28px;
-      font-weight:800;
+      font-weight:900;
       letter-spacing:-.03em;
     }
+
     .metric-sub{
       margin-top:8px;
-      color:#c8d2f3;
+      color:#d0daf9;
       font-size:13px;
+      line-height:1.5;
     }
 
     .section{
       padding:22px 0;
     }
 
-    .section-title{
+    .section-head{
       display:flex;
       align-items:end;
       justify-content:space-between;
       gap:16px;
       margin-bottom:18px;
+      flex-wrap:wrap;
     }
-    .section-title h2{
+
+    .section-head h2{
       margin:0;
-      font-size:clamp(24px,3vw,38px);
-      letter-spacing:-.03em;
+      font-size:clamp(24px,3vw,40px);
+      letter-spacing:-.04em;
     }
-    .section-title p{
+
+    .section-head p{
       margin:0;
+      max-width:720px;
       color:var(--muted);
-      max-width:700px;
       line-height:1.75;
     }
 
     .grid-2{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:24px;
+      gap:22px;
     }
 
     .grid-3{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:24px;
+      gap:22px;
     }
 
     .panel{
@@ -426,75 +447,102 @@
       line-height:1.75;
     }
 
-    .list{
+    .feature-list{
       display:grid;
       gap:14px;
       margin-top:18px;
     }
 
-    .list-item{
+    .feature{
       display:flex;
-      gap:14px;
       align-items:flex-start;
-      padding:14px 16px;
+      gap:12px;
+      padding:15px 16px;
       border-radius:18px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.06);
     }
 
-    .dot{
-      width:12px;height:12px;border-radius:50%;
-      margin-top:6px;
+    .feature-dot{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      margin-top:7px;
+      background:linear-gradient(135deg,var(--primary),var(--pink));
+      box-shadow:0 0 18px rgba(106,226,255,.34);
       flex:0 0 auto;
-      background:linear-gradient(135deg,var(--cyan),var(--pink));
-      box-shadow:0 0 18px rgba(98,231,255,.35);
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:22px;
+      align-items:start;
     }
 
     .wallet-grid{
       display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:24px;
-      align-items:start;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
     }
 
-    .wallet-lite{
-      display:grid;
-      gap:16px;
-    }
-
-    .wallet-box{
-      padding:18px;
+    .asset-box{
+      padding:16px;
       border-radius:20px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.07);
+    }
+
+    .asset-head{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:12px;
+      margin-bottom:14px;
     }
 
-    .token-row{
+    .asset-left{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:12px;
+      min-width:0;
     }
 
-    .token-logo{
-      width:44px;height:44px;border-radius:50%;
-      display:grid;place-items:center;
+    .asset-icon{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.1);
+      background:#09101f;
+      box-shadow:0 10px 24px rgba(0,0,0,.28);
+      flex:0 0 auto;
+    }
+
+    .asset-icon img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .asset-name{
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .asset-ticker{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      margin-top:3px;
+      letter-spacing:.06em;
+    }
+
+    .asset-balance{
+      font-size:24px;
       font-weight:900;
-      color:white;
-      letter-spacing:.04em;
-      box-shadow:0 10px 24px rgba(0,0,0,.35);
-    }
-
-    .logo-ax{
-      background:linear-gradient(135deg,var(--cyan),var(--primary),var(--pink));
-    }
-
-    .logo-bnb{
-      background:linear-gradient(135deg,#f6d365,#fda085);
-      color:#1d1400;
+      letter-spacing:-.03em;
     }
 
     .address-box{
@@ -503,9 +551,53 @@
       border-radius:18px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.06);
-      word-break:break-all;
-      color:#dce4ff;
+      color:#e0e7ff;
       font-size:14px;
+      word-break:break-all;
+      line-height:1.65;
+    }
+
+    .status-box{
+      margin-top:16px;
+      padding:18px;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(106,226,255,.09), rgba(122,140,255,.05));
+      border:1px solid rgba(106,226,255,.16);
+    }
+
+    .status-line{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .status-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .status-badge .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--danger);
+      box-shadow:0 0 12px rgba(255,107,124,.4);
+    }
+
+    .status-badge.connected .dot{
+      background:var(--green);
+      box-shadow:0 0 12px rgba(73,225,179,.45);
     }
 
     .kv{
@@ -515,21 +607,27 @@
       padding:12px 0;
       border-bottom:1px solid rgba(255,255,255,.06);
     }
+
     .kv:last-child{border-bottom:none}
     .kv span:first-child{color:var(--muted)}
-    .kv span:last-child{font-weight:700;text-align:right}
+    .kv span:last-child{
+      font-weight:800;
+      text-align:right;
+      max-width:250px;
+      word-break:break-all;
+    }
 
-    .buy-box{
+    .presale-box{
       margin-top:18px;
       padding:18px;
       border-radius:20px;
-      background:linear-gradient(180deg, rgba(124,156,255,.10), rgba(98,231,255,.05));
-      border:1px solid rgba(124,156,255,.22);
+      background:linear-gradient(180deg, rgba(122,140,255,.10), rgba(212,108,255,.05));
+      border:1px solid rgba(122,140,255,.18);
     }
 
-    .presale-form{
+    .input-grid{
       display:grid;
-      gap:14px;
+      gap:12px;
       margin-top:14px;
     }
 
@@ -537,19 +635,46 @@
       width:100%;
       border:none;
       outline:none;
-      padding:16px 18px;
       border-radius:16px;
+      padding:15px 16px;
+      font-family:inherit;
+      font-size:15px;
+      color:#fff;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
-      color:white;
-      font-size:15px;
-      font-family:inherit;
     }
 
     .helper{
-      font-size:13px;
       color:var(--muted);
+      font-size:13px;
       line-height:1.6;
+    }
+
+    .side-cards{
+      display:grid;
+      gap:18px;
+    }
+
+    .mini-card{
+      position:relative;
+      overflow:hidden;
+      min-height:160px;
+      padding:22px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .mini-card::after{
+      content:"";
+      position:absolute;
+      width:170px;
+      height:170px;
+      right:-40px;
+      bottom:-50px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(106,226,255,.18), transparent 65%);
+      filter:blur(16px);
     }
 
     .tag{
@@ -558,142 +683,139 @@
       gap:8px;
       padding:8px 12px;
       border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:#dfe7ff;
       font-size:12px;
       font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.04);
-      color:#d8dffd;
     }
 
-    .dashboard-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:24px;
+    .big{
+      margin:10px 0 6px;
+      font-size:30px;
+      font-weight:900;
+      letter-spacing:-.03em;
     }
 
-    .chart-placeholder{
+    .market-panel{
       position:relative;
       min-height:420px;
-      border-radius:24px;
       overflow:hidden;
+      border-radius:24px;
       border:1px solid rgba(255,255,255,.08);
       background:
-        radial-gradient(circle at 50% 50%, rgba(124,156,255,.10), transparent 42%),
+        radial-gradient(circle at 70% 20%, rgba(106,226,255,.14), transparent 24%),
+        radial-gradient(circle at 25% 80%, rgba(212,108,255,.12), transparent 22%),
         linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
     }
 
-    .chart-placeholder::before{
+    .market-panel::before{
       content:"";
       position:absolute;
       inset:0;
-      background:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-      background-size:44px 44px;
-      opacity:.4;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:46px 46px;
+      opacity:.45;
     }
 
-    .chart-line{
+    .chart-wrap{
       position:absolute;
-      left:5%;
-      right:5%;
+      left:4%;
+      right:4%;
       top:50%;
-      height:180px;
+      height:200px;
       transform:translateY(-50%);
     }
-    .chart-line svg{width:100%;height:100%}
-    .chart-line path{
+
+    .chart-wrap svg{
+      width:100%;
+      height:100%;
+    }
+
+    .chart-wrap path{
       fill:none;
-      stroke:url(#grad);
+      stroke:url(#chartGradient);
       stroke-width:4;
       stroke-linecap:round;
       stroke-linejoin:round;
       stroke-dasharray:900;
       stroke-dashoffset:900;
-      animation: drawLine 2.4s ease forwards;
-      filter:drop-shadow(0 0 12px rgba(124,156,255,.45));
-    }
-    @keyframes drawLine{to{stroke-dashoffset:0}}
-
-    .side-cards{
-      display:grid;
-      gap:20px;
+      animation:drawLine 2.3s ease forwards;
+      filter:drop-shadow(0 0 14px rgba(106,226,255,.3));
     }
 
-    .mini-card{
-      padding:22px;
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08);
-      min-height:160px;
-      position:relative;
-      overflow:hidden;
+    @keyframes drawLine{
+      to{stroke-dashoffset:0}
     }
 
-    .mini-card::after{
-      content:"";
+    .market-points{
       position:absolute;
-      width:160px;height:160px;
-      right:-30px;bottom:-40px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(124,156,255,.18), transparent 65%);
-      filter:blur(14px);
+      inset:0;
+      pointer-events:none;
     }
 
-    .coming{
-      color:#e7edff;
-      font-size:28px;
-      font-weight:800;
-      margin:10px 0 6px;
-      letter-spacing:-.03em;
+    .market-points span{
+      position:absolute;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#fff;
+      box-shadow:0 0 16px rgba(255,255,255,.5);
+      animation:pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{transform:scale(1);opacity:.9}
+      50%{transform:scale(1.35);opacity:1}
     }
 
     .orbit-card{
-      padding:24px;
       min-height:290px;
       display:grid;
       place-items:center;
+      padding:24px;
     }
 
-    .orbit-wrap{
+    .orbit{
       position:relative;
       width:260px;
       height:260px;
     }
 
-    .orbit-core{
+    .ring{
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.12);
+      animation:spin 14s linear infinite;
+    }
+    .ring.r2{inset:22px;animation-duration:11s;animation-direction:reverse}
+    .ring.r3{inset:44px;animation-duration:9s}
+
+    .core{
       position:absolute;
       left:50%;
       top:50%;
       transform:translate(-50%,-50%);
-      width:110px;height:110px;
+      width:110px;
+      height:110px;
       border-radius:50%;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 0 34px rgba(106,226,255,.18);
+      background:#060910;
       display:grid;
       place-items:center;
-      background:linear-gradient(135deg,var(--primary),var(--pink));
-      box-shadow:0 0 30px rgba(124,156,255,.35);
-      text-align:center;
-      font-weight:800;
-      letter-spacing:.06em;
     }
 
-    .ring{
-      position:absolute;
-      inset:0;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:50%;
-      animation: spin 14s linear infinite;
-    }
-    .ring.r2{
-      inset:22px;
-      animation-duration:11s;
-      animation-direction:reverse;
-    }
-    .ring.r3{
-      inset:44px;
-      animation-duration:9s;
+    .core img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
     .sat{
@@ -703,7 +825,7 @@
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.08);
       font-size:12px;
-      font-weight:700;
+      font-weight:800;
       white-space:nowrap;
       box-shadow:0 10px 24px rgba(0,0,0,.25);
     }
@@ -711,15 +833,18 @@
     .s1{top:-8px;left:50%;transform:translateX(-50%)}
     .s2{top:50%;right:-18px;transform:translateY(-50%)}
     .s3{bottom:-8px;left:50%;transform:translateX(-50%)}
-    .s4{top:50%;left:-26px;transform:translateY(-50%)}
-    .s5{top:20%;left:15%}
-    .s6{bottom:18%;right:14%}
+    .s4{top:50%;left:-22px;transform:translateY(-50%)}
+    .s5{top:18%;left:14%}
+    .s6{bottom:18%;right:12%}
 
-    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    @keyframes spin{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
 
     .roadmap{
       display:grid;
-      gap:18px;
+      gap:16px;
     }
 
     .phase{
@@ -729,12 +854,12 @@
       border:1px solid rgba(255,255,255,.07);
     }
 
-    .phase-head{
+    .phase-top{
       display:flex;
+      align-items:center;
       justify-content:space-between;
       gap:16px;
-      align-items:center;
-      margin-bottom:12px;
+      margin-bottom:10px;
       flex-wrap:wrap;
     }
 
@@ -747,99 +872,107 @@
     .phase ul{
       margin:0;
       padding-left:18px;
-      color:#d8e0ff;
+      color:#dbe3ff;
       line-height:1.8;
     }
 
     .tokenomics-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:16px;
+      gap:14px;
       margin-top:18px;
     }
 
     .tokenomics-item{
-      padding:18px;
+      padding:16px;
       border-radius:18px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.06);
     }
 
-    .footer{
-      padding:28px 0 56px;
-      color:var(--muted);
+    .swap-box{
+      text-align:center;
+      padding:30px 24px;
+    }
+
+    footer{
+      padding:28px 0 54px;
     }
 
     .footer-box{
       display:flex;
+      align-items:center;
       justify-content:space-between;
       gap:16px;
       flex-wrap:wrap;
-      padding:20px 24px;
+      padding:22px 24px;
       border-radius:22px;
       background:rgba(255,255,255,.03);
       border:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
     }
 
     .reveal{
       opacity:0;
-      transform:translateY(24px);
+      transform:translateY(22px);
       transition:opacity .8s ease, transform .8s ease;
     }
+
     .reveal.show{
       opacity:1;
       transform:translateY(0);
     }
 
-    @media (max-width: 1080px){
-      .hero-grid,
-      .wallet-grid,
-      .dashboard-grid,
-      .grid-2,
-      .grid-3{
-        grid-template-columns:1fr;
-      }
-
+    @media (max-width:1100px){
       .nav{
         padding:10px 0 14px;
         align-items:flex-start;
         flex-direction:column;
       }
-
-      .nav-links,
-      .nav-actions{
-        width:100%;
-        justify-content:flex-start;
+      .nav-links{justify-content:flex-start}
+      .hero-grid,
+      .dashboard-grid,
+      .grid-2,
+      .grid-3{
+        grid-template-columns:1fr;
+      }
+      .wallet-grid{
+        grid-template-columns:1fr;
       }
     }
 
-    @media (max-width: 720px){
-      .container{width:min(var(--max),calc(100% - 20px))}
-      .hero{padding-top:28px}
+    @media (max-width:720px){
+      .container{width:min(var(--max),calc(100% - 18px))}
+      .hero{padding-top:24px}
       .hero-card,.panel,.mini-card,.orbit-card{padding:18px}
-      .stats-grid,.tokenomics-grid{grid-template-columns:1fr}
-      .metric-value{font-size:24px}
+      .hero-metrics,.tokenomics-grid{grid-template-columns:1fr}
+      .brand-text span{white-space:normal}
+      .hero-logo{width:88px;height:88px;border-radius:20px}
       h1{font-size:36px}
-      .orbit-wrap{width:220px;height:220px}
-      .orbit-core{width:88px;height:88px;font-size:12px}
-      .s2,.s4{font-size:11px}
+      .orbit{width:220px;height:220px}
+      .core{width:88px;height:88px}
+      .sat{font-size:11px}
     }
   </style>
 </head>
 <body>
-  <div class="stars"></div>
-  <div class="glow-orb orb1"></div>
-  <div class="glow-orb orb2"></div>
-  <div class="glow-orb orb3"></div>
+  <div class="space-bg">
+    <div class="grid-fade"></div>
+    <div class="nebula neb1"></div>
+    <div class="nebula neb2"></div>
+    <div class="nebula neb3"></div>
+  </div>
 
-  <div class="wrap">
+  <div class="app">
     <header>
       <div class="container nav">
         <div class="brand">
-          <div class="brand-mark"><span>AX</span></div>
-          <div>
-            <div style="font-size:15px;">AXION</div>
-            <div style="font-size:11px;color:var(--muted);font-weight:700;">INTELLIGENT LAYER FOR DEFI</div>
+          <div class="brand-logo">
+            <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION logo">
+          </div>
+          <div class="brand-text">
+            <strong>AXION</strong>
+            <span>INTELLIGENT LAYER FOR DEFI</span>
           </div>
         </div>
 
@@ -852,9 +985,7 @@
           <a href="#swap">Swap</a>
         </nav>
 
-        <div class="nav-actions">
-          <button id="connectBtn" class="btn btn-primary">Connect Wallet</button>
-        </div>
+        <button id="connectBtn" class="btn btn-primary">Connect Wallet</button>
       </div>
     </header>
 
@@ -862,11 +993,18 @@
       <section id="home" class="hero">
         <div class="container hero-grid">
           <div class="card hero-card reveal">
-            <span class="eyebrow">AXION Dashboard v3</span>
-            <h1>Trustless DeFi.<br>Premium Interface.<br>AXION Experience.</h1>
+            <div class="hero-top">
+              <span class="pill">AXION Premium Dashboard</span>
+              <div class="hero-logo">
+                <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION">
+              </div>
+            </div>
+
+            <h1>Trustless Finance.<br>Cosmic Identity.<br>AXION Interface.</h1>
+
             <p class="lead">
-              AXION is not just a token. It is an intelligent infrastructure layer designed for trustless financial systems,
-              combining transparent token logic, premium user experience, and a scalable vision for the future of DeFi.
+              AXION is not just a token. It is a premium trust-first DeFi experience with a futuristic visual identity,
+              wallet utility, presale visibility, fee wallet tracking, and a space-themed dashboard built around your AX logo.
             </p>
 
             <div class="hero-actions">
@@ -874,34 +1012,44 @@
               <a class="btn btn-secondary" href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener">View on BscScan</a>
             </div>
 
-            <div class="socials">
+            <div class="social-row">
               <a class="chip-link" href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a>
               <a class="chip-link" href="https://x.com/axiondefi" target="_blank" rel="noopener">X / Twitter</a>
               <a class="chip-link" href="https://www.axiondefi.com/" target="_blank" rel="noopener">Website</a>
             </div>
           </div>
 
-          <div class="card reveal">
-            <div class="stats-grid">
-              <div class="metric">
-                <div class="metric-label">Total Supply</div>
-                <div class="metric-value">1,000,000,000 AX</div>
-                <div class="metric-sub">Fixed supply. No mint.</div>
+          <div class="side-stack">
+            <div class="card reveal">
+              <div class="hero-metrics">
+                <div class="metric">
+                  <div class="metric-label">Total Supply</div>
+                  <div class="metric-value">1,000,000,000 AX</div>
+                  <div class="metric-sub">Fixed supply. No mint.</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Presale Rate</div>
+                  <div class="metric-value">10,000 AX</div>
+                  <div class="metric-sub">For 1 BNB.</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Allocation</div>
+                  <div class="metric-value">5,000,000 AX</div>
+                  <div class="metric-sub">Presale allocation.</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Distribution</div>
+                  <div class="metric-value" style="font-size:22px;">09.10.2026</div>
+                  <div class="metric-sub">Planned token distribution.</div>
+                </div>
               </div>
-              <div class="metric">
-                <div class="metric-label">Transaction Fee</div>
-                <div class="metric-value">1%</div>
-                <div class="metric-sub">Transparent ecosystem fee wallet.</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Presale Rate</div>
-                <div class="metric-value">10,000 AX</div>
-                <div class="metric-sub">For 1 BNB.</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Distribution Date</div>
-                <div class="metric-value" style="font-size:22px;">09.10.2026</div>
-                <div class="metric-sub">Planned token distribution.</div>
+            </div>
+
+            <div class="card panel reveal">
+              <h3>Logo-Matched Space Theme</h3>
+              <div class="muted">
+                This version uses your AX logo as the main visual anchor and applies a deep-space neon background
+                with cyan, violet, and electric glow layers to match the ring and metallic look of the emblem.
               </div>
             </div>
           </div>
@@ -910,34 +1058,26 @@
 
       <section id="about" class="section">
         <div class="container">
-          <div class="section-title reveal">
-            <div>
-              <h2>About AXION</h2>
-            </div>
+          <div class="section-head reveal">
+            <h2>About AXION</h2>
             <p>
-              AXION is built for users who want clarity, simplicity, and on-chain transparency. The project combines
-              secure token mechanics with a premium dashboard experience focused on practical DeFi utility.
+              AXION combines trustless token philosophy with premium presentation. The dashboard is designed to feel
+              like a branded product, not just a basic token page.
             </p>
           </div>
 
           <div class="grid-3">
             <div class="card panel reveal">
-              <h3>Transparent Design</h3>
-              <div class="muted">
-                Fixed supply, transparent fee logic, and a clean presentation layer that makes project information easy to verify and understand.
-              </div>
+              <h3>Transparent Structure</h3>
+              <div class="muted">Fixed supply, simple logic, clear fee wallet tracking, and readable project presentation.</div>
             </div>
             <div class="card panel reveal">
-              <h3>AI Powered Vision</h3>
-              <div class="muted">
-                AXION is positioned as an intelligent layer for DeFi, designed to evolve into a broader ecosystem of data-driven utility.
-              </div>
+              <h3>AI Powered Direction</h3>
+              <div class="muted">AXION keeps its intelligent DeFi positioning through design, messaging, and orbit feature modules.</div>
             </div>
             <div class="card panel reveal">
-              <h3>Premium User Experience</h3>
-              <div class="muted">
-                Space-themed UI, wallet tools, presale visibility, and ecosystem status cards in a clean mobile responsive structure.
-              </div>
+              <h3>Premium Branding</h3>
+              <div class="muted">Your AX logo now drives the color feel, glow intensity, and space aesthetic across the page.</div>
             </div>
           </div>
         </div>
@@ -947,55 +1087,21 @@
         <div class="container grid-2">
           <div class="card panel reveal">
             <h3>Project Summary</h3>
-            <div class="list">
-              <div class="list-item">
-                <div class="dot"></div>
-                <div>
-                  <strong>Token:</strong> AXION Token (AX)
-                </div>
-              </div>
-              <div class="list-item">
-                <div class="dot"></div>
-                <div>
-                  <strong>Network:</strong> BNB Smart Chain
-                </div>
-              </div>
-              <div class="list-item">
-                <div class="dot"></div>
-                <div>
-                  <strong>Supply:</strong> 1,000,000,000 AX fixed
-                </div>
-              </div>
-              <div class="list-item">
-                <div class="dot"></div>
-                <div>
-                  <strong>Fee Model:</strong> 1% transparent ecosystem fee
-                </div>
-              </div>
-              <div class="list-item">
-                <div class="dot"></div>
-                <div>
-                  <strong>Positioning:</strong> Intelligent Layer for DeFi
-                </div>
-              </div>
+            <div class="feature-list">
+              <div class="feature"><div class="feature-dot"></div><div><strong>Token:</strong> AXION Token (AX)</div></div>
+              <div class="feature"><div class="feature-dot"></div><div><strong>Network:</strong> BNB Smart Chain</div></div>
+              <div class="feature"><div class="feature-dot"></div><div><strong>Fee:</strong> 1% transparent ecosystem fee</div></div>
+              <div class="feature"><div class="feature-dot"></div><div><strong>Supply:</strong> 1,000,000,000 fixed</div></div>
+              <div class="feature"><div class="feature-dot"></div><div><strong>Vision:</strong> Intelligent Layer for DeFi</div></div>
             </div>
           </div>
 
           <div class="card panel reveal">
-            <h3>Core Principles</h3>
-            <div class="list">
-              <div class="list-item">
-                <div class="dot"></div>
-                <div><strong>Trustless mindset</strong> with a clean and understandable ecosystem presentation.</div>
-              </div>
-              <div class="list-item">
-                <div class="dot"></div>
-                <div><strong>Premium branding</strong> with English-only global-facing dashboard content.</div>
-              </div>
-              <div class="list-item">
-                <div class="dot"></div>
-                <div><strong>Scalable roadmap</strong> covering ecosystem growth, analytics, AI, and future infrastructure ambitions.</div>
-              </div>
+            <h3>Design Highlights</h3>
+            <div class="feature-list">
+              <div class="feature"><div class="feature-dot"></div><div><strong>AX logo integration</strong> in navbar, hero, orbit core, and branded emphasis areas.</div></div>
+              <div class="feature"><div class="feature-dot"></div><div><strong>BNB and USDT icons</strong> integrated into wallet and ecosystem sections.</div></div>
+              <div class="feature"><div class="feature-dot"></div><div><strong>Space atmosphere</strong> built with glow clouds, stars, neon gradients, and a grid fade.</div></div>
             </div>
           </div>
         </div>
@@ -1003,60 +1109,103 @@
 
       <section id="dashboard" class="section">
         <div class="container">
-          <div class="section-title reveal">
-            <div>
-              <h2>Dashboard</h2>
-            </div>
+          <div class="section-head reveal">
+            <h2>Dashboard</h2>
             <p>
-              Wallet connection, Wallet Lite balances, fee wallet tracker, presale details, and ecosystem status in one premium interface.
+              Wallet connection, Wallet Lite balances, presale tools, fee wallet tracker, ecosystem status cards, and a logo-centered cosmic look.
             </p>
           </div>
 
-          <div class="wallet-grid">
+          <div class="dashboard-grid">
             <div class="card panel reveal">
               <h3>Wallet Lite</h3>
-              <div class="muted">Connect your wallet to view your BNB and AX balances on BNB Smart Chain.</div>
+              <div class="muted">Connect your wallet to view AX, BNB, and USDT balances on BNB Smart Chain.</div>
 
-              <div class="wallet-lite" style="margin-top:18px;">
-                <div class="wallet-box">
-                  <div class="token-row">
-                    <div class="token-logo logo-ax">AX</div>
-                    <div>
-                      <div style="font-weight:800;">AXION</div>
-                      <div class="helper">AX Balance</div>
+              <div class="wallet-grid">
+                <div class="asset-box">
+                  <div class="asset-head">
+                    <div class="asset-left">
+                      <div class="asset-icon">
+                        <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION">
+                      </div>
+                      <div>
+                        <div class="asset-name">AXION</div>
+                        <div class="asset-ticker">AX</div>
+                      </div>
                     </div>
                   </div>
-                  <div style="text-align:right;">
-                    <div id="axBalance" style="font-size:22px;font-weight:800;">0.00</div>
-                    <div class="helper">AX</div>
-                  </div>
+                  <div id="axBalance" class="asset-balance">0.00</div>
                 </div>
 
-                <div class="wallet-box">
-                  <div class="token-row">
-                    <div class="token-logo logo-bnb">BNB</div>
-                    <div>
-                      <div style="font-weight:800;">BNB Smart Chain</div>
-                      <div class="helper">BNB Balance</div>
+                <div class="asset-box">
+                  <div class="asset-head">
+                    <div class="asset-left">
+                      <div class="asset-icon">
+                        <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png" alt="BNB">
+                      </div>
+                      <div>
+                        <div class="asset-name">BNB</div>
+                        <div class="asset-ticker">SMART CHAIN</div>
+                      </div>
                     </div>
                   </div>
-                  <div style="text-align:right;">
-                    <div id="bnbBalance" style="font-size:22px;font-weight:800;">0.00</div>
-                    <div class="helper">BNB</div>
+                  <div id="bnbBalance" class="asset-balance">0.00</div>
+                </div>
+
+                <div class="asset-box">
+                  <div class="asset-head">
+                    <div class="asset-left">
+                      <div class="asset-icon">
+                        <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png" alt="USDT">
+                      </div>
+                      <div>
+                        <div class="asset-name">USDT</div>
+                        <div class="asset-ticker">BSC</div>
+                      </div>
+                    </div>
                   </div>
+                  <div id="usdtBalance" class="asset-balance">0.00</div>
                 </div>
               </div>
 
               <div class="address-box">
-                <strong>Connected Address:</strong><br>
+                <strong>Connected Address</strong><br>
                 <span id="walletAddress">Not connected</span>
               </div>
 
-              <div class="buy-box">
-                <div class="tag">Wallet Status</div>
-                <div style="margin-top:12px;font-size:20px;font-weight:800;" id="walletStatus">Disconnected</div>
-                <div class="helper" style="margin-top:8px;">
-                  Use the top-right button to connect or disconnect your wallet from the AXION Dashboard.
+              <div class="status-box">
+                <div class="status-line">
+                  <div>
+                    <div class="metric-label">Wallet Status</div>
+                    <div id="walletStatus" class="big" style="margin:4px 0 0;font-size:24px;">Disconnected</div>
+                  </div>
+                  <div id="statusBadge" class="status-badge">
+                    <span class="dot"></span>
+                    <span>Offline</span>
+                  </div>
+                </div>
+                <div class="helper" style="margin-top:10px;">
+                  Use the same button at the top right to connect or disconnect your wallet.
+                </div>
+              </div>
+
+              <div class="presale-box">
+                <div class="tag">Presale Panel</div>
+                <div style="margin-top:14px;">
+                  <div class="kv"><span>Rate</span><span>10,000 AX = 1 BNB</span></div>
+                  <div class="kv"><span>Total Allocation</span><span>5,000,000 AX</span></div>
+                  <div class="kv"><span>Presale End Date</span><span>06.06.2026</span></div>
+                  <div class="kv"><span>Distribution Date</span><span>09.10.2026</span></div>
+                  <div class="kv"><span>Receiver</span><span>0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
+                </div>
+
+                <div class="input-grid">
+                  <input id="bnbInput" class="input" type="number" min="0" step="0.001" placeholder="Enter BNB amount">
+                  <input id="axOutput" class="input" type="text" readonly placeholder="Estimated AX amount">
+                  <button id="sendBNBBtn" class="btn btn-primary">Send BNB for Presale</button>
+                  <div class="helper">
+                    The AX amount is calculated automatically from the BNB amount you enter.
+                  </div>
                 </div>
               </div>
             </div>
@@ -1065,86 +1214,73 @@
               <div class="card panel reveal">
                 <h3>Fee Wallet Tracker</h3>
                 <div class="helper">Tracking AX balance only</div>
-                <div class="address-box" style="margin-top:14px;">
-                  0xd543A36c00C478D211f9eB99b45B839474cea384
-                </div>
-
-                <div style="margin-top:18px;padding:18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);">
+                <div class="address-box">0xd543A36c00C478D211f9eB99b45B839474cea384</div>
+                <div class="mini-card" style="margin-top:16px;min-height:auto;padding:18px;">
                   <div class="metric-label">Fee Wallet AX Balance</div>
-                  <div id="feeWalletAX" class="metric-value">Loading...</div>
-                  <div class="metric-sub">Transparent ecosystem wallet display.</div>
+                  <div id="feeWalletAX" class="big">Loading...</div>
+                  <div class="helper">Transparent ecosystem wallet display.</div>
                 </div>
               </div>
 
               <div class="card panel reveal">
-                <h3>Presale Panel</h3>
-                <div class="kv"><span>Rate</span><span>10,000 AX = 1 BNB</span></div>
-                <div class="kv"><span>Total Allocation</span><span>5,000,000 AX</span></div>
-                <div class="kv"><span>Presale End Date</span><span>06.06.2026</span></div>
-                <div class="kv"><span>Distribution Date</span><span>09.10.2026</span></div>
-                <div class="kv"><span>Receiver</span><span style="max-width:220px;word-break:break-all;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
+                <h3>AXION Market View</h3>
+                <div class="helper">Styled premium visual panel matching the AX logo atmosphere.</div>
 
-                <div class="presale-form">
-                  <input id="bnbInput" class="input" type="number" min="0" step="0.001" placeholder="Enter BNB amount" />
-                  <input id="axOutput" class="input" type="text" placeholder="AX amount" readonly />
-                  <button id="sendBNBBtn" class="btn btn-primary">Send BNB for Presale</button>
-                  <div class="helper">
-                    Connected buyers can send BNB directly to the presale receiver wallet. AX output below is an estimate based on the current presale rate.
+                <div class="market-panel" style="margin-top:16px;">
+                  <div class="chart-wrap">
+                    <svg viewBox="0 0 1000 240" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#6ae2ff"></stop>
+                          <stop offset="50%" stop-color="#7a8cff"></stop>
+                          <stop offset="100%" stop-color="#d46cff"></stop>
+                        </linearGradient>
+                      </defs>
+                      <path d="M0,182 C80,168 118,92 182,110 C244,128 280,200 344,166 C410,130 458,48 520,67 C582,86 628,182 694,150 C748,124 818,28 884,54 C930,70 958,112 1000,92"></path>
+                    </svg>
+                  </div>
+                  <div class="market-points">
+                    <span style="left:18%;top:58%;animation-delay:-.2s;"></span>
+                    <span style="left:35%;top:42%;animation-delay:-.7s;"></span>
+                    <span style="left:52%;top:30%;animation-delay:-1.1s;"></span>
+                    <span style="left:69%;top:40%;animation-delay:-.4s;"></span>
+                    <span style="left:86%;top:26%;animation-delay:-.9s;"></span>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="dashboard-grid" style="margin-top:24px;">
-            <div class="card panel reveal">
-              <h3>AXION Market View</h3>
-              <div class="helper">Premium placeholder chart panel for the AXION dashboard interface.</div>
-              <div class="chart-placeholder" style="margin-top:16px;">
-                <div class="chart-line">
-                  <svg viewBox="0 0 1000 240" preserveAspectRatio="none">
-                    <defs>
-                      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#62e7ff"/>
-                        <stop offset="45%" stop-color="#7c9cff"/>
-                        <stop offset="100%" stop-color="#f36cff"/>
-                      </linearGradient>
-                    </defs>
-                    <path d="M0,180 C80,170 120,90 180,110 C240,130 270,210 330,175 C385,143 438,40 500,62 C560,85 610,180 680,150 C740,124 800,28 870,52 C920,70 950,118 1000,96"></path>
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <div class="side-cards">
               <div class="mini-card reveal">
                 <div class="tag">AXION Craft</div>
-                <div class="coming">Coming Soon</div>
+                <div class="big">Coming Soon</div>
                 <div class="muted">
-                  A future ecosystem module designed to expand the AXION experience with new utility and premium interaction.
+                  Reserved for future ecosystem expansion and premium feature rollout.
                 </div>
               </div>
 
               <div class="mini-card reveal">
                 <div class="tag">Connected Wallets</div>
-                <div class="coming" id="connectedWalletCount">0</div>
+                <div id="connectedWalletCount" class="big">0</div>
                 <div class="muted">
-                  Session-based dashboard counter showing how many wallets have been connected on this device session.
+                  Session-based local counter for wallets connected on this device.
                 </div>
               </div>
 
               <div class="card orbit-card reveal">
-                <div class="orbit-wrap">
+                <div class="orbit">
                   <div class="ring r1"></div>
                   <div class="ring r2"></div>
                   <div class="ring r3"></div>
-                  <div class="orbit-core">AXION<br>CORE</div>
+
+                  <div class="core">
+                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION core">
+                  </div>
+
                   <div class="sat s1">AI Powered</div>
                   <div class="sat s2">Trustless</div>
                   <div class="sat s3">Secure</div>
                   <div class="sat s4">Premium UX</div>
-                  <div class="sat s5">Transparent</div>
-                  <div class="sat s6">Scalable</div>
+                  <div class="sat s5">Scalable</div>
+                  <div class="sat s6">Transparent</div>
                 </div>
               </div>
             </div>
@@ -1154,12 +1290,10 @@
 
       <section id="roadmap" class="section">
         <div class="container">
-          <div class="section-title reveal">
-            <div>
-              <h2>Roadmap & Tokenomics</h2>
-            </div>
+          <div class="section-head reveal">
+            <h2>Roadmap & Tokenomics</h2>
             <p>
-              A combined section for future direction and token structure, designed for a simpler and more focused presentation.
+              The combined roadmap and tokenomics section keeps the dashboard cleaner while preserving the full AXION narrative.
             </p>
           </div>
 
@@ -1168,9 +1302,9 @@
               <h3>Roadmap</h3>
               <div class="roadmap">
                 <div class="phase">
-                  <div class="phase-head">
+                  <div class="phase-top">
                     <h4>Phase 1 — Foundation</h4>
-                    <span class="tag">Core Launch</span>
+                    <span class="tag">Launch</span>
                   </div>
                   <ul>
                     <li>Smart contract deployment</li>
@@ -1181,7 +1315,7 @@
                 </div>
 
                 <div class="phase">
-                  <div class="phase-head">
+                  <div class="phase-top">
                     <h4>Phase 2 — Growth & Visibility</h4>
                     <span class="tag">Expansion</span>
                   </div>
@@ -1194,12 +1328,12 @@
                 </div>
 
                 <div class="phase">
-                  <div class="phase-head">
+                  <div class="phase-top">
                     <h4>Phase 3 — Ecosystem Expansion</h4>
                     <span class="tag">Utility</span>
                   </div>
                   <ul>
-                    <li>Analytics dashboard growth</li>
+                    <li>Dashboard evolution</li>
                     <li>DeFi tools integration</li>
                     <li>Ecosystem utilities</li>
                     <li>Technical collaborations</li>
@@ -1207,7 +1341,7 @@
                 </div>
 
                 <div class="phase">
-                  <div class="phase-head">
+                  <div class="phase-top">
                     <h4>Phase 4 — AI Integration</h4>
                     <span class="tag">Intelligence</span>
                   </div>
@@ -1220,22 +1354,22 @@
                 </div>
 
                 <div class="phase">
-                  <div class="phase-head">
+                  <div class="phase-top">
                     <h4>Phase 5 — Advanced Infrastructure</h4>
-                    <span class="tag">Scaling</span>
+                    <span class="tag">Scale</span>
                   </div>
                   <ul>
                     <li>Protocol optimization</li>
-                    <li>Cross-chain integration planning</li>
+                    <li>Cross-chain planning</li>
                     <li>Scalable architecture</li>
                     <li>Expanded AI capabilities</li>
                   </ul>
                 </div>
 
                 <div class="phase">
-                  <div class="phase-head">
+                  <div class="phase-top">
                     <h4>Phase 6 — AXION Network</h4>
-                    <span class="tag">Long-Term Vision</span>
+                    <span class="tag">Long-Term</span>
                   </div>
                   <ul>
                     <li>Proprietary network research</li>
@@ -1250,53 +1384,41 @@
             <div class="card panel reveal">
               <h3>Tokenomics</h3>
               <div class="muted">
-                AXION tokenomics are designed around simplicity, transparency, and long-term ecosystem clarity.
+                AXION tokenomics remain intentionally clear and globally readable for exchange-facing presentation.
               </div>
 
               <div class="tokenomics-grid">
                 <div class="tokenomics-item">
                   <div class="metric-label">Token Name</div>
-                  <div style="font-size:22px;font-weight:800;">AXION Token</div>
+                  <div style="font-size:21px;font-weight:900;">AXION Token</div>
                 </div>
                 <div class="tokenomics-item">
                   <div class="metric-label">Symbol</div>
-                  <div style="font-size:22px;font-weight:800;">AX</div>
+                  <div style="font-size:21px;font-weight:900;">AX</div>
                 </div>
                 <div class="tokenomics-item">
                   <div class="metric-label">Network</div>
-                  <div style="font-size:22px;font-weight:800;">BNB Smart Chain</div>
+                  <div style="font-size:21px;font-weight:900;">BNB Smart Chain</div>
                 </div>
                 <div class="tokenomics-item">
-                  <div class="metric-label">Supply</div>
-                  <div style="font-size:22px;font-weight:800;">1,000,000,000</div>
+                  <div class="metric-label">Total Supply</div>
+                  <div style="font-size:21px;font-weight:900;">1,000,000,000</div>
                 </div>
                 <div class="tokenomics-item">
                   <div class="metric-label">Transaction Fee</div>
-                  <div style="font-size:22px;font-weight:800;">1%</div>
+                  <div style="font-size:21px;font-weight:900;">1%</div>
                 </div>
                 <div class="tokenomics-item">
                   <div class="metric-label">Utility</div>
-                  <div style="font-size:22px;font-weight:800;">Ecosystem Access</div>
+                  <div style="font-size:21px;font-weight:900;">Ecosystem Access</div>
                 </div>
               </div>
 
-              <div class="list">
-                <div class="list-item">
-                  <div class="dot"></div>
-                  <div><strong>Fund:</strong> 30%</div>
-                </div>
-                <div class="list-item">
-                  <div class="dot"></div>
-                  <div><strong>Liquidity:</strong> 25%</div>
-                </div>
-                <div class="list-item">
-                  <div class="dot"></div>
-                  <div><strong>Marketing:</strong> 20%</div>
-                </div>
-                <div class="list-item">
-                  <div class="dot"></div>
-                  <div><strong>CEX Listings:</strong> 25%</div>
-                </div>
+              <div class="feature-list">
+                <div class="feature"><div class="feature-dot"></div><div><strong>Fund:</strong> 30%</div></div>
+                <div class="feature"><div class="feature-dot"></div><div><strong>Liquidity:</strong> 25%</div></div>
+                <div class="feature"><div class="feature-dot"></div><div><strong>Marketing:</strong> 20%</div></div>
+                <div class="feature"><div class="feature-dot"></div><div><strong>CEX Listings:</strong> 25%</div></div>
               </div>
             </div>
           </div>
@@ -1305,25 +1427,26 @@
 
       <section id="swap" class="section">
         <div class="container">
-          <div class="card panel reveal" style="text-align:center;">
+          <div class="card swap-box reveal">
             <span class="tag">Swap</span>
-            <h2 style="margin:16px 0 10px;font-size:clamp(28px,4vw,44px);letter-spacing:-.04em;">COMING SOON</h2>
+            <h2 style="margin:16px 0 10px;font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;">COMING SOON</h2>
             <p class="muted" style="max-width:760px;margin:0 auto;">
-              The AXION swap module is reserved for future expansion. This section remains visible as part of the approved dashboard structure.
+              The swap section remains visible as part of the approved AXION structure and is reserved for future rollout.
             </p>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
+    <footer>
       <div class="container">
         <div class="footer-box">
           <div>
-            <strong>AXION</strong><br>
+            <strong style="color:#fff;">AXION</strong><br>
             Intelligent Layer for DeFi
           </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <a class="chip-link" href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a>
             <a class="chip-link" href="https://x.com/axiondefi" target="_blank" rel="noopener">X / Twitter</a>
             <a class="chip-link" href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener">BscScan</a>
@@ -1335,6 +1458,7 @@
 
   <script>
     const AXION_TOKEN = "0x0F18990414D8f58890301ded2C371F2619C67896";
+    const USDT_TOKEN = "0x55d398326f99059fF775485246999027B3197955";
     const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
     const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
     const BSC_RPC = "https://bsc-dataseed.binance.org";
@@ -1353,8 +1477,12 @@
     const connectBtn = document.getElementById("connectBtn");
     const walletAddressEl = document.getElementById("walletAddress");
     const walletStatusEl = document.getElementById("walletStatus");
-    const bnbBalanceEl = document.getElementById("bnbBalance");
+    const statusBadge = document.getElementById("statusBadge");
+
     const axBalanceEl = document.getElementById("axBalance");
+    const bnbBalanceEl = document.getElementById("bnbBalance");
+    const usdtBalanceEl = document.getElementById("usdtBalance");
+
     const feeWalletAXEl = document.getElementById("feeWalletAX");
     const bnbInputEl = document.getElementById("bnbInput");
     const axOutputEl = document.getElementById("axOutput");
@@ -1364,6 +1492,13 @@
     function shortAddr(addr){
       if(!addr) return "Not connected";
       return `${addr.slice(0,6)}...${addr.slice(-4)}`;
+    }
+
+    function formatNumber(value, min = 2, max = 4){
+      return Number(value).toLocaleString(undefined, {
+        minimumFractionDigits: min,
+        maximumFractionDigits: max
+      });
     }
 
     function setConnectedCount(){
@@ -1378,6 +1513,18 @@
       connectedWalletCountEl.textContent = String(next);
     }
 
+    function updateWalletUi(connected){
+      if(connected){
+        walletStatusEl.textContent = "Connected";
+        statusBadge.classList.add("connected");
+        statusBadge.innerHTML = '<span class="dot"></span><span>Online</span>';
+      }else{
+        walletStatusEl.textContent = "Disconnected";
+        statusBadge.classList.remove("connected");
+        statusBadge.innerHTML = '<span class="dot"></span><span>Offline</span>';
+      }
+    }
+
     async function loadFeeWalletAX(){
       try{
         const rpcProvider = new ethers.JsonRpcProvider(BSC_RPC);
@@ -1386,17 +1533,15 @@
           token.balanceOf(FEE_WALLET),
           token.decimals()
         ]);
-        const formatted = Number(ethers.formatUnits(bal, decimals)).toLocaleString(undefined, {
-          maximumFractionDigits: 2
-        });
-        feeWalletAXEl.textContent = `${formatted} AX`;
-      }catch(e){
+        feeWalletAXEl.textContent = `${formatNumber(ethers.formatUnits(bal, decimals), 2, 2)} AX`;
+      }catch(error){
         feeWalletAXEl.textContent = "Unavailable";
       }
     }
 
     async function refreshWalletData(){
       if(!provider || !currentAddress) return;
+
       try{
         const network = await provider.getNetwork();
         if(Number(network.chainId) !== 56){
@@ -1408,43 +1553,47 @@
           }catch(err){}
         }
 
-        const bnbBal = await provider.getBalance(currentAddress);
-        bnbBalanceEl.textContent = Number(ethers.formatEther(bnbBal)).toLocaleString(undefined,{
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 4
-        });
-
-        const token = new ethers.Contract(AXION_TOKEN, ERC20_ABI, provider);
-        const [bal, decimals] = await Promise.all([
-          token.balanceOf(currentAddress),
-          token.decimals()
+        const [bnbBal] = await Promise.all([
+          provider.getBalance(currentAddress)
         ]);
 
-        axBalanceEl.textContent = Number(ethers.formatUnits(bal, decimals)).toLocaleString(undefined,{
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        });
+        bnbBalanceEl.textContent = formatNumber(ethers.formatEther(bnbBal), 2, 4);
+
+        const axContract = new ethers.Contract(AXION_TOKEN, ERC20_ABI, provider);
+        const usdtContract = new ethers.Contract(USDT_TOKEN, ERC20_ABI, provider);
+
+        const [axBal, axDecimals, usdtBal, usdtDecimals] = await Promise.all([
+          axContract.balanceOf(currentAddress),
+          axContract.decimals(),
+          usdtContract.balanceOf(currentAddress),
+          usdtContract.decimals()
+        ]);
+
+        axBalanceEl.textContent = formatNumber(ethers.formatUnits(axBal, axDecimals), 2, 2);
+        usdtBalanceEl.textContent = formatNumber(ethers.formatUnits(usdtBal, usdtDecimals), 2, 2);
 
         walletAddressEl.textContent = currentAddress;
-        walletStatusEl.textContent = "Connected";
         connectBtn.textContent = `Disconnect ${shortAddr(currentAddress)}`;
-      }catch(e){
-        console.error(e);
+        updateWalletUi(true);
+      }catch(error){
+        console.error(error);
       }
     }
 
     async function connectWallet(){
       try{
-        if (!window.ethereum) {
-          alert("No wallet detected. Please install MetaMask or use a WalletConnect compatible wallet.");
+        if(!window.ethereum){
+          alert("No wallet detected. Please install MetaMask or use a WalletConnect-compatible wallet app.");
           return;
         }
 
-        await window.ethereum.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: CHAIN_ID_HEX }]
-        }).catch(async (switchError) => {
-          if (switchError.code === 4902) {
+        try{
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: CHAIN_ID_HEX }]
+          });
+        }catch(switchError){
+          if(switchError.code === 4902){
             await window.ethereum.request({
               method: "wallet_addEthereumChain",
               params: [{
@@ -1456,24 +1605,24 @@
               }]
             });
           }
-        });
+        }
 
         provider = new ethers.BrowserProvider(window.ethereum);
         await provider.send("eth_requestAccounts", []);
         signer = await provider.getSigner();
         currentAddress = await signer.getAddress();
 
-        if (!sessionStorage.getItem("axion_seen_" + currentAddress.toLowerCase())) {
-          sessionStorage.setItem("axion_seen_" + currentAddress.toLowerCase(), "1");
+        const seenKey = "axion_seen_" + currentAddress.toLowerCase();
+        if(!sessionStorage.getItem(seenKey)){
+          sessionStorage.setItem(seenKey, "1");
           incrementConnectedCount();
-        } else {
+        }else{
           setConnectedCount();
         }
 
-        localStorage.setItem("axion_last_wallet", currentAddress);
         await refreshWalletData();
-      }catch(e){
-        console.error(e);
+      }catch(error){
+        console.error(error);
         alert("Wallet connection failed.");
       }
     }
@@ -1482,11 +1631,13 @@
       provider = null;
       signer = null;
       currentAddress = null;
+
       walletAddressEl.textContent = "Not connected";
-      walletStatusEl.textContent = "Disconnected";
-      bnbBalanceEl.textContent = "0.00";
       axBalanceEl.textContent = "0.00";
+      bnbBalanceEl.textContent = "0.00";
+      usdtBalanceEl.textContent = "0.00";
       connectBtn.textContent = "Connect Wallet";
+      updateWalletUi(false);
     }
 
     connectBtn.addEventListener("click", async () => {
@@ -1508,6 +1659,7 @@
         alert("No wallet detected.");
         return;
       }
+
       if(!currentAddress || !signer){
         alert("Please connect your wallet first.");
         return;
@@ -1525,28 +1677,29 @@
           value: ethers.parseEther(amount)
         });
         alert(`Transaction submitted: ${tx.hash}`);
-      }catch(e){
-        console.error(e);
+      }catch(error){
+        console.error(error);
         alert("Transaction failed or was rejected.");
       }
     });
 
     function setupReveal(){
       const items = document.querySelectorAll(".reveal");
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
           if(entry.isIntersecting){
             entry.target.classList.add("show");
           }
         });
       }, { threshold: 0.12 });
 
-      items.forEach(el => io.observe(el));
+      items.forEach(item => io.observe(item));
     }
 
     async function init(){
-      setConnectedCount();
       setupReveal();
+      setConnectedCount();
+      updateWalletUi(false);
       await loadFeeWalletAX();
 
       if(window.ethereum){
