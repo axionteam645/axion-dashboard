@@ -163,22 +163,23 @@
       border:none;
       cursor:pointer;
       border-radius:14px;
-      padding:12px 16px;
-      font-weight:800;
+      padding:12px 18px;
+      font-weight:900;
       color:#fff;
-      background:linear-gradient(135deg, var(--cyan), var(--violet) 55%, var(--pink));
-      box-shadow:0 10px 24px rgba(79,70,229,.20);
+      background:linear-gradient(135deg, #67ecff 0%, #71a8ff 30%, #8b5cf6 65%, #ff4fd8 100%);
+      box-shadow:0 12px 28px rgba(103,236,255,.22);
       transition:.2s ease;
     }
 
-    .btn:hover{transform:translateY(-1px)}
+    .btn:hover{transform:translateY(-1px) scale(1.01)}
     .btn.secondary{
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
       box-shadow:none;
     }
     .btn.disconnect{
-      background:linear-gradient(135deg, #7c3aed, #ec4899);
+      background:linear-gradient(135deg, #ff4fd8 0%, #8b5cf6 45%, #67ecff 100%);
+      box-shadow:0 12px 28px rgba(255,79,216,.20);
     }
 
     .hero{
@@ -380,6 +381,14 @@
     }
     .status-row:last-child{border-bottom:none}
 
+    .presale-highlight{
+      background:
+        linear-gradient(135deg, rgba(103,236,255,.13), rgba(139,92,246,.14), rgba(255,79,216,.12)),
+        rgba(255,255,255,.03);
+      border:1px solid rgba(103,236,255,.24);
+      box-shadow:0 0 0 1px rgba(255,255,255,.03) inset, 0 0 26px rgba(103,236,255,.08);
+    }
+
     .presale-info-box{
       margin-top:14px;
       padding:14px;
@@ -451,9 +460,10 @@
       border-radius:10px;
       color:#fff;
       cursor:pointer;
-      background:linear-gradient(135deg, #7c3aed, #ec4899);
+      background:linear-gradient(135deg, #ff4fd8 0%, #8b5cf6 45%, #67ecff 100%);
       font-weight:800;
       font-size:12px;
+      box-shadow:0 10px 18px rgba(255,79,216,.18);
     }
 
     .asset-box{
@@ -529,63 +539,101 @@
       background:rgba(255,255,255,.05);
     }
 
-    .transfers-list{
+    .right-mini-grid{
       display:grid;
-      gap:10px;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
       position:relative;
       z-index:1;
     }
 
-    .transfer-row{
-      padding:12px 14px;
-      border-radius:14px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.06);
-    }
-
-    .transfer-top{
+    .mini-stat{
+      padding:14px;
+      border-radius:16px;
+      background:
+        linear-gradient(135deg, rgba(103,236,255,.10), rgba(139,92,246,.10), rgba(255,79,216,.10));
+      border:1px solid rgba(255,255,255,.08);
+      min-height:110px;
       display:flex;
+      flex-direction:column;
       justify-content:space-between;
-      gap:10px;
-      align-items:center;
-      margin-bottom:8px;
     }
 
-    .transfer-amount{
-      font-size:16px;
-      font-weight:900;
-    }
-
-    .transfer-path{
-      display:grid;
-      gap:4px;
+    .mini-stat .top{
       font-size:12px;
       color:var(--muted);
     }
 
-    .transfer-link{
-      display:inline-block;
-      margin-top:8px;
-      font-size:12px;
+    .mini-stat .big{
+      font-size:18px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .mini-stat .tag{
+      font-size:11px;
       color:#8ee7ff;
     }
 
-    .holder-box{
+    .orbit-card{
       position:relative;
-      z-index:1;
-      display:grid;
-      gap:12px;
+      min-height:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
     }
 
-    .holder-count{
-      font-size:34px;
-      font-weight:900;
-      line-height:1;
-      background:linear-gradient(90deg, #8ee7ff 0%, #7bb0ff 40%, #ff73de 100%);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
+    .orbit-wrap{
+      position:relative;
+      width:300px;
+      height:300px;
     }
+
+    .center-logo{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:92px;
+      height:92px;
+      border-radius:50%;
+      object-fit:cover;
+      box-shadow:0 0 24px rgba(103,236,255,.28);
+      border:1px solid rgba(255,255,255,.08);
+      background:#111;
+    }
+
+    .orbit-node{
+      position:absolute;
+      width:94px;
+      min-height:94px;
+      padding:10px;
+      border-radius:50%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:
+        linear-gradient(135deg, rgba(103,236,255,.12), rgba(139,92,246,.14), rgba(255,79,216,.12));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 12px 24px rgba(0,0,0,.18);
+      font-size:11px;
+      line-height:1.25;
+      font-weight:700;
+    }
+
+    .orbit-icon{
+      font-size:18px;
+      margin-bottom:6px;
+    }
+
+    .n1{left:50%;top:0;transform:translate(-50%,0)}
+    .n2{right:0;top:50%;transform:translate(0,-50%)}
+    .n3{left:50%;bottom:0;transform:translate(-50%,0)}
+    .n4{left:0;top:50%;transform:translate(0,-50%)}
+    .n5{left:50%;top:50%;transform:translate(-50%,-50%); margin-top:-145px; margin-left:100px;}
 
     .input{
       width:100%;
@@ -717,16 +765,19 @@
       .hero h2{font-size:22px}
       .hero .headline{font-size:18px}
       .value{font-size:17px}
-      .holder-count{font-size:28px}
       .wallet-buttons,
       .fee-layout,
       .presale-grid,
+      .right-mini-grid,
       .feature-grid-bottom{grid-template-columns:1fr}
       .topbar{padding:12px 14px}
       .nav-center a{font-size:11px;padding:8px 10px}
       .brand-title h1{font-size:17px}
       .btn{font-size:12px;padding:10px 12px}
       .card{padding:14px}
+      .orbit-wrap{width:260px;height:260px}
+      .orbit-node{width:82px;min-height:82px;font-size:10px}
+      .n5{margin-top:-124px;margin-left:84px}
     }
   </style>
 </head>
@@ -748,7 +799,6 @@
         <a href="#dashboard" class="active">Dashboard</a>
         <a href="#presale">Presale</a>
         <a href="#wallet">Wallet</a>
-        <a href="#transfers">Transfers</a>
         <a href="#treasury-demo">Treasury (Demo)</a>
         <a href="#revenue-demo">Revenue (Demo)</a>
         <a href="#buyback-demo">Buyback (Demo)</a>
@@ -860,7 +910,7 @@
       </div>
 
       <div class="stack">
-        <div class="card" id="presale">
+        <div class="card presale-highlight" id="presale">
           <div class="title-row">
             <h3>AXION Presale</h3>
           </div>
@@ -945,24 +995,49 @@
       </div>
 
       <div class="stack">
-        <div class="card" id="transfers">
-          <div class="title-row">
-            <h3>Recent Transfers</h3>
-          </div>
-          <div id="transfersList" class="transfers-list">
-            <div class="transfer-row">Loading recent transfers...</div>
+        <div class="card">
+          <div class="right-mini-grid">
+            <div class="mini-stat">
+              <div class="top">Coming Soon</div>
+              <div class="big">AXION Craft</div>
+              <div class="tag">Game Module</div>
+            </div>
+            <div class="mini-stat">
+              <div class="top">Connected Wallets</div>
+              <div class="big" id="connectedWalletsCount">0</div>
+              <div class="tag">Live Session Counter</div>
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="title-row">
-            <h3>Holder Count</h3>
-          </div>
+        <div class="card orbit-card">
+          <div class="orbit-wrap">
+            <img
+              class="center-logo"
+              src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/b7fc0b534aff332ced004e2e1015e2dea2fcbf1d/axion-logo.png"
+              alt="AXION Logo"
+            />
 
-          <div class="holder-box">
-            <div class="label">Current holders</div>
-            <div id="holderCount" class="holder-count">Loading...</div>
-            <div class="sub">Live holder count for AXION token</div>
+            <div class="orbit-node n1">
+              <div class="orbit-icon">🤖</div>
+              <div>AI Powered</div>
+            </div>
+            <div class="orbit-node n2">
+              <div class="orbit-icon">🛡️</div>
+              <div>No Mint</div>
+            </div>
+            <div class="orbit-node n3">
+              <div class="orbit-icon">💎</div>
+              <div>Fixed Supply</div>
+            </div>
+            <div class="orbit-node n4">
+              <div class="orbit-icon">⚡</div>
+              <div>1% Fee</div>
+            </div>
+            <div class="orbit-node n5">
+              <div class="orbit-icon">🔒</div>
+              <div>Renounced</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1039,7 +1114,6 @@
     const PRESALE_RATE = 10000;
     const BSC_CHAIN_ID = 56;
     const BSC_RPC = "https://bsc-dataseed.binance.org/";
-    const TRANSFER_TOPIC = ethers.utils.id("Transfer(address,address,uint256)");
 
     const ERC20_READ_ABI = [
       "function balanceOf(address owner) view returns (uint256)"
@@ -1055,6 +1129,7 @@
     let feeChart = null;
     let wcProvider = null;
     let isWalletConnectSession = false;
+    let connectedWalletsCount = 0;
 
     const walletBtn = document.getElementById("walletBtn");
 
@@ -1076,6 +1151,10 @@
       if(chainId === 97 || chainId === "0x61") return "BSC Testnet";
       if(chainId === 1 || chainId === "0x1") return "Ethereum";
       return "Unknown Network";
+    }
+
+    function renderConnectedWalletsCount(){
+      document.getElementById("connectedWalletsCount").textContent = connectedWalletsCount.toLocaleString("en-US");
     }
 
     function updateWalletButton(){
@@ -1248,6 +1327,8 @@
         }else{
           await connectWalletConnect();
         }
+        connectedWalletsCount += 1;
+        renderConnectedWalletsCount();
       }catch(error){
         console.error(error);
         alert("Wallet connection failed or was rejected.");
@@ -1323,67 +1404,6 @@
       }catch(error){
         console.error(error);
         document.getElementById("feeWalletBalance").textContent = "N/A";
-      }
-    }
-
-    async function loadHolderCount(){
-      const el = document.getElementById("holderCount");
-      try{
-        const res = await fetch("https://api.bscscan.com/api?module=token&action=tokenholdercount&contractaddress=0x0F18990414D8f58890301ded2C371F2619C67896");
-        const data = await res.json();
-        if(data && data.status === "1" && data.result){
-          el.textContent = Number(data.result).toLocaleString("en-US");
-        }else{
-          el.textContent = "Unavailable";
-        }
-      }catch(error){
-        console.error(error);
-        el.textContent = "Unavailable";
-      }
-    }
-
-    async function loadRecentTransfers(){
-      const container = document.getElementById("transfersList");
-      try{
-        const readProvider = new ethers.providers.JsonRpcProvider(BSC_RPC);
-        const latestBlock = await readProvider.getBlockNumber();
-        const fromBlock = Math.max(latestBlock - 2500, 1);
-
-        const logs = await readProvider.getLogs({
-          address: CONTRACT_ADDRESS,
-          fromBlock,
-          toBlock: latestBlock,
-          topics: [TRANSFER_TOPIC]
-        });
-
-        const recent = logs.slice(-6).reverse();
-
-        if(!recent.length){
-          container.innerHTML = `<div class="transfer-row">No recent transfers found.</div>`;
-          return;
-        }
-
-        container.innerHTML = recent.map(log => {
-          const from = "0x" + log.topics[1].slice(26);
-          const to = "0x" + log.topics[2].slice(26);
-          const amount = ethers.utils.formatUnits(log.data, TOKEN_DECIMALS);
-
-          return `
-            <div class="transfer-row">
-              <div class="transfer-top">
-                <div class="transfer-amount">${formatNumberSafe(amount, 2)} AX</div>
-              </div>
-              <div class="transfer-path">
-                <div>From: ${shortAddress(from)}</div>
-                <div>To: ${shortAddress(to)}</div>
-              </div>
-              <a class="transfer-link" href="https://bscscan.com/tx/${log.transactionHash}" target="_blank" rel="noopener noreferrer">View transaction</a>
-            </div>
-          `;
-        }).join("");
-      }catch(error){
-        console.error(error);
-        container.innerHTML = `<div class="transfer-row">Recent transfers unavailable.</div>`;
       }
     }
 
@@ -1568,7 +1588,6 @@
         document.getElementById("sendAmountInput").value = "";
         await refreshWalletData();
         await loadFeeWalletBalance();
-        await loadRecentTransfers();
       }catch(error){
         console.error(error);
         alert("Transfer failed or rejected.");
@@ -1605,16 +1624,13 @@
       });
     }
 
+    renderConnectedWalletsCount();
     updateWalletButton();
     resetWalletUI();
     loadFeeWalletBalance();
-    loadHolderCount();
-    loadRecentTransfers();
     silentWalletRefresh();
 
     setInterval(loadFeeWalletBalance, 30000);
-    setInterval(loadHolderCount, 45000);
-    setInterval(loadRecentTransfers, 45000);
   </script>
 </body>
 </html>
