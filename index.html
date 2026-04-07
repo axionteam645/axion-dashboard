@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AXION | Intelligent Layer for DeFi</title>
-  <meta name="description" content="AXION Dashboard v4 - Intelligent Layer for DeFi. Premium space-themed interface with wallet connection, presale, tokenomics, roadmap, and ecosystem panels." />
+  <meta name="description" content="AXION single-file premium dashboard with live crypto cards, wallet tools, presale, roadmap, tokenomics, and ecosystem visuals." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,14 +12,14 @@
 
   <style>
     :root{
-      --bg:#03050d;
-      --bg2:#07101d;
-      --bg3:#0b1324;
+      --bg:#02040a;
+      --bg2:#08101d;
+      --bg3:#0d1730;
       --card:rgba(10,16,31,.72);
-      --card-2:rgba(16,23,44,.86);
+      --card2:rgba(18,24,46,.86);
       --stroke:rgba(255,255,255,.08);
       --text:#f4f7ff;
-      --muted:#96a4c9;
+      --muted:#97a4ca;
       --primary:#67e3ff;
       --secondary:#7d8cff;
       --pink:#d96dff;
@@ -44,7 +44,7 @@
         radial-gradient(circle at 12% 14%, rgba(103,227,255,.16), transparent 18%),
         radial-gradient(circle at 88% 12%, rgba(217,109,255,.14), transparent 18%),
         radial-gradient(circle at 50% 85%, rgba(125,140,255,.14), transparent 20%),
-        linear-gradient(180deg,#02040a 0%, #050916 28%, #091224 100%);
+        linear-gradient(180deg,#02040a 0%, #06101c 30%, #0b1428 100%);
       overflow-x:hidden;
     }
 
@@ -55,7 +55,6 @@
       z-index:0;
       overflow:hidden;
     }
-
     .space-bg::before,
     .space-bg::after{
       content:"";
@@ -74,7 +73,6 @@
       opacity:.55;
       animation: drift 26s linear infinite;
     }
-
     .space-bg::after{
       opacity:.28;
       transform:scale(1.12);
@@ -103,27 +101,14 @@
     .neb2{width:380px;height:380px;right:-70px;top:120px;background:#d96dff;animation-delay:-5s}
     .neb3{width:460px;height:460px;left:34%;bottom:-180px;background:#7481ff;animation-delay:-8s}
 
-    @keyframes drift{
-      from{transform:translateY(0)}
-      to{transform:translateY(-60px)}
-    }
-    @keyframes floaty{
-      0%,100%{transform:translate(0,0) scale(1)}
-      50%{transform:translate(25px,-20px) scale(1.08)}
-    }
+    @keyframes drift{from{transform:translateY(0)}to{transform:translateY(-60px)}}
+    @keyframes floaty{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(25px,-20px) scale(1.08)}}
 
     a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%}
 
-    .app{
-      position:relative;
-      z-index:1;
-    }
-
-    .container{
-      width:min(var(--max), calc(100% - 28px));
-      margin:0 auto;
-    }
+    .app{position:relative;z-index:1}
+    .container{width:min(var(--max), calc(100% - 28px));margin:0 auto}
 
     header{
       position:sticky;
@@ -142,1050 +127,418 @@
       gap:18px;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
     .brand-logo{
-      width:52px;
-      height:52px;
-      border-radius:50%;
-      overflow:hidden;
+      width:52px;height:52px;border-radius:50%;overflow:hidden;
       border:1px solid rgba(255,255,255,.12);
-      background:#08101d;
-      box-shadow:0 0 30px rgba(103,227,255,.18);
-      flex:0 0 auto;
+      background:#08101d;box-shadow:0 0 30px rgba(103,227,255,.18);flex:0 0 auto;
     }
-
-    .brand-logo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .brand-text strong{
-      display:block;
-      font-size:15px;
-      letter-spacing:.15em;
-    }
-
-    .brand-text span{
-      display:block;
-      margin-top:3px;
-      color:var(--muted);
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.12em;
-    }
+    .brand-logo img{width:100%;height:100%;object-fit:cover}
+    .brand-text strong{display:block;font-size:15px;letter-spacing:.15em}
+    .brand-text span{display:block;margin-top:3px;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.12em}
 
     .nav-links{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex-wrap:wrap;
-      justify-content:center;
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;
     }
-
     .nav-links a{
-      padding:10px 14px;
-      border-radius:999px;
-      color:var(--muted);
-      border:1px solid transparent;
-      font-size:14px;
-      font-weight:700;
-      transition:.22s ease;
+      padding:10px 14px;border-radius:999px;color:var(--muted);
+      border:1px solid transparent;font-size:14px;font-weight:700;transition:.22s ease;
     }
+    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
 
-    .nav-links a:hover{
-      color:var(--text);
-      background:rgba(255,255,255,.04);
-      border-color:rgba(255,255,255,.06);
-    }
-
-    .nav-actions{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
+    .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
     .btn{
-      appearance:none;
-      border:none;
-      outline:none;
-      cursor:pointer;
-      border-radius:16px;
-      padding:14px 18px;
-      font-family:inherit;
-      font-size:14px;
-      font-weight:800;
-      transition:.22s ease;
+      appearance:none;border:none;outline:none;cursor:pointer;border-radius:16px;
+      padding:14px 18px;font-family:inherit;font-size:14px;font-weight:800;transition:.22s ease;
     }
-
     .btn-primary{
-      color:#fff;
-      background:linear-gradient(135deg, var(--primary), var(--secondary), var(--pink));
+      color:#fff;background:linear-gradient(135deg, var(--primary), var(--secondary), var(--pink));
       box-shadow:0 14px 34px rgba(103,227,255,.18);
     }
-
-    .btn-primary:hover{
-      transform:translateY(-1px);
-      box-shadow:0 18px 40px rgba(103,227,255,.24);
-    }
-
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 40px rgba(103,227,255,.24)}
     .btn-secondary{
-      color:#fff;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
+      color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
     }
-
-    .btn-secondary:hover{
-      background:rgba(255,255,255,.08);
-    }
-
+    .btn-secondary:hover{background:rgba(255,255,255,.08)}
     .btn-presale{
-      color:#fff;
-      background:linear-gradient(90deg, var(--presaleA), var(--presaleB), var(--presaleC));
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.08) inset,
-        0 16px 38px rgba(255,99,215,.22);
+      color:#fff;background:linear-gradient(90deg, var(--presaleA), var(--presaleB), var(--presaleC));
+      box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 38px rgba(255,99,215,.22);
     }
 
-    .btn-presale:hover{
-      transform:translateY(-1px);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.08) inset,
-        0 20px 42px rgba(255,99,215,.28);
-    }
-
-    .hero{
-      padding:40px 0 22px;
-    }
-
+    .hero{padding:40px 0 22px}
     .hero-grid{
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:22px;
-      align-items:stretch;
+      display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch;
     }
 
     .card{
-      background:var(--card);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      backdrop-filter:blur(18px);
-      box-shadow:var(--shadow);
+      background:var(--card);border:1px solid var(--stroke);border-radius:var(--radius);
+      backdrop-filter:blur(18px);box-shadow:var(--shadow);
     }
 
     .hero-card{
-      position:relative;
-      overflow:hidden;
-      padding:36px;
+      position:relative;overflow:hidden;padding:36px;
       background:
         radial-gradient(circle at 84% 18%, rgba(103,227,255,.15), transparent 22%),
         radial-gradient(circle at 91% 34%, rgba(217,109,255,.13), transparent 24%),
         linear-gradient(180deg, rgba(14,22,44,.84), rgba(7,11,24,.84));
     }
-
     .hero-card::after{
-      content:"";
-      position:absolute;
-      right:-65px;
-      bottom:-65px;
-      width:280px;
-      height:280px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(125,140,255,.28), transparent 68%);
-      filter:blur(18px);
+      content:"";position:absolute;right:-65px;bottom:-65px;width:280px;height:280px;border-radius:50%;
+      background:radial-gradient(circle, rgba(125,140,255,.28), transparent 68%);filter:blur(18px);
     }
 
-    .hero-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
+    .hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
     .hero-logo{
-      width:112px;
-      height:112px;
-      border-radius:28px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background:#05070e;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.04) inset,
-        0 0 40px rgba(103,227,255,.14);
+      width:112px;height:112px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.14);
+      background:#05070e;box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 0 40px rgba(103,227,255,.14);
       flex:0 0 auto;
     }
+    .hero-logo img{width:100%;height:100%;object-fit:cover}
 
-    .hero-logo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .hero-title-wrap{
-      position:relative;
-      display:inline-block;
-    }
-
+    .hero-title-wrap{position:relative;display:inline-block}
     .hero-title-wrap::before{
-      content:"";
-      position:absolute;
-      inset:-20px -30px;
+      content:"";position:absolute;inset:-20px -30px;
       background:radial-gradient(circle, rgba(106,226,255,0.16), transparent 65%);
-      filter:blur(26px);
-      z-index:-1;
+      filter:blur(26px);z-index:-1;
     }
 
     .hero-title{
-      margin:18px 0 0;
-      font-size:clamp(52px, 10vw, 118px);
-      line-height:.95;
-      letter-spacing:-0.06em;
-      font-weight:900;
+      margin:18px 0 0;font-size:clamp(52px, 10vw, 118px);line-height:.95;letter-spacing:-0.06em;font-weight:900;
       background:linear-gradient(90deg, #6ae2ff 0%, #7a8cff 45%, #d46cff 100%);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      color:transparent;
-      text-shadow:
-        0 0 30px rgba(106,226,255,0.18),
-        0 0 60px rgba(122,140,255,0.12);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;
+      text-shadow:0 0 30px rgba(106,226,255,0.18),0 0 60px rgba(122,140,255,0.12);
       filter:drop-shadow(0 0 18px rgba(106,226,255,0.12));
     }
 
     .hero-subtitle{
-      margin:10px 0 0;
-      font-size:clamp(18px, 2.2vw, 30px);
-      font-weight:700;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:#dfe7ff;
-      opacity:.95;
+      margin:10px 0 0;font-size:clamp(18px, 2.2vw, 30px);font-weight:700;letter-spacing:.18em;
+      text-transform:uppercase;color:#dfe7ff;opacity:.95;
     }
 
-    .lead{
-      margin:18px 0 0;
-      color:var(--muted);
-      font-size:17px;
-      line-height:1.8;
-      max-width:760px;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:26px;
-    }
-
-    .social-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
+    .lead{margin:18px 0 0;color:var(--muted);font-size:17px;line-height:1.8;max-width:760px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
     .chip-link{
-      padding:10px 14px;
-      border-radius:14px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.07);
-      color:#e7edff;
-      font-size:14px;
-      font-weight:700;
+      padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);color:#e7edff;font-size:14px;font-weight:700;
     }
 
-    .side-stack{
-      display:grid;
-      gap:20px;
-    }
+    .side-stack{display:grid;gap:20px}
+    .section{padding:22px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+    .section-head h2{margin:0;font-size:clamp(24px,3vw,40px);letter-spacing:-.04em}
+    .section-head p{margin:0;max-width:760px;color:var(--muted);line-height:1.75}
 
-    .hero-metrics{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-      padding:20px;
-    }
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 
-    .metric{
-      min-height:124px;
-      padding:18px;
-      border-radius:20px;
+    .panel{padding:24px}
+    .panel h3{margin:0 0 12px;font-size:22px;letter-spacing:-.03em}
+    .muted{color:var(--muted);line-height:1.75}
+
+    .info-strip{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:20px;
+    }
+    .info-card{
+      min-height:140px;padding:18px;border-radius:20px;
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.07);
+      position:relative;overflow:hidden;
     }
-
-    .metric-label{
-      color:var(--muted);
-      font-size:13px;
-      font-weight:700;
-      margin-bottom:10px;
+    .info-card::after{
+      content:"";position:absolute;right:-20px;bottom:-20px;width:90px;height:90px;border-radius:50%;
+      background:radial-gradient(circle, rgba(103,227,255,.14), transparent 70%);filter:blur(8px);
     }
+    .info-card .k{color:var(--muted);font-size:13px;font-weight:700}
+    .info-card .v{margin-top:8px;font-size:28px;font-weight:900;letter-spacing:-.03em}
+    .info-card .s{margin-top:8px;color:#d0daf9;font-size:13px;line-height:1.5}
 
-    .metric-value{
-      font-size:28px;
-      font-weight:900;
-      letter-spacing:-.03em;
+    .ticker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .ticker-card{
+      padding:18px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+      position:relative;overflow:hidden;
     }
-
-    .metric-sub{
-      margin-top:8px;
-      color:#d0daf9;
-      font-size:13px;
-      line-height:1.5;
+    .ticker-card::after{
+      content:"";position:absolute;right:-20px;top:-20px;width:90px;height:90px;border-radius:50%;
+      background:radial-gradient(circle, rgba(217,109,255,.14), transparent 70%);filter:blur(8px);
     }
-
-    .section{
-      padding:22px 0;
+    .ticker-top{display:flex;align-items:center;gap:12px}
+    .ticker-icon{
+      width:44px;height:44px;border-radius:50%;overflow:hidden;border:1px solid rgba(255,255,255,.1);
+      background:#09101f;box-shadow:0 10px 24px rgba(0,0,0,.28);flex:0 0 auto;
     }
+    .ticker-icon img{width:100%;height:100%;object-fit:cover}
+    .ticker-name{font-size:15px;font-weight:800}
+    .ticker-sym{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.06em}
+    .ticker-price{margin-top:14px;font-size:26px;font-weight:900;letter-spacing:-.03em}
+    .ticker-change{margin-top:8px;font-size:13px;font-weight:800}
+    .up{color:var(--green)}
+    .down{color:var(--danger)}
 
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:16px;
-      margin-bottom:18px;
-      flex-wrap:wrap;
-    }
-
-    .section-head h2{
-      margin:0;
-      font-size:clamp(24px,3vw,40px);
-      letter-spacing:-.04em;
-    }
-
-    .section-head p{
-      margin:0;
-      max-width:760px;
-      color:var(--muted);
-      line-height:1.75;
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .panel{
-      padding:24px;
-    }
-
-    .panel h3{
-      margin:0 0 12px;
-      font-size:22px;
-      letter-spacing:-.03em;
-    }
-
-    .muted{
-      color:var(--muted);
-      line-height:1.75;
-    }
-
-    .feature-list{
-      display:grid;
-      gap:14px;
-      margin-top:18px;
-    }
-
+    .feature-list{display:grid;gap:14px;margin-top:18px}
     .feature{
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-      padding:15px 16px;
-      border-radius:18px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
+      display:flex;align-items:flex-start;gap:12px;padding:15px 16px;border-radius:18px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
     }
-
     .feature-dot{
-      width:11px;
-      height:11px;
-      border-radius:50%;
-      margin-top:7px;
-      background:linear-gradient(135deg,var(--primary),var(--pink));
-      box-shadow:0 0 18px rgba(103,227,255,.34);
-      flex:0 0 auto;
+      width:11px;height:11px;border-radius:50%;margin-top:7px;background:linear-gradient(135deg,var(--primary),var(--pink));
+      box-shadow:0 0 18px rgba(103,227,255,.34);flex:0 0 auto;
+    }
+    .feature-icon{
+      width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(103,227,255,.18), rgba(217,109,255,.12));
+      border:1px solid rgba(255,255,255,.08);font-size:20px;flex:0 0 auto;
     }
 
-    .feature-icon{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg, rgba(103,227,255,.18), rgba(217,109,255,.12));
-      border:1px solid rgba(255,255,255,.08);
-      font-size:20px;
-      flex:0 0 auto;
+    .visual-card{
+      min-height:220px;padding:22px;border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;
+    }
+    .visual-card::after{
+      content:"";position:absolute;width:170px;height:170px;right:-40px;bottom:-40px;border-radius:50%;
+      background:radial-gradient(circle, rgba(103,227,255,.18), transparent 65%);filter:blur(16px);
+    }
+    .visual-badge{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:12px;
+      font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#dfe7ff;
+    }
+    .visual-figure{
+      margin-top:18px;height:92px;border-radius:18px;
+      background:
+        linear-gradient(120deg, rgba(103,227,255,.14), rgba(125,140,255,.08), rgba(217,109,255,.12)),
+        rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      position:relative;overflow:hidden;
+    }
+    .visual-figure::before{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:26px 26px;opacity:.35;
     }
 
     .dashboard-grid{
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:22px;
-      align-items:start;
+      display:grid;grid-template-columns:1.08fr .92fr;gap:22px;align-items:start;
     }
 
-    .wallet-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-
+    .wallet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
     .asset-box{
-      padding:16px;
-      border-radius:20px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.07);
+      padding:16px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
     }
-
-    .asset-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:14px;
-    }
-
-    .asset-left{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
-
+    .asset-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .asset-left{display:flex;align-items:center;gap:12px;min-width:0}
     .asset-icon{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.1);
-      background:#09101f;
-      box-shadow:0 10px 24px rgba(0,0,0,.28);
-      flex:0 0 auto;
+      width:44px;height:44px;border-radius:50%;overflow:hidden;border:1px solid rgba(255,255,255,.1);
+      background:#09101f;box-shadow:0 10px 24px rgba(0,0,0,.28);flex:0 0 auto;
     }
-
-    .asset-icon img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .asset-name{
-      font-size:15px;
-      font-weight:800;
-    }
-
-    .asset-ticker{
-      color:var(--muted);
-      font-size:12px;
-      font-weight:700;
-      margin-top:3px;
-      letter-spacing:.06em;
-    }
-
-    .asset-balance{
-      font-size:24px;
-      font-weight:900;
-      letter-spacing:-.03em;
-    }
+    .asset-icon img{width:100%;height:100%;object-fit:cover}
+    .asset-name{font-size:15px;font-weight:800}
+    .asset-ticker{color:var(--muted);font-size:12px;font-weight:700;margin-top:3px;letter-spacing:.06em}
+    .asset-balance{font-size:24px;font-weight:900;letter-spacing:-.03em}
 
     .address-box{
-      margin-top:16px;
-      padding:14px 16px;
-      border-radius:18px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-      color:#e0e7ff;
-      font-size:14px;
-      word-break:break-all;
-      line-height:1.65;
+      margin-top:16px;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);color:#e0e7ff;font-size:14px;word-break:break-all;line-height:1.65;
     }
 
     .status-box{
-      margin-top:16px;
-      padding:18px;
-      border-radius:20px;
-      background:linear-gradient(180deg, rgba(103,227,255,.09), rgba(125,140,255,.05));
+      margin-top:16px;padding:18px;border-radius:20px;background:linear-gradient(180deg, rgba(103,227,255,.09), rgba(125,140,255,.05));
       border:1px solid rgba(103,227,255,.16);
     }
-
-    .status-line{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
+    .status-line{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .status-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
     }
-
     .status-badge .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--danger);
-      box-shadow:0 0 12px rgba(255,114,134,.42);
+      width:8px;height:8px;border-radius:50%;background:var(--danger);box-shadow:0 0 12px rgba(255,114,134,.42);
     }
-
-    .status-badge.connected .dot{
-      background:var(--green);
-      box-shadow:0 0 12px rgba(87,241,187,.44);
-    }
-
-    .presale-section{
-      position:relative;
-    }
+    .status-badge.connected .dot{background:var(--green);box-shadow:0 0 12px rgba(87,241,187,.44)}
 
     .presale-panel{
-      position:relative;
-      overflow:hidden;
-      padding:24px;
+      position:relative;overflow:hidden;padding:24px;
       background:
         radial-gradient(circle at 14% 18%, rgba(73,223,255,.18), transparent 20%),
         radial-gradient(circle at 88% 18%, rgba(255,99,215,.18), transparent 20%),
         linear-gradient(135deg, rgba(18,23,48,.96), rgba(34,20,63,.96));
       border:1px solid rgba(255,255,255,.1);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.04) inset,
-        0 24px 70px rgba(255,99,215,.16);
+      box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 24px 70px rgba(255,99,215,.16);
+      border-radius:24px;
     }
-
     .presale-panel::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      border-radius:inherit;
-      padding:1px;
+      content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
       background:linear-gradient(90deg, rgba(73,223,255,.6), rgba(125,140,255,.5), rgba(255,99,215,.65));
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite:xor;
-      mask-composite:exclude;
-      pointer-events:none;
-      opacity:.9;
+      -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.9;
     }
 
-    .presale-heading{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-
+    .presale-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
     .presale-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:linear-gradient(90deg, rgba(73,223,255,.16), rgba(255,99,215,.16));
-      border:1px solid rgba(255,255,255,.12);
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.1em;
-      text-transform:uppercase;
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;
+      background:linear-gradient(90deg, rgba(73,223,255,.16), rgba(255,99,215,.16));border:1px solid rgba(255,255,255,.12);
+      font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
     }
 
-    .presale-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:14px;
-      margin-top:14px;
-    }
-
+    .presale-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
     .presale-stat{
-      padding:16px;
-      border-radius:18px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
+      padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
       box-shadow:0 0 0 1px rgba(255,255,255,.02) inset;
     }
+    .presale-stat strong{display:block;font-size:30px;line-height:1.1;letter-spacing:-.03em;margin-top:6px}
+    .presale-stat.full{grid-column:1 / -1}
 
-    .presale-stat strong{
-      display:block;
-      font-size:30px;
-      line-height:1.1;
-      letter-spacing:-.03em;
-      margin-top:6px;
-    }
-
-    .presale-stat.full{
-      grid-column:1 / -1;
-    }
-
-    .input-grid{
-      display:grid;
-      gap:12px;
-      margin-top:16px;
-    }
-
+    .input-grid{display:grid;gap:12px;margin-top:16px}
     .input{
-      width:100%;
-      border:none;
-      outline:none;
-      border-radius:16px;
-      padding:15px 16px;
-      font-family:inherit;
-      font-size:15px;
-      color:#fff;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
+      width:100%;border:none;outline:none;border-radius:16px;padding:15px 16px;font-family:inherit;font-size:15px;color:#fff;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
     }
 
-    .helper{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.6;
-    }
+    .helper{color:var(--muted);font-size:13px;line-height:1.6}
 
-    .side-cards{
-      display:grid;
-      gap:18px;
-    }
-
+    .side-cards{display:grid;gap:18px}
     .mini-card{
-      position:relative;
-      overflow:hidden;
-      min-height:160px;
-      padding:22px;
-      border-radius:24px;
+      position:relative;overflow:hidden;min-height:160px;padding:22px;border-radius:24px;
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.08);
     }
-
     .mini-card::after{
-      content:"";
-      position:absolute;
-      width:170px;
-      height:170px;
-      right:-40px;
-      bottom:-50px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(103,227,255,.18), transparent 65%);
-      filter:blur(16px);
+      content:"";position:absolute;width:170px;height:170px;right:-40px;bottom:-50px;border-radius:50%;
+      background:radial-gradient(circle, rgba(103,227,255,.18), transparent 65%);filter:blur(16px);
     }
-
     .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      color:#dfe7ff;
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);color:#dfe7ff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
     }
-
-    .big{
-      margin:10px 0 6px;
-      font-size:30px;
-      font-weight:900;
-      letter-spacing:-.03em;
-    }
+    .big{margin:10px 0 6px;font-size:30px;font-weight:900;letter-spacing:-.03em}
 
     .market-panel{
-      position:relative;
-      min-height:420px;
-      overflow:hidden;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,.08);
+      position:relative;min-height:420px;overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.08);
       background:
         radial-gradient(circle at 70% 20%, rgba(103,227,255,.14), transparent 24%),
         radial-gradient(circle at 25% 80%, rgba(217,109,255,.12), transparent 22%),
         linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
     }
-
     .market-panel::before{
-      content:"";
-      position:absolute;
-      inset:0;
+      content:"";position:absolute;inset:0;
       background-image:
         linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size:46px 46px;
-      opacity:.45;
+      background-size:46px 46px;opacity:.45;
     }
-
-    .chart-wrap{
-      position:absolute;
-      left:4%;
-      right:4%;
-      top:50%;
-      height:200px;
-      transform:translateY(-50%);
-    }
-
-    .chart-wrap svg{
-      width:100%;
-      height:100%;
-    }
-
+    .chart-wrap{position:absolute;left:4%;right:4%;top:50%;height:200px;transform:translateY(-50%)}
+    .chart-wrap svg{width:100%;height:100%}
     .chart-wrap path{
-      fill:none;
-      stroke:url(#chartGradient);
-      stroke-width:4;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-      stroke-dasharray:900;
-      stroke-dashoffset:900;
-      animation:drawLine 2.3s ease forwards;
+      fill:none;stroke:url(#chartGradient);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;
+      stroke-dasharray:900;stroke-dashoffset:900;animation:drawLine 2.3s ease forwards;
       filter:drop-shadow(0 0 14px rgba(103,227,255,.3));
     }
-
-    .market-points{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-    }
-
+    .market-points{position:absolute;inset:0;pointer-events:none}
     .market-points span{
-      position:absolute;
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:#fff;
-      box-shadow:0 0 16px rgba(255,255,255,.5);
+      position:absolute;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 16px rgba(255,255,255,.5);
       animation:pulse 2s ease-in-out infinite;
     }
+    @keyframes drawLine{to{stroke-dashoffset:0}}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.35);opacity:1}}
 
-    @keyframes drawLine{
-      to{stroke-dashoffset:0}
-    }
-    @keyframes pulse{
-      0%,100%{transform:scale(1);opacity:.9}
-      50%{transform:scale(1.35);opacity:1}
-    }
-
-    .orbit-card{
-      min-height:290px;
-      display:grid;
-      place-items:center;
-      padding:24px;
-    }
-
-    .orbit{
-      position:relative;
-      width:260px;
-      height:260px;
-    }
-
-    .ring{
-      position:absolute;
-      inset:0;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.12);
-      animation:spin 14s linear infinite;
-    }
+    .orbit-card{min-height:290px;display:grid;place-items:center;padding:24px}
+    .orbit{position:relative;width:260px;height:260px}
+    .ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.12);animation:spin 14s linear infinite}
     .ring.r2{inset:22px;animation-duration:11s;animation-direction:reverse}
     .ring.r3{inset:44px;animation-duration:9s}
-
     .core{
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 0 34px rgba(103,227,255,.18);
-      background:#060910;
-      display:grid;
-      place-items:center;
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:110px;height:110px;border-radius:50%;
+      overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 34px rgba(103,227,255,.18);
+      background:#060910;display:grid;place-items:center;
     }
-
-    .core img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
+    .core img{width:100%;height:100%;object-fit:cover}
     .sat{
-      position:absolute;
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      font-size:12px;
-      font-weight:800;
-      white-space:nowrap;
-      box-shadow:0 10px 24px rgba(0,0,0,.25);
+      position:absolute;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+      font-size:12px;font-weight:800;white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.25);
     }
-
     .s1{top:-8px;left:50%;transform:translateX(-50%)}
     .s2{top:50%;right:-18px;transform:translateY(-50%)}
     .s3{bottom:-8px;left:50%;transform:translateX(-50%)}
     .s4{top:50%;left:-22px;transform:translateY(-50%)}
     .s5{top:18%;left:14%}
     .s6{bottom:18%;right:12%}
+    @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-    @keyframes spin{
-      from{transform:rotate(0deg)}
-      to{transform:rotate(360deg)}
-    }
-
-    .roadmap{
-      display:grid;
-      gap:16px;
-    }
-
+    .phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .phase{
-      padding:20px;
-      border-radius:22px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.07);
-      position:relative;
-      overflow:hidden;
+      padding:20px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden;
     }
-
     .phase::after{
-      content:"";
-      position:absolute;
-      right:-26px;
-      top:-26px;
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(103,227,255,.14), transparent 68%);
-      filter:blur(10px);
+      content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;
+      background:radial-gradient(circle, rgba(103,227,255,.14), transparent 68%);filter:blur(10px);
     }
-
-    .phase-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:10px;
-      flex-wrap:wrap;
-    }
-
-    .phase-left{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
+    .phase-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:10px;flex-wrap:wrap}
+    .phase-left{display:flex;align-items:center;gap:12px}
     .phase-icon{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      font-size:20px;
-      background:linear-gradient(135deg, rgba(103,227,255,.18), rgba(217,109,255,.12));
-      border:1px solid rgba(255,255,255,.08);
+      width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;
+      background:linear-gradient(135deg, rgba(103,227,255,.18), rgba(217,109,255,.12));border:1px solid rgba(255,255,255,.08);
     }
+    .phase h4{margin:0;font-size:18px;letter-spacing:-.03em}
+    .phase ul{margin:0;padding-left:18px;color:#dbe3ff;line-height:1.8}
 
-    .phase h4{
-      margin:0;
-      font-size:20px;
-      letter-spacing:-.03em;
-    }
-
-    .phase ul{
-      margin:0;
-      padding-left:18px;
-      color:#dbe3ff;
-      line-height:1.8;
-    }
-
-    .tokenomics-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-
+    .tokenomics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
     .tokenomics-item{
-      padding:16px;
-      border-radius:18px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-      position:relative;
-      overflow:hidden;
+      padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden;
     }
-
     .tokenomics-item::after{
-      content:"";
-      position:absolute;
-      inset:auto -15% -35% auto;
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(125,140,255,.16), transparent 70%);
-      filter:blur(12px);
+      content:"";position:absolute;inset:auto -15% -35% auto;width:120px;height:120px;border-radius:50%;
+      background:radial-gradient(circle, rgba(125,140,255,.16), transparent 70%);filter:blur(12px);
     }
 
-    .tokenomics-bar{
-      display:grid;
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .bar-item{
-      display:grid;
-      gap:8px;
-    }
-
-    .bar-top{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      font-size:14px;
-      font-weight:700;
-    }
-
+    .bar-grid{display:grid;gap:12px;margin-top:18px}
+    .bar-item{display:grid;gap:8px}
+    .bar-top{display:flex;justify-content:space-between;gap:12px;font-size:14px;font-weight:700}
     .bar{
-      width:100%;
-      height:12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.06);
+      width:100%;height:12px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden;border:1px solid rgba(255,255,255,.06);
     }
-
     .bar > span{
-      display:block;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg, var(--primary), var(--secondary), var(--pink));
-    }
-
-    .ecosystem-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
+      display:block;height:100%;border-radius:999px;background:linear-gradient(90deg, var(--primary), var(--secondary), var(--pink));
     }
 
     .eco-card{
-      padding:22px;
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08);
-      min-height:190px;
-      position:relative;
-      overflow:hidden;
+      padding:22px;border-radius:24px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);min-height:200px;position:relative;overflow:hidden;
     }
-
     .eco-card::after{
-      content:"";
-      position:absolute;
-      width:150px;
-      height:150px;
-      right:-40px;
-      bottom:-40px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(103,227,255,.16), transparent 68%);
-      filter:blur(14px);
+      content:"";position:absolute;width:150px;height:150px;right:-40px;bottom:-40px;border-radius:50%;
+      background:radial-gradient(circle, rgba(103,227,255,.16), transparent 68%);filter:blur(14px);
     }
-
     .eco-icon{
-      width:52px;
-      height:52px;
-      border-radius:16px;
-      display:grid;
-      place-items:center;
-      font-size:24px;
+      width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:24px;
       background:linear-gradient(135deg, rgba(103,227,255,.18), rgba(217,109,255,.12));
-      border:1px solid rgba(255,255,255,.08);
-      margin-bottom:14px;
+      border:1px solid rgba(255,255,255,.08);margin-bottom:14px;
     }
 
-    .swap-box{
-      text-align:center;
-      padding:30px 24px;
-    }
-
-    footer{
-      padding:28px 0 54px;
-    }
-
+    .swap-box{text-align:center;padding:30px 24px}
+    footer{padding:28px 0 54px}
     .footer-box{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      padding:22px 24px;
-      border-radius:22px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.06);
-      color:var(--muted);
+      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+      padding:22px 24px;border-radius:22px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--muted);
     }
 
-    .reveal{
-      opacity:0;
-      transform:translateY(22px);
-      transition:opacity .8s ease, transform .8s ease;
-    }
-
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
 
     @media (max-width:1180px){
-      .nav{
-        padding:10px 0 14px;
-        align-items:flex-start;
-        flex-direction:column;
-      }
-      .nav-links,.nav-actions{
-        justify-content:flex-start;
-      }
-      .hero-grid,
-      .dashboard-grid,
-      .grid-2,
-      .grid-3,
-      .ecosystem-grid{
-        grid-template-columns:1fr;
-      }
-      .wallet-grid{
-        grid-template-columns:1fr;
-      }
+      .nav{padding:10px 0 14px;align-items:flex-start;flex-direction:column}
+      .nav-links,.nav-actions{justify-content:flex-start}
+      .hero-grid,.dashboard-grid,.grid-2,.grid-3,.grid-4,.phase-grid,.ticker-grid,.info-strip{grid-template-columns:1fr}
+      .wallet-grid,.presale-grid,.tokenomics-grid{grid-template-columns:1fr}
     }
-
     @media (max-width:720px){
       .container{width:min(var(--max), calc(100% - 18px))}
       .hero{padding-top:24px}
-      .hero-card,.panel,.mini-card,.orbit-card,.eco-card,.presale-panel{padding:18px}
-      .hero-metrics,.tokenomics-grid,.presale-grid{grid-template-columns:1fr}
+      .hero-card,.panel,.mini-card,.orbit-card,.eco-card,.presale-panel,.visual-card{padding:18px}
       .hero-logo{width:88px;height:88px;border-radius:20px}
       .hero-title{font-size:56px}
       .hero-subtitle{font-size:17px;letter-spacing:.12em}
@@ -1221,7 +574,8 @@
           <a href="#about">About</a>
           <a href="#summary">Summary</a>
           <a href="#dashboard">Dashboard</a>
-          <a href="#roadmap">Roadmap & Tokenomics</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#tokenomics">Tokenomics</a>
           <a href="#ecosystem">Ecosystem</a>
           <a href="#swap">Swap</a>
         </nav>
@@ -1250,7 +604,6 @@
 
             <p class="lead">
               Trustless. Transparent. Autonomous financial infrastructure built for the next generation of DeFi.
-              AXION combines premium interface design, ecosystem clarity, and a futuristic visual identity around a strong on-chain foundation.
             </p>
 
             <div class="hero-actions">
@@ -1268,53 +621,68 @@
 
           <div class="side-stack">
             <div class="card reveal">
-              <div class="hero-metrics">
-                <div class="metric">
-                  <div class="metric-label">Total Supply</div>
-                  <div class="metric-value">1,000,000,000 AX</div>
-                  <div class="metric-sub">Fixed supply. No mint.</div>
+              <div class="info-strip">
+                <div class="info-card">
+                  <div class="k">Total Supply</div>
+                  <div class="v">1,000,000,000 AX</div>
+                  <div class="s">Fixed supply</div>
                 </div>
-                <div class="metric">
-                  <div class="metric-label">Presale Rate</div>
-                  <div class="metric-value">10,000 AX</div>
-                  <div class="metric-sub">For 1 BNB.</div>
+                <div class="info-card">
+                  <div class="k">Presale Rate</div>
+                  <div class="v">10,000 AX</div>
+                  <div class="s">For 1 BNB</div>
                 </div>
-                <div class="metric">
-                  <div class="metric-label">Allocation</div>
-                  <div class="metric-value">5,000,000 AX</div>
-                  <div class="metric-sub">Presale allocation.</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-label">Distribution</div>
-                  <div class="metric-value" style="font-size:22px;">09.10.2026</div>
-                  <div class="metric-sub">Planned token distribution.</div>
+                <div class="info-card">
+                  <div class="k">Distribution</div>
+                  <div class="v">09.10.2026</div>
+                  <div class="s">Planned token delivery</div>
                 </div>
               </div>
             </div>
 
             <div class="card panel reveal">
-              <h3>Core Identity</h3>
-              <div class="feature-list">
-                <div class="feature">
-                  <div class="feature-icon">🛡️</div>
-                  <div>
-                    <strong>Trustless Structure</strong><br>
-                    Fixed supply, transparent fee logic, and a global-facing product presentation.
+              <h3>Live Market Cards</h3>
+              <div class="ticker-grid">
+                <div class="ticker-card">
+                  <div class="ticker-top">
+                    <div class="ticker-icon">
+                      <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png" alt="BTC">
+                    </div>
+                    <div>
+                      <div class="ticker-name">Bitcoin</div>
+                      <div class="ticker-sym">BTC</div>
+                    </div>
                   </div>
+                  <div id="btcPrice" class="ticker-price">Loading...</div>
+                  <div id="btcChange" class="ticker-change">--</div>
                 </div>
-                <div class="feature">
-                  <div class="feature-icon">🤖</div>
-                  <div>
-                    <strong>AI Powered Direction</strong><br>
-                    AXION positions itself as an intelligent layer for future DeFi utility and analytics.
+
+                <div class="ticker-card">
+                  <div class="ticker-top">
+                    <div class="ticker-icon">
+                      <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png" alt="BNB">
+                    </div>
+                    <div>
+                      <div class="ticker-name">BNB</div>
+                      <div class="ticker-sym">BNB</div>
+                    </div>
                   </div>
+                  <div id="bnbMarketPrice" class="ticker-price">Loading...</div>
+                  <div id="bnbMarketChange" class="ticker-change">--</div>
                 </div>
-                <div class="feature">
-                  <div class="feature-icon">🌌</div>
-                  <div>
-                    <strong>Premium Visual Language</strong><br>
-                    A branded neon-space interface built around your AXION logo and dashboard style.
+
+                <div class="ticker-card">
+                  <div class="ticker-top">
+                    <div class="ticker-icon">
+                      <img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png" alt="ETH">
+                    </div>
+                    <div>
+                      <div class="ticker-name">Ethereum</div>
+                      <div class="ticker-sym">ETH</div>
+                    </div>
                   </div>
+                  <div id="ethPrice" class="ticker-price">Loading...</div>
+                  <div id="ethChange" class="ticker-change">--</div>
                 </div>
               </div>
             </div>
@@ -1326,41 +694,29 @@
         <div class="container">
           <div class="section-head reveal">
             <h2>About AXION</h2>
-            <p>
-              AXION is designed to feel like a complete product ecosystem rather than a simple token page.
-              The interface, roadmap, tokenomics, and dashboard all share one consistent premium language.
-            </p>
+            <p>Project sections below use branded visual cards instead of repeated explanatory text blocks.</p>
           </div>
 
           <div class="grid-3">
-            <div class="card panel reveal">
-              <h3>Transparent Design</h3>
-              <div class="feature-list">
-                <div class="feature">
-                  <div class="feature-icon">📘</div>
-                  <div>Clear structure for token data, wallet tracking, and ecosystem presentation.</div>
-                </div>
-              </div>
+            <div class="visual-card reveal">
+              <span class="visual-badge">Trust Layer</span>
+              <div class="visual-figure"></div>
+              <h3 style="margin:16px 0 10px;">Immutable Core</h3>
+              <div class="muted">Built around fixed supply, transparent fee visibility, and a cleaner on-chain narrative.</div>
             </div>
 
-            <div class="card panel reveal">
-              <h3>Security Mindset</h3>
-              <div class="feature-list">
-                <div class="feature">
-                  <div class="feature-icon">🔐</div>
-                  <div>Built around fixed supply, simple token logic, and trust-first communication.</div>
-                </div>
-              </div>
+            <div class="visual-card reveal">
+              <span class="visual-badge">AI Direction</span>
+              <div class="visual-figure"></div>
+              <h3 style="margin:16px 0 10px;">Intelligent Expansion</h3>
+              <div class="muted">Prepared for future analytics, automation, and ecosystem intelligence modules.</div>
             </div>
 
-            <div class="card panel reveal">
-              <h3>Product Feel</h3>
-              <div class="feature-list">
-                <div class="feature">
-                  <div class="feature-icon">✨</div>
-                  <div>Every section uses the same polished dashboard atmosphere to reinforce the AXION brand.</div>
-                </div>
-              </div>
+            <div class="visual-card reveal">
+              <span class="visual-badge">Brand System</span>
+              <div class="visual-figure"></div>
+              <h3 style="margin:16px 0 10px;">AXION Identity</h3>
+              <div class="muted">A product-style interface designed to feel stronger than a standard token page.</div>
             </div>
           </div>
         </div>
@@ -1371,28 +727,30 @@
           <div class="card panel reveal">
             <h3>Project Summary</h3>
             <div class="feature-list">
-              <div class="feature"><div class="feature-dot"></div><div><strong>Token:</strong> AXION Token (AX)</div></div>
-              <div class="feature"><div class="feature-dot"></div><div><strong>Network:</strong> BNB Smart Chain</div></div>
-              <div class="feature"><div class="feature-dot"></div><div><strong>Supply:</strong> 1,000,000,000 fixed</div></div>
-              <div class="feature"><div class="feature-dot"></div><div><strong>Fee:</strong> 1% transparent ecosystem fee</div></div>
-              <div class="feature"><div class="feature-dot"></div><div><strong>Vision:</strong> Intelligent Layer for DeFi</div></div>
+              <div class="feature"><div class="feature-icon">🛡️</div><div><strong>Trustless Logic</strong><br>Simple token architecture with clear presentation.</div></div>
+              <div class="feature"><div class="feature-icon">🌐</div><div><strong>BNB Smart Chain</strong><br>Built for a globally readable DeFi-facing experience.</div></div>
+              <div class="feature"><div class="feature-icon">💠</div><div><strong>AXION Token</strong><br>Fixed-supply structure designed around clarity and control reduction.</div></div>
             </div>
           </div>
 
           <div class="card panel reveal">
-            <h3>Visualized Highlights</h3>
-            <div class="feature-list">
-              <div class="feature">
-                <div class="feature-icon">🚀</div>
-                <div><strong>Buy AX Flow</strong><br>Home button directs users to the highlighted presale section.</div>
+            <h3>AXION Panels</h3>
+            <div class="grid-2" style="gap:14px;">
+              <div class="visual-card" style="min-height:180px;padding:18px;">
+                <span class="visual-badge">Presale</span>
+                <div class="visual-figure" style="height:70px;"></div>
               </div>
-              <div class="feature">
-                <div class="feature-icon">📊</div>
-                <div><strong>Roadmap & Tokenomics</strong><br>Supported with icons, progress bars, and visual cards.</div>
+              <div class="visual-card" style="min-height:180px;padding:18px;">
+                <span class="visual-badge">Dashboard</span>
+                <div class="visual-figure" style="height:70px;"></div>
               </div>
-              <div class="feature">
-                <div class="feature-icon">🧩</div>
-                <div><strong>Ecosystem Support</strong><br>Feature blocks are visually reinforced across the full site.</div>
+              <div class="visual-card" style="min-height:180px;padding:18px;">
+                <span class="visual-badge">Roadmap</span>
+                <div class="visual-figure" style="height:70px;"></div>
+              </div>
+              <div class="visual-card" style="min-height:180px;padding:18px;">
+                <span class="visual-badge">Tokenomics</span>
+                <div class="visual-figure" style="height:70px;"></div>
               </div>
             </div>
           </div>
@@ -1403,9 +761,7 @@
         <div class="container">
           <div class="section-head reveal">
             <h2>Dashboard</h2>
-            <p>
-              Wallet Lite, fee wallet tracker, ecosystem cards, connected wallet count, orbit features, and a highlighted presale layer in the same unified AXION style.
-            </p>
+            <p>Wallet tools, presale access, ecosystem modules, and branded visual support in a single interface.</p>
           </div>
 
           <div class="dashboard-grid">
@@ -1483,12 +839,12 @@
             </div>
 
             <div class="side-cards">
-              <div id="presale" class="card presale-panel reveal presale-section">
+              <div id="presale" class="presale-panel reveal">
                 <div class="presale-heading">
                   <div>
                     <div class="presale-badge">Highlighted Presale</div>
                     <h3 style="margin:12px 0 4px;">AXION Presale</h3>
-                    <div class="helper" style="color:#ccd4ff;">A brighter high-contrast section designed to stand out from the rest of the site.</div>
+                    <div class="helper" style="color:#d7ddff;">High-contrast panel designed to stand out immediately.</div>
                   </div>
                   <a href="#home" class="btn btn-secondary">Back to Top</a>
                 </div>
@@ -1499,7 +855,7 @@
                     <strong>10,000 AX = 1 BNB</strong>
                   </div>
                   <div class="presale-stat">
-                    <div class="metric-label">Total Allocation</div>
+                    <div class="metric-label">Allocation</div>
                     <strong>5,000,000 AX</strong>
                   </div>
                   <div class="presale-stat">
@@ -1507,7 +863,7 @@
                     <strong>06.06.2026</strong>
                   </div>
                   <div class="presale-stat">
-                    <div class="metric-label">Distribution Date</div>
+                    <div class="metric-label">Distribution</div>
                     <strong>09.10.2026</strong>
                   </div>
                   <div class="presale-stat full">
@@ -1521,15 +877,14 @@
                   <input id="axOutput" class="input" type="text" readonly placeholder="Estimated AX amount">
                   <button id="sendBNBBtn" class="btn btn-presale">Buy AX</button>
                   <div class="helper" style="color:#d7ddff;">
-                    AX estimate is calculated instantly. Connected users can send BNB directly to the presale receiver wallet.
+                    AX estimate is calculated instantly from your BNB input.
                   </div>
                 </div>
               </div>
 
               <div class="card panel reveal">
                 <h3>Fee Wallet Tracker</h3>
-                <div class="helper">Tracking AX balance only</div>
-                <div class="address-box">0xd543A36c00C478D211f9eB99b45B839474cea384</div>
+                <div class="address-box" style="margin-top:0;">0xd543A36c00C478D211f9eB99b45B839474cea384</div>
                 <div class="mini-card" style="margin-top:16px;min-height:auto;padding:18px;">
                   <div class="metric-label">Fee Wallet AX Balance</div>
                   <div id="feeWalletAX" class="big">Loading...</div>
@@ -1541,9 +896,7 @@
 
           <div class="dashboard-grid" style="margin-top:22px;">
             <div class="card panel reveal">
-              <h3>AXION Market View</h3>
-              <div class="helper">Premium visual panel aligned with the dashboard aesthetic.</div>
-
+              <h3>AXION Visual Market Panel</h3>
               <div class="market-panel" style="margin-top:16px;">
                 <div class="chart-wrap">
                   <svg viewBox="0 0 1000 240" preserveAspectRatio="none">
@@ -1571,17 +924,13 @@
               <div class="mini-card reveal">
                 <div class="tag">AXION Craft</div>
                 <div class="big">Coming Soon</div>
-                <div class="muted">
-                  Reserved for future ecosystem expansion and premium feature rollout.
-                </div>
+                <div class="muted">Reserved for future ecosystem feature rollout.</div>
               </div>
 
               <div class="mini-card reveal">
                 <div class="tag">Connected Wallets</div>
                 <div id="connectedWalletCount" class="big">0</div>
-                <div class="muted">
-                  Session-based local counter for wallets connected on this device.
-                </div>
+                <div class="muted">Session-based local counter for connected wallets on this device.</div>
               </div>
 
               <div class="card orbit-card reveal">
@@ -1610,120 +959,120 @@
       <section id="roadmap" class="section">
         <div class="container">
           <div class="section-head reveal">
-            <h2>Roadmap & Tokenomics</h2>
-            <p>
-              The dashboard style continues here with visual support for phases, token structure, and ecosystem distribution.
-            </p>
+            <h2>Roadmap</h2>
+            <p>Text-heavy blocks were replaced with visual roadmap cards.</p>
+          </div>
+
+          <div class="phase-grid">
+            <div class="phase reveal">
+              <div class="phase-top">
+                <div class="phase-left">
+                  <div class="phase-icon">🚀</div>
+                  <h4>Phase 1 — Foundation</h4>
+                </div>
+                <span class="tag">Launch</span>
+              </div>
+              <ul>
+                <li>Smart contract deployment</li>
+                <li>Brand identity launch</li>
+                <li>Community building</li>
+                <li>Initial liquidity setup</li>
+              </ul>
+            </div>
+
+            <div class="phase reveal">
+              <div class="phase-top">
+                <div class="phase-left">
+                  <div class="phase-icon">📣</div>
+                  <h4>Phase 2 — Growth</h4>
+                </div>
+                <span class="tag">Visibility</span>
+              </div>
+              <ul>
+                <li>Strategic marketing campaigns</li>
+                <li>Early exchange listings</li>
+                <li>Community expansion</li>
+                <li>Ecosystem partnerships</li>
+              </ul>
+            </div>
+
+            <div class="phase reveal">
+              <div class="phase-top">
+                <div class="phase-left">
+                  <div class="phase-icon">🧩</div>
+                  <h4>Phase 3 — Ecosystem</h4>
+                </div>
+                <span class="tag">Utility</span>
+              </div>
+              <ul>
+                <li>Dashboard evolution</li>
+                <li>DeFi tools integration</li>
+                <li>Ecosystem utilities</li>
+                <li>Technical collaborations</li>
+              </ul>
+            </div>
+
+            <div class="phase reveal">
+              <div class="phase-top">
+                <div class="phase-left">
+                  <div class="phase-icon">🤖</div>
+                  <h4>Phase 4 — AI Integration</h4>
+                </div>
+                <span class="tag">Intelligence</span>
+              </div>
+              <ul>
+                <li>AI powered analytics</li>
+                <li>Automated DeFi tools</li>
+                <li>AI platform partnerships</li>
+                <li>Intelligent data layer</li>
+              </ul>
+            </div>
+
+            <div class="phase reveal">
+              <div class="phase-top">
+                <div class="phase-left">
+                  <div class="phase-icon">🌐</div>
+                  <h4>Phase 5 — Infrastructure</h4>
+                </div>
+                <span class="tag">Scale</span>
+              </div>
+              <ul>
+                <li>Protocol optimization</li>
+                <li>Cross-chain planning</li>
+                <li>Scalable architecture</li>
+                <li>Expanded AI capabilities</li>
+              </ul>
+            </div>
+
+            <div class="phase reveal">
+              <div class="phase-top">
+                <div class="phase-left">
+                  <div class="phase-icon">🛰️</div>
+                  <h4>Phase 6 — AXION Network</h4>
+                </div>
+                <span class="tag">Long-Term</span>
+              </div>
+              <ul>
+                <li>Proprietary network research</li>
+                <li>Potential layer architecture studies</li>
+                <li>Independent ecosystem direction</li>
+                <li>Full decentralization objective</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tokenomics" class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Tokenomics</h2>
+            <p>Explanatory paragraphs were replaced with cleaner metrics and visual bars.</p>
           </div>
 
           <div class="grid-2">
             <div class="card panel reveal">
-              <h3>Roadmap</h3>
-              <div class="roadmap">
-                <div class="phase">
-                  <div class="phase-top">
-                    <div class="phase-left">
-                      <div class="phase-icon">🚀</div>
-                      <h4>Phase 1 — Foundation</h4>
-                    </div>
-                    <span class="tag">Launch</span>
-                  </div>
-                  <ul>
-                    <li>Smart contract deployment</li>
-                    <li>Brand identity launch</li>
-                    <li>Community building</li>
-                    <li>Initial liquidity setup</li>
-                  </ul>
-                </div>
-
-                <div class="phase">
-                  <div class="phase-top">
-                    <div class="phase-left">
-                      <div class="phase-icon">📣</div>
-                      <h4>Phase 2 — Growth & Visibility</h4>
-                    </div>
-                    <span class="tag">Expansion</span>
-                  </div>
-                  <ul>
-                    <li>Strategic marketing campaigns</li>
-                    <li>Early exchange listings</li>
-                    <li>Community expansion</li>
-                    <li>Ecosystem partnerships</li>
-                  </ul>
-                </div>
-
-                <div class="phase">
-                  <div class="phase-top">
-                    <div class="phase-left">
-                      <div class="phase-icon">🧩</div>
-                      <h4>Phase 3 — Ecosystem Expansion</h4>
-                    </div>
-                    <span class="tag">Utility</span>
-                  </div>
-                  <ul>
-                    <li>Dashboard evolution</li>
-                    <li>DeFi tools integration</li>
-                    <li>Ecosystem utilities</li>
-                    <li>Technical collaborations</li>
-                  </ul>
-                </div>
-
-                <div class="phase">
-                  <div class="phase-top">
-                    <div class="phase-left">
-                      <div class="phase-icon">🤖</div>
-                      <h4>Phase 4 — AI Integration</h4>
-                    </div>
-                    <span class="tag">Intelligence</span>
-                  </div>
-                  <ul>
-                    <li>AI powered analytics</li>
-                    <li>Automated DeFi tools</li>
-                    <li>AI platform partnerships</li>
-                    <li>Intelligent data layer</li>
-                  </ul>
-                </div>
-
-                <div class="phase">
-                  <div class="phase-top">
-                    <div class="phase-left">
-                      <div class="phase-icon">🌐</div>
-                      <h4>Phase 5 — Advanced Infrastructure</h4>
-                    </div>
-                    <span class="tag">Scale</span>
-                  </div>
-                  <ul>
-                    <li>Protocol optimization</li>
-                    <li>Cross-chain planning</li>
-                    <li>Scalable architecture</li>
-                    <li>Expanded AI capabilities</li>
-                  </ul>
-                </div>
-
-                <div class="phase">
-                  <div class="phase-top">
-                    <div class="phase-left">
-                      <div class="phase-icon">🛰️</div>
-                      <h4>Phase 6 — AXION Network</h4>
-                    </div>
-                    <span class="tag">Long-Term</span>
-                  </div>
-                  <ul>
-                    <li>Proprietary network research</li>
-                    <li>Potential layer architecture studies</li>
-                    <li>Independent ecosystem direction</li>
-                    <li>Full decentralization objective</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="card panel reveal">
-              <h3>Tokenomics</h3>
-              <div class="muted">
-                AXION tokenomics remain simple, readable, and listing-friendly while keeping a strong visual presentation.
-              </div>
-
+              <h3>Core Metrics</h3>
               <div class="tokenomics-grid">
                 <div class="tokenomics-item">
                   <div class="metric-label">Token Name</div>
@@ -1746,12 +1095,15 @@
                   <div style="font-size:21px;font-weight:900;">1%</div>
                 </div>
                 <div class="tokenomics-item">
-                  <div class="metric-label">Utility</div>
-                  <div style="font-size:21px;font-weight:900;">Ecosystem Access</div>
+                  <div class="metric-label">Model</div>
+                  <div style="font-size:21px;font-weight:900;">Fixed Supply</div>
                 </div>
               </div>
+            </div>
 
-              <div class="tokenomics-bar">
+            <div class="card panel reveal">
+              <h3>Allocation Visual</h3>
+              <div class="bar-grid">
                 <div class="bar-item">
                   <div class="bar-top"><span>Fund</span><span>30%</span></div>
                   <div class="bar"><span style="width:30%"></span></div>
@@ -1769,6 +1121,17 @@
                   <div class="bar"><span style="width:25%"></span></div>
                 </div>
               </div>
+
+              <div class="grid-2" style="margin-top:18px;gap:14px;">
+                <div class="visual-card" style="min-height:160px;padding:18px;">
+                  <span class="visual-badge">Supply</span>
+                  <div class="visual-figure" style="height:62px;"></div>
+                </div>
+                <div class="visual-card" style="min-height:160px;padding:18px;">
+                  <span class="visual-badge">Fee Flow</span>
+                  <div class="visual-figure" style="height:62px;"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1778,34 +1141,32 @@
         <div class="container">
           <div class="section-head reveal">
             <h2>Ecosystem Features</h2>
-            <p>
-              Supporting sections now use visual cards so the full site feels like one consistent product environment.
-            </p>
+            <p>Project-relevant cards now support the full site visually.</p>
           </div>
 
-          <div class="ecosystem-grid">
+          <div class="grid-4">
             <div class="eco-card reveal">
               <div class="eco-icon">📈</div>
               <h3 style="margin:0 0 10px;font-size:22px;">Analytics Layer</h3>
-              <div class="muted">Market visibility, wallet metrics, and future intelligence modules in one ecosystem frame.</div>
+              <div class="muted">Market visibility, wallet metrics, and future data modules.</div>
             </div>
 
             <div class="eco-card reveal">
               <div class="eco-icon">🐋</div>
               <h3 style="margin:0 0 10px;font-size:22px;">Whale Awareness</h3>
-              <div class="muted">A premium ecosystem can later expand into stronger wallet activity and behavior insights.</div>
+              <div class="muted">Future-ready structure for expanded wallet activity insights.</div>
             </div>
 
             <div class="eco-card reveal">
               <div class="eco-icon">⚙️</div>
               <h3 style="margin:0 0 10px;font-size:22px;">DeFi Tools</h3>
-              <div class="muted">AXION Craft and other modules can evolve into a wider product suite over time.</div>
+              <div class="muted">AXION Craft and related product modules can grow from here.</div>
             </div>
 
             <div class="eco-card reveal">
               <div class="eco-icon">🧠</div>
               <h3 style="margin:0 0 10px;font-size:22px;">AI Powered</h3>
-              <div class="muted">The project keeps its intelligent DeFi direction visible across content, visuals, and future utility.</div>
+              <div class="muted">The intelligent DeFi direction remains visible across the interface.</div>
             </div>
           </div>
         </div>
@@ -1817,7 +1178,7 @@
             <span class="tag">Swap</span>
             <h2 style="margin:16px 0 10px;font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;">COMING SOON</h2>
             <p class="muted" style="max-width:760px;margin:0 auto;">
-              The swap module remains part of the approved AXION structure and is reserved for future rollout.
+              The swap module remains part of the approved AXION structure for future rollout.
             </p>
           </div>
         </div>
@@ -1831,7 +1192,6 @@
             <strong style="color:#fff;">AXION</strong><br>
             Intelligent Layer for DeFi
           </div>
-
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <a class="chip-link" href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a>
             <a class="chip-link" href="https://x.com/axiondefi" target="_blank" rel="noopener">X / Twitter</a>
@@ -1874,6 +1234,13 @@
     const sendBNBBtn = document.getElementById("sendBNBBtn");
     const connectedWalletCountEl = document.getElementById("connectedWalletCount");
 
+    const btcPriceEl = document.getElementById("btcPrice");
+    const btcChangeEl = document.getElementById("btcChange");
+    const bnbMarketPriceEl = document.getElementById("bnbMarketPrice");
+    const bnbMarketChangeEl = document.getElementById("bnbMarketChange");
+    const ethPriceEl = document.getElementById("ethPrice");
+    const ethChangeEl = document.getElementById("ethChange");
+
     function shortAddr(addr){
       if(!addr) return "Not connected";
       return `${addr.slice(0,6)}...${addr.slice(-4)}`;
@@ -1886,6 +1253,24 @@
         minimumFractionDigits: min,
         maximumFractionDigits: max
       });
+    }
+
+    function formatUsd(value){
+      const n = Number(value);
+      if (!isFinite(n)) return "Loading...";
+      return `$${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+    }
+
+    function paintChange(el, value){
+      const n = Number(value);
+      if (!isFinite(n)) {
+        el.textContent = "--";
+        el.className = "ticker-change";
+        return;
+      }
+      const sign = n >= 0 ? "+" : "";
+      el.textContent = `${sign}${n.toFixed(2)}%`;
+      el.className = `ticker-change ${n >= 0 ? "up" : "down"}`;
     }
 
     function setConnectedCount(){
@@ -1909,6 +1294,29 @@
         walletStatusEl.textContent = "Disconnected";
         statusBadge.classList.remove("connected");
         statusBadge.innerHTML = '<span class="dot"></span><span>Offline</span>';
+      }
+    }
+
+    async function loadCryptoPrices(){
+      try{
+        const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,binancecoin,ethereum&vs_currencies=usd&include_24hr_change=true");
+        const data = await res.json();
+
+        btcPriceEl.textContent = formatUsd(data?.bitcoin?.usd);
+        paintChange(btcChangeEl, data?.bitcoin?.usd_24h_change);
+
+        bnbMarketPriceEl.textContent = formatUsd(data?.binancecoin?.usd);
+        paintChange(bnbMarketChangeEl, data?.binancecoin?.usd_24h_change);
+
+        ethPriceEl.textContent = formatUsd(data?.ethereum?.usd);
+        paintChange(ethChangeEl, data?.ethereum?.usd_24h_change);
+      }catch(err){
+        btcPriceEl.textContent = "Unavailable";
+        bnbMarketPriceEl.textContent = "Unavailable";
+        ethPriceEl.textContent = "Unavailable";
+        btcChangeEl.textContent = "--";
+        bnbMarketChangeEl.textContent = "--";
+        ethChangeEl.textContent = "--";
       }
     }
 
@@ -2076,7 +1484,6 @@
           }
         });
       }, { threshold: 0.12 });
-
       items.forEach(item => io.observe(item));
     }
 
@@ -2084,7 +1491,7 @@
       setupReveal();
       setConnectedCount();
       updateWalletUi(false);
-      await loadFeeWalletAX();
+      await Promise.all([loadFeeWalletAX(), loadCryptoPrices()]);
 
       if(window.ethereum){
         window.ethereum.on("accountsChanged", async (accounts) => {
