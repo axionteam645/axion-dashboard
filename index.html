@@ -1099,6 +1099,31 @@
       "function decimals() view returns (uint8)",
       "function transfer(address to, uint256 value) returns (bool)"
     ];
+
+    (function cleanTrackingParams() {
+      try {
+        const url = new URL(window.location.href);
+        const paramsToRemove = [
+          "utm_source","utm_medium","utm_campaign","utm_term","utm_content",
+          "gclid","fbclid","mc_cid","mc_eid"
+        ];
+        let changed = false;
+
+        paramsToRemove.forEach((key) => {
+          if (url.searchParams.has(key)) {
+            url.searchParams.delete(key);
+            changed = true;
+          }
+        });
+
+        if (changed) {
+          const cleanUrl = url.pathname + (url.search ? url.search : "") + (url.hash ? url.hash : "");
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      } catch (e) {
+        console.error("URL cleanup failed:", e);
+      }
+    })();
   </script>
 
   <div class="nav-wrap">
