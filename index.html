@@ -981,6 +981,151 @@
         drop-shadow(0 0 16px rgba(255,92,184,.25));
     }
 
+    /* PREMIUM UI ANIMATIONS */
+    @keyframes floatY {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 rgba(78,216,255,0), 0 0 0 rgba(168,92,255,0); }
+      50% { box-shadow: 0 0 24px rgba(78,216,255,.12), 0 0 38px rgba(168,92,255,.10); }
+      100% { box-shadow: 0 0 0 rgba(78,216,255,0), 0 0 0 rgba(168,92,255,0); }
+    }
+
+    @keyframes shineMove {
+      0% { transform: translateX(-140%); }
+      100% { transform: translateX(140%); }
+    }
+
+    .card,
+    .mini-stat,
+    .whitepaper-link,
+    .list-block,
+    .token-tile,
+    .phase,
+    .feature,
+    .bullet {
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease, background .28s ease;
+    }
+
+    .card:hover,
+    .mini-stat:hover,
+    .whitepaper-link:hover,
+    .list-block:hover,
+    .token-tile:hover,
+    .phase:hover,
+    .feature:hover,
+    .bullet:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.16);
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.42),
+        0 0 28px rgba(78,216,255,.08),
+        0 0 44px rgba(168,92,255,.08);
+    }
+
+    .icon-badge {
+      animation: floatY 4.5s ease-in-out infinite, pulseGlow 4.5s ease-in-out infinite;
+    }
+
+    .hero-main-icon {
+      animation: floatY 5s ease-in-out infinite, pulseGlow 5s ease-in-out infinite;
+    }
+
+    .btn,
+    .icon-copy-btn,
+    .token-tile,
+    .phase,
+    .card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after,
+    .card::after,
+    .token-tile::after,
+    .phase::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.06) 45%, transparent 60%);
+      transform: translateX(-140%);
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .btn:hover::after,
+    .card:hover::after,
+    .token-tile:hover::after,
+    .phase:hover::after {
+      opacity: 1;
+      animation: shineMove 1.2s ease;
+    }
+
+    /* DEXSCREENER SECTION */
+    .chart-shell {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .chart-topbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:18px 20px 0;
+      flex-wrap:wrap;
+    }
+
+    .chart-meta {
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .chart-pill {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:#dce7ff;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    #dexChartStatus {
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .chart-frame-wrap {
+      position:relative;
+      width:100%;
+      min-height:560px;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(circle at top left, rgba(78,216,255,.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(168,92,255,.10), transparent 30%),
+        #0a1020;
+    }
+
+    .chart-frame-wrap iframe {
+      width:100%;
+      height:560px;
+      border:0;
+      display:block;
+      background:#0a1020;
+    }
+
     @media (max-width: 1180px){
       .hero-grid,
       .dashboard-grid,
@@ -1121,6 +1266,12 @@
         width:100%;
         flex-wrap:wrap;
       }
+
+      .chart-frame-wrap,
+      .chart-frame-wrap iframe {
+        min-height:420px;
+        height:420px;
+      }
     }
   </style>
 </head>
@@ -1145,57 +1296,7 @@
     const CHAIN_ID_BSC = 56;
     const BSC_RPC = "https://bsc-dataseed.binance.org/";
     const WHITEPAPER_RAW = "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf";
-
-    const TOKEN_META = {
-      AX: {
-        address: AXION_CONTRACT,
-        decimals: 18,
-        symbol: "AX",
-        image: "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png",
-        logo: "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png"
-      },
-      BNB: {
-        native: true,
-        decimals: 18,
-        logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png"
-      },
-      USDT: {
-        address: "0x55d398326f99059fF775485246999027B3197955",
-        decimals: 18,
-        logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
-      }
-    };
-
-    const ERC20_ABI = [
-      "function balanceOf(address) view returns (uint256)",
-      "function decimals() view returns (uint8)",
-      "function transfer(address to, uint256 value) returns (bool)"
-    ];
-
-    (function cleanTrackingParams() {
-      try {
-        const url = new URL(window.location.href);
-        const paramsToRemove = [
-          "utm_source","utm_medium","utm_campaign","utm_term","utm_content",
-          "gclid","fbclid","mc_cid","mc_eid"
-        ];
-        let changed = false;
-
-        paramsToRemove.forEach((key) => {
-          if (url.searchParams.has(key)) {
-            url.searchParams.delete(key);
-            changed = true;
-          }
-        });
-
-        if (changed) {
-          const cleanUrl = url.pathname + (url.search ? url.search : "") + (url.hash ? url.hash : "");
-          window.history.replaceState({}, document.title, cleanUrl);
-        }
-      } catch (e) {
-        console.error("URL cleanup failed:", e);
-      }
-    })();
+    const DEX_TOKEN_PAIRS_API = `https://api.dexscreener.com/token-pairs/v1/bsc/${AXION_CONTRACT}`;
   </script>
 
   <div class="nav-wrap">
@@ -1215,6 +1316,7 @@
       <div class="nav-links" id="navLinks">
         <a href="#home">Home</a>
         <a href="#dashboard">Dashboard</a>
+        <a href="#market">Live Market</a>
         <a href="#roadmap">Roadmap & Tokenomics</a>
         <a href="#about">About</a>
         <a href="#summary">Summary</a>
@@ -1459,6 +1561,54 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="market">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Live Market</div>
+            <h2>Dexscreener chart with <span class="gradient-title">animated premium UI.</span></h2>
+          </div>
+        </div>
+
+        <article class="card chart-shell reveal">
+          <div class="chart-topbar">
+            <div>
+              <div class="title-row" style="margin-bottom:8px;">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <line x1="5" y1="19" x2="5" y2="11"/>
+                    <line x1="10" y1="19" x2="10" y2="6"/>
+                    <line x1="15" y1="19" x2="15" y2="13"/>
+                    <line x1="20" y1="19" x2="20" y2="9"/>
+                  </svg>
+                </div>
+                <h3 style="margin:0;">AXION Live Chart</h3>
+              </div>
+              <p id="dexChartStatus">Searching best live pair...</p>
+            </div>
+
+            <div class="chart-meta">
+              <div class="chart-pill">BSC</div>
+              <div class="chart-pill" id="dexPairLabel">PAIR: --</div>
+              <a class="btn btn-secondary" id="dexOpenBtn" href="https://dexscreener.com" target="_blank" rel="noopener noreferrer">Open Dexscreener</a>
+            </div>
+          </div>
+
+          <div class="card-inner" style="padding-top:18px;">
+            <div class="chart-frame-wrap">
+              <iframe
+                id="dexChartFrame"
+                title="AXION Dexscreener Chart"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -2478,6 +2628,7 @@
           <a href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">X</a>
           <a href="#whitepaper">Whitepaper</a>
           <a href="#presale">BUY AX</a>
+          <a href="#market">Live Market</a>
           <a href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener noreferrer">BscScan</a>
         </div>
       </div>
@@ -2509,9 +2660,39 @@
 
     const copyFeeWalletBtn = document.getElementById("copyFeeWalletBtn");
 
+    const dexChartFrame = document.getElementById("dexChartFrame");
+    const dexChartStatus = document.getElementById("dexChartStatus");
+    const dexPairLabel = document.getElementById("dexPairLabel");
+    const dexOpenBtn = document.getElementById("dexOpenBtn");
+
     let connectedAccount = null;
     let browserProvider = null;
     let readProvider = null;
+
+    (function cleanTrackingParams() {
+      try {
+        const url = new URL(window.location.href);
+        const paramsToRemove = [
+          "utm_source","utm_medium","utm_campaign","utm_term","utm_content",
+          "gclid","fbclid","mc_cid","mc_eid"
+        ];
+        let changed = false;
+
+        paramsToRemove.forEach((key) => {
+          if (url.searchParams.has(key)) {
+            url.searchParams.delete(key);
+            changed = true;
+          }
+        });
+
+        if (changed) {
+          const cleanUrl = url.pathname + (url.search ? url.search : "") + (url.hash ? url.hash : "");
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      } catch (e) {
+        console.error("URL cleanup failed:", e);
+      }
+    })();
 
     function isMobileDevice() {
       return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -2976,6 +3157,45 @@
       });
     }
 
+    async function loadDexscreenerChart() {
+      try {
+        dexChartStatus.textContent = "Loading live pair data...";
+
+        const res = await fetch(DEX_TOKEN_PAIRS_API);
+        if (!res.ok) throw new Error(`Dexscreener API error: ${res.status}`);
+
+        const pairs = await res.json();
+        if (!Array.isArray(pairs) || !pairs.length) {
+          dexChartStatus.textContent = "No live Dexscreener pair found yet.";
+          return;
+        }
+
+        const bestPair = [...pairs].sort((a, b) => {
+          const la = Number(a?.liquidity?.usd || 0);
+          const lb = Number(b?.liquidity?.usd || 0);
+          return lb - la;
+        })[0];
+
+        const pairAddress = bestPair?.pairAddress;
+        const pairUrl = bestPair?.url || `https://dexscreener.com/bsc/${pairAddress}`;
+
+        if (!pairAddress) {
+          dexChartStatus.textContent = "Pair address unavailable.";
+          return;
+        }
+
+        dexPairLabel.textContent = `PAIR: ${pairAddress.slice(0, 6)}...${pairAddress.slice(-4)}`;
+        dexOpenBtn.href = pairUrl;
+        dexChartFrame.src = `https://dexscreener.com/bsc/${pairAddress}?embed=1&theme=dark&trades=0&info=0`;
+
+        const priceUsd = bestPair?.priceUsd ? `$${bestPair.priceUsd}` : "Live";
+        dexChartStatus.textContent = `Live pair loaded • ${bestPair.baseToken?.symbol || "AX"} / ${bestPair.quoteToken?.symbol || "?"} • ${priceUsd}`;
+      } catch (err) {
+        console.error("Dexscreener chart load error:", err);
+        dexChartStatus.textContent = "Live chart could not be loaded.";
+      }
+    }
+
     mobileToggle?.addEventListener("click", () => {
       navLinks.classList.toggle("open");
     });
@@ -3082,6 +3302,7 @@
     loadFeeWalletBalance();
     initExistingWalletConnection();
     initTokenomicsChart();
+    loadDexscreenerChart();
 
     setInterval(() => {
       loadFeeWalletBalance();
