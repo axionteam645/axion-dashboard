@@ -449,22 +449,30 @@
     }
 
     .icon-badge{
-      width:44px;
-      height:44px;
+      width:48px;
+      height:48px;
       border-radius:14px;
       display:grid;
       place-items:center;
       background:linear-gradient(135deg, rgba(78,216,255,.14), rgba(168,92,255,.10));
       border:1px solid rgba(255,255,255,.08);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 0 18px rgba(78,216,255,.12);
       color:#dff3ff;
       flex-shrink:0;
     }
 
     .icon-badge svg{
-      width:22px;
-      height:22px;
+      width:24px;
+      height:24px;
       display:block;
+      stroke:url(#axGradient);
+      stroke-width:1.9;
+      fill:none;
+      filter:
+        drop-shadow(0 0 4px rgba(78,216,255,.65))
+        drop-shadow(0 0 8px rgba(168,92,255,.35));
     }
 
     .summary-item strong{
@@ -931,6 +939,48 @@
       font-weight:700;
     }
 
+    .title-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:10px;
+    }
+
+    .title-row h3{
+      margin:0;
+    }
+
+    .hero-title-row{
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .hero-title-row h1{
+      margin:0;
+    }
+
+    .hero-main-icon{
+      width:58px;
+      height:58px;
+      flex-shrink:0;
+      margin-top:8px;
+      color:#fff;
+    }
+
+    .hero-main-icon svg{
+      width:100%;
+      height:100%;
+      stroke:url(#axGradient);
+      stroke-width:1.85;
+      fill:none;
+      filter:
+        drop-shadow(0 0 5px rgba(78,216,255,.7))
+        drop-shadow(0 0 10px rgba(168,92,255,.45))
+        drop-shadow(0 0 16px rgba(255,92,184,.25));
+    }
+
     @media (max-width: 1180px){
       .hero-grid,
       .dashboard-grid,
@@ -991,6 +1041,17 @@
       .hero{padding-top:60px}
       .card-inner{padding:18px}
       .section-head h2{font-size:34px}
+
+      .hero-title-row{
+        gap:12px;
+        align-items:center;
+      }
+
+      .hero-main-icon{
+        width:42px;
+        height:42px;
+        margin-top:0;
+      }
 
       .hero-actions{
         flex-direction:column;
@@ -1064,6 +1125,17 @@
   </style>
 </head>
 <body>
+
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="axGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4ed8ff"/>
+        <stop offset="45%" stop-color="#7c7cff"/>
+        <stop offset="72%" stop-color="#a85cff"/>
+        <stop offset="100%" stop-color="#ff5cb8"/>
+      </linearGradient>
+    </defs>
+  </svg>
 
   <script>
     const AXION_CONTRACT = "0x0F18990414D8f58890301ded2C371F2619C67896";
@@ -1163,7 +1235,17 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-copy reveal">
-            <h1 class="gradient-title">AXION is not just a token.</h1>
+            <div class="hero-title-row">
+              <div class="hero-main-icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="3.8"/>
+                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+                  <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
+                </svg>
+              </div>
+              <h1 class="gradient-title">AXION is not just a token.</h1>
+            </div>
+
             <div class="sub">Intelligent Layer for DeFi</div>
             <p>
               AXION is designed as a trust-minimized DeFi infrastructure layer on BNB Smart Chain. It combines fixed-supply token design, transparent fee logic, anti-manipulation mechanics, and AI-oriented ecosystem expansion inside a premium product-style interface.
@@ -1200,7 +1282,17 @@
             <article class="card">
               <div class="card-inner">
                 <div class="tag">Live Ecosystem Wallet</div>
-                <h3>Ekosistem Bakiyesi</h3>
+
+                <div class="title-row">
+                  <div class="icon-badge">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="7" width="18" height="10" rx="2"/>
+                      <path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/>
+                      <circle cx="16.5" cy="12" r=".8" fill="currentColor" stroke="none"/>
+                    </svg>
+                  </div>
+                  <h3>Ekosistem Bakiyesi</h3>
+                </div>
 
                 <div class="feature-list">
                   <div class="feature">
@@ -1240,7 +1332,18 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Wallet Lite</div>
-              <h3>Connected asset view</h3>
+
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="7" width="18" height="10" rx="2"/>
+                    <path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/>
+                    <circle cx="16.5" cy="12" r=".8" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+                <h3>Connected asset view</h3>
+              </div>
+
               <p>
                 The connected wallet displays live AX, BNB, and USDT balances with token icons, plus a live connected-wallet counter for the current session.
               </p>
@@ -1320,7 +1423,17 @@
           <article class="card reveal" id="presale">
             <div class="card-inner">
               <div class="tag">Highlighted Presale</div>
-              <h3>AXION Presale</h3>
+
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="7"/>
+                    <path d="M8.5 12h7M12 8.5v7"/>
+                    <path d="M5 5l2 2M17 17l2 2"/>
+                  </svg>
+                </div>
+                <h3>AXION Presale</h3>
+              </div>
 
               <div class="presale-box">
                 <div class="presale-row"><strong>Rate</strong><span>10,000 AX = 1 BNB</span></div>
@@ -1362,7 +1475,20 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Roadmap</div>
-              <h3>Six growth phases</h3>
+
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 18c4-7 8-10 16-12"/>
+                    <path d="M14 6h6v6"/>
+                    <circle cx="6" cy="17" r="1.3" fill="currentColor" stroke="none"/>
+                    <circle cx="11" cy="12.5" r="1.3" fill="currentColor" stroke="none"/>
+                    <circle cx="16" cy="9" r="1.3" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+                <h3>Six growth phases</h3>
+              </div>
+
               <div class="phase-grid">
                 <div class="phase phase-cyan">
                   <strong>Phase 1 — Foundation</strong>
@@ -1425,7 +1551,17 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Tokenomics</div>
-              <h3>Token structure and utility</h3>
+
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="7"/>
+                    <path d="M12 5v14"/>
+                    <path d="M8.5 8.5c.7-1 2-1.5 3.5-1.5 2.1 0 3.5 1 3.5 2.5 0 4-7 1.5-7 5 0 1.7 1.5 2.5 3.5 2.5 1.7 0 3-.5 3.8-1.5"/>
+                  </svg>
+                </div>
+                <h3>Token structure and utility</h3>
+              </div>
 
               <div class="tokenomics-chart-wrap">
                 <canvas id="tokenChart" width="420" height="420"></canvas>
@@ -1522,7 +1658,17 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Trust Layer</div>
-              <h3>Immutable Core</h3>
+
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
+                    <path d="M9.5 12.2l1.6 1.6 3.4-3.8"/>
+                  </svg>
+                </div>
+                <h3>Immutable Core</h3>
+              </div>
+
               <p>
                 AXION is built around a predictable token structure with fixed supply, visible fee logic, and a clean on-chain model designed to reduce trust assumptions for users.
               </p>
@@ -1546,7 +1692,18 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">AI Direction</div>
-              <h3>Intelligent Expansion</h3>
+
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3.8"/>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
+                  </svg>
+                </div>
+                <h3>Intelligent Expansion</h3>
+              </div>
+
               <p>
                 AXION is positioned beyond a standard token page. The ecosystem direction includes AI-powered analysis, risk-focused tooling, and smarter user-facing financial modules.
               </p>
@@ -1570,7 +1727,18 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Brand System</div>
-              <h3>AXION Identity</h3>
+
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="5" y="5" width="14" height="14" rx="2"/>
+                    <path d="M9 5v-2M15 5v-2M9 21v-2M15 21v-2M5 9H3M5 15H3M21 9h-2M21 15h-2"/>
+                    <path d="M9 9h6v6H9z"/>
+                  </svg>
+                </div>
+                <h3>AXION Identity</h3>
+              </div>
+
               <p>
                 The project is presented as a polished product ecosystem rather than a generic token launch page. The interface is intentionally structured to feel stronger, clearer, and more institutional.
               </p>
@@ -1608,9 +1776,9 @@
             <div class="summary-list">
               <div class="summary-item">
                 <div class="icon-badge">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M12 3l7 3v5c0 4.8-2.9 8.9-7 10-4.1-1.1-7-5.2-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M9.5 12.2l1.8 1.8 3.6-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v5c0 4.8-2.9 8.9-7 10-4.1-1.1-7-5.2-7-10V6l7-3Z"/>
+                    <path d="M9.5 12.2l1.8 1.8 3.6-4"/>
                   </svg>
                 </div>
                 <div>
@@ -1621,9 +1789,9 @@
 
               <div class="summary-item">
                 <div class="icon-badge">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
-                    <path d="M3.5 12h17M12 3.5c2.6 2.5 4 5.4 4 8.5s-1.4 6-4 8.5c-2.6-2.5-4-5.4-4-8.5s1.4-6 4-8.5Z" stroke="currentColor" stroke-width="1.4"/>
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="8.5"/>
+                    <path d="M3.5 12h17M12 3.5c2.6 2.5 4 5.4 4 8.5s-1.4 6-4 8.5c-2.6-2.5-4-5.4-4-8.5s1.4-6 4-8.5Z"/>
                   </svg>
                 </div>
                 <div>
@@ -1634,9 +1802,9 @@
 
               <div class="summary-item">
                 <div class="icon-badge">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M12 3l6.5 3.7v7.4L12 17.8 5.5 14.1V6.7L12 3Z" stroke="currentColor" stroke-width="1.8"/>
-                    <path d="M12 3v14.8M5.5 6.7L12 10l6.5-3.3" stroke="currentColor" stroke-width="1.5"/>
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3l6.5 3.7v7.4L12 17.8 5.5 14.1V6.7L12 3Z"/>
+                    <path d="M12 3v14.8M5.5 6.7L12 10l6.5-3.3"/>
                   </svg>
                 </div>
                 <div>
@@ -1647,9 +1815,9 @@
 
               <div class="summary-item">
                 <div class="icon-badge">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M7 4h10v16H7z" stroke="currentColor" stroke-width="1.8"/>
-                    <path d="M9.5 8h5M9.5 12h5M9.5 16h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 4h10v16H7z"/>
+                    <path d="M9.5 8h5M9.5 12h5M9.5 16h3"/>
                   </svg>
                 </div>
                 <div>
@@ -1660,10 +1828,10 @@
 
               <div class="summary-item">
                 <div class="icon-badge">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 15c1.7-2.3 4.2-3.5 7-3.5s5.3 1.2 7 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M6 10l2.5-2M18 10l-2.5-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M12 8.5c1.9 0 3.5-1.6 3.5-3.5h-7c0 1.9 1.6 3.5 3.5 3.5Z" stroke="currentColor" stroke-width="1.8"/>
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 15c1.7-2.3 4.2-3.5 7-3.5s5.3 1.2 7 3.5"/>
+                    <path d="M6 10l2.5-2M18 10l-2.5-2"/>
+                    <path d="M12 8.5c1.9 0 3.5-1.6 3.5-3.5h-7c0 1.9 1.6 3.5 3.5 3.5Z"/>
                   </svg>
                 </div>
                 <div>
@@ -1690,7 +1858,14 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Objective 01</div>
-              <h3>Security</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
+                  </svg>
+                </div>
+                <h3>Security</h3>
+              </div>
               <p>AXION is designed with a robust token structure focused on protecting user assets by removing unnecessary exploit surfaces and promoting sustainable behavior.</p>
             </div>
           </article>
@@ -1698,7 +1873,15 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Objective 02</div>
-              <h3>Transparency</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="8"/>
+                    <path d="M12 8v5l3 2"/>
+                  </svg>
+                </div>
+                <h3>Transparency</h3>
+              </div>
               <p>Fee logic, token mechanics, and ecosystem direction are presented with clearer visibility so users can understand how the project operates at every level.</p>
             </div>
           </article>
@@ -1706,7 +1889,16 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Objective 03</div>
-              <h3>Resistance to Manipulation</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 16c2.3-3 4.8-4.5 8-4.5S17.7 13 20 16"/>
+                    <path d="M6 9l2.5-2M18 9l-2.5-2"/>
+                    <path d="M12 8a3.5 3.5 0 0 0 3.5-3.5h-7A3.5 3.5 0 0 0 12 8Z"/>
+                  </svg>
+                </div>
+                <h3>Resistance to Manipulation</h3>
+              </div>
               <p>Anti-whale positioning and balanced token distribution are intended to reduce outsized control, strengthen fairness, and improve ecosystem stability.</p>
             </div>
           </article>
@@ -1714,7 +1906,16 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Objective 04</div>
-              <h3>AI-Powered Financial Ecosystem</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3.8"/>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
+                  </svg>
+                </div>
+                <h3>AI-Powered Financial Ecosystem</h3>
+              </div>
               <p>AXION expands beyond token presence toward a product ecosystem built for analytics, automation, intelligence modules, and smarter financial decision support.</p>
             </div>
           </article>
@@ -1737,15 +1938,42 @@
 
         <div class="whitepaper-nav">
           <div class="whitepaper-link reveal">
-            <strong>Vision</strong>
+            <div class="title-row">
+              <div class="icon-badge">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="8"/>
+                  <path d="M12 8l2.5 4H9.5L12 8Z"/>
+                </svg>
+              </div>
+              <strong style="margin:0;">Vision</strong>
+            </div>
             <p>AXION aims to redefine finance by combining DeFi and artificial intelligence inside a unified, data-driven ecosystem.</p>
           </div>
+
           <div class="whitepaper-link reveal">
-            <strong>Mission</strong>
+            <div class="title-row">
+              <div class="icon-badge">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="8"/>
+                  <path d="M12 12l4-4M12 12l-3 5"/>
+                </svg>
+              </div>
+              <strong style="margin:0;">Mission</strong>
+            </div>
             <p>The mission is to provide smarter investment tools, real-time analytics, and a safer user environment across the AXION ecosystem.</p>
           </div>
+
           <div class="whitepaper-link reveal">
-            <strong>Whitepaper Access</strong>
+            <div class="title-row">
+              <div class="icon-badge">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 4h8l4 4v12H7z"/>
+                  <path d="M15 4v4h4"/>
+                  <path d="M10 13h4M10 17h4"/>
+                </svg>
+              </div>
+              <strong style="margin:0;">Whitepaper Access</strong>
+            </div>
             <p>The full whitepaper can be opened directly with the button above for fast viewing and download.</p>
           </div>
         </div>
@@ -1758,7 +1986,15 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Problem</div>
-              <h3>What AXION is built against</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 4l8 14H4L12 4Z"/>
+                    <path d="M12 9v4M12 16h.01"/>
+                  </svg>
+                </div>
+                <h3>What AXION is built against</h3>
+              </div>
               <p>
                 The project addresses recurring weaknesses in the DeFi market where user trust is often damaged by centralization, supply abuse, opacity, and overly technical tools.
               </p>
@@ -1790,7 +2026,15 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Solution</div>
-              <h3>How AXION responds</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 12l4 4L19 6"/>
+                    <circle cx="12" cy="12" r="9"/>
+                  </svg>
+                </div>
+                <h3>How AXION responds</h3>
+              </div>
               <p>
                 AXION is positioned as a cleaner trust layer with fixed-supply clarity, transparent token design, anti-manipulation mechanics, and a product direction that extends into analytics and ecosystem tools.
               </p>
@@ -1835,7 +2079,16 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">AI Layer</div>
-              <h3>Intelligence modules</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3.8"/>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
+                  </svg>
+                </div>
+                <h3>Intelligence modules</h3>
+              </div>
               <div class="subcards">
                 <div class="mini-card">
                   <strong>Market Predictions</strong>
@@ -1856,7 +2109,17 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Analytics Dashboard</div>
-              <h3>Visibility and tracking</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <line x1="5" y1="19" x2="5" y2="11"/>
+                    <line x1="10" y1="19" x2="10" y2="6"/>
+                    <line x1="15" y1="19" x2="15" y2="13"/>
+                    <line x1="20" y1="19" x2="20" y2="9"/>
+                  </svg>
+                </div>
+                <h3>Visibility and tracking</h3>
+              </div>
               <div class="subcards">
                 <div class="mini-card">
                   <strong>Wallet Analysis</strong>
@@ -1877,7 +2140,17 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Tools</div>
-              <h3>User-facing utility</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M14 6l4-4 2 2-4 4"/>
+                    <path d="M13 7l4 4"/>
+                    <path d="M3 21l6-6"/>
+                    <path d="M8 13l3 3"/>
+                  </svg>
+                </div>
+                <h3>User-facing utility</h3>
+              </div>
               <div class="subcards">
                 <div class="mini-card">
                   <strong>Sniper Detection</strong>
@@ -1911,28 +2184,59 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Security 01</div>
-              <h3>No Mint Functionality</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
+                  </svg>
+                </div>
+                <h3>No Mint Functionality</h3>
+              </div>
               <p>The contract direction excludes mint capability so the total supply remains permanently fixed and easier to trust.</p>
             </div>
           </article>
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Security 02</div>
-              <h3>No Hidden Backdoors</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="5" y="10" width="14" height="9" rx="2"/>
+                    <path d="M8 10V8a4 4 0 0 1 8 0v2"/>
+                  </svg>
+                </div>
+                <h3>No Hidden Backdoors</h3>
+              </div>
               <p>AXION emphasizes transparent logic and rejects hidden function design that could be executed behind the scenes.</p>
             </div>
           </article>
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Security 03</div>
-              <h3>Ownership Removal</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 12l3 3 7-7"/>
+                    <circle cx="12" cy="12" r="9"/>
+                  </svg>
+                </div>
+                <h3>Ownership Removal</h3>
+              </div>
               <p>The ability to renounce ownership supports a more decentralized posture and reduces governance concern over time.</p>
             </div>
           </article>
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Security 04</div>
-              <h3>Transparent Contract Logic</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 4h10v16H7z"/>
+                    <path d="M9.5 8h5M9.5 12h5M9.5 16h3"/>
+                  </svg>
+                </div>
+                <h3>Transparent Contract Logic</h3>
+              </div>
               <p>Operations remain easier to follow when token behavior, fee structure, and ecosystem claims are aligned with visible logic.</p>
             </div>
           </article>
@@ -1953,28 +2257,65 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Advantage 01</div>
-              <h3>AI + DeFi Infrastructure</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3.8"/>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
+                  </svg>
+                </div>
+                <h3>AI + DeFi Infrastructure</h3>
+              </div>
               <p>AXION is framed as a next-generation structure where data, automation, and on-chain logic can coexist inside one ecosystem.</p>
             </div>
           </article>
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Advantage 02</div>
-              <h3>Real Utility Beyond Hype</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M14 6l4-4 2 2-4 4"/>
+                    <path d="M13 7l4 4"/>
+                    <path d="M3 21l6-6"/>
+                    <path d="M8 13l3 3"/>
+                  </svg>
+                </div>
+                <h3>Real Utility Beyond Hype</h3>
+              </div>
               <p>The ecosystem direction focuses on usable modules, analytics, and tools rather than purely speculative narrative.</p>
             </div>
           </article>
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Advantage 03</div>
-              <h3>Institutional-Grade Analytics</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <line x1="5" y1="19" x2="5" y2="11"/>
+                    <line x1="10" y1="19" x2="10" y2="6"/>
+                    <line x1="15" y1="19" x2="15" y2="13"/>
+                    <line x1="20" y1="19" x2="20" y2="9"/>
+                  </svg>
+                </div>
+                <h3>Institutional-Grade Analytics</h3>
+              </div>
               <p>The visual and product direction supports a more serious user experience with clearer insight presentation and deeper strategic framing.</p>
             </div>
           </article>
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Advantage 04</div>
-              <h3>Scalable Architecture</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3l6.5 3.7v7.4L12 17.8 5.5 14.1V6.7L12 3Z"/>
+                    <path d="M12 3v14.8M5.5 6.7L12 10l6.5-3.3"/>
+                  </svg>
+                </div>
+                <h3>Scalable Architecture</h3>
+              </div>
               <p>The site and ecosystem structure are prepared for feature growth, integrations, and wider adoption without losing identity.</p>
             </div>
           </article>
@@ -1988,7 +2329,18 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Go-To-Market Strategy</div>
-              <h3>Growth engine</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 18c4-7 8-10 16-12"/>
+                    <path d="M14 6h6v6"/>
+                    <circle cx="6" cy="17" r="1.3" fill="currentColor" stroke="none"/>
+                    <circle cx="11" cy="12.5" r="1.3" fill="currentColor" stroke="none"/>
+                    <circle cx="16" cy="9" r="1.3" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+                <h3>Growth engine</h3>
+              </div>
               <div class="bullet-grid">
                 <div class="bullet">
                   <strong>Influencer Network Expansion</strong>
@@ -2013,7 +2365,16 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Revenue Model</div>
-              <h3>Sustainable value streams</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="7"/>
+                    <path d="M12 5v14"/>
+                    <path d="M8.5 8.5c.7-1 2-1.5 3.5-1.5 2.1 0 3.5 1 3.5 2.5 0 4-7 1.5-7 5 0 1.7 1.5 2.5 3.5 2.5 1.7 0 3-.5 3.8-1.5"/>
+                  </svg>
+                </div>
+                <h3>Sustainable value streams</h3>
+              </div>
               <div class="bullet-grid">
                 <div class="bullet">
                   <strong>Subscription-Based AI Tools</strong>
@@ -2051,21 +2412,46 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Notice 01</div>
-              <h3>Not Financial Advice</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 4l8 14H4L12 4Z"/>
+                    <path d="M12 9v4M12 16h.01"/>
+                  </svg>
+                </div>
+                <h3>Not Financial Advice</h3>
+              </div>
               <p>AXION does not provide investment or trading advice. Information presented within the platform should not be interpreted as a recommendation to buy, sell, or hold any asset.</p>
             </div>
           </article>
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Notice 02</div>
-              <h3>High-Risk Asset Class</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 4l8 14H4L12 4Z"/>
+                    <path d="M12 9v4M12 16h.01"/>
+                  </svg>
+                </div>
+                <h3>High-Risk Asset Class</h3>
+              </div>
               <p>Cryptocurrency markets are volatile and can result in partial or total capital loss. Users should participate with appropriate caution.</p>
             </div>
           </article>
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Notice 03</div>
-              <h3>Do Your Own Research</h3>
+              <div class="title-row">
+                <div class="icon-badge">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="8"/>
+                    <path d="M12 8v5"/>
+                    <path d="M12 16h.01"/>
+                  </svg>
+                </div>
+                <h3>Do Your Own Research</h3>
+              </div>
               <p>Independent research and personal due diligence remain essential before making any financial decision within the broader digital asset market.</p>
             </div>
           </article>
