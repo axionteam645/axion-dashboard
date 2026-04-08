@@ -26,12 +26,14 @@
       --gold:#ffc95c;
       --green:#43f3b1;
       --teal:#42f5d7;
-      --indigo:#7d8cff;
       --buy1:#ffcf5a;
       --buy2:#ff8a1f;
       --buy3:#ff4d6d;
       --shadow:0 18px 60px rgba(0,0,0,.42);
       --max:1280px;
+      --success-bg:rgba(67,243,177,.09);
+      --success-border:rgba(67,243,177,.28);
+      --success-text:#dffff2;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
@@ -245,9 +247,7 @@
       box-shadow:none;
     }
 
-    .btn-secondary:hover{
-      background:rgba(255,255,255,.08);
-    }
+    .btn-secondary:hover{background:rgba(255,255,255,.08)}
 
     .btn-buy{
       color:#fff;
@@ -406,29 +406,29 @@
       font-size:15px;
     }
 
-    .subcards{
+    .subcards,.feature-list,.bullet-grid,.chart-legend,.presale-box,.wallet-tiles,.buy-inputs{
       display:grid;
-      gap:14px;
+      gap:12px;
       margin-top:18px;
     }
 
-    .mini-card{
-      padding:16px 16px 16px 18px;
+    .mini-card,.feature,.bullet,.list-block,.token-tile,.presale-row,.legend-item{
+      padding:16px 18px;
       border-radius:18px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(255,255,255,.08);
     }
 
-    .mini-card strong{
+    .mini-card strong,.feature strong,.bullet strong,.list-block strong{
       display:block;
-      font-size:15px;
-      margin-bottom:8px;
+      font-size:16px;
+      margin-bottom:7px;
     }
 
-    .mini-card p{
+    .mini-card p,.feature p,.bullet p,.list-block ul{
       margin:0;
       font-size:14px;
-      line-height:1.7;
+      line-height:1.68;
       color:var(--muted);
     }
 
@@ -456,9 +456,7 @@
       place-items:center;
       background:linear-gradient(135deg, rgba(78,216,255,.14), rgba(168,92,255,.10));
       border:1px solid rgba(255,255,255,.08);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        0 0 18px rgba(78,216,255,.12);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 18px rgba(78,216,255,.12);
       color:#dff3ff;
       flex-shrink:0;
     }
@@ -470,42 +468,13 @@
       stroke:url(#axGradient);
       stroke-width:1.9;
       fill:none;
-      filter:
-        drop-shadow(0 0 4px rgba(78,216,255,.65))
-        drop-shadow(0 0 8px rgba(168,92,255,.35));
+      filter:drop-shadow(0 0 4px rgba(78,216,255,.65)) drop-shadow(0 0 8px rgba(168,92,255,.35));
     }
 
-    .summary-item strong{
-      display:block;
-      margin-bottom:6px;
-      font-size:16px;
-    }
-
-    .summary-item p{
-      margin:0;
-      font-size:14px;
-      line-height:1.65;
-      color:var(--muted);
-    }
-
-    .dashboard-grid{
+    .dashboard-grid,.split-2{
       display:grid;
       grid-template-columns:1.15fr .85fr;
       gap:22px;
-    }
-
-    .wallet-tiles{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .token-tile{
-      padding:18px;
-      border-radius:20px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
     }
 
     .token-line{
@@ -548,79 +517,12 @@
       white-space:nowrap;
     }
 
-    .presale-box{
-      margin-top:18px;
-      display:grid;
-      gap:12px;
-    }
-
     .presale-row{
       display:flex;
       justify-content:space-between;
       gap:14px;
-      padding:14px 16px;
-      border-radius:16px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
       color:#dce7ff;
       font-size:14px;
-    }
-
-    .feature-list{
-      display:grid;
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .feature{
-      padding:14px 16px;
-      border-radius:16px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .feature strong{
-      display:block;
-      margin-bottom:6px;
-      font-size:15px;
-    }
-
-    .feature p{
-      margin:0;
-      font-size:14px;
-      line-height:1.65;
-    }
-
-    .split-2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-
-    .bullet-grid{
-      display:grid;
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .bullet{
-      padding:16px 18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .bullet strong{
-      display:block;
-      font-size:16px;
-      margin-bottom:7px;
-    }
-
-    .bullet p{
-      margin:0;
-      font-size:14px;
-      line-height:1.68;
-      color:var(--muted);
     }
 
     .phase-grid{
@@ -666,53 +568,18 @@
       z-index:1;
     }
 
-    .phase.phase-cyan{
-      box-shadow:0 0 30px rgba(78,216,255,.12);
-      border-color:rgba(78,216,255,.24);
-    }
-    .phase.phase-cyan::before{
-      background:radial-gradient(circle at top right, rgba(78,216,255,.28), transparent 60%);
-    }
-
-    .phase.phase-blue{
-      box-shadow:0 0 30px rgba(95,140,255,.12);
-      border-color:rgba(95,140,255,.24);
-    }
-    .phase.phase-blue::before{
-      background:radial-gradient(circle at top right, rgba(95,140,255,.26), transparent 60%);
-    }
-
-    .phase.phase-purple{
-      box-shadow:0 0 30px rgba(168,92,255,.12);
-      border-color:rgba(168,92,255,.24);
-    }
-    .phase.phase-purple::before{
-      background:radial-gradient(circle at top right, rgba(168,92,255,.26), transparent 60%);
-    }
-
-    .phase.phase-teal{
-      box-shadow:0 0 30px rgba(66,245,215,.12);
-      border-color:rgba(66,245,215,.22);
-    }
-    .phase.phase-teal::before{
-      background:radial-gradient(circle at top right, rgba(66,245,215,.26), transparent 60%);
-    }
-
-    .phase.phase-green{
-      box-shadow:0 0 30px rgba(67,243,177,.12);
-      border-color:rgba(67,243,177,.22);
-    }
-    .phase.phase-green::before{
-      background:radial-gradient(circle at top right, rgba(67,243,177,.26), transparent 60%);
-    }
-
-    .phase.phase-pink{
-      box-shadow:0 0 30px rgba(255,92,184,.12);
-      border-color:rgba(255,92,184,.22);
-    }
-    .phase.phase-pink::before{
-      background:radial-gradient(circle at top right, rgba(255,92,184,.26), transparent 60%);
-    }
+    .phase.phase-cyan{box-shadow:0 0 30px rgba(78,216,255,.12);border-color:rgba(78,216,255,.24)}
+    .phase.phase-cyan::before{background:radial-gradient(circle at top right, rgba(78,216,255,.28), transparent 60%)}
+    .phase.phase-blue{box-shadow:0 0 30px rgba(95,140,255,.12);border-color:rgba(95,140,255,.24)}
+    .phase.phase-blue::before{background:radial-gradient(circle at top right, rgba(95,140,255,.26), transparent 60%)}
+    .phase.phase-purple{box-shadow:0 0 30px rgba(168,92,255,.12);border-color:rgba(168,92,255,.24)}
+    .phase.phase-purple::before{background:radial-gradient(circle at top right, rgba(168,92,255,.26), transparent 60%)}
+    .phase.phase-teal{box-shadow:0 0 30px rgba(66,245,215,.12);border-color:rgba(66,245,215,.22)}
+    .phase.phase-teal::before{background:radial-gradient(circle at top right, rgba(66,245,215,.26), transparent 60%)}
+    .phase.phase-green{box-shadow:0 0 30px rgba(67,243,177,.12);border-color:rgba(67,243,177,.22)}
+    .phase.phase-green::before{background:radial-gradient(circle at top right, rgba(67,243,177,.26), transparent 60%)}
+    .phase.phase-pink{box-shadow:0 0 30px rgba(255,92,184,.12);border-color:rgba(255,92,184,.22)}
+    .phase.phase-pink::before{background:radial-gradient(circle at top right, rgba(255,92,184,.26), transparent 60%)}
 
     .tokenomics-grid{
       display:grid;
@@ -721,25 +588,9 @@
       margin-top:18px;
     }
 
-    .list-block{
-      padding:18px;
-      border-radius:20px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .list-block strong{
-      display:block;
-      font-size:16px;
-      margin-bottom:12px;
-    }
-
     .list-block ul{
-      margin:0;
       padding-left:18px;
-      color:var(--muted);
       line-height:1.85;
-      font-size:14px;
     }
 
     .tokenomics-chart-wrap{
@@ -766,21 +617,11 @@
       filter:drop-shadow(0 20px 40px rgba(0,0,0,.55));
     }
 
-    .chart-legend{
-      display:grid;
-      gap:12px;
-      margin-top:18px;
-    }
-
     .legend-item{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:16px;
-      padding:14px 16px;
-      border-radius:16px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
       color:#dce7ff;
       font-size:14px;
     }
@@ -810,25 +651,6 @@
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
       border:1px solid rgba(255,255,255,.08);
       box-shadow:var(--shadow);
-    }
-
-    .whitepaper-link strong{
-      display:block;
-      font-size:18px;
-      margin-bottom:10px;
-    }
-
-    .whitepaper-link p{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
-    }
-
-    .buy-inputs{
-      display:grid;
-      gap:12px;
-      margin-top:18px;
     }
 
     .buy-field{
@@ -896,6 +718,66 @@
       border:1px solid rgba(255,255,255,.08);
     }
 
+    .social-links{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .social-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.08);
+      color:#dce7ff;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .social-link span:last-child{
+      color:#9ed7ff;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .success-card{
+      display:none;
+      margin-top:16px;
+      padding:16px 18px;
+      border-radius:18px;
+      background:var(--success-bg);
+      border:1px solid var(--success-border);
+      color:var(--success-text);
+      box-shadow:0 0 24px rgba(67,243,177,.08);
+    }
+
+    .success-card.show{
+      display:block;
+      animation:fadeInUp .45s ease;
+    }
+
+    .success-card strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:16px;
+      color:#fff;
+    }
+
+    .success-card p{
+      color:#d8fff0;
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(12px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
     .reveal{
       opacity:0;
       transform:translateY(26px);
@@ -946,9 +828,7 @@
       margin-bottom:10px;
     }
 
-    .title-row h3{
-      margin:0;
-    }
+    .title-row h3{margin:0}
 
     .hero-title-row{
       display:flex;
@@ -957,9 +837,7 @@
       margin-bottom:18px;
     }
 
-    .hero-title-row h1{
-      margin:0;
-    }
+    .hero-title-row h1{margin:0}
 
     .hero-main-icon{
       width:58px;
@@ -975,40 +853,70 @@
       stroke:url(#axGradient);
       stroke-width:1.85;
       fill:none;
-      filter:
-        drop-shadow(0 0 5px rgba(78,216,255,.7))
-        drop-shadow(0 0 10px rgba(168,92,255,.45))
-        drop-shadow(0 0 16px rgba(255,92,184,.25));
+      filter:drop-shadow(0 0 5px rgba(78,216,255,.7)) drop-shadow(0 0 10px rgba(168,92,255,.45)) drop-shadow(0 0 16px rgba(255,92,184,.25));
+    }
+
+    @keyframes floatY {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 rgba(78,216,255,0), 0 0 0 rgba(168,92,255,0); }
+      50% { box-shadow: 0 0 24px rgba(78,216,255,.12), 0 0 38px rgba(168,92,255,.10); }
+      100% { box-shadow: 0 0 0 rgba(78,216,255,0), 0 0 0 rgba(168,92,255,0); }
+    }
+
+    @keyframes shineMove {
+      0% { transform: translateX(-140%); }
+      100% { transform: translateX(140%); }
+    }
+
+    .card,.mini-stat,.whitepaper-link,.list-block,.token-tile,.phase,.feature,.bullet{
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease, background .28s ease;
+    }
+
+    .card:hover,.mini-stat:hover,.whitepaper-link:hover,.list-block:hover,.token-tile:hover,.phase:hover,.feature:hover,.bullet:hover{
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.16);
+      box-shadow:0 20px 50px rgba(0,0,0,.42),0 0 28px rgba(78,216,255,.08),0 0 44px rgba(168,92,255,.08);
+    }
+
+    .icon-badge { animation: floatY 4.5s ease-in-out infinite, pulseGlow 4.5s ease-in-out infinite; }
+    .hero-main-icon { animation: floatY 5s ease-in-out infinite, pulseGlow 5s ease-in-out infinite; }
+
+    .btn,.icon-copy-btn,.token-tile,.phase,.card{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .btn::after,.card::after,.token-tile::after,.phase::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.06) 45%, transparent 60%);
+      transform: translateX(-140%);
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .btn:hover::after,.card:hover::after,.token-tile:hover::after,.phase:hover::after{
+      opacity: 1;
+      animation: shineMove 1.2s ease;
     }
 
     @media (max-width: 1180px){
-      .hero-grid,
-      .dashboard-grid,
-      .split-2{
-        grid-template-columns:1fr;
-      }
-
-      .grid-4{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .hero-stats{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .whitepaper-nav{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .tokenomics-grid{
-        grid-template-columns:1fr;
-      }
+      .hero-grid,.dashboard-grid,.split-2{grid-template-columns:1fr}
+      .grid-4{grid-template-columns:repeat(2,1fr)}
+      .hero-stats{grid-template-columns:repeat(2,1fr)}
+      .whitepaper-nav{grid-template-columns:1fr 1fr}
+      .tokenomics-grid{grid-template-columns:1fr}
     }
 
     @media (max-width: 940px){
       .nav{min-height:74px}
       .mobile-toggle{display:block}
-
       .nav-links{
         position:absolute;
         left:16px;
@@ -1024,14 +932,8 @@
         box-shadow:var(--shadow);
         overflow:visible;
       }
-
       .nav-links.open{display:flex}
-      .grid-3,
-      .whitepaper-nav,
-      .phase-grid{
-        grid-template-columns:1fr;
-      }
-
+      .grid-3,.whitepaper-nav,.phase-grid{grid-template-columns:1fr}
       .hero-copy h1{font-size:48px}
     }
 
@@ -1041,59 +943,16 @@
       .hero{padding-top:60px}
       .card-inner{padding:18px}
       .section-head h2{font-size:34px}
-
-      .hero-title-row{
-        gap:12px;
-        align-items:center;
-      }
-
-      .hero-main-icon{
-        width:42px;
-        height:42px;
-        margin-top:0;
-      }
-
-      .hero-actions{
-        flex-direction:column;
-      }
-
-      .hero-actions .btn,
-      .hero-actions .btn-secondary,
-      .inline-actions .btn,
-      .inline-actions .btn-secondary{
-        width:100%;
-      }
-
-      .hero-stats,
-      .grid-4{
-        grid-template-columns:1fr;
-      }
-
-      .brand{
-        gap:8px;
-        min-width:0;
-        flex:1;
-      }
-
-      .brand-mark{
-        width:36px;
-        height:36px;
-      }
-
-      .brand-text strong{
-        font-size:14px;
-      }
-
-      .brand-text small{
-        white-space:normal;
-        font-size:8px;
-        letter-spacing:.08em;
-      }
-
-      .nav-actions{
-        gap:6px;
-      }
-
+      .hero-title-row{gap:12px;align-items:center}
+      .hero-main-icon{width:42px;height:42px;margin-top:0}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn,.hero-actions .btn-secondary,.inline-actions .btn,.inline-actions .btn-secondary{width:100%}
+      .hero-stats,.grid-4{grid-template-columns:1fr}
+      .brand{gap:8px;min-width:0;flex:1}
+      .brand-mark{width:36px;height:36px}
+      .brand-text strong{font-size:14px}
+      .brand-text small{white-space:normal;font-size:8px;letter-spacing:.08em}
+      .nav-actions{gap:6px}
       #walletBtn{
         padding:8px 10px;
         font-size:10px;
@@ -1105,15 +964,8 @@
         overflow:hidden;
         text-overflow:ellipsis;
       }
-
-      .mobile-toggle{
-        font-size:22px;
-      }
-
-      .footer-row{
-        align-items:flex-start;
-      }
-
+      .mobile-toggle{font-size:22px}
+      .footer-row{align-items:flex-start}
       .footer-links{
         gap:10px 14px;
         font-size:12px;
@@ -1143,8 +995,12 @@
     const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
     const PRESALE_RATE = 10000;
     const CHAIN_ID_BSC = 56;
-    const BSC_RPC = "https://bsc-dataseed.binance.org/";
-    const WHITEPAPER_RAW = "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf";
+
+    const BSC_RPCS = [
+      "https://bsc-dataseed.binance.org/",
+      "https://rpc.ankr.com/bsc",
+      "https://bsc.publicnode.com"
+    ];
 
     const TOKEN_META = {
       AX: {
@@ -1168,34 +1024,8 @@
 
     const ERC20_ABI = [
       "function balanceOf(address) view returns (uint256)",
-      "function decimals() view returns (uint8)",
       "function transfer(address to, uint256 value) returns (bool)"
     ];
-
-    (function cleanTrackingParams() {
-      try {
-        const url = new URL(window.location.href);
-        const paramsToRemove = [
-          "utm_source","utm_medium","utm_campaign","utm_term","utm_content",
-          "gclid","fbclid","mc_cid","mc_eid"
-        ];
-        let changed = false;
-
-        paramsToRemove.forEach((key) => {
-          if (url.searchParams.has(key)) {
-            url.searchParams.delete(key);
-            changed = true;
-          }
-        });
-
-        if (changed) {
-          const cleanUrl = url.pathname + (url.search ? url.search : "") + (url.hash ? url.hash : "");
-          window.history.replaceState({}, document.title, cleanUrl);
-        }
-      } catch (e) {
-        console.error("URL cleanup failed:", e);
-      }
-    })();
   </script>
 
   <div class="nav-wrap">
@@ -1311,6 +1141,17 @@
                     <strong>Live AX Balance</strong>
                     <p id="feeWalletAxBalance">Loading...</p>
                   </div>
+                </div>
+
+                <div class="social-links">
+                  <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">
+                    <span>Telegram</span>
+                    <span>@axiondefi</span>
+                  </a>
+                  <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">
+                    <span>X</span>
+                    <span>@axiondefi</span>
+                  </a>
                 </div>
               </div>
             </article>
@@ -1455,6 +1296,13 @@
                   <button class="btn btn-buy" id="buyAxBtn">Buy AX</button>
                   <button class="btn btn-secondary" id="copyReceiverBtn">Copy Receiver</button>
                 </div>
+
+                <div id="presaleSuccessCard" class="success-card">
+                  <strong id="presaleSuccessTitle">Purchase Successful</strong>
+                  <p id="presaleSuccessText">
+                    Congratulations. Your AX purchase was completed successfully. Your tokens will be sent to the wallet used for payment on the distribution date. Please follow announcements on our official channels.
+                  </p>
+                </div>
               </div>
             </div>
           </article>
@@ -1467,7 +1315,7 @@
         <div class="section-head reveal">
           <div>
             <div class="eyebrow">Roadmap & Tokenomics</div>
-            <h2>Growth path and token logic in <span class="gradient-title">one combined section.</span></h2>
+            <h2></h2>
           </div>
         </div>
 
@@ -1658,7 +1506,6 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Trust Layer</div>
-
               <div class="title-row">
                 <div class="icon-badge">
                   <svg viewBox="0 0 24 24">
@@ -1668,10 +1515,7 @@
                 </div>
                 <h3>Immutable Core</h3>
               </div>
-
-              <p>
-                AXION is built around a predictable token structure with fixed supply, visible fee logic, and a clean on-chain model designed to reduce trust assumptions for users.
-              </p>
+              <p>AXION is built around a predictable token structure with fixed supply, visible fee logic, and a clean on-chain model designed to reduce trust assumptions for users.</p>
               <div class="subcards">
                 <div class="mini-card">
                   <strong>Fixed Supply</strong>
@@ -1692,7 +1536,6 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">AI Direction</div>
-
               <div class="title-row">
                 <div class="icon-badge">
                   <svg viewBox="0 0 24 24">
@@ -1703,10 +1546,7 @@
                 </div>
                 <h3>Intelligent Expansion</h3>
               </div>
-
-              <p>
-                AXION is positioned beyond a standard token page. The ecosystem direction includes AI-powered analysis, risk-focused tooling, and smarter user-facing financial modules.
-              </p>
+              <p>AXION is positioned beyond a standard token page. The ecosystem direction includes AI-powered analysis, risk-focused tooling, and smarter user-facing financial modules.</p>
               <div class="subcards">
                 <div class="mini-card">
                   <strong>AI Analytics</strong>
@@ -1727,7 +1567,6 @@
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Brand System</div>
-
               <div class="title-row">
                 <div class="icon-badge">
                   <svg viewBox="0 0 24 24">
@@ -1738,10 +1577,7 @@
                 </div>
                 <h3>AXION Identity</h3>
               </div>
-
-              <p>
-                The project is presented as a polished product ecosystem rather than a generic token launch page. The interface is intentionally structured to feel stronger, clearer, and more institutional.
-              </p>
+              <p>The project is presented as a polished product ecosystem rather than a generic token launch page. The interface is intentionally structured to feel stronger, clearer, and more institutional.</p>
               <div class="subcards">
                 <div class="mini-card">
                   <strong>Premium Product UX</strong>
@@ -1980,92 +1816,6 @@
       </div>
     </section>
 
-    <section class="section" id="problem-solution">
-      <div class="container">
-        <div class="split-2">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Problem</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 4l8 14H4L12 4Z"/>
-                    <path d="M12 9v4M12 16h.01"/>
-                  </svg>
-                </div>
-                <h3>What AXION is built against</h3>
-              </div>
-              <p>
-                The project addresses recurring weaknesses in the DeFi market where user trust is often damaged by centralization, supply abuse, opacity, and overly technical tools.
-              </p>
-              <div class="bullet-grid">
-                <div class="bullet">
-                  <strong>Rug Pull Risk</strong>
-                  <p>Many token ecosystems collapse when liquidity or structural trust disappears suddenly, leaving users exposed to severe downside.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Hidden Mint Functions</strong>
-                  <p>Uncontrolled supply expansion weakens long-term value and destroys confidence in token-based systems.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Lack of Fee Transparency</strong>
-                  <p>Opaque fee logic creates uncertainty, weakens accountability, and makes token behavior harder to evaluate.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Whale Manipulation</strong>
-                  <p>Large concentration can distort price behavior and create an unfair environment for smaller participants.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Complex User Tools</strong>
-                  <p>DeFi often remains inaccessible because products are built for technical users instead of broader market clarity.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Solution</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M5 12l4 4L19 6"/>
-                    <circle cx="12" cy="12" r="9"/>
-                  </svg>
-                </div>
-                <h3>How AXION responds</h3>
-              </div>
-              <p>
-                AXION is positioned as a cleaner trust layer with fixed-supply clarity, transparent token design, anti-manipulation mechanics, and a product direction that extends into analytics and ecosystem tools.
-              </p>
-              <div class="bullet-grid">
-                <div class="bullet">
-                  <strong>Fixed Supply</strong>
-                  <p>The total number of AX tokens is permanently capped, removing inflationary ambiguity.</p>
-                </div>
-                <div class="bullet">
-                  <strong>No Mint Function</strong>
-                  <p>The contract direction avoids mint expansion mechanics that could harm holders through hidden supply growth.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Ownership Renounce Direction</strong>
-                  <p>Ownership removal remains part of the trust-minimized narrative to reduce governance-related concern.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Transparent Logic</strong>
-                  <p>AXION emphasizes clearer token operation, visible fee logic, and on-chain verifiability over black-box design.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Infrastructure Layer</strong>
-                  <p>The project extends into dashboard systems, data analytics, and user-facing tools rather than staying limited to token branding.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="ecosystem">
       <div class="container">
         <div class="section-head reveal">
@@ -2243,221 +1993,6 @@
         </div>
       </div>
     </section>
-
-    <section class="section" id="advantage">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Competitive Advantage</div>
-            <h2>Where AXION creates a <span class="gradient-title">stronger market identity.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-4">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Advantage 01</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                  </svg>
-                </div>
-                <h3>AI + DeFi Infrastructure</h3>
-              </div>
-              <p>AXION is framed as a next-generation structure where data, automation, and on-chain logic can coexist inside one ecosystem.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Advantage 02</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M14 6l4-4 2 2-4 4"/>
-                    <path d="M13 7l4 4"/>
-                    <path d="M3 21l6-6"/>
-                    <path d="M8 13l3 3"/>
-                  </svg>
-                </div>
-                <h3>Real Utility Beyond Hype</h3>
-              </div>
-              <p>The ecosystem direction focuses on usable modules, analytics, and tools rather than purely speculative narrative.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Advantage 03</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <line x1="5" y1="19" x2="5" y2="11"/>
-                    <line x1="10" y1="19" x2="10" y2="6"/>
-                    <line x1="15" y1="19" x2="15" y2="13"/>
-                    <line x1="20" y1="19" x2="20" y2="9"/>
-                  </svg>
-                </div>
-                <h3>Institutional-Grade Analytics</h3>
-              </div>
-              <p>The visual and product direction supports a more serious user experience with clearer insight presentation and deeper strategic framing.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Advantage 04</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l6.5 3.7v7.4L12 17.8 5.5 14.1V6.7L12 3Z"/>
-                    <path d="M12 3v14.8M5.5 6.7L12 10l6.5-3.3"/>
-                  </svg>
-                </div>
-                <h3>Scalable Architecture</h3>
-              </div>
-              <p>The site and ecosystem structure are prepared for feature growth, integrations, and wider adoption without losing identity.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="strategy">
-      <div class="container">
-        <div class="split-2">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Go-To-Market Strategy</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 18c4-7 8-10 16-12"/>
-                    <path d="M14 6h6v6"/>
-                    <circle cx="6" cy="17" r="1.3" fill="currentColor" stroke="none"/>
-                    <circle cx="11" cy="12.5" r="1.3" fill="currentColor" stroke="none"/>
-                    <circle cx="16" cy="9" r="1.3" fill="currentColor" stroke="none"/>
-                  </svg>
-                </div>
-                <h3>Growth engine</h3>
-              </div>
-              <div class="bullet-grid">
-                <div class="bullet">
-                  <strong>Influencer Network Expansion</strong>
-                  <p>Strategic visibility campaigns can amplify brand awareness and accelerate market familiarity.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Community-First Growth</strong>
-                  <p>Organic engagement and active participation are positioned as the foundation of durable ecosystem value.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Viral Campaigns</strong>
-                  <p>Creative marketing structure supports broader attention, faster onboarding, and brand momentum.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Exchange Visibility Strategy</strong>
-                  <p>Listing preparation and exposure growth remain part of the ecosystem scaling narrative.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Revenue Model</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="7"/>
-                    <path d="M12 5v14"/>
-                    <path d="M8.5 8.5c.7-1 2-1.5 3.5-1.5 2.1 0 3.5 1 3.5 2.5 0 4-7 1.5-7 5 0 1.7 1.5 2.5 3.5 2.5 1.7 0 3-.5 3.8-1.5"/>
-                  </svg>
-                </div>
-                <h3>Sustainable value streams</h3>
-              </div>
-              <div class="bullet-grid">
-                <div class="bullet">
-                  <strong>Subscription-Based AI Tools</strong>
-                  <p>Recurring access models can support ecosystem sustainability while delivering ongoing value to users.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Premium Analytics Access</strong>
-                  <p>Advanced insight tiers strengthen monetization and deepen the utility offered through the dashboard ecosystem.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Ecosystem Usage Fees</strong>
-                  <p>Transaction-based or service-based flows can create scalable revenue linked to real product activity.</p>
-                </div>
-                <div class="bullet">
-                  <strong>Strategic Partnerships</strong>
-                  <p>External collaborations can expand both credibility and ecosystem-level revenue opportunities over time.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="disclaimer">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Legal Disclaimer</div>
-            <h2>Important context for <span class="gradient-title">responsible participation.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Notice 01</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 4l8 14H4L12 4Z"/>
-                    <path d="M12 9v4M12 16h.01"/>
-                  </svg>
-                </div>
-                <h3>Not Financial Advice</h3>
-              </div>
-              <p>AXION does not provide investment or trading advice. Information presented within the platform should not be interpreted as a recommendation to buy, sell, or hold any asset.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Notice 02</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 4l8 14H4L12 4Z"/>
-                    <path d="M12 9v4M12 16h.01"/>
-                  </svg>
-                </div>
-                <h3>High-Risk Asset Class</h3>
-              </div>
-              <p>Cryptocurrency markets are volatile and can result in partial or total capital loss. Users should participate with appropriate caution.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Notice 03</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="8"/>
-                    <path d="M12 8v5"/>
-                    <path d="M12 16h.01"/>
-                  </svg>
-                </div>
-                <h3>Do Your Own Research</h3>
-              </div>
-              <p>Independent research and personal due diligence remain essential before making any financial decision within the broader digital asset market.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -2506,12 +2041,40 @@
     const axSendTo = document.getElementById("axSendTo");
     const axSendAmount = document.getElementById("axSendAmount");
     const sendAxBtn = document.getElementById("sendAxBtn");
-
     const copyFeeWalletBtn = document.getElementById("copyFeeWalletBtn");
+
+    const presaleSuccessCard = document.getElementById("presaleSuccessCard");
+    const presaleSuccessTitle = document.getElementById("presaleSuccessTitle");
+    const presaleSuccessText = document.getElementById("presaleSuccessText");
 
     let connectedAccount = null;
     let browserProvider = null;
     let readProvider = null;
+
+    (function cleanTrackingParams() {
+      try {
+        const url = new URL(window.location.href);
+        const paramsToRemove = [
+          "utm_source","utm_medium","utm_campaign","utm_term","utm_content",
+          "gclid","fbclid","mc_cid","mc_eid"
+        ];
+        let changed = false;
+
+        paramsToRemove.forEach((key) => {
+          if (url.searchParams.has(key)) {
+            url.searchParams.delete(key);
+            changed = true;
+          }
+        });
+
+        if (changed) {
+          const cleanUrl = url.pathname + (url.search ? url.search : "") + (url.hash ? url.hash : "");
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      } catch (e) {
+        console.error("URL cleanup failed:", e);
+      }
+    })();
 
     function isMobileDevice() {
       return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -2529,9 +2092,7 @@
     async function handleMissingProvider() {
       if (isMobileDevice()) {
         const goMetaMask = window.confirm("No wallet provider detected. Open this page in MetaMask Mobile?");
-        if (goMetaMask) {
-          openMetaMaskMobile();
-        }
+        if (goMetaMask) openMetaMaskMobile();
       } else {
         alert("No wallet provider detected.");
       }
@@ -2539,10 +2100,18 @@
     }
 
     function getReadProvider() {
-      if (!readProvider) {
-        readProvider = new ethers.providers.JsonRpcProvider(BSC_RPC);
+      if (readProvider) return readProvider;
+
+      for (const rpc of BSC_RPCS) {
+        try {
+          readProvider = new ethers.providers.JsonRpcProvider(rpc);
+          return readProvider;
+        } catch (e) {
+          console.error("RPC init failed:", rpc, e);
+        }
       }
-      return readProvider;
+
+      throw new Error("No available BSC RPC provider.");
     }
 
     function safeShort(address) {
@@ -2600,6 +2169,13 @@
         : "Connect wallet to view your receive address.";
     }
 
+    function showPresaleSuccessCard(axAmount) {
+      presaleSuccessTitle.textContent = "Purchase Successful";
+      presaleSuccessText.textContent =
+        `Congratulations. You have successfully purchased ${formatNumber(axAmount, 2)} AX. Your tokens will be sent to the wallet used for payment on the distribution date. Please follow announcements on our official channels.`;
+      presaleSuccessCard.classList.add("show");
+    }
+
     async function ensureBscNetwork() {
       if (!window.ethereum) return false;
 
@@ -2624,7 +2200,7 @@
                 symbol: "BNB",
                 decimals: 18
               },
-              rpcUrls: [BSC_RPC],
+              rpcUrls: BSC_RPCS,
               blockExplorerUrls: ["https://bscscan.com"]
             }]
           });
@@ -2669,12 +2245,9 @@
       resetBalancesUI();
     }
 
-    async function getErc20Balance(provider, tokenAddress, wallet) {
+    async function getErc20Balance(provider, tokenAddress, wallet, decimals = 18) {
       const contract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
-      const [balance, decimals] = await Promise.all([
-        contract.balanceOf(wallet),
-        contract.decimals()
-      ]);
+      const balance = await contract.balanceOf(wallet);
       return Number(ethers.utils.formatUnits(balance, decimals));
     }
 
@@ -2689,8 +2262,8 @@
 
         const [bnbWei, axBal, usdtBal] = await Promise.all([
           provider.getBalance(connectedAccount),
-          getErc20Balance(provider, TOKEN_META.AX.address, connectedAccount),
-          getErc20Balance(provider, TOKEN_META.USDT.address, connectedAccount)
+          getErc20Balance(provider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals),
+          getErc20Balance(provider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals)
         ]);
 
         const bnbBal = Number(ethers.utils.formatEther(bnbWei));
@@ -2700,20 +2273,40 @@
         usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
       } catch (error) {
         console.error("Balance load error:", error);
-        axBalanceEl.textContent = "Error";
-        bnbBalanceEl.textContent = "Error";
-        usdtBalanceEl.textContent = "Error";
+
+        try {
+          readProvider = null;
+          const fallbackProvider = getReadProvider();
+
+          const [bnbWei, axBal, usdtBal] = await Promise.all([
+            fallbackProvider.getBalance(connectedAccount),
+            getErc20Balance(fallbackProvider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals),
+            getErc20Balance(fallbackProvider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals)
+          ]);
+
+          const bnbBal = Number(ethers.utils.formatEther(bnbWei));
+
+          axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
+          bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
+          usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
+        } catch (fallbackError) {
+          console.error("Fallback balance load error:", fallbackError);
+          axBalanceEl.textContent = "0 AX";
+          bnbBalanceEl.textContent = "0 BNB";
+          usdtBalanceEl.textContent = "0 USDT";
+        }
       }
     }
 
     async function loadFeeWalletBalance() {
       try {
+        readProvider = null;
         const provider = getReadProvider();
-        const feeAxBal = await getErc20Balance(provider, TOKEN_META.AX.address, FEE_WALLET);
+        const feeAxBal = await getErc20Balance(provider, TOKEN_META.AX.address, FEE_WALLET, TOKEN_META.AX.decimals);
         feeWalletAxBalanceEl.textContent = `${formatNumber(feeAxBal, 4)} AX`;
       } catch (error) {
         console.error("Fee wallet load error:", error);
-        feeWalletAxBalanceEl.textContent = "Unavailable";
+        feeWalletAxBalanceEl.textContent = "0 AX";
       }
     }
 
@@ -2758,6 +2351,9 @@
         });
 
         await tx.wait();
+
+        const purchasedAx = amount * PRESALE_RATE;
+        showPresaleSuccessCard(purchasedAx);
 
         buyAxBtn.textContent = "Transaction Sent";
         setTimeout(() => {
@@ -2840,9 +2436,7 @@
         const signer = provider.getSigner();
         const tokenContract = new ethers.Contract(AXION_CONTRACT, ERC20_ABI, signer);
 
-        const decimals = await tokenContract.decimals();
-        const parsedAmount = ethers.utils.parseUnits(String(amount), decimals);
-
+        const parsedAmount = ethers.utils.parseUnits(String(amount), TOKEN_META.AX.decimals);
         const tx = await tokenContract.transfer(to, parsedAmount);
         await tx.wait();
 
@@ -2866,15 +2460,30 @@
 
     async function initExistingWalletConnection() {
       if (!window.ethereum) return;
+
       try {
         const accounts = await window.ethereum.request({ method: "eth_accounts" });
+
         if (accounts?.length) {
           connectedAccount = accounts[0];
           browserProvider = new ethers.providers.Web3Provider(window.ethereum);
+
+          try {
+            const chainIdHex = await window.ethereum.request({ method: "eth_chainId" });
+            const currentChainId = parseInt(chainIdHex, 16);
+
+            if (currentChainId !== CHAIN_ID_BSC) {
+              resetBalancesUI();
+            } else {
+              registerSessionWallet(connectedAccount);
+              await loadConnectedWalletBalances();
+            }
+          } catch (e) {
+            console.error("Chain check failed:", e);
+          }
+
           updateWalletButton();
           updateReceiveUI();
-          registerSessionWallet(connectedAccount);
-          await loadConnectedWalletBalances();
         }
       } catch (error) {
         console.error(error);
