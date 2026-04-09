@@ -473,8 +473,15 @@
 
     .dashboard-grid,.split-2{
       display:grid;
-      grid-template-columns:1.15fr .85fr;
       gap:22px;
+    }
+
+    .dashboard-grid{
+      grid-template-columns:1fr;
+    }
+
+    .split-2{
+      grid-template-columns:1.15fr .85fr;
     }
 
     .token-line{
@@ -990,7 +997,7 @@
   </svg>
 
   <script>
-    const AXION_CONTRACT = "0x0F18990414D8f58890301ded2C371F2619C67896";
+    const AXION_CONTRACT = "0x0B9378b8618CF6617818C307a9facDEFa978967d";
     const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
     const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
     const PRESALE_RATE = 10000;
@@ -1085,7 +1092,7 @@
               <a class="btn btn-secondary" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
               <a class="btn btn-buy" href="#presale">BUY AX</a>
               <button class="btn btn-secondary" id="addTokenBtn" type="button">Add AX to Wallet</button>
-              <a class="btn btn-secondary" href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener noreferrer">View on BscScan</a>
+              <a class="btn btn-secondary" href="https://bscscan.com/token/0x0B9378b8618CF6617818C307a9facDEFa978967d" target="_blank" rel="noopener noreferrer">View on BscScan</a>
             </div>
 
             <div class="hero-stats">
@@ -1109,67 +1116,6 @@
           </div>
 
           <div class="hero-side-stack reveal">
-            <article class="card">
-              <div class="card-inner">
-                <div class="tag">Live Ecosystem Wallet</div>
-
-                <div class="title-row">
-                  <div class="icon-badge">
-                    <svg viewBox="0 0 24 24">
-                      <rect x="3" y="7" width="18" height="10" rx="2"/>
-                      <path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/>
-                      <circle cx="16.5" cy="12" r=".8" fill="currentColor" stroke="none"/>
-                    </svg>
-                  </div>
-                  <h3>Ecosystem Balance</h3>
-                </div>
-
-                <div class="feature-list">
-                  <div class="feature">
-                    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px;">
-                      <strong style="margin:0;">Wallet Address</strong>
-                      <button id="copyFeeWalletBtn" type="button" aria-label="Copy ecosystem wallet address" class="icon-copy-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                          <path d="M9 9.75A2.25 2.25 0 0 1 11.25 7.5h7.5A2.25 2.25 0 0 1 21 9.75v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5A2.25 2.25 0 0 1 9 17.25v-7.5Z" stroke="currentColor" stroke-width="1.7"/>
-                          <path d="M15 7.5V6.75A2.25 2.25 0 0 0 12.75 4.5h-7.5A2.25 2.25 0 0 0 3 6.75v7.5a2.25 2.25 0 0 0 2.25 2.25H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                        </svg>
-                      </button>
-                    </div>
-                    <p id="feeWalletAddressText" style="word-break:break-all;">0xd543A36c00C478D211f9eB99b45B839474cea384</p>
-                  </div>
-                  <div class="feature">
-                    <strong>Live AX Balance</strong>
-                    <p id="feeWalletAxBalance">Loading...</p>
-                  </div>
-                </div>
-
-                <div class="social-links">
-                  <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">
-                    <span>Telegram</span>
-                    <span>@axiondefi</span>
-                  </a>
-                  <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">
-                    <span>X</span>
-                    <span>@axiondefi</span>
-                  </a>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="dashboard">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Dashboard</div>
-            <h2>The branded <span class="gradient-title">AXION interface layer.</span></h2>
-          </div>
-        </div>
-
-        <div class="dashboard-grid">
           <article class="card reveal">
             <div class="card-inner">
               <div class="tag">Wallet Lite</div>
@@ -1258,23 +1204,49 @@
                   </div>
                 </div>
               </div>
+
+              <div class="social-links">
+                <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">
+                  <span>Telegram</span>
+                  <span>@axiondefi</span>
+                </a>
+                <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">
+                  <span>X</span>
+                  <span>@axiondefi</span>
+                </a>
+              </div>
             </div>
           </article>
 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dashboard">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Dashboard</div>
+            <h2>The branded <span class="gradient-title">AXION interface layer.</span></h2>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
           <article class="card reveal" id="presale">
             <div class="card-inner">
               <div class="tag">Highlighted Presale</div>
 
               <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="7"/>
-                    <path d="M8.5 12h7M12 8.5v7"/>
-                    <path d="M5 5l2 2M17 17l2 2"/>
-                  </svg>
+                <div class="icon-badge" style="padding:0; overflow:hidden;">
+                  <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
                 </div>
                 <h3>AXION Presale</h3>
               </div>
+
+              <p style="margin-top:6px; margin-bottom:0; max-width:760px;">
+                Secure early allocation access for AXION on BNB Smart Chain. The presale panel remains in the same design language, now expanded for stronger focus after the wallet card relocation.
+              </p>
 
               <div class="presale-box">
                 <div class="presale-row"><strong>Rate</strong><span>10,000 AX = 1 BNB</span></div>
@@ -2013,7 +1985,7 @@
           <a href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">X</a>
           <a href="#whitepaper">Whitepaper</a>
           <a href="#presale">BUY AX</a>
-          <a href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener noreferrer">BscScan</a>
+          <a href="https://bscscan.com/token/0x0B9378b8618CF6617818C307a9facDEFa978967d" target="_blank" rel="noopener noreferrer">BscScan</a>
         </div>
       </div>
     </div>
@@ -2032,7 +2004,6 @@
     const axBalanceEl = document.getElementById("axBalance");
     const bnbBalanceEl = document.getElementById("bnbBalance");
     const usdtBalanceEl = document.getElementById("usdtBalance");
-    const feeWalletAxBalanceEl = document.getElementById("feeWalletAxBalance");
     const walletCountLiveEl = document.getElementById("walletCountLive");
 
     const connectReceiveBtn = document.getElementById("connectReceiveBtn");
@@ -2041,7 +2012,6 @@
     const axSendTo = document.getElementById("axSendTo");
     const axSendAmount = document.getElementById("axSendAmount");
     const sendAxBtn = document.getElementById("sendAxBtn");
-    const copyFeeWalletBtn = document.getElementById("copyFeeWalletBtn");
 
     const presaleSuccessCard = document.getElementById("presaleSuccessCard");
     const presaleSuccessTitle = document.getElementById("presaleSuccessTitle");
@@ -2298,17 +2268,6 @@
       }
     }
 
-    async function loadFeeWalletBalance() {
-      try {
-        readProvider = null;
-        const provider = getReadProvider();
-        const feeAxBal = await getErc20Balance(provider, TOKEN_META.AX.address, FEE_WALLET, TOKEN_META.AX.decimals);
-        feeWalletAxBalanceEl.textContent = `${formatNumber(feeAxBal, 4)} AX`;
-      } catch (error) {
-        console.error("Fee wallet load error:", error);
-        feeWalletAxBalanceEl.textContent = "0 AX";
-      }
-    }
 
     function updateBuyPreview() {
       const bnb = Number(bnbAmountInput.value || 0);
@@ -2625,22 +2584,6 @@
       }
     });
 
-    copyFeeWalletBtn?.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(FEE_WALLET);
-        copyFeeWalletBtn.innerHTML = "✓";
-        setTimeout(() => {
-          copyFeeWalletBtn.innerHTML = `
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M9 9.75A2.25 2.25 0 0 1 11.25 7.5h7.5A2.25 2.25 0 0 1 21 9.75v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5A2.25 2.25 0 0 1 9 17.25v-7.5Z" stroke="currentColor" stroke-width="1.7"/>
-              <path d="M15 7.5V6.75A2.25 2.25 0 0 0 12.75 4.5h-7.5A2.25 2.25 0 0 0 3 6.75v7.5a2.25 2.25 0 0 0 2.25 2.25H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-            </svg>
-          `;
-        }, 1400);
-      } catch {
-        alert("Copy failed.");
-      }
-    });
 
     sendAxBtn?.addEventListener("click", sendAXToken);
     bnbAmountInput.addEventListener("input", updateBuyPreview);
@@ -2688,13 +2631,11 @@
     updateWalletButton();
     updateReceiveUI();
     updateBuyPreview();
-    loadFeeWalletBalance();
     initExistingWalletConnection();
     initTokenomicsChart();
 
     setInterval(() => {
-      loadFeeWalletBalance();
-      if (connectedAccount) loadConnectedWalletBalances();
+        if (connectedAccount) loadConnectedWalletBalances();
     }, 20000);
   </script>
 </body>
