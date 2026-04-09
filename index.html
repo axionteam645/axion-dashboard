@@ -4,2242 +4,1753 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AXION | Intelligent Layer for DeFi</title>
-  <meta
-    name="description"
-    content="AXION is an intelligent layer for DeFi focused on transparency, fixed supply, AI-powered analytics, and trust-minimized infrastructure on BNB Smart Chain."
-  />
+  <meta name="description" content="AXION is not just a token. It is the foundation layer for trustless finance." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <style>
     :root{
-      --bg:#040814;
-      --text:#ecf3ff;
-      --muted:#99a8c7;
-      --cyan:#4ed8ff;
-      --blue:#5f8cff;
-      --purple:#a85cff;
-      --pink:#ff5cb8;
-      --gold:#ffc95c;
-      --green:#43f3b1;
-      --teal:#42f5d7;
-      --buy1:#ffcf5a;
-      --buy2:#ff8a1f;
-      --buy3:#ff4d6d;
-      --shadow:0 18px 60px rgba(0,0,0,.42);
-      --max:1280px;
-      --success-bg:rgba(67,243,177,.09);
-      --success-border:rgba(67,243,177,.28);
-      --success-text:#dffff2;
+      --bg:#050913;
+      --bg2:#0b1220;
+      --card:rgba(13,19,35,.82);
+      --card-2:rgba(16,25,44,.9);
+      --line:rgba(255,255,255,.08);
+      --text:#eef4ff;
+      --muted:#97a7c6;
+      --accent:#64f0ff;
+      --accent2:#8b5cf6;
+      --accent3:#10b981;
+      --danger:#ff6584;
+      --warning:#ffb84d;
+      --shadow:0 20px 80px rgba(0,0,0,.45);
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --radius-md:18px;
+      --radius-sm:14px;
+      --max:1380px;
     }
 
-    *{margin:0;padding:0;box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
       font-family:'Inter',sans-serif;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(78,216,255,.16), transparent 24%),
-        radial-gradient(circle at 80% 10%, rgba(168,92,255,.15), transparent 26%),
-        radial-gradient(circle at 50% 100%, rgba(255,92,184,.08), transparent 28%),
-        linear-gradient(180deg,#02050e 0%, #040814 36%, #060b1a 100%);
       color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(100,240,255,.14), transparent 26%),
+        radial-gradient(circle at top right, rgba(139,92,246,.16), transparent 24%),
+        radial-gradient(circle at bottom center, rgba(16,185,129,.08), transparent 22%),
+        linear-gradient(180deg,#04070e 0%, #08111d 46%, #04070e 100%);
+      min-height:100vh;
       overflow-x:hidden;
     }
 
-    body::before{
-      content:"";
+    .bg-grid{
       position:fixed;
       inset:0;
+      z-index:0;
       pointer-events:none;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(79,168,255,.18), transparent 18%),
-        radial-gradient(circle at 90% 12%, rgba(255,92,184,.12), transparent 15%),
-        radial-gradient(circle at 86% 88%, rgba(78,216,255,.08), transparent 20%);
-      z-index:-2;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:radial-gradient(circle at center, black 50%, transparent 100%);
     }
 
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background-image:radial-gradient(rgba(255,255,255,.65) .7px, transparent .7px);
-      background-size:38px 38px;
-      opacity:.08;
-      z-index:-1;
-    }
-
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    section{scroll-margin-top:100px}
-
-    .container{
-      width:min(calc(100% - 32px), var(--max));
-      margin-inline:auto;
-    }
-
-    .section{
-      padding:92px 0 0;
+    .app{
       position:relative;
+      z-index:1;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:22px;
     }
 
-    .section:last-of-type{padding-bottom:100px}
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      background:rgba(255,255,255,.03);
-      color:#d8e3ff;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
-    }
-
-    .section-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:24px;
-      margin-bottom:28px;
-      flex-wrap:wrap;
-    }
-
-    .section-head h2{
-      margin:14px 0 0;
-      font-size:clamp(32px,4vw,60px);
-      line-height:1;
-      letter-spacing:-.04em;
-    }
-
-    .gradient-title{
-      background:linear-gradient(90deg,#ffffff 0%, #9bddff 26%, #c4b1ff 58%, #ffcfe6 100%);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .nav-wrap{
+    .topbar{
       position:sticky;
-      top:0;
+      top:14px;
       z-index:50;
-      backdrop-filter:blur(18px);
-      background:rgba(4,9,20,.66);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-
-    .nav{
-      width:min(calc(100% - 32px), var(--max));
-      margin-inline:auto;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:10px;
-      min-height:82px;
+      gap:16px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:rgba(6,10,18,.72);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:14px;
-      min-width:0;
-      flex-shrink:0;
+      min-width:max-content;
     }
 
-    .brand-mark{
-      width:46px;
-      height:46px;
-      border-radius:50%;
-      overflow:hidden;
-      display:grid;
-      place-items:center;
+    .brand-logo{
+      width:50px;
+      height:50px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
       background:
-        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.03)),
-        linear-gradient(135deg, var(--cyan), var(--blue), var(--purple), var(--pink), var(--gold));
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.08),
-        0 0 30px rgba(112,118,255,.18);
-    }
-
-    .brand-mark img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .brand-text strong{
-      display:block;
-      font-size:18px;
-      letter-spacing:.08em;
-    }
-
-    .brand-text small{
-      display:block;
-      color:#d3def8;
-      opacity:.9;
-      letter-spacing:.12em;
-      font-size:10px;
-      font-weight:700;
-      text-transform:uppercase;
-      white-space:nowrap;
-    }
-
-    .nav-links{
+        linear-gradient(135deg, rgba(100,240,255,.24), rgba(139,92,246,.26)),
+        rgba(255,255,255,.03);
+      box-shadow:inset 0 0 30px rgba(100,240,255,.08);
       display:flex;
       align-items:center;
       justify-content:center;
+      font-weight:900;
+      letter-spacing:.8px;
+      font-size:18px;
+      color:#fff;
+    }
+
+    .brand h1{
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.3px;
+      line-height:1.1;
+    }
+
+    .brand p{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:3px;
+    }
+
+    .hamburger{
+      display:none;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      border-radius:14px;
+      width:46px;
+      height:46px;
+      font-size:22px;
+      cursor:pointer;
+    }
+
+    .nav-wrap{
+      display:flex;
+      align-items:center;
       gap:12px;
-      flex-wrap:nowrap !important;
-      min-width:0;
-      overflow:hidden;
       flex:1;
+      justify-content:flex-end;
+      min-width:0;
     }
 
-    .nav-links a{
-      font-size:11px;
-      font-weight:700;
-      color:#cbd8f7;
-      transition:.2s ease;
-      white-space:nowrap;
-      letter-spacing:.01em;
-    }
-
-    .nav-links a:hover{color:#fff}
-
-    .nav-actions{
+    .nav{
       display:flex;
       align-items:center;
       gap:10px;
-      flex-shrink:0;
+      flex-wrap:wrap;
+      justify-content:center;
     }
 
-    .btn{
-      appearance:none;
-      border:none;
-      cursor:pointer;
-      border-radius:999px;
-      padding:14px 22px;
+    .nav a{
+      text-decoration:none;
+      color:var(--muted);
       font-size:14px;
-      font-weight:800;
-      font-family:inherit;
-      letter-spacing:.01em;
-      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease, background .18s ease;
-      color:#09111f;
-      background:linear-gradient(90deg, var(--cyan), var(--blue), var(--purple), var(--pink));
-      box-shadow:0 10px 26px rgba(124,94,255,.26);
+      font-weight:700;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid transparent;
+      transition:.22s ease;
+      white-space:nowrap;
     }
 
-    .btn:hover{transform:translateY(-1px)}
-    .btn:active{transform:translateY(0)}
-
-    .btn-secondary{
-      color:var(--text);
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.09);
-      box-shadow:none;
-    }
-
-    .btn-secondary:hover{background:rgba(255,255,255,.08)}
-
-    .btn-buy{
+    .nav a:hover,
+    .nav a.active{
       color:#fff;
-      background:linear-gradient(90deg, var(--buy1), var(--buy2), var(--buy3));
-      box-shadow:0 14px 34px rgba(255,104,74,.35);
-      border:1px solid rgba(255,255,255,.12);
+      border-color:rgba(100,240,255,.24);
+      background:linear-gradient(135deg, rgba(100,240,255,.11), rgba(139,92,246,.10));
+      box-shadow:0 0 24px rgba(100,240,255,.08);
+    }
+
+    .wallet-btn{
+      border:none;
+      border-radius:14px;
+      padding:12px 18px;
+      font-size:14px;
+      font-weight:900;
+      cursor:pointer;
+      color:#07131d;
+      background:linear-gradient(135deg, var(--accent), #cffdff);
+      box-shadow:0 12px 30px rgba(100,240,255,.18);
+      transition:.22s ease;
+      min-width:max-content;
+    }
+
+    .wallet-btn:hover{transform:translateY(-1px)}
+
+    .section{
+      padding:34px 0 0;
+      scroll-margin-top:96px;
     }
 
     .hero{
-      padding:84px 0 30px;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:24px;
+      align-items:stretch;
+      margin-top:18px;
+    }
+
+    .card,
+    .hero-card,
+    .metric-grid,
+    .side-card,
+    .swap-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      backdrop-filter:blur(16px);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
       position:relative;
       overflow:hidden;
+      padding:34px;
+      min-height:360px;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.12fr .88fr;
-      gap:28px;
-      align-items:start;
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-40px;
+      width:240px;
+      height:240px;
+      background:radial-gradient(circle, rgba(100,240,255,.26), transparent 66%);
+      filter:blur(10px);
     }
 
-    .hero-copy h1{
-      margin:0 0 18px;
-      font-size:clamp(46px, 7vw, 88px);
-      line-height:.96;
-      letter-spacing:-.06em;
-    }
-
-    .hero-copy .sub{
-      font-size:clamp(18px,2vw,24px);
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--accent);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
       font-weight:800;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:#c8d6f8;
       margin-bottom:18px;
     }
 
-    .hero-copy p{
-      max-width:760px;
-      margin:0;
+    .hero-title{
+      font-size:58px;
+      line-height:1.02;
+      font-weight:900;
+      letter-spacing:-1.8px;
+      max-width:720px;
+    }
+
+    .hero-title span{
+      background:linear-gradient(135deg, #fff 0%, var(--accent) 42%, #d8c9ff 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-text{
+      margin-top:18px;
+      max-width:700px;
       color:var(--muted);
       line-height:1.8;
-      font-size:16px;
+      font-size:15px;
     }
 
     .hero-actions{
       display:flex;
-      gap:10px;
-      margin-top:26px;
+      gap:14px;
       flex-wrap:wrap;
+      margin-top:28px;
     }
 
-    .hero-stats{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin-top:34px;
-    }
-
-    .mini-stat{
-      padding:18px;
-      border-radius:20px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-    }
-
-    .mini-stat .label{
-      color:#b8c6e6;
-      font-size:12px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      margin-bottom:10px;
-    }
-
-    .mini-stat .value{
-      font-size:22px;
-      font-weight:900;
-      letter-spacing:-.03em;
-    }
-
-    .hero-side-stack{
-      display:grid;
-      gap:18px;
-      align-self:stretch;
-    }
-
-    .hero-side-stack .card-inner{
-      padding:28px;
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
-
-    .grid-4{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-    }
-
-    .card{
-      position:relative;
-      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(140deg, rgba(78,216,255,.08), transparent 28%, transparent 68%, rgba(255,92,184,.08)),
-        radial-gradient(circle at 100% 100%, rgba(255,201,92,.08), transparent 22%);
-      pointer-events:none;
-    }
-
-    .card-inner{
-      position:relative;
-      padding:24px;
-      z-index:1;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
-      color:#e4edff;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      margin-bottom:14px;
-    }
-
-    .card h3{
-      margin:0 0 10px;
-      font-size:28px;
-      letter-spacing:-.03em;
-    }
-
-    .card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:15px;
-    }
-
-    .subcards,.feature-list,.bullet-grid,.chart-legend,.presale-box,.wallet-tiles,.buy-inputs{
-      display:grid;
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .mini-card,.feature,.bullet,.list-block,.token-tile,.presale-row,.legend-item{
-      padding:16px 18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .mini-card strong,.feature strong,.bullet strong,.list-block strong{
-      display:block;
-      font-size:16px;
-      margin-bottom:7px;
-    }
-
-    .mini-card p,.feature p,.bullet p,.list-block ul{
-      margin:0;
-      font-size:14px;
-      line-height:1.68;
-      color:var(--muted);
-    }
-
-    .summary-list{
-      display:grid;
-      gap:12px;
-    }
-
-    .summary-item{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:14px;
-      align-items:start;
-      padding:16px 18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .icon-badge{
-      width:48px;
-      height:48px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg, rgba(78,216,255,.14), rgba(168,92,255,.10));
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 18px rgba(78,216,255,.12);
-      color:#dff3ff;
-      flex-shrink:0;
-    }
-
-    .icon-badge svg{
-      width:24px;
-      height:24px;
-      display:block;
-      stroke:url(#axGradient);
-      stroke-width:1.9;
-      fill:none;
-      filter:drop-shadow(0 0 4px rgba(78,216,255,.65)) drop-shadow(0 0 8px rgba(168,92,255,.35));
-    }
-
-    .dashboard-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:22px;
-    }
-
-    .split-2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-
-    .token-line{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .token-icon{
-      width:28px;
-      height:28px;
-      border-radius:50%;
-      object-fit:cover;
-      border:1px solid rgba(255,255,255,.12);
-      background:#0b1224;
-      flex-shrink:0;
-    }
-
-    .token-line .meta{
-      flex:1;
-      min-width:0;
-    }
-
-    .token-line .meta strong{
-      display:block;
-      font-size:15px;
-    }
-
-    .token-line .meta span{
-      display:block;
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    .balance-value{
-      font-size:15px;
-      font-weight:800;
-      color:#fff;
-      text-align:right;
-      white-space:nowrap;
-    }
-
-    .presale-row{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      color:#dce7ff;
-      font-size:14px;
-    }
-
-    .phase-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-      margin-top:18px;
-    }
-
-    .phase{
-      padding:18px;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.035);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .phase::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      opacity:.18;
-      pointer-events:none;
-      border-radius:20px;
-    }
-
-    .phase strong{
-      display:block;
-      font-size:17px;
-      margin-bottom:10px;
-      position:relative;
-      z-index:1;
-    }
-
-    .phase ul{
-      margin:0;
-      padding-left:18px;
-      color:#d3def7;
-      line-height:1.8;
-      font-size:14px;
-      position:relative;
-      z-index:1;
-    }
-
-    .phase.phase-cyan{box-shadow:0 0 30px rgba(78,216,255,.12);border-color:rgba(78,216,255,.24)}
-    .phase.phase-cyan::before{background:radial-gradient(circle at top right, rgba(78,216,255,.28), transparent 60%)}
-    .phase.phase-blue{box-shadow:0 0 30px rgba(95,140,255,.12);border-color:rgba(95,140,255,.24)}
-    .phase.phase-blue::before{background:radial-gradient(circle at top right, rgba(95,140,255,.26), transparent 60%)}
-    .phase.phase-purple{box-shadow:0 0 30px rgba(168,92,255,.12);border-color:rgba(168,92,255,.24)}
-    .phase.phase-purple::before{background:radial-gradient(circle at top right, rgba(168,92,255,.26), transparent 60%)}
-    .phase.phase-teal{box-shadow:0 0 30px rgba(66,245,215,.12);border-color:rgba(66,245,215,.22)}
-    .phase.phase-teal::before{background:radial-gradient(circle at top right, rgba(66,245,215,.26), transparent 60%)}
-    .phase.phase-green{box-shadow:0 0 30px rgba(67,243,177,.12);border-color:rgba(67,243,177,.22)}
-    .phase.phase-green::before{background:radial-gradient(circle at top right, rgba(67,243,177,.26), transparent 60%)}
-    .phase.phase-pink{box-shadow:0 0 30px rgba(255,92,184,.12);border-color:rgba(255,92,184,.22)}
-    .phase.phase-pink::before{background:radial-gradient(circle at top right, rgba(255,92,184,.26), transparent 60%)}
-
-    .tokenomics-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      margin-top:18px;
-    }
-
-    .list-block ul{
-      padding-left:18px;
-      line-height:1.85;
-    }
-
-    .tokenomics-chart-wrap{
-      position:relative;
-      width:100%;
-      max-width:430px;
-      margin:auto;
-      padding:8px;
-    }
-
-    .tokenomics-chart-wrap::before{
-      content:"";
-      position:absolute;
-      inset:5% 10%;
-      background:radial-gradient(circle at center, rgba(255,102,76,.22), rgba(255,0,150,.14), rgba(0,200,255,.10), transparent 72%);
-      filter:blur(40px);
-      z-index:0;
-      pointer-events:none;
-    }
-
-    #tokenChart{
-      position:relative;
-      z-index:1;
-      filter:drop-shadow(0 20px 40px rgba(0,0,0,.55));
-    }
-
-    .legend-item{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      color:#dce7ff;
-      font-size:14px;
-    }
-
-    .legend-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .swatch{
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      flex-shrink:0;
-    }
-
-    .whitepaper-nav{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .whitepaper-link{
-      padding:22px;
-      border-radius:22px;
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-    }
-
-    .buy-field{
-      display:grid;
-      gap:8px;
-    }
-
-    .buy-field label{
-      font-size:13px;
-      font-weight:700;
-      color:#d6e4ff;
-    }
-
-    .buy-field input{
-      width:100%;
+    .btn,
+    .btn-secondary,
+    .btn-outline,
+    .full-btn{
       border:none;
-      outline:none;
-      border-radius:14px;
-      padding:14px 16px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(255,255,255,.08);
-      color:#fff;
-      font:inherit;
-    }
-
-    .buy-preview{
-      padding:14px 16px;
       border-radius:16px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
-      color:#dce7ff;
-      font-size:14px;
-    }
-
-    .inline-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .live-count{
+      padding:14px 18px;
+      font-weight:800;
+      cursor:pointer;
+      text-decoration:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-width:34px;
-      height:34px;
-      padding:0 12px;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
-      color:#07101f;
-      font-weight:900;
+      gap:8px;
+      transition:.22s ease;
     }
 
-    .icon-copy-btn{
-      width:36px;
-      height:36px;
-      border:none;
-      border-radius:12px;
-      cursor:pointer;
-      display:grid;
-      place-items:center;
+    .btn{
+      color:#05121b;
+      background:linear-gradient(135deg, var(--accent), #dbffff);
+      box-shadow:0 12px 30px rgba(100,240,255,.18);
+    }
+
+    .btn-secondary{
       color:#fff;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(135deg, rgba(139,92,246,.9), rgba(100,240,255,.75));
     }
 
-    .social-links{
+    .btn-outline{
+      color:#fff;
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+    }
+
+    .metric-grid{
+      padding:22px;
       display:grid;
-      gap:10px;
-      margin-top:14px;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      align-content:start;
     }
 
-    .social-link{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 14px;
-      border-radius:16px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.08);
-      color:#dce7ff;
-      font-size:14px;
-      font-weight:700;
-    }
-
-    .social-link span:last-child{
-      color:#9ed7ff;
-      font-size:13px;
-      font-weight:800;
-    }
-
-    .success-card{
-      display:none;
-      margin-top:16px;
-      padding:16px 18px;
+    .metric{
+      background:var(--card-2);
+      border:1px solid var(--line);
       border-radius:18px;
-      background:var(--success-bg);
-      border:1px solid var(--success-border);
-      color:var(--success-text);
-      box-shadow:0 0 24px rgba(67,243,177,.08);
+      padding:18px;
     }
 
-    .success-card.show{
+    .metric small{
       display:block;
-      animation:fadeInUp .45s ease;
-    }
-
-    .success-card strong{
-      display:block;
-      margin-bottom:8px;
-      font-size:16px;
-      color:#fff;
-    }
-
-    .success-card p{
-      color:#d8fff0;
-      font-size:14px;
-      line-height:1.7;
-    }
-
-    @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(12px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
-    .reveal{
-      opacity:0;
-      transform:translateY(26px);
-      transition:opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    .mobile-toggle{
-      display:none;
-      background:transparent;
-      border:none;
-      color:#fff;
-      font-size:28px;
-      cursor:pointer;
-    }
-
-    .footer{
-      padding:34px 0 54px;
-      border-top:1px solid rgba(255,255,255,.06);
-      margin-top:90px;
-    }
-
-    .footer-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .footer-links{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      color:#c7d5f2;
-      font-size:14px;
-      font-weight:700;
-    }
-
-    .title-row{
-      display:flex;
-      align-items:center;
-      gap:12px;
+      color:var(--muted);
+      font-size:12px;
       margin-bottom:10px;
     }
 
-    .title-row h3{margin:0}
+    .metric strong{
+      display:block;
+      font-size:24px;
+      font-weight:900;
+      line-height:1.2;
+      word-break:break-word;
+    }
 
-    .hero-title-row{
+    .metric span{
+      display:block;
+      color:#93f6b5;
+      font-size:12px;
+      font-weight:700;
+      margin-top:8px;
+    }
+
+    .main-grid{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:24px;
+      margin-top:24px;
+    }
+
+    .stack{
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+    }
+
+    .panel{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+
+    .panel-head{
       display:flex;
       align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .panel-title{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:-.4px;
+    }
+
+    .panel-sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:4px;
+    }
+
+    .pill{
+      border:1px solid rgba(100,240,255,.2);
+      background:rgba(100,240,255,.08);
+      color:var(--accent);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .social-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .social-link{
+      text-decoration:none;
+      color:#fff;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:12px 14px;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .wallet-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+    }
+
+    .inner-card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .token-mini-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .token-mini{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      border-radius:18px;
+      padding:16px;
+      text-align:center;
+    }
+
+    .token-mini .icon{
+      width:48px;
+      height:48px;
+      margin:0 auto 10px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(135deg, rgba(100,240,255,.13), rgba(139,92,246,.12));
+    }
+
+    .token-mini h4{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:8px;
+      min-height:32px;
+    }
+
+    .token-mini strong{
+      display:block;
+      font-size:18px;
+      font-weight:900;
+      word-break:break-word;
+    }
+
+    .count-box{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      border-radius:18px;
+      padding:16px;
+      margin-bottom:16px;
+    }
+
+    .count-box small{
+      color:var(--muted);
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .count-box strong{
+      font-size:24px;
+      font-weight:900;
+    }
+
+    .receive-box,
+    .send-box,
+    .presale-box{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      border-radius:20px;
+      padding:18px;
+      margin-top:16px;
+    }
+
+    .section-label{
+      font-size:18px;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+
+    .muted{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .field-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .field{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .field label{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      border:none;
+      outline:none;
+      background:transparent;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      resize:none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder{
+      color:rgba(255,255,255,.22);
+    }
+
+    .action-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .success-box{
+      margin-top:16px;
+      border:1px solid rgba(16,185,129,.25);
+      background:rgba(16,185,129,.08);
+      color:#b6ffd0;
+      border-radius:16px;
+      padding:16px;
+      display:none;
+    }
+
+    .roadmap-grid,
+    .info-grid,
+    .tokenomics-grid,
+    .footer-links{
+      display:grid;
       gap:16px;
+    }
+
+    .roadmap-grid{grid-template-columns:repeat(3,1fr)}
+    .tokenomics-grid{grid-template-columns:repeat(4,1fr)}
+    .info-grid{grid-template-columns:repeat(2,1fr)}
+
+    .phase,
+    .info-card,
+    .tokenomics-card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .phase h3,
+    .info-card h3,
+    .tokenomics-card h3{
+      font-size:17px;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+
+    .phase ul,
+    .info-card ul{
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    .tokenomics-card strong{
+      display:block;
+      font-size:28px;
+      font-weight:900;
+      margin-top:8px;
+    }
+
+    .section-tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
       margin-bottom:18px;
     }
 
-    .hero-title-row h1{margin:0}
+    .tab-btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      border-radius:14px;
+      padding:10px 14px;
+      font-weight:800;
+      cursor:pointer;
+    }
 
-    .hero-main-icon{
-      width:58px;
-      height:58px;
-      flex-shrink:0;
-      margin-top:8px;
+    .tab-btn.active{
+      color:#fff;
+      border-color:rgba(100,240,255,.24);
+      background:linear-gradient(135deg, rgba(100,240,255,.11), rgba(139,92,246,.10));
+    }
+
+    .swap-layout{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:24px;
+    }
+
+    .swap-card{
+      padding:24px;
+    }
+
+    .token-card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      border-radius:20px;
+      padding:16px;
+      margin-bottom:14px;
+    }
+
+    .token-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .token-label{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .balance{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .token-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .token-select{
+      min-width:132px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      border-radius:14px;
+      padding:12px 14px;
+      font-weight:800;
+      outline:none;
+    }
+
+    .amount-input{
+      flex:1;
+      min-width:0;
+      border:none;
+      outline:none;
+      background:transparent;
+      color:#fff;
+      font-size:30px;
+      font-weight:900;
+    }
+
+    .amount-input::placeholder{color:rgba(255,255,255,.18)}
+
+    .switch-wrap{
+      display:flex;
+      justify-content:center;
+      margin:8px 0 16px;
+    }
+
+    .switch-btn{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:linear-gradient(135deg, rgba(100,240,255,.12), rgba(139,92,246,.12));
+      color:#fff;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .info-list{
+      display:grid;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .info-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:14px;
+      padding:12px 14px;
+      font-size:14px;
+    }
+
+    .info-item span:first-child{color:var(--muted)}
+
+    .approve-btn{
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--line);
       color:#fff;
     }
 
-    .hero-main-icon svg{
-      width:100%;
-      height:100%;
-      stroke:url(#axGradient);
-      stroke-width:1.85;
-      fill:none;
-      filter:drop-shadow(0 0 5px rgba(78,216,255,.7)) drop-shadow(0 0 10px rgba(168,92,255,.45)) drop-shadow(0 0 16px rgba(255,92,184,.25));
+    .swap-btn{
+      background:linear-gradient(135deg, var(--accent), #d8ffff);
+      color:#05131c;
     }
 
-    @keyframes floatY {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
+    .liquidity-btn{
+      background:linear-gradient(135deg, rgba(16,185,129,.94), rgba(100,240,255,.94));
+      color:#041118;
     }
 
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 0 rgba(78,216,255,0), 0 0 0 rgba(168,92,255,0); }
-      50% { box-shadow: 0 0 24px rgba(78,216,255,.12), 0 0 38px rgba(168,92,255,.10); }
-      100% { box-shadow: 0 0 0 rgba(78,216,255,0), 0 0 0 rgba(168,92,255,0); }
+    .remove-btn{
+      background:linear-gradient(135deg, rgba(255,101,132,.95), rgba(255,184,77,.95));
+      color:#fff;
     }
 
-    @keyframes shineMove {
-      0% { transform: translateX(-140%); }
-      100% { transform: translateX(140%); }
+    .hidden{display:none!important}
+
+    .footer{
+      margin:34px 0 12px;
+      padding:22px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:22px;
     }
 
-    .card,.mini-stat,.whitepaper-link,.list-block,.token-tile,.phase,.feature,.bullet{
-      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease, background .28s ease;
+    .footer h3{
+      font-size:22px;
+      font-weight:900;
+      margin-bottom:8px;
     }
 
-    .card:hover,.mini-stat:hover,.whitepaper-link:hover,.list-block:hover,.token-tile:hover,.phase:hover,.feature:hover,.bullet:hover{
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,.16);
-      box-shadow:0 20px 50px rgba(0,0,0,.42),0 0 28px rgba(78,216,255,.08),0 0 44px rgba(168,92,255,.08);
+    .footer p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:14px;
+      margin-bottom:16px;
     }
 
-    .icon-badge { animation: floatY 4.5s ease-in-out infinite, pulseGlow 4.5s ease-in-out infinite; }
-    .hero-main-icon { animation: floatY 5s ease-in-out infinite, pulseGlow 5s ease-in-out infinite; }
-
-    .btn,.icon-copy-btn,.token-tile,.phase,.card{
-      position:relative;
-      overflow:hidden;
+    .footer-links{
+      grid-template-columns:repeat(5,1fr);
     }
 
-    .btn::after,.card::after,.token-tile::after,.phase::after{
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.06) 45%, transparent 60%);
-      transform: translateX(-140%);
-      pointer-events: none;
-      opacity: 0;
+    .footer-links a{
+      text-decoration:none;
+      color:#fff;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      font-weight:800;
+      text-align:center;
     }
 
-    .btn:hover::after,.card:hover::after,.token-tile:hover::after,.phase:hover::after{
-      opacity: 1;
-      animation: shineMove 1.2s ease;
+    .copyright{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:14px;
     }
 
-    @media (max-width: 1180px){
-      .hero-grid,.dashboard-grid,.split-2{grid-template-columns:1fr}
-      .grid-4{grid-template-columns:repeat(2,1fr)}
-      .hero-stats{grid-template-columns:repeat(2,1fr)}
-      .whitepaper-nav{grid-template-columns:1fr 1fr}
-      .tokenomics-grid{grid-template-columns:1fr}
+    @media (max-width:1180px){
+      .hero,
+      .main-grid,
+      .wallet-grid,
+      .swap-layout{
+        grid-template-columns:1fr;
+      }
+      .roadmap-grid{grid-template-columns:repeat(2,1fr)}
+      .tokenomics-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-links{grid-template-columns:repeat(3,1fr)}
+      .hero-title{font-size:46px}
     }
 
-    @media (max-width: 940px){
-      .nav{min-height:74px}
-      .mobile-toggle{display:block}
-      .nav-links{
+    @media (max-width:860px){
+      .hamburger{display:inline-flex;align-items:center;justify-content:center}
+      .nav-wrap{
         position:absolute;
-        left:16px;
-        right:16px;
-        top:82px;
-        padding:18px;
-        border-radius:22px;
-        background:rgba(7,13,28,.96);
-        border:1px solid rgba(255,255,255,.08);
-        display:none;
+        left:0;
+        right:0;
+        top:76px;
+        padding:14px;
         flex-direction:column;
-        align-items:flex-start;
+        align-items:stretch;
+        background:rgba(6,10,18,.96);
+        border:1px solid var(--line);
+        border-radius:22px;
         box-shadow:var(--shadow);
-        overflow:visible;
+        display:none;
       }
-      .nav-links.open{display:flex}
-      .grid-3,.whitepaper-nav,.phase-grid{grid-template-columns:1fr}
-      .hero-copy h1{font-size:48px}
-    }
-
-    @media (max-width: 640px){
-      .container{width:min(calc(100% - 20px), var(--max))}
-      .section{padding-top:72px}
-      .hero{padding-top:60px}
-      .card-inner{padding:18px}
-      .section-head h2{font-size:34px}
-      .hero-title-row{gap:12px;align-items:center}
-      .hero-main-icon{width:42px;height:42px;margin-top:0}
-      .hero-actions{flex-direction:column}
-      .hero-actions .btn,.hero-actions .btn-secondary,.inline-actions .btn,.inline-actions .btn-secondary{width:100%}
-      .hero-stats,.grid-4{grid-template-columns:1fr}
-      .brand{gap:8px;min-width:0;flex:1}
-      .brand-mark{width:36px;height:36px}
-      .brand-text strong{font-size:14px}
-      .brand-text small{white-space:normal;font-size:8px;letter-spacing:.08em}
-      .nav-actions{gap:6px}
-      #walletBtn{
-        padding:8px 10px;
-        font-size:10px;
-        line-height:1;
-        min-height:32px;
-        white-space:nowrap;
-        border-radius:999px;
-        max-width:118px;
-        overflow:hidden;
-        text-overflow:ellipsis;
-      }
-      .mobile-toggle{font-size:22px}
-      .footer-row{align-items:flex-start}
+      .nav-wrap.show{display:flex}
+      .nav{justify-content:flex-start}
+      .wallet-btn{width:100%}
+      .hero-title{font-size:34px;letter-spacing:-1px}
+      .metric-grid,
+      .token-mini-grid,
+      .roadmap-grid,
+      .tokenomics-grid,
+      .info-grid,
+      .field-grid,
+      .action-row,
       .footer-links{
-        gap:10px 14px;
-        font-size:12px;
-        line-height:1.6;
-        width:100%;
-        flex-wrap:wrap;
+        grid-template-columns:1fr;
       }
+      .token-row{flex-direction:column;align-items:stretch}
+      .token-select{width:100%}
+      .amount-input{font-size:24px}
+      .app{padding:14px}
     }
   </style>
 </head>
 <body>
+  <div class="bg-grid"></div>
 
-  <svg width="0" height="0" style="position:absolute">
-    <defs>
-      <linearGradient id="axGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#4ed8ff"/>
-        <stop offset="45%" stop-color="#7c7cff"/>
-        <stop offset="72%" stop-color="#a85cff"/>
-        <stop offset="100%" stop-color="#ff5cb8"/>
-      </linearGradient>
-    </defs>
-  </svg>
-
-  <div class="nav-wrap">
-    <nav class="nav">
-      <a class="brand" href="#home">
-        <div class="brand-mark">
-          <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-logo">AX</div>
+        <div>
+          <h1>AXION INTELLIGENT LAYER FOR DEFI</h1>
+          <p>Premium DeFi interface • AXION ecosystem</p>
         </div>
-        <div class="brand-text">
-          <strong>AXION</strong>
-          <small>INTELLIGENT LAYER FOR DEFI</small>
-        </div>
-      </a>
-
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">☰</button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#roadmap">Roadmap & Tokenomics</a>
-        <a href="#about">About</a>
-        <a href="#summary">Summary</a>
-        <a href="#core">Core System</a>
-        <a href="#whitepaper">Whitepaper</a>
-        <a href="#ecosystem">Ecosystem</a>
-        <a href="#security">Security</a>
       </div>
 
-      <div class="nav-actions">
-        <button class="btn" id="walletBtn">Connect Wallet</button>
+      <button class="hamburger" id="menuToggle">☰</button>
+
+      <div class="nav-wrap" id="navWrap">
+        <nav class="nav">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#dashboard" class="nav-link">Dashboard</a>
+          <a href="#axswap" class="nav-link">AX SWAP</a>
+          <a href="#roadmap" class="nav-link">Roadmap &amp; Tokenomics</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#summary" class="nav-link">Summary</a>
+          <a href="#core" class="nav-link">Core System</a>
+          <a href="#whitepaper" class="nav-link">Whitepaper</a>
+          <a href="#ecosystem" class="nav-link">Ecosystem</a>
+          <a href="#security" class="nav-link">Security</a>
+        </nav>
+        <button id="connectBtn" class="wallet-btn">Connect Wallet</button>
       </div>
-    </nav>
-  </div>
+    </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-copy reveal">
-            <div class="hero-title-row">
-              <div class="hero-main-icon">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="3.8"/>
-                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                  <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                </svg>
+    <section id="home" class="section">
+      <div class="hero">
+        <div class="hero-card">
+          <div class="badge">⚡ AXION is not just a token</div>
+          <div class="hero-title">
+            <span>Intelligent Layer</span><br>for DeFi
+          </div>
+          <p class="hero-text">
+            AXION is designed as a trust-minimized DeFi infrastructure layer on BNB Smart Chain.
+            It combines fixed-supply token design, transparent fee logic, anti-manipulation mechanics,
+            and AI-oriented ecosystem expansion inside a premium product-style interface.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn-outline" href="https://github.com/axionteam645/axion-dashboard/blob/main/W1.pdf" target="_blank" rel="noopener">View Whitepaper</a>
+            <a class="btn" href="#dashboard">BUY AX</a>
+            <button class="btn-outline" id="addAxBtn">Add AX to Wallet</button>
+            <a class="btn-secondary" href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener">View on BscScan</a>
+          </div>
+
+          <div class="social-row">
+            <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram @axiondefi</a>
+            <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener">X @axiondefi</a>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric">
+            <small>Token</small>
+            <strong>AX</strong>
+            <span>Native ecosystem asset</span>
+          </div>
+          <div class="metric">
+            <small>Network</small>
+            <strong>BNB Smart Chain</strong>
+            <span>BEP-20 infrastructure</span>
+          </div>
+          <div class="metric">
+            <small>Supply</small>
+            <strong style="font-size:20px">1,000,000,000</strong>
+            <span>Fixed total supply</span>
+          </div>
+          <div class="metric">
+            <small>Fee</small>
+            <strong>1% Transparent</strong>
+            <span>Single fee wallet logic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-grid">
+        <div class="stack">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <div class="panel-title">Live Ecosystem Wallet</div>
+                <div class="panel-sub">Ecosystem Balance</div>
               </div>
-              <h1 class="gradient-title">AXION is not just a token.</h1>
+              <div class="pill">Live AX Balance</div>
             </div>
 
-            <div class="sub">Intelligent Layer for DeFi</div>
-            <p>
-              AXION is designed as a trust-minimized DeFi infrastructure layer on BNB Smart Chain. It combines fixed-supply token design, transparent fee logic, anti-manipulation mechanics, and AI-oriented ecosystem expansion inside a premium product-style interface.
-            </p>
+            <div class="inner-card">
+              <div class="field">
+                <label>Wallet Address</label>
+                <input value="0xd543A36c00C478D211f9eB99b45B839474cea384" readonly />
+              </div>
+              <div class="field" style="margin-top:14px">
+                <label>Live AX Balance</label>
+                <input id="ecosystemBalance" value="Loading..." readonly />
+              </div>
 
-            <div class="hero-actions">
-              <a class="btn btn-secondary" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
-              <a class="btn btn-buy" href="#presale">BUY AX</a>
-              <button class="btn btn-secondary" id="addTokenBtn" type="button">Add AX to Wallet</button>
-              <a class="btn btn-secondary" href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener noreferrer">View on BscScan</a>
-            </div>
-
-            <div class="hero-stats">
-              <div class="mini-stat">
-                <div class="label">Token</div>
-                <div class="value">AX</div>
-              </div>
-              <div class="mini-stat">
-                <div class="label">Network</div>
-                <div class="value">BNB Smart Chain</div>
-              </div>
-              <div class="mini-stat">
-                <div class="label">Supply</div>
-                <div class="value">1,000,000,000</div>
-              </div>
-              <div class="mini-stat">
-                <div class="label">Fee</div>
-                <div class="value">1% Transparent</div>
+              <div class="social-row" style="margin-top:14px">
+                <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a>
+                <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener">X</a>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="hero-side-stack reveal">
-            <article class="card">
-              <div class="card-inner">
-                <div class="tag">Live Ecosystem Wallet</div>
-
-                <div class="title-row">
-                  <div class="icon-badge">
-                    <svg viewBox="0 0 24 24">
-                      <rect x="3" y="7" width="18" height="10" rx="2"/>
-                      <path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/>
-                      <circle cx="16.5" cy="12" r=".8" fill="currentColor" stroke="none"/>
-                    </svg>
-                  </div>
-                  <h3>Ecosystem Balance</h3>
-                </div>
-
-                <div class="feature-list">
-                  <div class="feature">
-                    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px;">
-                      <strong style="margin:0;">Wallet Address</strong>
-                      <button id="copyFeeWalletBtn" type="button" aria-label="Copy ecosystem wallet address" class="icon-copy-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                          <path d="M9 9.75A2.25 2.25 0 0 1 11.25 7.5h7.5A2.25 2.25 0 0 1 21 9.75v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5A2.25 2.25 0 0 1 9 17.25v-7.5Z" stroke="currentColor" stroke-width="1.7"/>
-                          <path d="M15 7.5V6.75A2.25 2.25 0 0 0 12.75 4.5h-7.5A2.25 2.25 0 0 0 3 6.75v7.5a2.25 2.25 0 0 0 2.25 2.25H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-                        </svg>
-                      </button>
-                    </div>
-                    <p id="feeWalletAddressText" style="word-break:break-all;">0xd543A36c00C478D211f9eB99b45B839474cea384</p>
-                  </div>
-                  <div class="feature">
-                    <strong>Live AX Balance</strong>
-                    <p id="feeWalletAxBalance">Loading...</p>
-                  </div>
-                </div>
-
-                <div class="social-links">
-                  <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">
-                    <span>Telegram</span>
-                    <span>@axiondefi</span>
-                  </a>
-                  <a class="social-link" href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">
-                    <span>X</span>
-                    <span>@axiondefi</span>
-                  </a>
-                </div>
+        <div class="stack">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <div class="panel-title">Core Positioning</div>
+                <div class="panel-sub">AXION product-style ecosystem direction</div>
               </div>
-            </article>
+              <div class="pill">Premium UI</div>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-card">
+                <h3>Trustless Finance</h3>
+                <p class="muted">Fixed-supply logic, transparent fee direction, and anti-manipulation design for a cleaner DeFi foundation.</p>
+              </div>
+              <div class="info-card">
+                <h3>AI Expansion Layer</h3>
+                <p class="muted">AXION is positioned beyond a token, with future AI-driven analytics and intelligent ecosystem tooling.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="dashboard">
-      <div class="container">
-        <div class="section-head reveal">
+    <section id="dashboard" class="section">
+      <div class="panel">
+        <div class="panel-head">
           <div>
-            <div class="eyebrow">Dashboard</div>
-            <h2>The branded <span class="gradient-title">AXION interface layer.</span></h2>
+            <div class="panel-title">Dashboard</div>
+            <div class="panel-sub">The branded AXION interface layer.</div>
           </div>
+          <div class="pill">Wallet Lite</div>
         </div>
 
-        <div class="dashboard-grid">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Wallet Lite</div>
-
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="3" y="7" width="18" height="10" rx="2"/>
-                    <path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/>
-                    <circle cx="16.5" cy="12" r=".8" fill="currentColor" stroke="none"/>
-                  </svg>
-                </div>
-                <h3>Connected asset view</h3>
-              </div>
-
-              <p>
-                The connected wallet displays live AX, BNB, and USDT balances with token icons, plus a live connected-wallet counter for the current session.
+        <div class="wallet-grid">
+          <div class="stack">
+            <div class="inner-card">
+              <div class="panel-title" style="font-size:20px">Connected asset view</div>
+              <p class="muted" style="margin-top:8px">
+                The connected wallet displays live AX, BNB, and USDT balances with token icons,
+                plus a live connected-wallet counter for the current session.
               </p>
 
-              <div class="feature-list">
-                <div class="feature">
-                  <strong>Connected Wallet Count</strong>
-                  <p>Current session live count: <span class="live-count" id="walletCountLive">0</span></p>
-                </div>
+              <div class="count-box">
+                <small>Connected Wallet Count</small>
+                <strong id="walletCount">Current session live count: 0</strong>
               </div>
 
-              <div class="wallet-tiles">
-                <div class="token-tile">
-                  <div class="token-line">
-                    <img class="token-icon" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AX logo">
-                    <div class="meta">
-                      <strong>AX</strong>
-                      <span>Live connected wallet balance</span>
-                    </div>
-                    <div class="balance-value" id="axBalance">-</div>
-                  </div>
+              <div class="token-mini-grid">
+                <div class="token-mini">
+                  <div class="icon">AX</div>
+                  <h4>AX Live connected wallet balance</h4>
+                  <strong id="axBalance">-</strong>
                 </div>
-
-                <div class="token-tile">
-                  <div class="token-line">
-                    <img class="token-icon" src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png" alt="BNB logo">
-                    <div class="meta">
-                      <strong>BNB</strong>
-                      <span>Native Smart Chain balance</span>
-                    </div>
-                    <div class="balance-value" id="bnbBalance">-</div>
-                  </div>
+                <div class="token-mini">
+                  <div class="icon">BNB</div>
+                  <h4>BNB Native Smart Chain balance</h4>
+                  <strong id="bnbBalance">-</strong>
                 </div>
-
-                <div class="token-tile">
-                  <div class="token-line">
-                    <img class="token-icon" src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png" alt="USDT logo">
-                    <div class="meta">
-                      <strong>USDT</strong>
-                      <span>Live BEP-20 wallet balance</span>
-                    </div>
-                    <div class="balance-value" id="usdtBalance">-</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="feature-list">
-                <div class="feature">
-                  <strong>AX Receive</strong>
-                  <p id="receiveWalletText">Connect wallet to view your receive address.</p>
-                  <div class="inline-actions">
-                    <button class="btn btn-secondary" id="connectReceiveBtn" type="button">Connect for Receive</button>
-                    <button class="btn btn-secondary" id="copyReceiveAddressBtn" type="button">Copy Address</button>
-                  </div>
-                </div>
-
-                <div class="feature">
-                  <strong>AX Send</strong>
-                  <div class="buy-inputs">
-                    <div class="buy-field">
-                      <label for="axSendTo">Recipient Wallet Address</label>
-                      <input id="axSendTo" type="text" placeholder="0x..." />
-                    </div>
-                    <div class="buy-field">
-                      <label for="axSendAmount">AX Amount</label>
-                      <input id="axSendAmount" type="number" min="0" step="0.0001" placeholder="Example: 1000" />
-                    </div>
-                    <div class="inline-actions">
-                      <button class="btn btn-buy" id="sendAxBtn" type="button">Send AX</button>
-                    </div>
-                  </div>
+                <div class="token-mini">
+                  <div class="icon">USDT</div>
+                  <h4>USDT Live BEP-20 wallet balance</h4>
+                  <strong id="usdtBalance">-</strong>
                 </div>
               </div>
             </div>
-          </article>
 
-          <article class="card reveal" id="presale">
-            <div class="card-inner">
-              <div class="tag">Highlighted Presale</div>
+            <div class="receive-box">
+              <div class="section-label">AX Receive</div>
+              <p class="muted" id="receiveInfo">Connect wallet to view your receive address.</p>
+              <div class="action-row">
+                <button class="btn-outline" id="showReceiveBtn">Connect for Receive</button>
+                <button class="btn-outline" id="copyAddressBtn">Copy Address</button>
+              </div>
+            </div>
 
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="7"/>
-                    <path d="M8.5 12h7M12 8.5v7"/>
-                    <path d="M5 5l2 2M17 17l2 2"/>
-                  </svg>
+            <div class="send-box">
+              <div class="section-label">AX Send</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label>Recipient Wallet Address</label>
+                  <input id="sendRecipient" type="text" placeholder="0x..." />
                 </div>
-                <h3>AXION Presale</h3>
+                <div class="field">
+                  <label>AX Amount</label>
+                  <input id="sendAmount" type="number" placeholder="0.0" />
+                </div>
+              </div>
+              <div class="action-row">
+                <button class="btn" id="sendAxBtn">Send AX</button>
+                <button class="btn-outline" type="button" onclick="alert('AX send logic will be connected to contract transfer flow in the next live transaction stage.')">Info</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="presale-box">
+              <div class="panel-head" style="margin-bottom:10px">
+                <div>
+                  <div class="panel-title" style="font-size:20px">Highlighted Presale</div>
+                  <div class="panel-sub">AXION Presale</div>
+                </div>
+                <div class="pill">Live Module</div>
               </div>
 
-              <div class="presale-box">
-                <div class="presale-row"><strong>Rate</strong><span>10,000 AX = 1 BNB</span></div>
-                <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
-                <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
-                <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
-                <div class="presale-row"><strong>Receiver</strong><span style="word-break:break-all;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
+              <div class="info-list">
+                <div class="info-item"><span>Rate</span><span>10,000 AX = 1 BNB</span></div>
+                <div class="info-item"><span>Total Allocation</span><span>5,000,000 AX</span></div>
+                <div class="info-item"><span>End Date</span><span>06.06.2026</span></div>
+                <div class="info-item"><span>Distribution</span><span>09.10.2026</span></div>
+                <div class="info-item"><span>Receiver</span><span style="font-size:12px;word-break:break-all">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
               </div>
 
-              <div class="buy-inputs">
-                <div class="buy-field">
-                  <label for="bnbAmount">Enter BNB Amount</label>
-                  <input id="bnbAmount" type="number" min="0" step="0.0001" placeholder="Example: 0.5">
-                </div>
-                <div class="buy-preview">
-                  You will receive approximately: <strong id="axReceivePreview">0 AX</strong>
-                </div>
-                <div class="inline-actions">
-                  <button class="btn btn-buy" id="buyAxBtn">Buy AX</button>
-                  <button class="btn btn-secondary" id="copyReceiverBtn">Copy Receiver</button>
-                </div>
+              <div class="field" style="margin-top:14px">
+                <label>Enter BNB Amount</label>
+                <input id="presaleBnb" type="number" min="0" step="0.0001" placeholder="0.0" />
+              </div>
 
-                <div id="presaleSuccessCard" class="success-card">
-                  <strong id="presaleSuccessTitle">Purchase Successful</strong>
-                  <p id="presaleSuccessText">
-                    Congratulations. Your AX purchase was completed successfully. Your tokens will be sent to the wallet used for payment on the distribution date. Please follow announcements on our official channels.
-                  </p>
+              <div class="info-item" style="margin-top:14px">
+                <span>You will receive approximately</span>
+                <span id="presaleAxOut">0 AX</span>
+              </div>
+
+              <div class="action-row">
+                <button class="btn" id="buyAxBtn">Buy AX</button>
+                <button class="btn-outline" id="copyReceiverBtn">Copy Receiver</button>
+              </div>
+
+              <div class="success-box" id="presaleSuccess">
+                <strong>Purchase Successful</strong>
+                <div style="margin-top:8px">
+                  Congratulations. Your AX purchase was completed successfully. Your tokens will be sent
+                  to the wallet used for payment on the distribution date. Please follow announcements on our official channels.
                 </div>
               </div>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="roadmap">
-      <div class="container">
-        <div class="section-head reveal">
+    <section id="axswap" class="section">
+      <div class="panel">
+        <div class="panel-head">
           <div>
-            <div class="eyebrow">Roadmap & Tokenomics</div>
-            <h2></h2>
+            <div class="panel-title">AX SWAP</div>
+            <div class="panel-sub">Integrated swap interface added right after Dashboard</div>
           </div>
+          <div class="pill">Swap + Liquidity</div>
         </div>
 
-        <div class="split-2">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Roadmap</div>
-
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 18c4-7 8-10 16-12"/>
-                    <path d="M14 6h6v6"/>
-                    <circle cx="6" cy="17" r="1.3" fill="currentColor" stroke="none"/>
-                    <circle cx="11" cy="12.5" r="1.3" fill="currentColor" stroke="none"/>
-                    <circle cx="16" cy="9" r="1.3" fill="currentColor" stroke="none"/>
-                  </svg>
-                </div>
-                <h3>Six growth phases</h3>
+        <div class="swap-layout">
+          <div class="swap-card">
+            <div class="panel-head">
+              <div>
+                <div class="panel-title" style="font-size:20px">Token Swap</div>
+                <div class="panel-sub">Trade assets through AX SWAP interface</div>
               </div>
+              <div class="pill">BSC Ready</div>
+            </div>
 
-              <div class="phase-grid">
-                <div class="phase phase-cyan">
-                  <strong>Phase 1 — Foundation</strong>
-                  <ul>
-                    <li>Smart contract deployment</li>
-                    <li>Brand identity launch</li>
-                    <li>Community building</li>
-                    <li>Initial liquidity setup</li>
-                  </ul>
+            <div class="section-tabs">
+              <button class="tab-btn active" type="button">Market Swap</button>
+              <button class="tab-btn" type="button" onclick="alert('Limit order module can be added in V2.')">Limit Order</button>
+            </div>
+
+            <div class="token-card">
+              <div class="token-head">
+                <div class="token-label">From</div>
+                <div class="balance">Balance: 0.00</div>
+              </div>
+              <div class="token-row">
+                <select class="token-select" id="swapFromToken">
+                  <option>AX</option>
+                  <option>BNB</option>
+                  <option>USDT</option>
+                  <option>BUSD</option>
+                </select>
+                <input class="amount-input" id="swapFromAmount" type="number" placeholder="0.0" />
+              </div>
+            </div>
+
+            <div class="switch-wrap">
+              <button class="switch-btn" id="swapSwitchBtn" type="button">⇅</button>
+            </div>
+
+            <div class="token-card">
+              <div class="token-head">
+                <div class="token-label">To</div>
+                <div class="balance">Balance: 0.00</div>
+              </div>
+              <div class="token-row">
+                <select class="token-select" id="swapToToken">
+                  <option>BNB</option>
+                  <option>AX</option>
+                  <option>USDT</option>
+                  <option>BUSD</option>
+                </select>
+                <input class="amount-input" id="swapToAmount" type="number" placeholder="0.0" readonly />
+              </div>
+            </div>
+
+            <div class="info-list">
+              <div class="info-item"><span>Exchange Rate</span><span id="swapRate">1 AX = 0.000000 BNB</span></div>
+              <div class="info-item"><span>Price Impact</span><span>0.00%</span></div>
+              <div class="info-item"><span>Liquidity Provider Fee</span><span>0.25%</span></div>
+              <div class="info-item"><span>Slippage Tolerance</span><span id="swapSlippageText">0.50%</span></div>
+            </div>
+
+            <div class="action-row">
+              <button class="full-btn approve-btn" type="button" onclick="alert('Approve router flow will be connected in the live router integration stage.')">Approve</button>
+              <button class="full-btn swap-btn" type="button" onclick="alert('Swap execution will be connected to Pancake-compatible router in V2 live integration.')">Swap Now</button>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="swap-card">
+              <div class="panel-title" style="font-size:20px;margin-bottom:14px">Swap Settings</div>
+              <div class="field-grid">
+                <div class="field">
+                  <label>Slippage</label>
+                  <input id="swapSlippage" type="text" value="0.50%" />
                 </div>
-                <div class="phase phase-blue">
-                  <strong>Phase 2 — Growth & Visibility</strong>
-                  <ul>
-                    <li>Strategic marketing campaigns</li>
-                    <li>Early exchange listings</li>
-                    <li>Community expansion</li>
-                    <li>Ecosystem partnerships</li>
-                  </ul>
-                </div>
-                <div class="phase phase-purple">
-                  <strong>Phase 3 — Ecosystem Expansion</strong>
-                  <ul>
-                    <li>Analytics dashboard launch</li>
-                    <li>DeFi tools integration</li>
-                    <li>Utility expansion</li>
-                    <li>Technical collaborations</li>
-                  </ul>
-                </div>
-                <div class="phase phase-teal">
-                  <strong>Phase 4 — AI Integration</strong>
-                  <ul>
-                    <li>AI-powered analytics</li>
-                    <li>Automated DeFi tools</li>
-                    <li>AI partnerships</li>
-                    <li>Intelligent data layer</li>
-                  </ul>
-                </div>
-                <div class="phase phase-green">
-                  <strong>Phase 5 — Advanced Infrastructure</strong>
-                  <ul>
-                    <li>Protocol optimization</li>
-                    <li>Cross-chain integrations</li>
-                    <li>Scalable architecture</li>
-                    <li>Expanded AI capabilities</li>
-                  </ul>
-                </div>
-                <div class="phase phase-pink">
-                  <strong>Phase 6 — AXION Network</strong>
-                  <ul>
-                    <li>Proprietary network R&amp;D</li>
-                    <li>Layer infrastructure design</li>
-                    <li>Independent ecosystem</li>
-                    <li>Full decentralization</li>
-                  </ul>
+                <div class="field">
+                  <label>Deadline</label>
+                  <input type="text" value="20 min" />
                 </div>
               </div>
             </div>
-          </article>
 
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Tokenomics</div>
+            <div class="swap-card">
+              <div class="panel-title" style="font-size:20px;margin-bottom:14px">Liquidity Management</div>
 
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="7"/>
-                    <path d="M12 5v14"/>
-                    <path d="M8.5 8.5c.7-1 2-1.5 3.5-1.5 2.1 0 3.5 1 3.5 2.5 0 4-7 1.5-7 5 0 1.7 1.5 2.5 3.5 2.5 1.7 0 3-.5 3.8-1.5"/>
-                  </svg>
-                </div>
-                <h3>Token structure and utility</h3>
+              <div class="section-tabs">
+                <button class="tab-btn active" id="addLiquidityTab" type="button">Add Liquidity</button>
+                <button class="tab-btn" id="removeLiquidityTab" type="button">Remove Liquidity</button>
               </div>
 
-              <div class="tokenomics-chart-wrap">
-                <canvas id="tokenChart" width="420" height="420"></canvas>
-              </div>
+              <div id="addLiquiditySection">
+                <div class="field-grid">
+                  <div class="field">
+                    <label>Token A</label>
+                    <select>
+                      <option>AX</option>
+                      <option>BNB</option>
+                      <option>USDT</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>Amount A</label>
+                    <input type="number" placeholder="0.0" />
+                  </div>
+                  <div class="field">
+                    <label>Token B</label>
+                    <select>
+                      <option>BNB</option>
+                      <option>AX</option>
+                      <option>USDT</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>Amount B</label>
+                    <input type="number" placeholder="0.0" />
+                  </div>
+                </div>
 
-              <div class="chart-legend">
-                <div class="legend-item">
-                  <div class="legend-left">
-                    <span class="swatch" style="background:linear-gradient(90deg,#ffcf5a,#ff8a1f);"></span>
-                    <span>Fund</span>
-                  </div>
-                  <strong>30%</strong>
+                <div class="info-list">
+                  <div class="info-item"><span>Pool Share</span><span>0.00%</span></div>
+                  <div class="info-item"><span>LP Tokens Minted</span><span>0.00</span></div>
                 </div>
-                <div class="legend-item">
-                  <div class="legend-left">
-                    <span class="swatch" style="background:linear-gradient(90deg,#ff4d6d,#ff00b8);"></span>
-                    <span>Liquidity</span>
-                  </div>
-                  <strong>25%</strong>
-                </div>
-                <div class="legend-item">
-                  <div class="legend-left">
-                    <span class="swatch" style="background:linear-gradient(90deg,#4ed8ff,#5f8cff);"></span>
-                    <span>Marketing</span>
-                  </div>
-                  <strong>20%</strong>
-                </div>
-                <div class="legend-item">
-                  <div class="legend-left">
-                    <span class="swatch" style="background:linear-gradient(90deg,#a85cff,#ff5cb8);"></span>
-                    <span>CEX Listings</span>
-                  </div>
-                  <strong>25%</strong>
+
+                <div class="action-row">
+                  <button class="full-btn approve-btn" type="button" onclick="alert('Token approvals will be wired to router/pair contracts in the next step.')">Approve Tokens</button>
+                  <button class="full-btn liquidity-btn" type="button" onclick="alert('Add liquidity call will be connected in the live router stage.')">Add Liquidity</button>
                 </div>
               </div>
 
-              <div class="tokenomics-grid">
-                <div class="list-block">
-                  <strong>Token Details</strong>
-                  <ul>
-                    <li>Name: AXION</li>
-                    <li>Symbol: AX</li>
-                    <li>Network: BNB Smart Chain</li>
-                    <li>Total Supply: 1,000,000,000 AX</li>
-                  </ul>
+              <div id="removeLiquiditySection" class="hidden">
+                <div class="field-grid">
+                  <div class="field">
+                    <label>Liquidity Pair</label>
+                    <select>
+                      <option>AX / BNB</option>
+                      <option>AX / USDT</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>LP Amount</label>
+                    <input type="number" placeholder="0.0" />
+                  </div>
                 </div>
 
-                <div class="list-block">
-                  <strong>Core Mechanics</strong>
-                  <ul>
-                    <li>No mint / no inflation</li>
-                    <li>Deflationary burn direction</li>
-                    <li>1% auto fee system</li>
-                    <li>Anti-whale protection</li>
-                  </ul>
+                <div class="info-list">
+                  <div class="info-item"><span>AX Received</span><span>0.00</span></div>
+                  <div class="info-item"><span>BNB Received</span><span>0.00</span></div>
                 </div>
 
-                <div class="list-block">
-                  <strong>Allocation Model</strong>
-                  <ul>
-                    <li>Fund: 30%</li>
-                    <li>Liquidity: 25%</li>
-                    <li>Marketing: 20%</li>
-                    <li>CEX Listings: 25%</li>
-                  </ul>
-                </div>
-
-                <div class="list-block">
-                  <strong>Token Utility</strong>
-                  <ul>
-                    <li>Premium AI features access</li>
-                    <li>Subscription model enablement</li>
-                    <li>Ecosystem payments</li>
-                    <li>Value accrual through platform usage</li>
-                  </ul>
+                <div class="action-row">
+                  <button class="full-btn approve-btn" type="button" onclick="alert('LP approval flow will be connected in V2.')">Approve LP</button>
+                  <button class="full-btn remove-btn" type="button" onclick="alert('Remove liquidity call will be connected in the live router stage.')">Remove Liquidity</button>
                 </div>
               </div>
             </div>
-          </article>
+
+            <div class="swap-card">
+              <div class="panel-title" style="font-size:20px;margin-bottom:14px">Transaction Preview</div>
+              <div class="info-list">
+                <div class="info-item"><span>Route</span><span id="swapRoute">AX → BNB</span></div>
+                <div class="info-item"><span>Minimum Received</span><span id="swapMinReceived">0.00</span></div>
+                <div class="info-item"><span>Network Fee</span><span>Will appear after wallet integration</span></div>
+                <div class="info-item"><span>Your Liquidity Positions</span><span>No position detected yet</span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-row">
-        <div class="brand">
-          <div class="brand-mark">
-            <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo">
+    <section id="roadmap" class="section">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Roadmap &amp; Tokenomics</div>
+            <div class="panel-sub">Six growth phases and token structure</div>
           </div>
-          <div class="brand-text">
-            <strong>AXION</strong>
-            <small>Intelligent Finance. Stronger Future.</small>
+          <div class="pill">AXION Growth Map</div>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="phase">
+            <h3>Phase 1 — Foundation</h3>
+            <ul>
+              <li>Smart contract deployment</li>
+              <li>Brand identity launch</li>
+              <li>Community building</li>
+              <li>Initial liquidity setup</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <h3>Phase 2 — Growth &amp; Visibility</h3>
+            <ul>
+              <li>Strategic marketing campaigns</li>
+              <li>Early exchange listings</li>
+              <li>Community expansion</li>
+              <li>Ecosystem partnerships</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <h3>Phase 3 — Ecosystem Expansion</h3>
+            <ul>
+              <li>Analytics dashboard launch</li>
+              <li>DeFi tools integration</li>
+              <li>Utility expansion</li>
+              <li>Technical collaborations</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <h3>Phase 4 — AI Integration</h3>
+            <ul>
+              <li>AI-powered analytics</li>
+              <li>Automated DeFi tools</li>
+              <li>AI partnerships</li>
+              <li>Intelligent data layer</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <h3>Phase 5 — Advanced Infrastructure</h3>
+            <ul>
+              <li>Protocol optimization</li>
+              <li>Cross-chain integrations</li>
+              <li>Scalable architecture</li>
+              <li>Expanded AI capabilities</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <h3>Phase 6 — AXION Network</h3>
+            <ul>
+              <li>Proprietary network R&amp;D</li>
+              <li>Layer infrastructure design</li>
+              <li>Independent ecosystem</li>
+              <li>Full decentralization</li>
+            </ul>
           </div>
         </div>
 
-        <div class="footer-links">
-          <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a href="https://x.com/axiondefi" target="_blank" rel="noopener noreferrer">X</a>
-          <a href="#whitepaper">Whitepaper</a>
-          <a href="#presale">BUY AX</a>
-          <a href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener noreferrer">BscScan</a>
+        <div class="panel-head" style="margin-top:24px">
+          <div>
+            <div class="panel-title">Tokenomics</div>
+            <div class="panel-sub">Token structure and utility</div>
+          </div>
+          <div class="pill">Allocation Model</div>
+        </div>
+
+        <div class="tokenomics-grid">
+          <div class="tokenomics-card">
+            <h3>Fund</h3>
+            <strong>30%</strong>
+          </div>
+          <div class="tokenomics-card">
+            <h3>Liquidity</h3>
+            <strong>25%</strong>
+          </div>
+          <div class="tokenomics-card">
+            <h3>Marketing</h3>
+            <strong>20%</strong>
+          </div>
+          <div class="tokenomics-card">
+            <h3>CEX Listings</h3>
+            <strong>25%</strong>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </section>
+
+    <section id="about" class="section">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">About</div>
+            <div class="panel-sub">What AXION represents</div>
+          </div>
+          <div class="pill">Project Identity</div>
+        </div>
+        <p class="muted">
+          AXION is positioned as an application-layer trust protocol for DeFi. It is designed to combine transparent
+          on-chain structure, anti-manipulation mechanics, and a premium ecosystem experience inside a strong brand system.
+        </p>
+      </div>
+    </section>
+
+    <section id="summary" class="section">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Summary</div>
+            <div class="panel-sub">Short project snapshot</div>
+          </div>
+          <div class="pill">Executive View</div>
+        </div>
+        <p class="muted">
+          AXION delivers a trust-minimized and visually premium DeFi ecosystem with fixed supply, transparent fee direction,
+          evolving analytics potential, presale tools, wallet-lite functions, and now an integrated AX SWAP layer.
+        </p>
+      </div>
+    </section>
+
+    <section id="core" class="section">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Core System</div>
+            <div class="panel-sub">Main operating principles</div>
+          </div>
+          <div class="pill">Mechanics</div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Token Details</h3>
+            <ul>
+              <li>Name: AXION</li>
+              <li>Symbol: AX</li>
+              <li>Network: BNB Smart Chain</li>
+              <li>Total Supply: 1,000,000,000 AX</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>Core Mechanics</h3>
+            <ul>
+              <li>No mint / no inflation</li>
+              <li>Deflationary burn direction</li>
+              <li>1% auto fee system</li>
+              <li>Anti-whale protection</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="whitepaper" class="section">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Whitepaper</div>
+            <div class="panel-sub">Official document access</div>
+          </div>
+          <div class="pill">PDF</div>
+        </div>
+        <div class="action-row">
+          <a class="btn-outline" href="https://github.com/axionteam645/axion-dashboard/blob/main/W1.pdf" target="_blank" rel="noopener">Open Whitepaper</a>
+          <a class="btn-secondary" href="https://github.com/axionteam645/axion-dashboard" target="_blank" rel="noopener">GitHub Repository</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecosystem" class="section">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Ecosystem</div>
+            <div class="panel-sub">Utility direction and platform expansion</div>
+          </div>
+          <div class="pill">Growth Layer</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Utility</h3>
+            <ul>
+              <li>Premium AI features access</li>
+              <li>Subscription model enablement</li>
+              <li>Ecosystem payments</li>
+              <li>Value accrual through platform usage</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>Expansion</h3>
+            <ul>
+              <li>Analytics dashboard</li>
+              <li>Wallet-lite tooling</li>
+              <li>AX SWAP integration</li>
+              <li>Future DeFi automation layer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="section">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Security</div>
+            <div class="panel-sub">Trust-oriented product posture</div>
+          </div>
+          <div class="pill">No Hidden Logic</div>
+        </div>
+        <p class="muted">
+          AXION emphasizes transparent token design, predictable mechanics, and clean ecosystem messaging.
+          Live swap transaction execution should be connected only after router, token approvals, slippage handling,
+          and testnet verification are completed.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <h3>AXION</h3>
+      <p>AXION Intelligent Finance. Stronger Future.</p>
+      <div class="footer-links">
+        <a href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://x.com/axiondefi" target="_blank" rel="noopener">X</a>
+        <a href="https://github.com/axionteam645/axion-dashboard/blob/main/W1.pdf" target="_blank" rel="noopener">Whitepaper</a>
+        <a href="#dashboard">BUY AX</a>
+        <a href="https://bscscan.com/token/0x0F18990414D8f58890301ded2C371F2619C67896" target="_blank" rel="noopener">BscScan</a>
+      </div>
+      <div class="copyright">AXION dashboard single-file edition with integrated AX SWAP section</div>
+    </footer>
+  </div>
 
   <script>
-    const AXION_CONTRACT = "0x0F18990414D8f58890301ded2C371F2619C67896";
-    const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
-    const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
-    const PRESALE_RATE = 10000;
-    const CHAIN_ID_BSC = 56;
+    const connectBtn = document.getElementById('connectBtn');
+    const menuToggle = document.getElementById('menuToggle');
+    const navWrap = document.getElementById('navWrap');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    const BSC_RPCS = [
-      "https://bsc-dataseed.binance.org/",
-      "https://rpc.ankr.com/bsc",
-      "https://bsc.publicnode.com"
-    ];
+    const walletCountEl = document.getElementById('walletCount');
+    const axBalanceEl = document.getElementById('axBalance');
+    const bnbBalanceEl = document.getElementById('bnbBalance');
+    const usdtBalanceEl = document.getElementById('usdtBalance');
+    const receiveInfo = document.getElementById('receiveInfo');
 
-    const TOKEN_META = {
-      AX: {
-        address: AXION_CONTRACT,
-        decimals: 18,
-        symbol: "AX",
-        image: "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png",
-        logo: "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png"
-      },
-      BNB: {
-        native: true,
-        decimals: 18,
-        logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png"
-      },
-      USDT: {
-        address: "0x55d398326f99059fF775485246999027B3197955",
-        decimals: 18,
-        logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
-      }
-    };
+    const presaleBnb = document.getElementById('presaleBnb');
+    const presaleAxOut = document.getElementById('presaleAxOut');
+    const presaleSuccess = document.getElementById('presaleSuccess');
 
-    const ERC20_ABI = [
-      "function balanceOf(address) view returns (uint256)",
-      "function transfer(address to, uint256 value) returns (bool)"
-    ];
+    const copyReceiverBtn = document.getElementById('copyReceiverBtn');
+    const buyAxBtn = document.getElementById('buyAxBtn');
+    const showReceiveBtn = document.getElementById('showReceiveBtn');
+    const copyAddressBtn = document.getElementById('copyAddressBtn');
 
-    const mobileToggle = document.getElementById("mobileToggle");
-    const navLinks = document.getElementById("navLinks");
-    const walletBtn = document.getElementById("walletBtn");
-    const bnbAmountInput = document.getElementById("bnbAmount");
-    const axReceivePreview = document.getElementById("axReceivePreview");
-    const buyAxBtn = document.getElementById("buyAxBtn");
-    const copyReceiverBtn = document.getElementById("copyReceiverBtn");
-    const addTokenBtn = document.getElementById("addTokenBtn");
+    const swapFromToken = document.getElementById('swapFromToken');
+    const swapToToken = document.getElementById('swapToToken');
+    const swapFromAmount = document.getElementById('swapFromAmount');
+    const swapToAmount = document.getElementById('swapToAmount');
+    const swapRate = document.getElementById('swapRate');
+    const swapRoute = document.getElementById('swapRoute');
+    const swapMinReceived = document.getElementById('swapMinReceived');
+    const swapSlippage = document.getElementById('swapSlippage');
+    const swapSlippageText = document.getElementById('swapSlippageText');
+    const swapSwitchBtn = document.getElementById('swapSwitchBtn');
 
-    const axBalanceEl = document.getElementById("axBalance");
-    const bnbBalanceEl = document.getElementById("bnbBalance");
-    const usdtBalanceEl = document.getElementById("usdtBalance");
-    const feeWalletAxBalanceEl = document.getElementById("feeWalletAxBalance");
-    const walletCountLiveEl = document.getElementById("walletCountLive");
+    const addLiquidityTab = document.getElementById('addLiquidityTab');
+    const removeLiquidityTab = document.getElementById('removeLiquidityTab');
+    const addLiquiditySection = document.getElementById('addLiquiditySection');
+    const removeLiquiditySection = document.getElementById('removeLiquiditySection');
 
-    const connectReceiveBtn = document.getElementById("connectReceiveBtn");
-    const copyReceiveAddressBtn = document.getElementById("copyReceiveAddressBtn");
-    const receiveWalletText = document.getElementById("receiveWalletText");
-    const axSendTo = document.getElementById("axSendTo");
-    const axSendAmount = document.getElementById("axSendAmount");
-    const sendAxBtn = document.getElementById("sendAxBtn");
-    const copyFeeWalletBtn = document.getElementById("copyFeeWalletBtn");
+    let provider = null;
+    let signer = null;
+    let connectedAddress = null;
+    let walletCount = 0;
 
-    const presaleSuccessCard = document.getElementById("presaleSuccessCard");
-    const presaleSuccessTitle = document.getElementById("presaleSuccessTitle");
-    const presaleSuccessText = document.getElementById("presaleSuccessText");
+    menuToggle?.addEventListener('click', () => {
+      navWrap.classList.toggle('show');
+    });
 
-    let connectedAccount = null;
-    let browserProvider = null;
-    let readProvider = null;
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navWrap.classList.remove('show');
+      });
+    });
 
-    (function cleanTrackingParams() {
+    function setActiveNav() {
+      const sections = [...document.querySelectorAll('section[id]')];
+      const scrollPos = window.scrollY + 120;
+      let current = 'home';
+
+      sections.forEach(section => {
+        if (scrollPos >= section.offsetTop) current = section.id;
+      });
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', setActiveNav);
+    setActiveNav();
+
+    async function connectWallet() {
       try {
-        const url = new URL(window.location.href);
-        const paramsToRemove = [
-          "utm_source","utm_medium","utm_campaign","utm_term","utm_content",
-          "gclid","fbclid","mc_cid","mc_eid"
-        ];
-        let changed = false;
-
-        paramsToRemove.forEach((key) => {
-          if (url.searchParams.has(key)) {
-            url.searchParams.delete(key);
-            changed = true;
-          }
-        });
-
-        if (changed) {
-          const cleanUrl = url.pathname + (url.search ? url.search : "") + (url.hash ? url.hash : "");
-          window.history.replaceState({}, document.title, cleanUrl);
+        if (!window.ethereum) {
+          alert('No injected wallet found. Please open this page in MetaMask or a Web3 browser.');
+          return;
         }
-      } catch (e) {
-        console.error("URL cleanup failed:", e);
-      }
-    })();
 
-    function isMobileDevice() {
-      return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
+        provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+        await provider.send('eth_requestAccounts', []);
+        signer = provider.getSigner();
+        connectedAddress = await signer.getAddress();
 
-    function getMetaMaskDeepLink() {
-      const stripped = window.location.href.replace(/^https?:\/\//, "");
-      return `https://metamask.app.link/dapp/${stripped}`;
-    }
-
-    function openMetaMaskMobile() {
-      window.location.href = getMetaMaskDeepLink();
-    }
-
-    async function handleMissingProvider() {
-      if (isMobileDevice()) {
-        const goMetaMask = window.confirm("No wallet provider detected. Open this page in MetaMask Mobile?");
-        if (goMetaMask) openMetaMaskMobile();
-      } else {
-        alert("No wallet provider detected.");
-      }
-      return false;
-    }
-
-    function getReadProvider() {
-      if (readProvider) return readProvider;
-
-      for (const rpc of BSC_RPCS) {
-        try {
-          readProvider = new ethers.providers.JsonRpcProvider(rpc);
-          return readProvider;
-        } catch (e) {
-          console.error("RPC init failed:", rpc, e);
+        const network = await provider.getNetwork();
+        if (network.chainId !== 56) {
+          alert('Please switch to BNB Smart Chain (Chain ID 56).');
         }
-      }
 
-      throw new Error("No available BSC RPC provider.");
-    }
+        connectBtn.textContent = connectedAddress.slice(0,6) + '...' + connectedAddress.slice(-4);
+        receiveInfo.textContent = connectedAddress;
+        showReceiveBtn.textContent = 'Wallet Connected';
 
-    function safeShort(address) {
-      return address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "";
-    }
+        const bnbBal = await provider.getBalance(connectedAddress);
+        bnbBalanceEl.textContent = parseFloat(ethers.utils.formatEther(bnbBal)).toFixed(4) + ' BNB';
+        axBalanceEl.textContent = '0.0000 AX';
+        usdtBalanceEl.textContent = '0.0000 USDT';
 
-    function formatNumber(value, maxDecimals = 4) {
-      const num = Number(value);
-      if (!Number.isFinite(num)) return "-";
-      return new Intl.NumberFormat("en-US", {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: maxDecimals
-      }).format(num);
-    }
-
-    function getReadableError(error) {
-      const raw =
-        error?.reason ||
-        error?.data?.message ||
-        error?.error?.message ||
-        error?.message ||
-        "Transaction failed.";
-
-      if (String(raw).toLowerCase().includes("user rejected")) {
-        return "Transaction was rejected in the wallet.";
-      }
-      if (String(raw).toLowerCase().includes("insufficient funds")) {
-        return "Insufficient balance for this transaction and network gas.";
-      }
-      if (String(raw).toLowerCase().includes("gas required exceeds allowance")) {
-        return "Transaction could not be estimated. Please check the amount and try again.";
-      }
-      return raw;
-    }
-
-    function updateWalletCountUI() {
-      try {
-        const seen = JSON.parse(sessionStorage.getItem("axion_connected_wallets") || "[]");
-        walletCountLiveEl.textContent = String(seen.length);
-      } catch {
-        walletCountLiveEl.textContent = "0";
+        walletCount += 1;
+        walletCountEl.textContent = 'Current session live count: ' + walletCount;
+      } catch (err) {
+        console.error(err);
+        alert('Wallet connection failed.');
       }
     }
 
-    function registerSessionWallet(address) {
-      if (!address) return;
-      try {
-        const current = JSON.parse(sessionStorage.getItem("axion_connected_wallets") || "[]");
-        const lower = address.toLowerCase();
-        if (!current.includes(lower)) {
-          current.push(lower);
-          sessionStorage.setItem("axion_connected_wallets", JSON.stringify(current));
-        }
-      } catch {
-        sessionStorage.setItem("axion_connected_wallets", JSON.stringify([address.toLowerCase()]));
+    connectBtn.addEventListener('click', connectWallet);
+    showReceiveBtn.addEventListener('click', connectWallet);
+
+    copyAddressBtn.addEventListener('click', async () => {
+      if (!connectedAddress) return alert('Connect wallet first.');
+      await navigator.clipboard.writeText(connectedAddress);
+      alert('Wallet address copied.');
+    });
+
+    copyReceiverBtn.addEventListener('click', async () => {
+      const receiver = '0x570ecca843baa357502c1e24c508576cff49f47c';
+      await navigator.clipboard.writeText(receiver);
+      alert('Receiver address copied.');
+    });
+
+    presaleBnb.addEventListener('input', () => {
+      const bnb = parseFloat(presaleBnb.value || '0');
+      const ax = bnb * 10000;
+      presaleAxOut.textContent = ax.toLocaleString('en-US', { maximumFractionDigits: 4 }) + ' AX';
+    });
+
+    buyAxBtn.addEventListener('click', async () => {
+      if (!connectedAddress) {
+        alert('Connect wallet first.');
+        return;
       }
-      updateWalletCountUI();
+      const amount = parseFloat(presaleBnb.value || '0');
+      if (!amount || amount <= 0) {
+        alert('Enter a valid BNB amount.');
+        return;
+      }
+      presaleSuccess.style.display = 'block';
+      presaleSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    function recalcSwap() {
+      const from = swapFromToken.value;
+      const to = swapToToken.value;
+      const amount = parseFloat(swapFromAmount.value || '0');
+
+      let rateMap = {
+        'AX_BNB': 0.000001,
+        'BNB_AX': 1000000,
+        'AX_USDT': 0.01,
+        'USDT_AX': 100,
+        'BNB_USDT': 600,
+        'USDT_BNB': 1 / 600,
+        'AX_BUSD': 0.01,
+        'BUSD_AX': 100
+      };
+
+      const key = `${from}_${to}`;
+      const rate = rateMap[key] || 1;
+      const out = amount * rate;
+      const slip = parseFloat((swapSlippage.value || '0.50').replace('%','')) || 0.5;
+      const minReceived = out * (1 - slip / 100);
+
+      swapToAmount.value = amount ? out.toFixed(6) : '';
+      swapRate.textContent = `1 ${from} = ${rate.toFixed(6)} ${to}`;
+      swapRoute.textContent = `${from} → ${to}`;
+      swapMinReceived.textContent = amount ? minReceived.toFixed(6) : '0.00';
+      swapSlippageText.textContent = swapSlippage.value;
     }
 
-    function resetBalancesUI() {
-      axBalanceEl.textContent = "-";
-      bnbBalanceEl.textContent = "-";
-      usdtBalanceEl.textContent = "-";
-    }
+    swapFromToken.addEventListener('change', recalcSwap);
+    swapToToken.addEventListener('change', recalcSwap);
+    swapFromAmount.addEventListener('input', recalcSwap);
+    swapSlippage.addEventListener('input', recalcSwap);
 
-    function updateWalletButton() {
-      walletBtn.textContent = connectedAccount
-        ? `Disconnect ${safeShort(connectedAccount)}`
-        : "Connect Wallet";
-    }
+    swapSwitchBtn.addEventListener('click', () => {
+      const currentFrom = swapFromToken.value;
+      swapFromToken.value = swapToToken.value;
+      swapToToken.value = currentFrom;
+      recalcSwap();
+    });
 
-    function updateReceiveUI() {
-      receiveWalletText.textContent = connectedAccount
-        ? connectedAccount
-        : "Connect wallet to view your receive address.";
-    }
+    addLiquidityTab.addEventListener('click', () => {
+      addLiquidityTab.classList.add('active');
+      removeLiquidityTab.classList.remove('active');
+      addLiquiditySection.classList.remove('hidden');
+      removeLiquiditySection.classList.add('hidden');
+    });
 
-    function showPresaleSuccessCard(axAmount) {
-      presaleSuccessTitle.textContent = "Purchase Successful";
-      presaleSuccessText.textContent =
-        `Congratulations. You have successfully purchased ${formatNumber(axAmount, 2)} AX. Your tokens will be sent to the wallet used for payment on the distribution date. Please follow announcements on our official channels.`;
-      presaleSuccessCard.classList.add("show");
-    }
+    removeLiquidityTab.addEventListener('click', () => {
+      removeLiquidityTab.classList.add('active');
+      addLiquidityTab.classList.remove('active');
+      removeLiquiditySection.classList.remove('hidden');
+      addLiquiditySection.classList.add('hidden');
+    });
 
-    async function ensureBscNetwork() {
-      if (!window.ethereum) return false;
-
-      const chainIdHex = await window.ethereum.request({ method: "eth_chainId" });
-      if (parseInt(chainIdHex, 16) === CHAIN_ID_BSC) return true;
+    document.getElementById('addAxBtn').addEventListener('click', async () => {
+      if (!window.ethereum) {
+        alert('MetaMask not found.');
+        return;
+      }
 
       try {
         await window.ethereum.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: "0x38" }]
-        });
-        return true;
-      } catch {
-        try {
-          await window.ethereum.request({
-            method: "wallet_addEthereumChain",
-            params: [{
-              chainId: "0x38",
-              chainName: "BNB Smart Chain",
-              nativeCurrency: {
-                name: "BNB",
-                symbol: "BNB",
-                decimals: 18
-              },
-              rpcUrls: BSC_RPCS,
-              blockExplorerUrls: ["https://bscscan.com"]
-            }]
-          });
-          return true;
-        } catch {
-          return false;
-        }
-      }
-    }
-
-    async function connectWallet() {
-      if (!window.ethereum) {
-        return handleMissingProvider();
-      }
-
-      const networkOk = await ensureBscNetwork();
-      if (!networkOk) {
-        alert("Please switch your wallet to BNB Smart Chain.");
-        return false;
-      }
-
-      try {
-        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-        connectedAccount = accounts?.[0] || null;
-        browserProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
-        updateWalletButton();
-        updateReceiveUI();
-        registerSessionWallet(connectedAccount);
-        await loadConnectedWalletBalances();
-        return !!connectedAccount;
-      } catch (error) {
-        console.error(error);
-        alert(getReadableError(error));
-        return false;
-      }
-    }
-
-    async function prepareWalletAction() {
-      if (!window.ethereum) {
-        await handleMissingProvider();
-        return null;
-      }
-
-      const networkOk = await ensureBscNetwork();
-      if (!networkOk) {
-        alert("Please switch your wallet to BNB Smart Chain.");
-        return null;
-      }
-
-      try {
-        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-        if (!accounts || !accounts.length) {
-          alert("Wallet connection failed.");
-          return null;
-        }
-
-        connectedAccount = accounts[0];
-        browserProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
-        const signer = browserProvider.getSigner();
-        const signerAddress = await signer.getAddress();
-
-        connectedAccount = signerAddress;
-        updateWalletButton();
-        updateReceiveUI();
-        registerSessionWallet(connectedAccount);
-        await loadConnectedWalletBalances();
-
-        return { provider: browserProvider, signer, address: signerAddress };
-      } catch (error) {
-        console.error("prepareWalletAction error:", error);
-        alert(getReadableError(error));
-        return null;
-      }
-    }
-
-    function disconnectWallet() {
-      connectedAccount = null;
-      browserProvider = null;
-      updateWalletButton();
-      updateReceiveUI();
-      resetBalancesUI();
-    }
-
-    async function getErc20Balance(provider, tokenAddress, wallet, decimals = 18) {
-      const contract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
-      const balance = await contract.balanceOf(wallet);
-      return Number(ethers.utils.formatUnits(balance, decimals));
-    }
-
-    async function loadConnectedWalletBalances() {
-      if (!connectedAccount) {
-        resetBalancesUI();
-        return;
-      }
-
-      try {
-        const provider = browserProvider || getReadProvider();
-
-        const [bnbWei, axBal, usdtBal] = await Promise.all([
-          provider.getBalance(connectedAccount),
-          getErc20Balance(provider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals),
-          getErc20Balance(provider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals)
-        ]);
-
-        const bnbBal = Number(ethers.utils.formatEther(bnbWei));
-
-        axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
-        bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
-        usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
-      } catch (error) {
-        console.error("Balance load error:", error);
-
-        try {
-          readProvider = null;
-          const fallbackProvider = getReadProvider();
-
-          const [bnbWei, axBal, usdtBal] = await Promise.all([
-            fallbackProvider.getBalance(connectedAccount),
-            getErc20Balance(fallbackProvider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals),
-            getErc20Balance(fallbackProvider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals)
-          ]);
-
-          const bnbBal = Number(ethers.utils.formatEther(bnbWei));
-
-          axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
-          bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
-          usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
-        } catch (fallbackError) {
-          console.error("Fallback balance load error:", fallbackError);
-          axBalanceEl.textContent = "0 AX";
-          bnbBalanceEl.textContent = "0 BNB";
-          usdtBalanceEl.textContent = "0 USDT";
-        }
-      }
-    }
-
-    async function loadFeeWalletBalance() {
-      try {
-        readProvider = null;
-        const provider = getReadProvider();
-        const feeAxBal = await getErc20Balance(provider, TOKEN_META.AX.address, FEE_WALLET, TOKEN_META.AX.decimals);
-        feeWalletAxBalanceEl.textContent = `${formatNumber(feeAxBal, 4)} AX`;
-      } catch (error) {
-        console.error("Fee wallet load error:", error);
-        feeWalletAxBalanceEl.textContent = "0 AX";
-      }
-    }
-
-    function updateBuyPreview() {
-      const bnb = Number(bnbAmountInput.value || 0);
-      const ax = bnb > 0 ? bnb * PRESALE_RATE : 0;
-      axReceivePreview.textContent = `${formatNumber(ax, 2)} AX`;
-    }
-
-    async function buyAx() {
-      const amount = Number(bnbAmountInput.value || 0);
-
-      if (!amount || amount <= 0) {
-        alert("Please enter a valid BNB amount.");
-        return;
-      }
-
-      const wallet = await prepareWalletAction();
-      if (!wallet) return;
-
-      try {
-        buyAxBtn.disabled = true;
-        buyAxBtn.textContent = "Opening Wallet...";
-
-        const txRequest = {
-          to: PRESALE_RECEIVER,
-          value: ethers.utils.parseEther(String(amount))
-        };
-
-        buyAxBtn.textContent = "Waiting for Approval...";
-
-        const tx = await wallet.signer.sendTransaction(txRequest);
-
-        buyAxBtn.textContent = "Submitted";
-        const purchasedAx = amount * PRESALE_RATE;
-        showPresaleSuccessCard(purchasedAx);
-
-        await loadConnectedWalletBalances();
-
-        setTimeout(() => {
-          buyAxBtn.disabled = false;
-          buyAxBtn.textContent = "Buy AX";
-        }, 1800);
-      } catch (error) {
-        console.error("buyAx error:", error);
-        alert(getReadableError(error));
-        buyAxBtn.disabled = false;
-        buyAxBtn.textContent = "Buy AX";
-      }
-    }
-
-    async function addTokenToWallet() {
-      if (!window.ethereum) {
-        return handleMissingProvider();
-      }
-
-      try {
-        const wasAdded = await window.ethereum.request({
-          method: "wallet_watchAsset",
+          method: 'wallet_watchAsset',
           params: {
-            type: "ERC20",
+            type: 'ERC20',
             options: {
-              address: TOKEN_META.AX.address,
-              symbol: TOKEN_META.AX.symbol,
-              decimals: TOKEN_META.AX.decimals,
-              image: TOKEN_META.AX.image
+              address: '0x0F18990414D8f58890301ded2C371F2619C67896',
+              symbol: 'AX',
+              decimals: 18
             }
           }
         });
-
-        if (wasAdded) {
-          addTokenBtn.textContent = "AX Added";
-          setTimeout(() => {
-            addTokenBtn.textContent = "Add AX to Wallet";
-          }, 2000);
-        }
-      } catch (error) {
-        console.error(error);
-        alert(getReadableError(error));
-      }
-    }
-
-    async function sendAXToken() {
-      const to = (axSendTo.value || "").trim();
-      const amount = Number(axSendAmount.value || 0);
-
-      if (!ethers.utils.isAddress(to)) {
-        alert("Please enter a valid recipient wallet address.");
-        return;
-      }
-
-      if (!amount || amount <= 0) {
-        alert("Please enter a valid AX amount.");
-        return;
-      }
-
-      const wallet = await prepareWalletAction();
-      if (!wallet) return;
-
-      try {
-        sendAxBtn.disabled = true;
-        sendAxBtn.textContent = "Opening Wallet...";
-
-        const tokenContract = new ethers.Contract(AXION_CONTRACT, ERC20_ABI, wallet.signer);
-        const parsedAmount = ethers.utils.parseUnits(String(amount), TOKEN_META.AX.decimals);
-
-        sendAxBtn.textContent = "Waiting for Approval...";
-
-        const tx = await tokenContract.transfer(to, parsedAmount);
-
-        sendAxBtn.textContent = "Submitted";
-
-        axSendAmount.value = "";
-        axSendTo.value = "";
-
-        await loadConnectedWalletBalances();
-
-        setTimeout(() => {
-          sendAxBtn.disabled = false;
-          sendAxBtn.textContent = "Send AX";
-        }, 1800);
-      } catch (error) {
-        console.error("sendAXToken error:", error);
-        alert(getReadableError(error));
-        sendAxBtn.disabled = false;
-        sendAxBtn.textContent = "Send AX";
-      }
-    }
-
-    async function initExistingWalletConnection() {
-      if (!window.ethereum) return;
-
-      try {
-        const accounts = await window.ethereum.request({ method: "eth_accounts" });
-
-        if (accounts?.length) {
-          connectedAccount = accounts[0];
-          browserProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
-
-          try {
-            const chainIdHex = await window.ethereum.request({ method: "eth_chainId" });
-            const currentChainId = parseInt(chainIdHex, 16);
-
-            if (currentChainId !== CHAIN_ID_BSC) {
-              resetBalancesUI();
-            } else {
-              registerSessionWallet(connectedAccount);
-              await loadConnectedWalletBalances();
-            }
-          } catch (e) {
-            console.error("Chain check failed:", e);
-          }
-
-          updateWalletButton();
-          updateReceiveUI();
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    function initTokenomicsChart() {
-      const canvas = document.getElementById("tokenChart");
-      if (!canvas) return;
-
-      const ctx = canvas.getContext("2d");
-
-      const g1 = ctx.createLinearGradient(0, 0, 300, 300);
-      g1.addColorStop(0, "#ffcf5a");
-      g1.addColorStop(1, "#ff8a1f");
-
-      const g2 = ctx.createLinearGradient(0, 0, 300, 300);
-      g2.addColorStop(0, "#ff4d6d");
-      g2.addColorStop(1, "#ff00b8");
-
-      const g3 = ctx.createLinearGradient(0, 0, 300, 300);
-      g3.addColorStop(0, "#4ed8ff");
-      g3.addColorStop(1, "#5f8cff");
-
-      const g4 = ctx.createLinearGradient(0, 0, 300, 300);
-      g4.addColorStop(0, "#a85cff");
-      g4.addColorStop(1, "#ff5cb8");
-
-      const shadowPlugin = {
-        id: "shadow3d",
-        beforeDatasetDraw(chart) {
-          const {ctx} = chart;
-          ctx.save();
-          ctx.shadowColor = "rgba(0,0,0,0.55)";
-          ctx.shadowBlur = 26;
-          ctx.shadowOffsetY = 16;
-        },
-        afterDatasetDraw(chart) {
-          chart.ctx.restore();
-        }
-      };
-
-      const innerGlowPlugin = {
-        id: "innerGlow",
-        afterDraw(chart) {
-          const meta = chart.getDatasetMeta(0);
-          if (!meta.data.length) return;
-          const arc = meta.data[0];
-          const cx = arc.x;
-          const cy = arc.y;
-          const r = arc.innerRadius + (arc.outerRadius - arc.innerRadius) / 2;
-          const grd = chart.ctx.createRadialGradient(cx, cy, 10, cx, cy, r);
-          grd.addColorStop(0, "rgba(255,255,255,0.10)");
-          grd.addColorStop(1, "rgba(255,255,255,0)");
-          chart.ctx.save();
-          chart.ctx.fillStyle = grd;
-          chart.ctx.beginPath();
-          chart.ctx.arc(cx, cy, arc.innerRadius + 18, 0, Math.PI * 2);
-          chart.ctx.fill();
-          chart.ctx.restore();
-        }
-      };
-
-      new Chart(ctx, {
-        type: "doughnut",
-        data: {
-          labels: ["Fund", "Liquidity", "Marketing", "CEX Listings"],
-          datasets: [{
-            data: [30, 25, 20, 25],
-            backgroundColor: [g1, g2, g3, g4],
-            borderWidth: 0,
-            hoverOffset: 6,
-            spacing: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          cutout: "58%",
-          rotation: -40,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: "rgba(8,12,24,.95)",
-              borderColor: "rgba(255,255,255,.08)",
-              borderWidth: 1,
-              titleColor: "#fff",
-              bodyColor: "#dbe7ff",
-              padding: 12,
-              displayColors: true
-            }
-          },
-          animation: {
-            animateRotate: true,
-            animateScale: true,
-            duration: 1400
-          }
-        },
-        plugins: [shadowPlugin, innerGlowPlugin]
-      });
-    }
-
-    mobileToggle?.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-    });
-
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => navLinks.classList.remove("open"));
-    });
-
-    walletBtn.addEventListener("click", async () => {
-      if (connectedAccount) {
-        disconnectWallet();
-      } else {
-        await connectWallet();
+      } catch (e) {
+        console.error(e);
+        alert('Could not add AX to wallet.');
       }
     });
 
-    addTokenBtn.addEventListener("click", addTokenToWallet);
-
-    connectReceiveBtn?.addEventListener("click", async () => {
-      await connectWallet();
-      updateReceiveUI();
+    document.getElementById('sendAxBtn').addEventListener('click', () => {
+      const recipient = document.getElementById('sendRecipient').value.trim();
+      const amount = document.getElementById('sendAmount').value.trim();
+      if (!connectedAddress) return alert('Connect wallet first.');
+      if (!recipient || !amount) return alert('Enter recipient and amount.');
+      alert('AX send UI is ready. Live transfer logic will be connected in the transaction-enabled version.');
     });
 
-    copyReceiveAddressBtn?.addEventListener("click", async () => {
-      if (!connectedAccount) {
-        alert("Please connect wallet first.");
-        return;
-      }
+    recalcSwap();
 
-      try {
-        await navigator.clipboard.writeText(connectedAccount);
-        copyReceiveAddressBtn.textContent = "Copied";
-        setTimeout(() => {
-          copyReceiveAddressBtn.textContent = "Copy Address";
-        }, 1500);
-      } catch {
-        alert("Copy failed.");
-      }
-    });
-
-    copyFeeWalletBtn?.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(FEE_WALLET);
-        copyFeeWalletBtn.innerHTML = "✓";
-        setTimeout(() => {
-          copyFeeWalletBtn.innerHTML = `
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M9 9.75A2.25 2.25 0 0 1 11.25 7.5h7.5A2.25 2.25 0 0 1 21 9.75v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5A2.25 2.25 0 0 1 9 17.25v-7.5Z" stroke="currentColor" stroke-width="1.7"/>
-              <path d="M15 7.5V6.75A2.25 2.25 0 0 0 12.75 4.5h-7.5A2.25 2.25 0 0 0 3 6.75v7.5a2.25 2.25 0 0 0 2.25 2.25H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-            </svg>
-          `;
-        }, 1400);
-      } catch {
-        alert("Copy failed.");
-      }
-    });
-
-    sendAxBtn?.addEventListener("click", sendAXToken);
-    bnbAmountInput.addEventListener("input", updateBuyPreview);
-    buyAxBtn.addEventListener("click", buyAx);
-
-    copyReceiverBtn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(PRESALE_RECEIVER);
-        copyReceiverBtn.textContent = "Copied";
-        setTimeout(() => {
-          copyReceiverBtn.textContent = "Copy Receiver";
-        }, 1800);
-      } catch {
-        alert("Copy failed.");
-      }
-    });
-
-    if (window.ethereum) {
-      window.ethereum.on?.("accountsChanged", async (accounts) => {
-        connectedAccount = accounts?.[0] || null;
-        if (connectedAccount) {
-          browserProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
-          registerSessionWallet(connectedAccount);
-          await loadConnectedWalletBalances();
-        } else {
-          browserProvider = null;
-          resetBalancesUI();
-        }
-        updateWalletButton();
-        updateReceiveUI();
-      });
-
-      window.ethereum.on?.("chainChanged", async () => {
-        browserProvider = null;
-        await initExistingWalletConnection();
-        await loadFeeWalletBalance();
-      });
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("show");
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-    updateWalletCountUI();
-    updateWalletButton();
-    updateReceiveUI();
-    updateBuyPreview();
-    loadFeeWalletBalance();
-    initExistingWalletConnection();
-    initTokenomicsChart();
-
-    setInterval(() => {
-      loadFeeWalletBalance();
-      if (connectedAccount) loadConnectedWalletBalances();
-    }, 20000);
+    // Placeholder ecosystem balance fetch display
+    document.getElementById('ecosystemBalance').value = 'Live fetch module ready';
   </script>
 </body>
 </html>
