@@ -1233,6 +1233,15 @@
 
               <div class="feature-list">
                 <div class="feature">
+                  <strong>AX Receive</strong>
+                  <p id="receiveWalletText">Connect wallet to view your receive address.</p>
+                  <div class="inline-actions">
+                    <button class="btn btn-secondary" id="connectReceiveBtn" type="button">Connect for Receive</button>
+                    <button class="btn btn-secondary" id="copyReceiveAddressBtn" type="button">Copy Address</button>
+                  </div>
+                </div>
+
+                <div class="feature">
                   <strong>AX Send</strong>
                   <div class="buy-inputs">
                     <div class="buy-field">
@@ -2026,6 +2035,9 @@
     const feeWalletAxBalanceEl = document.getElementById("feeWalletAxBalance");
     const walletCountLiveEl = document.getElementById("walletCountLive");
 
+    const connectReceiveBtn = document.getElementById("connectReceiveBtn");
+    const copyReceiveAddressBtn = document.getElementById("copyReceiveAddressBtn");
+    const receiveWalletText = document.getElementById("receiveWalletText");
     const axSendTo = document.getElementById("axSendTo");
     const axSendAmount = document.getElementById("axSendAmount");
     const sendAxBtn = document.getElementById("sendAxBtn");
@@ -2151,6 +2163,12 @@
         : "Connect Wallet";
     }
 
+    function updateReceiveUI() {
+      receiveWalletText.textContent = connectedAccount
+        ? connectedAccount
+        : "Connect wallet to view your receive address.";
+    }
+
     function showPresaleSuccessCard(axAmount) {
       presaleSuccessTitle.textContent = "Purchase Successful";
       presaleSuccessText.textContent =
@@ -2209,6 +2227,7 @@
         connectedAccount = accounts?.[0] || null;
         browserProvider = new ethers.providers.Web3Provider(window.ethereum);
         updateWalletButton();
+        updateReceiveUI();
         registerSessionWallet(connectedAccount);
         await loadConnectedWalletBalances();
         return !!connectedAccount;
@@ -2222,6 +2241,7 @@
       connectedAccount = null;
       browserProvider = null;
       updateWalletButton();
+      updateReceiveUI();
       resetBalancesUI();
     }
 
@@ -2385,14 +2405,14 @@
       }
 
       const to = (axSendTo.value || "").trim();
-      const amountText = (axSendAmount.value || "").trim();
+      const amount = Number(axSendAmount.value || 0);
 
       if (!ethers.utils.isAddress(to)) {
         alert("Please enter a valid recipient wallet address.");
         return;
       }
 
-      if (!amountText || Number(amountText) <= 0) {
+      if (!amount || amount <= 0) {
         alert("Please enter a valid AX amount.");
         return;
       }
@@ -2408,75 +2428,16 @@
         return;
       }
 
-      const getReadableWalletError = (error) => {
-        const raw =
-          error?.reason ||
-          error?.data?.message ||
-          error?.error?.message ||
-          error?.message ||
-          "";
-
-        const msg = String(raw).toLowerCase();
-
-        if (
-          msg.includes("user rejected") ||
-          msg.includes("user denied") ||
-          msg.includes("rejected the request") ||
-          msg.includes("denied transaction signature") ||
-          error?.code === 4001
-        ) {
-          return "Transaction was cancelled in wallet.";
-        }
-
-        if (
-          msg.includes("insufficient funds") ||
-          msg.includes("exceeds balance") ||
-          msg.includes("transfer amount exceeds balance")
-        ) {
-          return "Insufficient AX balance for this transaction.";
-        }
-
-        if (msg.includes("execution reverted")) {
-          return "Transaction reverted by token contract.";
-        }
-
-        if (msg.includes("network")) {
-          return "Network error. Please check BNB Smart Chain connection.";
-        }
-
-        return raw || "AX transfer failed.";
-      };
-
       try {
         sendAxBtn.disabled = true;
-        sendAxBtn.textContent = "Checking...";
+        sendAxBtn.textContent = "Sending...";
 
         const provider = browserProvider || new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        const senderAddress = connectedAccount || await signer.getAddress();
         const tokenContract = new ethers.Contract(AXION_CONTRACT, ERC20_ABI, signer);
 
-        const parsedAmount = ethers.utils.parseUnits(String(amountText), TOKEN_META.AX.decimals);
-        const currentBalance = await tokenContract.balanceOf(senderAddress);
-
-        if (currentBalance.lt(parsedAmount)) {
-          const formattedBalance = ethers.utils.formatUnits(currentBalance, TOKEN_META.AX.decimals);
-          alert(
-            `Insufficient AX balance.\n\nAvailable: ${formattedBalance} AX\nRequested: ${amountText} AX`
-          );
-          sendAxBtn.disabled = false;
-          sendAxBtn.textContent = "Send AX";
-          return;
-        }
-
-        sendAxBtn.textContent = "Confirm in Wallet...";
-
-        const estimatedGas = await tokenContract.estimateGas.transfer(to, parsedAmount);
-        const tx = await tokenContract.transfer(to, parsedAmount, {
-          gasLimit: estimatedGas.mul(12).div(10)
-        });
-
-        sendAxBtn.textContent = "Sending...";
+        const parsedAmount = ethers.utils.parseUnits(String(amount), TOKEN_META.AX.decimals);
+        const tx = await tokenContract.transfer(to, parsedAmount);
         await tx.wait();
 
         sendAxBtn.textContent = "AX Sent";
@@ -2491,7 +2452,7 @@
         }, 2000);
       } catch (error) {
         console.error(error);
-        alert(getReadableWalletError(error));
+        alert("AX transfer failed or was cancelled.");
         sendAxBtn.disabled = false;
         sendAxBtn.textContent = "Send AX";
       }
@@ -2641,6 +2602,28 @@
     });
 
     addTokenBtn.addEventListener("click", addTokenToWallet);
+
+    connectReceiveBtn?.addEventListener("click", async () => {
+      await connectWallet();
+      updateReceiveUI();
+    });
+
+    copyReceiveAddressBtn?.addEventListener("click", async () => {
+      if (!connectedAccount) {
+        alert("Please connect wallet first.");
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(connectedAccount);
+        copyReceiveAddressBtn.textContent = "Copied";
+        setTimeout(() => {
+          copyReceiveAddressBtn.textContent = "Copy Address";
+        }, 1500);
+      } catch {
+        alert("Copy failed.");
+      }
+    });
 
     copyFeeWalletBtn?.addEventListener("click", async () => {
       try {
