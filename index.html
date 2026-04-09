@@ -471,9 +471,15 @@
       filter:drop-shadow(0 0 4px rgba(78,216,255,.65)) drop-shadow(0 0 8px rgba(168,92,255,.35));
     }
 
-    .dashboard-grid,.split-2{
+    .dashboard-grid{
       display:grid;
       grid-template-columns:1.15fr .85fr;
+      gap:22px;
+    }
+
+    .split-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
       gap:22px;
     }
 
@@ -989,45 +995,6 @@
     </defs>
   </svg>
 
-  <script>
-    const AXION_CONTRACT = "0x0F18990414D8f58890301ded2C371F2619C67896";
-    const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
-    const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
-    const PRESALE_RATE = 10000;
-    const CHAIN_ID_BSC = 56;
-
-    const BSC_RPCS = [
-      "https://bsc-dataseed.binance.org/",
-      "https://rpc.ankr.com/bsc",
-      "https://bsc.publicnode.com"
-    ];
-
-    const TOKEN_META = {
-      AX: {
-        address: AXION_CONTRACT,
-        decimals: 18,
-        symbol: "AX",
-        image: "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png",
-        logo: "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png"
-      },
-      BNB: {
-        native: true,
-        decimals: 18,
-        logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png"
-      },
-      USDT: {
-        address: "0x55d398326f99059fF775485246999027B3197955",
-        decimals: 18,
-        logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
-      }
-    };
-
-    const ERC20_ABI = [
-      "function balanceOf(address) view returns (uint256)",
-      "function transfer(address to, uint256 value) returns (bool)"
-    ];
-  </script>
-
   <div class="nav-wrap">
     <nav class="nav">
       <a class="brand" href="#home">
@@ -1492,507 +1459,6 @@
         </div>
       </div>
     </section>
-
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">About AXION</div>
-            <h2>Structured for <span class="gradient-title">trust, intelligence, and scale.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Trust Layer</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
-                    <path d="M9.5 12.2l1.6 1.6 3.4-3.8"/>
-                  </svg>
-                </div>
-                <h3>Immutable Core</h3>
-              </div>
-              <p>AXION is built around a predictable token structure with fixed supply, visible fee logic, and a clean on-chain model designed to reduce trust assumptions for users.</p>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Fixed Supply</strong>
-                  <p>Total supply is permanently capped at 1,000,000,000 AX, protecting long-term clarity and reducing inflation risk.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>No Mint Function</strong>
-                  <p>The contract architecture is designed without hidden mint expansion, supporting stronger holder confidence.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Transparent Fee Structure</strong>
-                  <p>A 1% fee model creates visible ecosystem funding logic instead of opaque token behavior.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">AI Direction</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                  </svg>
-                </div>
-                <h3>Intelligent Expansion</h3>
-              </div>
-              <p>AXION is positioned beyond a standard token page. The ecosystem direction includes AI-powered analysis, risk-focused tooling, and smarter user-facing financial modules.</p>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>AI Analytics</strong>
-                  <p>Designed for future on-chain analysis, behavior tracking, and data interpretation at ecosystem level.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Trade Signals</strong>
-                  <p>Built with a product direction that supports strategic insights and automated intelligence workflows.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Risk Scoring</strong>
-                  <p>Future modules are intended to help users evaluate tokens, wallets, and opportunities with more discipline.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Brand System</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="5" y="5" width="14" height="14" rx="2"/>
-                    <path d="M9 5v-2M15 5v-2M9 21v-2M15 21v-2M5 9H3M5 15H3M21 9h-2M21 15h-2"/>
-                    <path d="M9 9h6v6H9z"/>
-                  </svg>
-                </div>
-                <h3>AXION Identity</h3>
-              </div>
-              <p>The project is presented as a polished product ecosystem rather than a generic token launch page. The interface is intentionally structured to feel stronger, clearer, and more institutional.</p>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Premium Product UX</strong>
-                  <p>A single branded experience connects dashboard tools, token logic, and ecosystem messaging.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Dashboard Ecosystem</strong>
-                  <p>Wallet view, presale access, whitepaper flow, and future utility modules are presented in one structure.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Scalable Infrastructure</strong>
-                  <p>The design system is prepared for future tools, integrations, partnerships, and network-level evolution.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="summary">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Project Summary</div>
-            <h2>Core architecture in one <span class="gradient-title">clean overview.</span></h2>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <div class="card-inner">
-            <div class="summary-list">
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l7 3v5c0 4.8-2.9 8.9-7 10-4.1-1.1-7-5.2-7-10V6l7-3Z"/>
-                    <path d="M9.5 12.2l1.8 1.8 3.6-4"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Trustless Architecture</strong>
-                  <p>AXION is designed to minimize hidden control, prioritize transparent token behavior, and support a cleaner long-term on-chain narrative.</p>
-                </div>
-              </div>
-
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="8.5"/>
-                    <path d="M3.5 12h17M12 3.5c2.6 2.5 4 5.4 4 8.5s-1.4 6-4 8.5c-2.6-2.5-4-5.4-4-8.5s1.4-6 4-8.5Z"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>BNB Smart Chain</strong>
-                  <p>The token operates on BNB Smart Chain to provide fast accessibility, broad wallet support, and a familiar DeFi environment for global users.</p>
-                </div>
-              </div>
-
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l6.5 3.7v7.4L12 17.8 5.5 14.1V6.7L12 3Z"/>
-                    <path d="M12 3v14.8M5.5 6.7L12 10l6.5-3.3"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Fixed Supply Model</strong>
-                  <p>The supply is permanently fixed at 1,000,000,000 AX, creating strong clarity around issuance and long-term token economics.</p>
-                </div>
-              </div>
-
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 4h10v16H7z"/>
-                    <path d="M9.5 8h5M9.5 12h5M9.5 16h3"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Transparent Fee System</strong>
-                  <p>A 1% fee model supports ecosystem sustainability through a visible structure instead of unpredictable token-side behavior.</p>
-                </div>
-              </div>
-
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M5 15c1.7-2.3 4.2-3.5 7-3.5s5.3 1.2 7 3.5"/>
-                    <path d="M6 10l2.5-2M18 10l-2.5-2"/>
-                    <path d="M12 8.5c1.9 0 3.5-1.6 3.5-3.5h-7c0 1.9 1.6 3.5 3.5 3.5Z"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Anti-Whale Protection</strong>
-                  <p>Transfer and wallet limits are positioned to reduce concentration risk and strengthen fairness across the holder base.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="core">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Core System</div>
-            <h2>What AXION is built to <span class="gradient-title">protect and deliver.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-4">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Objective 01</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
-                  </svg>
-                </div>
-                <h3>Security</h3>
-              </div>
-              <p>AXION is designed with a robust token structure focused on protecting user assets by removing unnecessary exploit surfaces and promoting sustainable behavior.</p>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Objective 02</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="8"/>
-                    <path d="M12 8v5l3 2"/>
-                  </svg>
-                </div>
-                <h3>Transparency</h3>
-              </div>
-              <p>Fee logic, token mechanics, and ecosystem direction are presented with clearer visibility so users can understand how the project operates at every level.</p>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Objective 03</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 16c2.3-3 4.8-4.5 8-4.5S17.7 13 20 16"/>
-                    <path d="M6 9l2.5-2M18 9l-2.5-2"/>
-                    <path d="M12 8a3.5 3.5 0 0 0 3.5-3.5h-7A3.5 3.5 0 0 0 12 8Z"/>
-                  </svg>
-                </div>
-                <h3>Resistance to Manipulation</h3>
-              </div>
-              <p>Anti-whale positioning and balanced token distribution are intended to reduce outsized control, strengthen fairness, and improve ecosystem stability.</p>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Objective 04</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                  </svg>
-                </div>
-                <h3>AI-Powered Financial Ecosystem</h3>
-              </div>
-              <p>AXION expands beyond token presence toward a product ecosystem built for analytics, automation, intelligence modules, and smarter financial decision support.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="whitepaper">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Whitepaper Flow</div>
-            <h2>Whitepaper content turned into <span class="gradient-title">site-native sections.</span></h2>
-          </div>
-
-          <div class="inline-actions" style="margin-top:0;">
-            <a class="btn btn-buy" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/W1.pdf" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
-          </div>
-        </div>
-
-        <div class="whitepaper-nav">
-          <div class="whitepaper-link reveal">
-            <div class="title-row">
-              <div class="icon-badge">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="8"/>
-                  <path d="M12 8l2.5 4H9.5L12 8Z"/>
-                </svg>
-              </div>
-              <strong style="margin:0;">Vision</strong>
-            </div>
-            <p>AXION aims to redefine finance by combining DeFi and artificial intelligence inside a unified, data-driven ecosystem.</p>
-          </div>
-
-          <div class="whitepaper-link reveal">
-            <div class="title-row">
-              <div class="icon-badge">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="8"/>
-                  <path d="M12 12l4-4M12 12l-3 5"/>
-                </svg>
-              </div>
-              <strong style="margin:0;">Mission</strong>
-            </div>
-            <p>The mission is to provide smarter investment tools, real-time analytics, and a safer user environment across the AXION ecosystem.</p>
-          </div>
-
-          <div class="whitepaper-link reveal">
-            <div class="title-row">
-              <div class="icon-badge">
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 4h8l4 4v12H7z"/>
-                  <path d="M15 4v4h4"/>
-                  <path d="M10 13h4M10 17h4"/>
-                </svg>
-              </div>
-              <strong style="margin:0;">Whitepaper Access</strong>
-            </div>
-            <p>The full whitepaper can be opened directly with the button above for fast viewing and download.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="ecosystem">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Ecosystem</div>
-            <h2>Three layers of <span class="gradient-title">smarter DeFi structure.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">AI Layer</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                  </svg>
-                </div>
-                <h3>Intelligence modules</h3>
-              </div>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Market Predictions</strong>
-                  <p>AXION’s AI direction is designed to analyze market structures and support forward-looking insight generation.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Trade Signals</strong>
-                  <p>Future intelligence modules may provide data-driven signal logic to strengthen strategic execution.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Risk Scoring</strong>
-                  <p>Decision support improves when opportunities can be evaluated with clearer data and stronger caution signals.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Analytics Dashboard</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <line x1="5" y1="19" x2="5" y2="11"/>
-                    <line x1="10" y1="19" x2="10" y2="6"/>
-                    <line x1="15" y1="19" x2="15" y2="13"/>
-                    <line x1="20" y1="19" x2="20" y2="9"/>
-                  </svg>
-                </div>
-                <h3>Visibility and tracking</h3>
-              </div>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Wallet Analysis</strong>
-                  <p>Users can explore wallet behavior and ecosystem movement through a product-level dashboard layer.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Token Performance</strong>
-                  <p>Price activity, movement context, and market-facing metrics can be surfaced in a cleaner branded environment.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Whale Tracking</strong>
-                  <p>Monitoring large-holder behavior supports better interpretation of risk, movement, and ecosystem pressure.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Tools</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M14 6l4-4 2 2-4 4"/>
-                    <path d="M13 7l4 4"/>
-                    <path d="M3 21l6-6"/>
-                    <path d="M8 13l3 3"/>
-                  </svg>
-                </div>
-                <h3>User-facing utility</h3>
-              </div>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Sniper Detection</strong>
-                  <p>Tooling can be positioned to help identify bot-like activity and protect fairer market participation.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Rug Risk Checker</strong>
-                  <p>Risk evaluation modules help users review project structure more carefully before acting.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Portfolio Optimizer</strong>
-                  <p>AI-assisted portfolio support extends the ecosystem beyond token ownership into practical user value.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="security">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Security Framework</div>
-            <h2>Built for stronger <span class="gradient-title">trust minimization.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-4">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Security 01</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
-                  </svg>
-                </div>
-                <h3>No Mint Functionality</h3>
-              </div>
-              <p>The contract direction excludes mint capability so the total supply remains permanently fixed and easier to trust.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Security 02</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="5" y="10" width="14" height="9" rx="2"/>
-                    <path d="M8 10V8a4 4 0 0 1 8 0v2"/>
-                  </svg>
-                </div>
-                <h3>No Hidden Backdoors</h3>
-              </div>
-              <p>AXION emphasizes transparent logic and rejects hidden function design that could be executed behind the scenes.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Security 03</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 12l3 3 7-7"/>
-                    <circle cx="12" cy="12" r="9"/>
-                  </svg>
-                </div>
-                <h3>Ownership Removal</h3>
-              </div>
-              <p>The ability to renounce ownership supports a more decentralized posture and reduces governance concern over time.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Security 04</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 4h10v16H7z"/>
-                    <path d="M9.5 8h5M9.5 12h5M9.5 16h3"/>
-                  </svg>
-                </div>
-                <h3>Transparent Contract Logic</h3>
-              </div>
-              <p>Operations remain easier to follow when token behavior, fee structure, and ecosystem claims are aligned with visible logic.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -2020,6 +1486,43 @@
   </footer>
 
   <script>
+    const AXION_CONTRACT = "0x0F18990414D8f58890301ded2C371F2619C67896";
+    const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
+    const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
+    const PRESALE_RATE = 10000;
+    const CHAIN_ID_BSC = 56;
+
+    const BSC_RPCS = [
+      "https://bsc-dataseed.binance.org/",
+      "https://rpc.ankr.com/bsc",
+      "https://bsc.publicnode.com"
+    ];
+
+    const TOKEN_META = {
+      AX: {
+        address: AXION_CONTRACT,
+        decimals: 18,
+        symbol: "AX",
+        image: "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png",
+        logo: "https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png"
+      },
+      BNB: {
+        native: true,
+        decimals: 18,
+        logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png"
+      },
+      USDT: {
+        address: "0x55d398326f99059fF775485246999027B3197955",
+        decimals: 18,
+        logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
+      }
+    };
+
+    const ERC20_ABI = [
+      "function balanceOf(address) view returns (uint256)",
+      "function transfer(address to, uint256 value) returns (bool)"
+    ];
+
     const mobileToggle = document.getElementById("mobileToggle");
     const navLinks = document.getElementById("navLinks");
     const walletBtn = document.getElementById("walletBtn");
@@ -2080,9 +1583,13 @@
       return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
+    function isMetaMaskInAppBrowser() {
+      return !!(window.ethereum && window.ethereum.isMetaMask);
+    }
+
     function getMetaMaskDeepLink() {
-      const stripped = window.location.href.replace(/^https?:\/\//, "");
-      return `https://metamask.app.link/dapp/${stripped}`;
+      const cleanUrl = window.location.href.replace(/^https?:\/\//, "");
+      return `https://metamask.app.link/dapp/${cleanUrl}`;
     }
 
     function openMetaMaskMobile() {
@@ -2091,11 +1598,11 @@
 
     async function handleMissingProvider() {
       if (isMobileDevice()) {
-        const goMetaMask = window.confirm("No wallet provider detected. Open this page in MetaMask Mobile?");
-        if (goMetaMask) openMetaMaskMobile();
-      } else {
-        alert("No wallet provider detected.");
+        openMetaMaskMobile();
+        return false;
       }
+
+      alert("No wallet provider detected.");
       return false;
     }
 
@@ -2125,6 +1632,26 @@
         minimumFractionDigits: 0,
         maximumFractionDigits: maxDecimals
       }).format(num);
+    }
+
+    function getReadableError(error) {
+      const raw =
+        error?.reason ||
+        error?.data?.message ||
+        error?.error?.message ||
+        error?.message ||
+        "Transaction failed.";
+
+      if (String(raw).toLowerCase().includes("user rejected")) {
+        return "Transaction was rejected in the wallet.";
+      }
+      if (String(raw).toLowerCase().includes("insufficient funds")) {
+        return "Insufficient balance for this transaction and network gas.";
+      }
+      if (String(raw).toLowerCase().includes("gas required exceeds allowance")) {
+        return "Transaction could not be estimated. Please check the amount and try again.";
+      }
+      return raw;
     }
 
     function updateWalletCountUI() {
@@ -2225,7 +1752,7 @@
       try {
         const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
         connectedAccount = accounts?.[0] || null;
-        browserProvider = new ethers.providers.Web3Provider(window.ethereum);
+        browserProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
         updateWalletButton();
         updateReceiveUI();
         registerSessionWallet(connectedAccount);
@@ -2233,7 +1760,45 @@
         return !!connectedAccount;
       } catch (error) {
         console.error(error);
+        alert(getReadableError(error));
         return false;
+      }
+    }
+
+    async function prepareWalletAction() {
+      if (!window.ethereum) {
+        return handleMissingProvider();
+      }
+
+      const networkOk = await ensureBscNetwork();
+      if (!networkOk) {
+        alert("Please switch your wallet to BNB Smart Chain.");
+        return null;
+      }
+
+      try {
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        if (!accounts || !accounts.length) {
+          alert("Wallet connection failed.");
+          return null;
+        }
+
+        connectedAccount = accounts[0];
+        browserProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
+        const signer = browserProvider.getSigner();
+        const signerAddress = await signer.getAddress();
+
+        connectedAccount = signerAddress;
+        updateWalletButton();
+        updateReceiveUI();
+        registerSessionWallet(connectedAccount);
+        await loadConnectedWalletBalances();
+
+        return { provider: browserProvider, signer, address: signerAddress };
+      } catch (error) {
+        console.error("prepareWalletAction error:", error);
+        alert(getReadableError(error));
+        return null;
       }
     }
 
@@ -2317,52 +1882,41 @@
     }
 
     async function buyAx() {
-      if (!window.ethereum) {
-        return handleMissingProvider();
-      }
-
       const amount = Number(bnbAmountInput.value || 0);
+
       if (!amount || amount <= 0) {
         alert("Please enter a valid BNB amount.");
         return;
       }
 
-      if (!connectedAccount) {
-        const connected = await connectWallet();
-        if (!connected) return;
-      } else {
-        const networkOk = await ensureBscNetwork();
-        if (!networkOk) {
-          alert("Please switch your wallet to BNB Smart Chain.");
-          return;
-        }
-      }
+      const wallet = await prepareWalletAction();
+      if (!wallet) return;
 
       try {
         buyAxBtn.disabled = true;
-        buyAxBtn.textContent = "Processing...";
+        buyAxBtn.textContent = "Opening Wallet...";
 
-        const provider = browserProvider || new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-
-        const tx = await signer.sendTransaction({
+        const txRequest = {
           to: PRESALE_RECEIVER,
           value: ethers.utils.parseEther(String(amount))
-        });
+        };
 
-        await tx.wait();
+        buyAxBtn.textContent = "Waiting for Approval...";
+        await wallet.signer.sendTransaction(txRequest);
 
+        buyAxBtn.textContent = "Submitted";
         const purchasedAx = amount * PRESALE_RATE;
         showPresaleSuccessCard(purchasedAx);
 
-        buyAxBtn.textContent = "Transaction Sent";
+        await loadConnectedWalletBalances();
+
         setTimeout(() => {
           buyAxBtn.disabled = false;
           buyAxBtn.textContent = "Buy AX";
-        }, 2200);
+        }, 1800);
       } catch (error) {
-        console.error(error);
-        alert("Transaction was cancelled or failed.");
+        console.error("buyAx error:", error);
+        alert(getReadableError(error));
         buyAxBtn.disabled = false;
         buyAxBtn.textContent = "Buy AX";
       }
@@ -2395,15 +1949,11 @@
         }
       } catch (error) {
         console.error(error);
-        alert("Token could not be added automatically.");
+        alert(getReadableError(error));
       }
     }
 
     async function sendAXToken() {
-      if (!window.ethereum) {
-        return handleMissingProvider();
-      }
-
       const to = (axSendTo.value || "").trim();
       const amount = Number(axSendAmount.value || 0);
 
@@ -2417,30 +1967,20 @@
         return;
       }
 
-      if (!connectedAccount) {
-        const connected = await connectWallet();
-        if (!connected) return;
-      }
-
-      const networkOk = await ensureBscNetwork();
-      if (!networkOk) {
-        alert("Please switch your wallet to BNB Smart Chain.");
-        return;
-      }
+      const wallet = await prepareWalletAction();
+      if (!wallet) return;
 
       try {
         sendAxBtn.disabled = true;
-        sendAxBtn.textContent = "Sending...";
+        sendAxBtn.textContent = "Opening Wallet...";
 
-        const provider = browserProvider || new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const tokenContract = new ethers.Contract(AXION_CONTRACT, ERC20_ABI, signer);
-
+        const tokenContract = new ethers.Contract(AXION_CONTRACT, ERC20_ABI, wallet.signer);
         const parsedAmount = ethers.utils.parseUnits(String(amount), TOKEN_META.AX.decimals);
-        const tx = await tokenContract.transfer(to, parsedAmount);
-        await tx.wait();
 
-        sendAxBtn.textContent = "AX Sent";
+        sendAxBtn.textContent = "Waiting for Approval...";
+        await tokenContract.transfer(to, parsedAmount);
+
+        sendAxBtn.textContent = "Submitted";
         axSendAmount.value = "";
         axSendTo.value = "";
 
@@ -2449,10 +1989,10 @@
         setTimeout(() => {
           sendAxBtn.disabled = false;
           sendAxBtn.textContent = "Send AX";
-        }, 2000);
+        }, 1800);
       } catch (error) {
-        console.error(error);
-        alert("AX transfer failed or was cancelled.");
+        console.error("sendAXToken error:", error);
+        alert(getReadableError(error));
         sendAxBtn.disabled = false;
         sendAxBtn.textContent = "Send AX";
       }
@@ -2466,7 +2006,7 @@
 
         if (accounts?.length) {
           connectedAccount = accounts[0];
-          browserProvider = new ethers.providers.Web3Provider(window.ethereum);
+          browserProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
 
           try {
             const chainIdHex = await window.ethereum.request({ method: "eth_chainId" });
@@ -2662,7 +2202,7 @@
       window.ethereum.on?.("accountsChanged", async (accounts) => {
         connectedAccount = accounts?.[0] || null;
         if (connectedAccount) {
-          browserProvider = new ethers.providers.Web3Provider(window.ethereum);
+          browserProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
           registerSessionWallet(connectedAccount);
           await loadConnectedWalletBalances();
         } else {
@@ -2673,7 +2213,11 @@
         updateReceiveUI();
       });
 
-      window.ethereum.on?.("chainChanged", () => window.location.reload());
+      window.ethereum.on?.("chainChanged", async () => {
+        browserProvider = null;
+        await initExistingWalletConnection();
+        await loadFeeWalletBalance();
+      });
     }
 
     const observer = new IntersectionObserver((entries) => {
