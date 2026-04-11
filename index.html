@@ -3145,19 +3145,7 @@
                 </div>
               </div>
 
-              <div class="presale-progress">
-                <div class="presale-progress-head">
-                  <strong>Allocation Progress</strong>
-                  <span id="presaleProgressLabel">0 AX sold • 0.00%</span>
-                </div>
-                <div class="presale-progress-track">
-                  <div class="presale-progress-fill" id="presaleProgressFill"></div>
-                </div>
-                <div class="presale-progress-meta">
-                  <span id="presaleSoldValue">Sold: 0 AX</span>
-                  <span id="presaleRemainingValue">Remaining: 5,000,000 AX</span>
-                </div>
-              </div>
+              
 
               <div class="presale-security-strip">
                 <div class="presale-security-pill"><span class="dot"></span> No Mint</div>
@@ -4055,11 +4043,9 @@
 
     const PRESALE_TOTAL_AX = 5000000;
     const PRESALE_START_TS = Math.floor(new Date("2026-04-11T21:00:00Z").getTime() / 1000);
-    const PRESALE_PROGRESS_API = "https://api.etherscan.io/v2/api";
-    const PRESALE_PROGRESS_CHAIN_ID = "56";
-    const PRESALE_PROGRESS_API_KEY = ""; // Paste your valid explorer API key here for live presale progress
+    const BSCSCAN_PROGRESS_API = "https://api.bscscan.com/api";
+    const BSCSCAN_PROGRESS_API_KEY = "YourApiKeyToken";
     let presaleSoldAX = 0;
-    let presaleProgressUnavailableReason = "";
     let connectedAccount = null;
     let browserProvider = null;
     let readProvider = null;
@@ -4179,15 +4165,6 @@
 
     function updatePresaleProgressUI() {
       if (!presaleProgressFill || !presaleProgressLabel || !presaleSoldValue || !presaleRemainingValue) return;
-
-      if (presaleProgressUnavailableReason) {
-        presaleProgressFill.style.width = "0%";
-        presaleProgressLabel.textContent = "Progress unavailable";
-        presaleSoldValue.textContent = "Sold: unavailable";
-        presaleRemainingValue.textContent = presaleProgressUnavailableReason;
-        return;
-      }
-
       const sold = Math.max(0, Math.min(PRESALE_TOTAL_AX, Number(presaleSoldAX || 0)));
       const remaining = Math.max(0, PRESALE_TOTAL_AX - sold);
       const pct = PRESALE_TOTAL_AX > 0 ? (sold / PRESALE_TOTAL_AX) * 100 : 0;
@@ -4200,14 +4177,7 @@
 
     async function fetchOnchainPresaleProgress() {
       try {
-        if (!PRESALE_PROGRESS_API_KEY) {
-          presaleProgressUnavailableReason = "Add a valid explorer API key to enable live progress.";
-          updatePresaleProgressUI();
-          return;
-        }
-
-        const url = new URL(PRESALE_PROGRESS_API);
-        url.searchParams.set("chainid", PRESALE_PROGRESS_CHAIN_ID);
+        const url = new URL(BSCSCAN_PROGRESS_API);
         url.searchParams.set("module", "account");
         url.searchParams.set("action", "txlist");
         url.searchParams.set("address", PRESALE_RECEIVER);
@@ -4216,7 +4186,7 @@
         url.searchParams.set("sort", "asc");
         url.searchParams.set("page", "1");
         url.searchParams.set("offset", "10000");
-        url.searchParams.set("apikey", PRESALE_PROGRESS_API_KEY);
+        url.searchParams.set("apikey", BSCSCAN_PROGRESS_API_KEY || "YourApiKeyToken");
 
         const response = await fetch(url.toString(), {
           method: "GET",
@@ -4225,42 +4195,26 @@
         });
 
         const data = await response.json();
-        const status = String(data?.status ?? "");
-        const message = String(data?.message ?? "");
-        const result = data?.result;
-
-        if (!response.ok) {
-          throw new Error("HTTP " + response.status);
-        }
-
-        if (!Array.isArray(result)) {
-          const reason = typeof result === "string" && result
-            ? result
-            : (message || "Explorer API did not return a transaction list.");
-          throw new Error(reason);
-        }
+        const result = Array.isArray(data?.result) ? data.result : [];
 
         const totalBnb = result.reduce((sum, tx) => {
           const txTime = Number(tx?.timeStamp || 0);
           const txTo = String(tx?.to || "").toLowerCase();
           const isIncoming = txTo === PRESALE_RECEIVER.toLowerCase();
           const isSuccess = String(tx?.isError || "0") === "0";
-          const valueWei = String(tx?.value || "0");
+          const valueWei = Number(tx?.value || 0);
 
-          if (!isIncoming || !isSuccess || valueWei === "0" || txTime < PRESALE_START_TS) {
+          if (!isIncoming || !isSuccess || !valueWei || txTime < PRESALE_START_TS) {
             return sum;
           }
 
-          return sum + Number(ethers.utils.formatEther(valueWei));
+          return sum + Number(ethers.utils.formatEther(String(tx.value || "0")));
         }, 0);
 
         presaleSoldAX = totalBnb * PRESALE_RATE;
-        presaleProgressUnavailableReason = "";
         updatePresaleProgressUI();
       } catch (error) {
         console.error("Presale progress fetch failed:", error);
-        presaleProgressUnavailableReason = "Live on-chain progress could not be loaded.";
-        updatePresaleProgressUI();
       }
     }
 
