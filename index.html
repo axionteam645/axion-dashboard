@@ -1900,6 +1900,161 @@
       }
     }
 
+  
+
+    .presale-extra-box{
+      margin-top:18px;
+      padding:18px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .presale-extra-box strong{
+      display:block;
+      font-size:16px;
+      margin-bottom:8px;
+      color:#ffffff;
+    }
+
+    .presale-extra-box p{
+      margin:0;
+      font-size:14px;
+      line-height:1.72;
+      color:var(--muted);
+    }
+
+  
+    .listing-targets img{
+      width:38px;
+      height:38px;
+      object-fit:contain;
+      border-radius:10px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      padding:6px;
+    }
+
+  
+    .dashboard-grid{
+      grid-template-columns:1fr !important;
+    }
+
+    .presale-layout{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .presale-main-stack{
+      display:grid;
+      gap:18px;
+    }
+
+    .binance-alpha-box{
+      padding:22px;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .binance-alpha-box::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(140deg, rgba(255,201,92,.10), transparent 30%, transparent 70%, rgba(95,140,255,.08)),
+        radial-gradient(circle at 100% 100%, rgba(255,201,92,.08), transparent 24%);
+      pointer-events:none;
+    }
+
+    .binance-alpha-box > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .alpha-head{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .alpha-logo{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      object-fit:contain;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      padding:7px;
+    }
+
+    .binance-alpha-box h3{
+      margin:0;
+      font-size:24px;
+      letter-spacing:-.03em;
+    }
+
+    .alpha-sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.72;
+    }
+
+    .alpha-list{
+      display:grid;
+      gap:10px;
+      margin:0 0 16px;
+    }
+
+    .alpha-item{
+      padding:13px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.08);
+      color:#dce7ff;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .alpha-item strong{
+      color:#fff1b8;
+    }
+
+    .alpha-next{
+      margin-top:10px;
+      padding:14px 15px;
+      border-radius:16px;
+      background:rgba(255,201,92,.08);
+      border:1px solid rgba(255,201,92,.18);
+    }
+
+    .alpha-next strong{
+      display:block;
+      margin-bottom:6px;
+      color:#ffe9a1;
+      font-size:15px;
+    }
+
+    .alpha-next p{
+      margin:0;
+      color:#f3e7c7;
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    @media (max-width: 1180px){
+      .presale-layout{
+        grid-template-columns:1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2246,9 +2401,10 @@
             <h2></h2>
           </div>
         </div>
-
         <div class="dashboard-grid">
-          <article class="card reveal" id="presale">
+          <div class="presale-layout">
+            <div class="presale-main-stack">
+<article class="card reveal" id="presale">
             <div class="card-inner">
               <div class="tag">Highlighted Presale</div>
 
@@ -2290,9 +2446,51 @@
                     Congratulations. Your AX purchase was completed successfully. Your tokens will be sent to the wallet used for payment on the distribution date. Please follow announcements on our official channels.
                   </p>
                 </div>
+
+                
+<div class="presale-extra-box">
+  <strong>Exchange Listing Strategy</strong>
+  <p>Presale allocation (~500 BNB) is strategically reserved to support liquidity, marketing, and centralized exchange listings. The goal is to expand visibility while maintaining strong market structure.</p>
+
+  <div class="listing-targets" style="margin-top:14px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+    <img src="https://www.google.com/s2/favicons?domain=lbank.com&sz=64" style="width:38px;">
+    <img src="https://www.google.com/s2/favicons?domain=gate.io&sz=64" style="width:38px;">
+    <img src="https://www.google.com/s2/favicons?domain=mexc.com&sz=64" style="width:38px;">
+    <img src="https://www.google.com/s2/favicons?domain=kucoin.com&sz=64" style="width:38px;">
+    <img src="https://www.google.com/s2/favicons?domain=bitmart.com&sz=64" style="width:38px;">
+  </div>
+
+  <p style="margin-top:14px;">
+    Target Exchanges: LBank, Gate.io, MEXC, KuCoin, BitMart
+  </p>
+</div>
+
               </div>
             </div>
           </article>
+            </div>
+
+            <aside class="binance-alpha-box reveal">
+              <div class="alpha-head">
+                <img class="alpha-logo" src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="Binance Alpha Logo">
+                <h3>Binance Alpha</h3>
+              </div>
+              <p class="alpha-sub">A focused milestone track built to strengthen market readiness before Binance Alpha application and broader ecosystem expansion.</p>
+
+              <div class="alpha-list">
+                <div class="alpha-item"><strong>Minimum Holders:</strong> 5,000+</div>
+                <div class="alpha-item"><strong>Daily Volume:</strong> $500K – $1M</div>
+                <div class="alpha-item"><strong>Liquidity Stability:</strong> Consistent LP depth</div>
+                <div class="alpha-item"><strong>Community Growth:</strong> Active social engagement</div>
+                <div class="alpha-item"><strong>Market Presence:</strong> Trending on tracking platforms</div>
+              </div>
+
+              <div class="alpha-next">
+                <strong>Next Step</strong>
+                <p>After reaching these milestones, AXION will proceed with Binance Alpha listing application and ecosystem expansion strategy.</p>
+              </div>
+            </aside>
+          </div>
         </div>
       </div>
     </section>
