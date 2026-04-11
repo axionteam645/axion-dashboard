@@ -1109,11 +1109,9 @@
                 <div class="label">Supply</div>
                 <div class="value">1,000,000,000</div>
               </div>
-             <div class="mini-stat" style="padding:0; overflow:hidden;">
-  <iframe 
-    src="https://dexscreener.com/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de?embed=1&theme=dark"
-    style="width:100%; height:120px; border:none;">
-  </iframe>
+           <div class="mini-stat">
+  <div class="label">Price</div>
+  <div class="value" id="axPrice">$-</div>
 </div>
             </div>
           </div>
@@ -2641,5 +2639,39 @@
         if (connectedAccount) loadConnectedWalletBalances();
     }, 20000);
   </script>
+<script>
+  async function loadAxPrice() {
+    try {
+      const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de");
+      const data = await res.json();
+
+      const price = data?.pair?.priceUsd || data?.pairs?.[0]?.priceUsd;
+      const priceEl = document.getElementById("axPrice");
+
+      if (!priceEl) return;
+
+      if (!price) {
+        priceEl.textContent = "N/A";
+        return;
+      }
+
+      const num = Number(price);
+
+      if (num >= 1) {
+        priceEl.textContent = "$" + num.toLocaleString(undefined, { maximumFractionDigits: 4 });
+      } else {
+        priceEl.textContent = "$" + num.toFixed(8);
+      }
+
+    } catch (err) {
+      const priceEl = document.getElementById("axPrice");
+      if (priceEl) priceEl.textContent = "N/A";
+      console.error("AX price fetch error:", err);
+    }
+  }
+
+  loadAxPrice();
+  setInterval(loadAxPrice, 15000);
+</script>
 </body>
 </html>
