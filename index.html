@@ -1037,6 +1037,46 @@
         flex-wrap:wrap;
       }
     }
+  
+
+    .wallet-lite-gold{
+      background:
+        linear-gradient(180deg, rgba(255,201,92,.18), rgba(255,140,0,.12)),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,201,92,.35);
+      box-shadow:
+        0 0 0 1px rgba(255,201,92,.08),
+        0 0 28px rgba(255,201,92,.25),
+        0 0 60px rgba(255,140,0,.18),
+        0 18px 60px rgba(0,0,0,.42);
+    }
+
+    .wallet-lite-gold::before{
+      background:
+        linear-gradient(140deg, rgba(255,201,92,.15), transparent 30%, transparent 70%, rgba(255,140,0,.15)),
+        radial-gradient(circle at 100% 100%, rgba(255,180,60,.12), transparent 30%);
+    }
+
+    .wallet-lite-gold .tag{
+      background:rgba(255,201,92,.15);
+      border:1px solid rgba(255,201,92,.35);
+      color:#fff3c4;
+    }
+
+    .wallet-lite-gold h3{
+      color:#ffe6a3;
+    }
+
+    .wallet-lite-gold p{
+      color:#f5e6c8;
+    }
+
+    .wallet-lite-gold .feature,
+    .wallet-lite-gold .token-tile{
+      background:rgba(255,201,92,.08);
+      border:1px solid rgba(255,201,92,.25);
+    }
+
   </style>
 </head>
 <body>
@@ -1179,7 +1219,7 @@
           </div>
 
           <div class="hero-side-stack reveal">
-          <article class="card reveal">
+          <article class="card reveal wallet-lite-gold">
             <div class="card-inner">
               <div class="tag">Wallet Lite</div>
 
