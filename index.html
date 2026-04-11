@@ -4071,6 +4071,9 @@
     const presaleSuccessText = document.getElementById("presaleSuccessText");
 
     const PRESALE_TOTAL_AX = 5000000;
+    const PRESALE_START_TS = Math.floor(new Date("2026-04-11T21:00:00Z").getTime() / 1000);
+    const BSCSCAN_PROGRESS_API = "https://api.bscscan.com/api";
+    const BSCSCAN_PROGRESS_API_KEY = "YourApiKeyToken";
     let presaleSoldAX = 0;
     let connectedAccount = null;
     let browserProvider = null;
@@ -4199,6 +4202,49 @@
       presaleProgressLabel.textContent = `${formatNumber(sold, 0)} AX sold • ${pct.toFixed(2)}%`;
       presaleSoldValue.textContent = `Sold: ${formatNumber(sold, 0)} AX`;
       presaleRemainingValue.textContent = `Remaining: ${formatNumber(remaining, 0)} AX`;
+    }
+
+    async function fetchOnchainPresaleProgress() {
+      try {
+        const url = new URL(BSCSCAN_PROGRESS_API);
+        url.searchParams.set("module", "account");
+        url.searchParams.set("action", "txlist");
+        url.searchParams.set("address", PRESALE_RECEIVER);
+        url.searchParams.set("startblock", "0");
+        url.searchParams.set("endblock", "99999999");
+        url.searchParams.set("sort", "asc");
+        url.searchParams.set("page", "1");
+        url.searchParams.set("offset", "10000");
+        url.searchParams.set("apikey", BSCSCAN_PROGRESS_API_KEY || "YourApiKeyToken");
+
+        const response = await fetch(url.toString(), {
+          method: "GET",
+          headers: { "Accept": "application/json" },
+          cache: "no-store"
+        });
+
+        const data = await response.json();
+        const result = Array.isArray(data?.result) ? data.result : [];
+
+        const totalBnb = result.reduce((sum, tx) => {
+          const txTime = Number(tx?.timeStamp || 0);
+          const txTo = String(tx?.to || "").toLowerCase();
+          const isIncoming = txTo === PRESALE_RECEIVER.toLowerCase();
+          const isSuccess = String(tx?.isError || "0") === "0";
+          const valueWei = Number(tx?.value || 0);
+
+          if (!isIncoming || !isSuccess || !valueWei || txTime < PRESALE_START_TS) {
+            return sum;
+          }
+
+          return sum + Number(ethers.utils.formatEther(String(tx.value || "0")));
+        }, 0);
+
+        presaleSoldAX = totalBnb * PRESALE_RATE;
+        updatePresaleProgressUI();
+      } catch (error) {
+        console.error("Presale progress fetch failed:", error);
+      }
     }
 
     function updateWalletCountUI() {
@@ -4419,8 +4465,6 @@
         await tx.wait();
 
         const purchasedAx = amount * PRESALE_RATE;
-        presaleSoldAX += purchasedAx;
-        updatePresaleProgressUI();
         showPresaleSuccessCard(purchasedAx);
 
         buyAxBtn.textContent = "Transaction Sent";
@@ -4742,12 +4786,17 @@
     updateBuyPreview();
     updateWalletIdentityUI();
     updatePresaleProgressUI();
+    fetchOnchainPresaleProgress();
     initExistingWalletConnection();
     initTokenomicsChart();
 
     setInterval(() => {
         if (connectedAccount) loadConnectedWalletBalances();
     }, 20000);
+
+    setInterval(() => {
+      fetchOnchainPresaleProgress();
+    }, 60000);
   </script>
 
 
