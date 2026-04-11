@@ -2378,6 +2378,72 @@
       }
     }
 
+  
+    .welcome-modal{
+      position:fixed;
+      inset:0;
+      z-index:99999;
+      width:100%;
+      height:100dvh;
+      min-height:100vh;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(4,9,20,.72);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      overscroll-behavior:contain;
+    }
+
+    @supports not (height: 100dvh){
+      .welcome-modal{
+        height:100vh;
+      }
+    }
+
+    .welcome-modal.show{
+      display:flex !important;
+      visibility:visible !important;
+      opacity:1 !important;
+      pointer-events:auto !important;
+      animation:welcomeFade .28s ease;
+    }
+
+    .welcome-modal[aria-hidden="true"]{
+      visibility:hidden;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .welcome-modal[aria-hidden="false"]{
+      visibility:visible;
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .welcome-card{
+      max-height:min(90dvh, 820px);
+      overflow:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    @media (max-width: 640px){
+      .welcome-modal{
+        align-items:flex-start;
+        justify-content:center;
+        padding:14px;
+      }
+
+      .welcome-card{
+        width:100%;
+        max-width:100%;
+        max-height:none;
+        margin-top:18px;
+        overflow:visible;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -4355,6 +4421,9 @@
 </script>
 
 
+
+
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const welcomeModal = document.getElementById("welcomeModal");
@@ -4363,37 +4432,57 @@
 
     if (!welcomeModal) return;
 
-    const closeWelcome = () => {
-      welcomeModal.classList.remove("show");
-      welcomeModal.setAttribute("aria-hidden", "true");
-      welcomeModal.style.display = "none";
-    };
+    let closed = false;
 
     const openWelcome = () => {
+      if (closed) return;
       welcomeModal.classList.add("show");
       welcomeModal.setAttribute("aria-hidden", "false");
       welcomeModal.style.display = "flex";
+      document.body.style.overflow = "hidden";
     };
 
-    openWelcome();
+    const closeWelcome = () => {
+      closed = true;
+      welcomeModal.classList.remove("show");
+      welcomeModal.setAttribute("aria-hidden", "true");
+      welcomeModal.style.display = "none";
+      document.body.style.overflow = "";
+    };
+
+    const onBackdropClick = (e) => {
+      if (e.target === welcomeModal) closeWelcome();
+    };
+
+    const onEscape = (e) => {
+      if (e.key === "Escape") closeWelcome();
+    };
 
     if (welcomeCloseBtn) {
-      welcomeCloseBtn.addEventListener("click", closeWelcome);
+      welcomeCloseBtn.addEventListener("click", closeWelcome, { passive: true });
+      welcomeCloseBtn.addEventListener("touchend", closeWelcome, { passive: true });
     }
-
-    welcomeModal.addEventListener("click", (e) => {
-      if (e.target === welcomeModal) closeWelcome();
-    });
 
     if (welcomePresaleLink) {
-      welcomePresaleLink.addEventListener("click", () => {
-        closeWelcome();
-      });
+      welcomePresaleLink.addEventListener("click", closeWelcome, { passive: true });
+      welcomePresaleLink.addEventListener("touchend", closeWelcome, { passive: true });
     }
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeWelcome();
+    welcomeModal.addEventListener("click", onBackdropClick);
+    welcomeModal.addEventListener("touchend", onBackdropClick, { passive: true });
+    document.addEventListener("keydown", onEscape);
+
+    // Open once after layout settles. Helps on Wix/Vercel embed rendering.
+    requestAnimationFrame(() => {
+      setTimeout(openWelcome, 120);
     });
+
+    // Safety reopen if initial embedded render delays the layout, but only if still not closed.
+    setTimeout(() => {
+      if (!closed && welcomeModal.getAttribute("aria-hidden") !== "false") {
+        openWelcome();
+      }
+    }, 500);
   });
 </script>
 
