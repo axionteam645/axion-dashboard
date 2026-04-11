@@ -2451,6 +2451,279 @@
   }
 }
 
+
+/* ===== AXION premium upgrades ===== */
+.wallet-identity-bar{
+  margin-top:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.08);
+}
+.wallet-identity-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+.wallet-status-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(255,255,255,.24);
+  box-shadow:none;
+  flex-shrink:0;
+}
+.wallet-status-dot.connected{
+  background:#43f3b1;
+  box-shadow:0 0 10px rgba(67,243,177,.55), 0 0 20px rgba(67,243,177,.28);
+}
+.wallet-identity-copy{
+  min-width:0;
+}
+.wallet-identity-copy strong{
+  display:block;
+  font-size:14px;
+  color:#fff;
+  margin-bottom:4px;
+}
+.wallet-identity-copy span{
+  display:block;
+  font-size:13px;
+  color:#d9e7ff;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.wallet-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.05);
+  color:#dce7ff;
+}
+.wallet-badge.connected{
+  color:#08111f;
+  background:linear-gradient(90deg, #43f3b1, #4ed8ff, #5f8cff);
+  box-shadow:0 10px 24px rgba(67,243,177,.18);
+}
+.wallet-lite-gold.connected-wallet{
+  border-color:rgba(67,243,177,.34);
+  box-shadow:
+    0 0 0 1px rgba(67,243,177,.08),
+    0 0 30px rgba(67,243,177,.16),
+    0 0 60px rgba(95,140,255,.14),
+    0 18px 60px rgba(0,0,0,.42);
+}
+.wallet-lite-gold.connected-wallet::before{
+  background:
+    linear-gradient(140deg, rgba(67,243,177,.15), transparent 30%, transparent 70%, rgba(78,216,255,.15)),
+    radial-gradient(circle at 100% 100%, rgba(95,140,255,.12), transparent 30%);
+}
+.token-tile .balance-value{
+  transition:all .22s ease;
+}
+.connected-wallet .token-tile .balance-value{
+  color:#ffffff;
+  text-shadow:0 0 12px rgba(78,216,255,.18);
+}
+
+.presale-trust-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:12px;
+  margin-top:18px;
+}
+.presale-trust-item{
+  padding:16px 18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+}
+.presale-trust-item strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:6px;
+  color:#ffffff;
+}
+.presale-trust-item p{
+  margin:0;
+  font-size:13px;
+  line-height:1.65;
+  color:var(--muted);
+}
+.presale-progress{
+  margin-top:18px;
+  padding:18px;
+  border-radius:20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.08);
+}
+.presale-progress-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+.presale-progress-head strong{
+  font-size:16px;
+  color:#fff;
+}
+.presale-progress-head span{
+  color:#d7e7ff;
+  font-size:13px;
+  font-weight:700;
+}
+.presale-progress-track{
+  width:100%;
+  height:12px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+}
+.presale-progress-fill{
+  width:0%;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg, #43f3b1, #4ed8ff, #5f8cff, #a85cff);
+  box-shadow:0 0 18px rgba(78,216,255,.25);
+  transition:width .35s ease;
+}
+.presale-progress-meta{
+  margin-top:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  color:#dce7ff;
+  font-size:13px;
+}
+.presale-security-strip{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:12px;
+}
+.presale-security-pill{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  color:#e6f6ff;
+  font-size:13px;
+  font-weight:800;
+}
+.presale-security-pill .dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#43f3b1;
+  box-shadow:0 0 10px rgba(67,243,177,.45);
+  flex-shrink:0;
+}
+
+.hero-market-bar.market-bar-upgraded{
+  grid-template-columns:repeat(6, minmax(0, 1fr));
+  gap:10px;
+  padding:16px 18px;
+}
+.hero-market-bar.market-bar-upgraded .market-item{
+  padding:8px 10px;
+  border-radius:16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+}
+.hero-market-bar.market-bar-upgraded .market-item strong{
+  font-weight:900;
+}
+.hero-market-bar.market-bar-upgraded .market-item.glow{
+  background:
+    linear-gradient(180deg, rgba(78,216,255,.10), rgba(95,140,255,.06)),
+    rgba(255,255,255,.03);
+  border-color:rgba(78,216,255,.18);
+  box-shadow:0 0 16px rgba(78,216,255,.08);
+}
+.hero-market-bar.market-bar-upgraded .market-divider{
+  display:none;
+}
+
+@media (max-width: 1180px){
+  .hero-market-bar.market-bar-upgraded{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 940px){
+  .presale-trust-grid,
+  .presale-security-strip{
+    grid-template-columns:1fr;
+  }
+  .hero-market-bar.market-bar-upgraded{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px){
+  .hero{
+    padding-top:54px;
+  }
+  .hero-copy p{
+    font-size:14px;
+    line-height:1.7;
+  }
+  .hero-actions-equal{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+  }
+  .hero-feature-cards{
+    gap:12px !important;
+    margin-top:24px !important;
+  }
+  .hero-feature-card{
+    min-height:auto !important;
+    padding:16px !important;
+  }
+  .hero-market-bar.market-bar-upgraded{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+    padding:14px !important;
+  }
+  .hero-market-bar.market-bar-upgraded .market-item{
+    padding:12px 14px !important;
+  }
+  .wallet-identity-bar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .wallet-badge{
+    width:100%;
+  }
+  .presale-progress,
+  .presale-trust-item,
+  .presale-security-pill{
+    padding:14px;
+  }
+  .presale-row{
+    align-items:flex-start;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2670,25 +2943,30 @@
             </div>
 
 
-            <div class="hero-market-bar">
-              <div class="market-item">
+            <div class="hero-market-bar market-bar-upgraded">
+              <div class="market-item glow">
                 <span class="market-label">AX</span>
                 <strong id="marketBarPrice">$-</strong>
               </div>
-              <div class="market-divider"></div>
               <div class="market-item">
                 <span class="market-label">24H CHANGE</span>
                 <strong id="marketBarChange" class="price-change neutral">--</strong>
               </div>
-              <div class="market-divider"></div>
               <div class="market-item">
                 <span class="market-label">LIQUIDITY</span>
                 <strong id="marketBarLiquidity">$-</strong>
               </div>
-              <div class="market-divider"></div>
               <div class="market-item">
                 <span class="market-label">VOLUME</span>
                 <strong id="marketBarVolume">$-</strong>
+              </div>
+              <div class="market-item">
+                <span class="market-label">24H HIGH</span>
+                <strong id="marketBarHigh">$-</strong>
+              </div>
+              <div class="market-item">
+                <span class="market-label">24H LOW</span>
+                <strong id="marketBarLow">$-</strong>
               </div>
             </div>
 
@@ -2727,6 +3005,17 @@
               <p>
                 The connected wallet displays live AX, BNB, and USDT balances with token icons, plus a live connected-wallet counter for the current session.
               </p>
+
+              <div class="wallet-identity-bar" id="walletIdentityBar">
+                <div class="wallet-identity-left">
+                  <span class="wallet-status-dot" id="walletStatusDot"></span>
+                  <div class="wallet-identity-copy">
+                    <strong id="walletIdentityTitle">Wallet not connected</strong>
+                    <span id="walletIdentityAddress">Connect wallet to unlock live AX, BNB, and USDT tracking.</span>
+                  </div>
+                </div>
+                <span class="wallet-badge" id="walletIdentityBadge">Standby</span>
+              </div>
 
               <div class="feature-list">
                 <div class="feature">
@@ -2848,6 +3137,37 @@
                 <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
                 <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
                 <div class="presale-row"><strong>Receiver</strong><span style="word-break:break-all;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
+              </div>
+              <div class="presale-trust-grid">
+                <div class="presale-trust-item">
+                  <strong>Verified Presale Wallet</strong>
+                  <p>All BNB payments route to the official AXION receiver wallet shown in the panel for transparent verification.</p>
+                </div>
+                <div class="presale-trust-item">
+                  <strong>Tracked On-Chain</strong>
+                  <p>Every payment can be followed on BscScan, keeping the sale path visible and reviewable for participants.</p>
+                </div>
+              </div>
+
+              <div class="presale-progress">
+                <div class="presale-progress-head">
+                  <strong>Allocation Progress</strong>
+                  <span id="presaleProgressLabel">0 AX sold • 0.00%</span>
+                </div>
+                <div class="presale-progress-track">
+                  <div class="presale-progress-fill" id="presaleProgressFill"></div>
+                </div>
+                <div class="presale-progress-meta">
+                  <span id="presaleSoldValue">Sold: 0 AX</span>
+                  <span id="presaleRemainingValue">Remaining: 5,000,000 AX</span>
+                </div>
+              </div>
+
+              <div class="presale-security-strip">
+                <div class="presale-security-pill"><span class="dot"></span> No Mint</div>
+                <div class="presale-security-pill"><span class="dot"></span> Transparent Fee Wallet</div>
+                <div class="presale-security-pill"><span class="dot"></span> Public BNB Receiver</div>
+                <div class="presale-security-pill"><span class="dot"></span> Fixed Allocation</div>
               </div>
 
               <div class="buy-inputs">
@@ -3718,6 +4038,15 @@
     const bnbBalanceEl = document.getElementById("bnbBalance");
     const usdtBalanceEl = document.getElementById("usdtBalance");
     const walletCountLiveEl = document.getElementById("walletCountLive");
+    const walletIdentityBar = document.getElementById("walletIdentityBar");
+    const walletStatusDot = document.getElementById("walletStatusDot");
+    const walletIdentityTitle = document.getElementById("walletIdentityTitle");
+    const walletIdentityAddress = document.getElementById("walletIdentityAddress");
+    const walletIdentityBadge = document.getElementById("walletIdentityBadge");
+    const presaleProgressFill = document.getElementById("presaleProgressFill");
+    const presaleProgressLabel = document.getElementById("presaleProgressLabel");
+    const presaleSoldValue = document.getElementById("presaleSoldValue");
+    const presaleRemainingValue = document.getElementById("presaleRemainingValue");
 
     const connectReceiveBtn = document.getElementById("connectReceiveBtn");
     const copyReceiveAddressBtn = document.getElementById("copyReceiveAddressBtn");
@@ -3730,6 +4059,8 @@
     const presaleSuccessTitle = document.getElementById("presaleSuccessTitle");
     const presaleSuccessText = document.getElementById("presaleSuccessText");
 
+    const PRESALE_TOTAL_AX = 5000000;
+    let presaleSoldAX = 0;
     let connectedAccount = null;
     let browserProvider = null;
     let readProvider = null;
@@ -3810,6 +4141,55 @@
       }).format(num);
     }
 
+    function formatUsdCompact(value) {
+      const num = Number(value);
+      if (!Number.isFinite(num) || num <= 0) return "$-";
+      if (num >= 1_000_000_000) return "$" + (num / 1_000_000_000).toFixed(2) + "B";
+      if (num >= 1_000_000) return "$" + (num / 1_000_000).toFixed(2) + "M";
+      if (num >= 1_000) return "$" + (num / 1_000).toFixed(1) + "K";
+      return "$" + num.toFixed(2);
+    }
+
+    function formatPrice(value) {
+      const num = Number(value);
+      if (!Number.isFinite(num) || num <= 0) return "$-";
+      return num >= 1
+        ? "$" + num.toLocaleString(undefined, { maximumFractionDigits: 4 })
+        : "$" + num.toFixed(8);
+    }
+
+    function updateWalletIdentityUI() {
+      if (!walletIdentityBar || !walletStatusDot || !walletIdentityTitle || !walletIdentityAddress || !walletIdentityBadge) return;
+
+      if (connectedAccount) {
+        walletIdentityBar.classList.add("connected-wallet");
+        walletStatusDot.classList.add("connected");
+        walletIdentityTitle.textContent = "Wallet connected";
+        walletIdentityAddress.textContent = connectedAccount;
+        walletIdentityBadge.textContent = safeShort(connectedAccount);
+        walletIdentityBadge.classList.add("connected");
+      } else {
+        walletIdentityBar.classList.remove("connected-wallet");
+        walletStatusDot.classList.remove("connected");
+        walletIdentityTitle.textContent = "Wallet not connected";
+        walletIdentityAddress.textContent = "Connect wallet to unlock live AX, BNB, and USDT tracking.";
+        walletIdentityBadge.textContent = "Standby";
+        walletIdentityBadge.classList.remove("connected");
+      }
+    }
+
+    function updatePresaleProgressUI() {
+      if (!presaleProgressFill || !presaleProgressLabel || !presaleSoldValue || !presaleRemainingValue) return;
+      const sold = Math.max(0, Math.min(PRESALE_TOTAL_AX, Number(presaleSoldAX || 0)));
+      const remaining = Math.max(0, PRESALE_TOTAL_AX - sold);
+      const pct = PRESALE_TOTAL_AX > 0 ? (sold / PRESALE_TOTAL_AX) * 100 : 0;
+
+      presaleProgressFill.style.width = pct.toFixed(2) + "%";
+      presaleProgressLabel.textContent = `${formatNumber(sold, 0)} AX sold • ${pct.toFixed(2)}%`;
+      presaleSoldValue.textContent = `Sold: ${formatNumber(sold, 0)} AX`;
+      presaleRemainingValue.textContent = `Remaining: ${formatNumber(remaining, 0)} AX`;
+    }
+
     function updateWalletCountUI() {
       try {
         const seen = JSON.parse(sessionStorage.getItem("axion_connected_wallets") || "[]");
@@ -3838,12 +4218,14 @@
       axBalanceEl.textContent = "-";
       bnbBalanceEl.textContent = "-";
       usdtBalanceEl.textContent = "-";
+      updateWalletIdentityUI();
     }
 
     function updateWalletButton() {
       walletBtn.textContent = connectedAccount
         ? `Disconnect ${safeShort(connectedAccount)}`
         : "Connect Wallet";
+      updateWalletIdentityUI();
     }
 
     function updateReceiveUI() {
@@ -3926,6 +4308,7 @@
       updateWalletButton();
       updateReceiveUI();
       resetBalancesUI();
+      updateWalletIdentityUI();
     }
 
     async function getErc20Balance(provider, tokenAddress, wallet, decimals = 18) {
@@ -4025,6 +4408,8 @@
         await tx.wait();
 
         const purchasedAx = amount * PRESALE_RATE;
+        presaleSoldAX += purchasedAx;
+        updatePresaleProgressUI();
         showPresaleSuccessCard(purchasedAx);
 
         buyAxBtn.textContent = "Transaction Sent";
@@ -4344,6 +4729,8 @@
     updateWalletButton();
     updateReceiveUI();
     updateBuyPreview();
+    updateWalletIdentityUI();
+    updatePresaleProgressUI();
     initExistingWalletConnection();
     initTokenomicsChart();
 
@@ -4368,6 +4755,8 @@
       const change = Number(pair.priceChange?.h24 || 0);
       const liquidity = Number(pair.liquidity?.usd || 0);
       const volume = Number(pair.volume?.h24 || 0);
+      const high = Number(pair.priceMax24h || pair.high24h || pair.highPrice24h || 0);
+      const low = Number(pair.priceMin24h || pair.low24h || pair.lowPrice24h || 0);
 
       const priceEl = document.getElementById("axPrice");
       const priceChangeEl = document.getElementById("axPriceChange");
@@ -4375,18 +4764,11 @@
       const marketBarChangeEl = document.getElementById("marketBarChange");
       const marketBarLiquidityEl = document.getElementById("marketBarLiquidity");
       const marketBarVolumeEl = document.getElementById("marketBarVolume");
+      const marketBarHighEl = document.getElementById("marketBarHigh");
+      const marketBarLowEl = document.getElementById("marketBarLow");
 
-      if (priceEl) {
-        priceEl.textContent = price >= 1
-          ? "$" + price.toLocaleString(undefined, { maximumFractionDigits: 4 })
-          : "$" + price.toFixed(8);
-      }
-
-      if (marketBarPriceEl) {
-        marketBarPriceEl.textContent = price >= 1
-          ? "$" + price.toLocaleString(undefined, { maximumFractionDigits: 4 })
-          : "$" + price.toFixed(8);
-      }
+      if (priceEl) priceEl.textContent = formatPrice(price);
+      if (marketBarPriceEl) marketBarPriceEl.textContent = formatPrice(price);
 
       function applyChange(el, value) {
         if (!el) return;
@@ -4407,16 +4789,10 @@
       applyChange(priceChangeEl, change);
       applyChange(marketBarChangeEl, change);
 
-      function formatUsd(value) {
-        if (!isFinite(value) || value <= 0) return "$-";
-        if (value >= 1_000_000_000) return "$" + (value / 1_000_000_000).toFixed(2) + "B";
-        if (value >= 1_000_000) return "$" + (value / 1_000_000).toFixed(2) + "M";
-        if (value >= 1_000) return "$" + (value / 1_000).toFixed(1) + "K";
-        return "$" + value.toFixed(2);
-      }
-
-      if (marketBarLiquidityEl) marketBarLiquidityEl.textContent = formatUsd(liquidity);
-      if (marketBarVolumeEl) marketBarVolumeEl.textContent = formatUsd(volume);
+      if (marketBarLiquidityEl) marketBarLiquidityEl.textContent = formatUsdCompact(liquidity);
+      if (marketBarVolumeEl) marketBarVolumeEl.textContent = formatUsdCompact(volume);
+      if (marketBarHighEl) marketBarHighEl.textContent = formatPrice(high || price);
+      if (marketBarLowEl) marketBarLowEl.textContent = formatPrice(low || price);
 
     } catch (error) {
       console.error("AXION market data error:", error);
