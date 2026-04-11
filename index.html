@@ -2724,6 +2724,17 @@
   }
 }
 
+
+/* Safari mobile SVG fallback */
+@supports (-webkit-touch-callout: none) {
+  .icon-badge svg,
+  .hero-main-icon svg,
+  .hero-feature-icon svg{
+    stroke: #7fdcff !important;
+    filter: drop-shadow(0 0 4px rgba(78,216,255,.45)) drop-shadow(0 0 8px rgba(168,92,255,.20)) !important;
+  }
+}
+
 </style>
 </head>
 <body>
