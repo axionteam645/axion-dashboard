@@ -1776,6 +1776,130 @@
       max-width:96%;
     }
 
+  
+
+    .live-price-row{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .price-change{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:24px;
+      padding:4px 9px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.06em;
+      line-height:1;
+      border:1px solid rgba(255,255,255,.08);
+      white-space:nowrap;
+    }
+
+    .price-change.up{
+      color:#c9ffe6;
+      background:rgba(67,243,177,.14);
+      border-color:rgba(67,243,177,.28);
+      box-shadow:0 0 16px rgba(67,243,177,.10);
+    }
+
+    .price-change.down{
+      color:#ffd7df;
+      background:rgba(255,92,120,.14);
+      border-color:rgba(255,92,120,.28);
+      box-shadow:0 0 16px rgba(255,92,120,.10);
+    }
+
+    .price-change.neutral{
+      color:#dffbff;
+      background:rgba(78,216,255,.12);
+      border-color:rgba(78,216,255,.20);
+      box-shadow:0 0 16px rgba(78,216,255,.08);
+    }
+
+    .hero-market-bar{
+      margin-top:18px;
+      max-width:760px;
+      padding:14px 18px;
+      border-radius:20px;
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:0;
+      align-items:center;
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-market-bar::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(140deg, rgba(78,216,255,.07), transparent 28%, transparent 68%, rgba(168,92,255,.07)),
+        radial-gradient(circle at 100% 100%, rgba(255,92,184,.06), transparent 22%);
+      pointer-events:none;
+    }
+
+    .hero-market-bar > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .market-item{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:0;
+      padding:2px 12px;
+    }
+
+    .market-label{
+      color:#b7c7e9;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .market-item strong{
+      color:#ffffff;
+      font-size:16px;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .market-divider{
+      width:1px;
+      height:38px;
+      background:linear-gradient(180deg, transparent, rgba(255,255,255,.14), transparent);
+      justify-self:center;
+    }
+
+    @media (max-width: 940px){
+      .hero-market-bar{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+      }
+      .market-divider{
+        display:none;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero-market-bar{
+        grid-template-columns:1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1961,10 +2085,33 @@
             <div class="hero-bottom-box">
               <div class="mini-stat live-price-stat">
                 <div class="label">LIVE <span class="live-dot"></span> PRICE</div>
-                <div class="value" id="axPrice">$-</div>
+                <div class="value live-price-row"><span id="axPrice">$-</span> <span id="axPriceChange" class="price-change neutral">--</span></div>
               </div>
 
               
+            </div>
+
+
+            <div class="hero-market-bar">
+              <div class="market-item">
+                <span class="market-label">AX</span>
+                <strong id="marketBarPrice">$-</strong>
+              </div>
+              <div class="market-divider"></div>
+              <div class="market-item">
+                <span class="market-label">24H CHANGE</span>
+                <strong id="marketBarChange" class="price-change neutral">--</strong>
+              </div>
+              <div class="market-divider"></div>
+              <div class="market-item">
+                <span class="market-label">LIQUIDITY</span>
+                <strong id="marketBarLiquidity">$-</strong>
+              </div>
+              <div class="market-divider"></div>
+              <div class="market-item">
+                <span class="market-label">VOLUME</span>
+                <strong id="marketBarVolume">$-</strong>
+              </div>
             </div>
 
             <div class="hero-swap-panel">
@@ -3507,36 +3654,79 @@
     }, 20000);
   </script>
 
+
+
+
 <script>
-  async function loadAxPrice() {
+  async function updateAxionData() {
     try {
       const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de");
       const data = await res.json();
+      const pair = data?.pair || data?.pairs?.[0];
 
-      const price = data?.pair?.priceUsd || data?.pairs?.[0]?.priceUsd;
-      const el = document.getElementById("axPrice");
+      if (!pair) return;
 
-      if (!el) return;
+      const price = Number(pair.priceUsd);
+      const change = Number(pair.priceChange?.h24 || 0);
+      const liquidity = Number(pair.liquidity?.usd || 0);
+      const volume = Number(pair.volume?.h24 || 0);
 
-      if (!price) {
-        el.textContent = "N/A";
-        return;
+      const priceEl = document.getElementById("axPrice");
+      const priceChangeEl = document.getElementById("axPriceChange");
+      const marketBarPriceEl = document.getElementById("marketBarPrice");
+      const marketBarChangeEl = document.getElementById("marketBarChange");
+      const marketBarLiquidityEl = document.getElementById("marketBarLiquidity");
+      const marketBarVolumeEl = document.getElementById("marketBarVolume");
+
+      if (priceEl) {
+        priceEl.textContent = price >= 1
+          ? "$" + price.toLocaleString(undefined, { maximumFractionDigits: 4 })
+          : "$" + price.toFixed(8);
       }
 
-      const num = Number(price);
+      if (marketBarPriceEl) {
+        marketBarPriceEl.textContent = price >= 1
+          ? "$" + price.toLocaleString(undefined, { maximumFractionDigits: 4 })
+          : "$" + price.toFixed(8);
+      }
 
-      el.textContent = num >= 1
-        ? "$" + num.toLocaleString(undefined, { maximumFractionDigits: 4 })
-        : "$" + num.toFixed(8);
+      function applyChange(el, value) {
+        if (!el) return;
+        el.classList.remove("up", "down", "neutral");
 
-    } catch {
-      const el = document.getElementById("axPrice");
-      if (el) el.textContent = "N/A";
+        if (value > 0) {
+          el.classList.add("up");
+          el.textContent = "▲ +" + value.toFixed(2) + "%";
+        } else if (value < 0) {
+          el.classList.add("down");
+          el.textContent = "▼ " + value.toFixed(2) + "%";
+        } else {
+          el.classList.add("neutral");
+          el.textContent = "• 0.00%";
+        }
+      }
+
+      applyChange(priceChangeEl, change);
+      applyChange(marketBarChangeEl, change);
+
+      function formatUsd(value) {
+        if (!isFinite(value) || value <= 0) return "$-";
+        if (value >= 1_000_000_000) return "$" + (value / 1_000_000_000).toFixed(2) + "B";
+        if (value >= 1_000_000) return "$" + (value / 1_000_000).toFixed(2) + "M";
+        if (value >= 1_000) return "$" + (value / 1_000).toFixed(1) + "K";
+        return "$" + value.toFixed(2);
+      }
+
+      if (marketBarLiquidityEl) marketBarLiquidityEl.textContent = formatUsd(liquidity);
+      if (marketBarVolumeEl) marketBarVolumeEl.textContent = formatUsd(volume);
+
+    } catch (error) {
+      console.error("AXION market data error:", error);
     }
   }
 
-  loadAxPrice();
-  setInterval(loadAxPrice, 15000);
+  updateAxionData();
+  setInterval(updateAxionData, 15000);
 </script>
 
 </body>
