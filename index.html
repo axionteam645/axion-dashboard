@@ -315,6 +315,62 @@
       box-shadow:var(--shadow);
     }
 
+    .hero-bottom-box{
+  margin-top:30px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.hero-bottom-box .btn{
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-bottom-box .mini-stat{
+  min-width:180px;
+}
+
+.live-price-stat{
+      background:
+        linear-gradient(180deg, rgba(78,216,255,.18), rgba(95,140,255,.12)),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      border:1px solid rgba(78,216,255,.38);
+      box-shadow:
+        0 0 0 1px rgba(78,216,255,.08),
+        0 0 22px rgba(78,216,255,.25),
+        0 0 44px rgba(95,140,255,.18),
+        0 18px 60px rgba(0,0,0,.42);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .live-price-stat::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:20px;
+      pointer-events:none;
+      background:radial-gradient(circle at top left, rgba(78,216,255,.25), transparent 45%);
+    }
+
+    .live-price-stat .label{
+      color:#9edfff;
+      font-weight:900;
+      letter-spacing:.15em;
+    }
+
+    .live-price-stat .value{
+      color:#eaf8ff;
+      font-weight:900;
+      text-shadow:
+        0 0 10px rgba(78,216,255,.35),
+        0 0 22px rgba(95,140,255,.25);
+    }
+
     .mini-stat .label{
       color:#b8c6e6;
       font-size:12px;
@@ -1092,8 +1148,18 @@
               <a class="btn btn-secondary" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXION_Whitepaper_Final.pdf" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
               <a class="btn btn-buy" href="#presale">BUY AX</a>
               <a class="btn btn-secondary" href="https://pancakeswap.finance/swap?outputCurrency=0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">SWAP</a>
-              <button class="btn btn-secondary" id="addTokenBtn" type="button">Add AX to Wallet</button>
               <a class="btn btn-secondary" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">View on BscScan</a>
+            </div>
+
+            <div class="hero-bottom-box">
+              <div class="mini-stat live-price-stat">
+                <div class="label">LIVE PRICE</div>
+                <div class="value" id="axPrice">$-</div>
+              </div>
+
+              <button class="btn btn-secondary" id="addTokenBtn" type="button">
+                Add AX to Wallet
+              </button>
             </div>
 
             <div class="hero-stats">
@@ -1109,10 +1175,6 @@
                 <div class="label">Supply</div>
                 <div class="value">1,000,000,000</div>
               </div>
-          <div class="mini-stat live-price-stat">
-  <div class="label">Live Price</div>
-  <div class="value" id="axPrice">$-</div>
-</div>
             </div>
           </div>
 
@@ -2639,6 +2701,7 @@
         if (connectedAccount) loadConnectedWalletBalances();
     }, 20000);
   </script>
+
 <script>
   async function loadAxPrice() {
     try {
@@ -2646,32 +2709,30 @@
       const data = await res.json();
 
       const price = data?.pair?.priceUsd || data?.pairs?.[0]?.priceUsd;
-      const priceEl = document.getElementById("axPrice");
+      const el = document.getElementById("axPrice");
 
-      if (!priceEl) return;
+      if (!el) return;
 
       if (!price) {
-        priceEl.textContent = "N/A";
+        el.textContent = "N/A";
         return;
       }
 
       const num = Number(price);
 
-      if (num >= 1) {
-        priceEl.textContent = "$" + num.toLocaleString(undefined, { maximumFractionDigits: 4 });
-      } else {
-        priceEl.textContent = "$" + num.toFixed(8);
-      }
+      el.textContent = num >= 1
+        ? "$" + num.toLocaleString(undefined, { maximumFractionDigits: 4 })
+        : "$" + num.toFixed(8);
 
-    } catch (err) {
-      const priceEl = document.getElementById("axPrice");
-      if (priceEl) priceEl.textContent = "N/A";
-      console.error("AX price fetch error:", err);
+    } catch {
+      const el = document.getElementById("axPrice");
+      if (el) el.textContent = "N/A";
     }
   }
 
   loadAxPrice();
   setInterval(loadAxPrice, 15000);
 </script>
+
 </body>
 </html>
