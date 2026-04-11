@@ -2806,74 +2806,83 @@
                 <div class="legend-item">
                   <div class="legend-left">
                     <span class="swatch" style="background:linear-gradient(90deg,#ffcf5a,#ff8a1f);"></span>
-                    <span>Fund</span>
+                    <span>Ecosystem Fund</span>
                   </div>
-                  <strong>30%</strong>
+                  <strong>20%</strong>
                 </div>
                 <div class="legend-item">
                   <div class="legend-left">
                     <span class="swatch" style="background:linear-gradient(90deg,#ff4d6d,#ff00b8);"></span>
+                    <span>Team</span>
+                  </div>
+                  <strong>10%</strong>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-left">
+                    <span class="swatch" style="background:linear-gradient(90deg,#4ed8ff,#5f8cff);"></span>
                     <span>Liquidity</span>
                   </div>
                   <strong>25%</strong>
                 </div>
                 <div class="legend-item">
                   <div class="legend-left">
-                    <span class="swatch" style="background:linear-gradient(90deg,#4ed8ff,#5f8cff);"></span>
-                    <span>Marketing</span>
+                    <span class="swatch" style="background:linear-gradient(90deg,#a85cff,#ff5cb8);"></span>
+                    <span>Marketing &amp; Growth</span>
                   </div>
                   <strong>20%</strong>
                 </div>
                 <div class="legend-item">
                   <div class="legend-left">
-                    <span class="swatch" style="background:linear-gradient(90deg,#a85cff,#ff5cb8);"></span>
-                    <span>CEX Listings</span>
+                    <span class="swatch" style="background:linear-gradient(90deg,#42f5d7,#43f3b1);"></span>
+                    <span>Exchange Listings (CEX/DEX)</span>
                   </div>
                   <strong>25%</strong>
                 </div>
-              </div>
+                
 
               <div class="tokenomics-grid">
                 <div class="list-block">
-                  <strong>Token Details</strong>
+                  <strong>Total Supply</strong>
                   <ul>
-                    <li>Name: AXION</li>
-                    <li>Symbol: AX</li>
-                    <li>Network: BNB Smart Chain</li>
-                    <li>Total Supply: 1,000,000,000 AX</li>
+                    <li>1,000,000,000 AX</li>
+                    <li>No minting</li>
+                    <li>No inflation</li>
+                    <li>Fully fixed and predictable supply</li>
+                    <li>No hidden token generation mechanisms</li>
                   </ul>
                 </div>
 
                 <div class="list-block">
-                  <strong>Core Mechanics</strong>
+                  <strong>Transaction Model</strong>
                   <ul>
-                    <li>No mint / no inflation</li>
-                    <li>Deflationary burn direction</li>
-                    <li>1% auto fee system</li>
-                    <li>Anti-whale protection</li>
+                    <li>0% Buy Tax</li>
+                    <li>0% Sell Tax</li>
+                    <li>No hidden fees</li>
+                    <li>No manipulation mechanics</li>
                   </ul>
                 </div>
 
                 <div class="list-block">
                   <strong>Allocation Model</strong>
                   <ul>
-                    <li>Fund: 30%</li>
-                    <li>Liquidity: 25%</li>
-                    <li>Marketing: 20%</li>
-                    <li>CEX Listings: 25%</li>
+                    <li>20% Ecosystem Fund</li>
+                    <li>10% Team</li>
+                    <li>25% Liquidity</li>
+                    <li>20% Marketing &amp; Growth</li>
+                    <li>25% Exchange Listings (CEX/DEX)</li>
                   </ul>
                 </div>
 
                 <div class="list-block">
-                  <strong>Token Utility</strong>
+                  <strong>Allocation Purpose</strong>
                   <ul>
-                    <li>Premium AI features access</li>
-                    <li>Subscription model enablement</li>
-                    <li>Ecosystem payments</li>
-                    <li>Value accrual through platform usage</li>
+                    <li>Ecosystem Fund: platform development, AI infrastructure, ecosystem expansion, and long-term innovation</li>
+                    <li>Team: long-term vesting schedule to ensure commitment and alignment</li>
+                    <li>Liquidity: deep liquidity support and reduced volatility</li>
+                    <li>Marketing &amp; Growth: partnerships, campaigns, expansion, and user acquisition</li>
+                    <li>Exchange Listings: CEX/DEX integrations, listings, and market expansion</li>
                   </ul>
                 </div>
-              </div>
             </div>
           </article>
         </div>
@@ -3924,10 +3933,10 @@
       new Chart(ctx, {
         type: "doughnut",
         data: {
-          labels: ["Fund", "Liquidity", "Marketing", "CEX Listings"],
+          labels: ["Ecosystem Fund", "Team", "Liquidity", "Marketing & Growth", "Exchange Listings (CEX/DEX)"],
           datasets: [{
-            data: [30, 25, 20, 25],
-            backgroundColor: [g1, g2, g3, g4],
+            data: [20, 10, 25, 20, 25],
+            backgroundColor: ["#ffb84d", "#ff4d6d", "#4ed8ff", "#a85cff", "#43f3b1"],
             borderWidth: 0,
             hoverOffset: 6,
             spacing: 4
