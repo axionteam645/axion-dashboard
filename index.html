@@ -1160,6 +1160,42 @@
       min-width:220px;
     }
 
+  
+
+    .turquoise-accent{
+      background:linear-gradient(90deg, #47e7d4, #38cfff, #59b7ff) !important;
+      color:#07101f !important;
+      border:1px solid rgba(255,255,255,.14) !important;
+      box-shadow:0 14px 34px rgba(56,207,255,.28) !important;
+    }
+
+    .live-price-stat{
+      background:
+        linear-gradient(180deg, rgba(71,231,212,.18), rgba(56,207,255,.12)),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025)) !important;
+      border:1px solid rgba(71,231,212,.34) !important;
+      box-shadow:
+        0 0 0 1px rgba(71,231,212,.08),
+        0 0 22px rgba(71,231,212,.22),
+        0 0 44px rgba(56,207,255,.16),
+        0 18px 60px rgba(0,0,0,.42) !important;
+    }
+
+    .live-price-stat::before{
+      background:radial-gradient(circle at top left, rgba(71,231,212,.22), transparent 45%) !important;
+    }
+
+    .live-price-stat .label{
+      color:#b9fff6 !important;
+    }
+
+    .live-price-stat .value{
+      color:#ecfffd !important;
+      text-shadow:
+        0 0 10px rgba(71,231,212,.30),
+        0 0 22px rgba(56,207,255,.22) !important;
+    }
+
   </style>
 </head>
 <body>
@@ -1269,7 +1305,7 @@
 
             <div class="hero-actions">
               <a class="btn btn-secondary" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXION_Whitepaper_Final.pdf" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
-              <a class="btn btn-buy" href="#presale">BUY AX</a>
+              <a class="btn btn-buy" href="#presale">AXION Presale</a>
               
               <a class="btn btn-secondary" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">View on BscScan</a>
             </div>
@@ -1295,7 +1331,7 @@
                 <div class="value" id="axPrice">$-</div>
               </div>
 
-              <button class="btn btn-secondary" id="addTokenBtn" type="button">
+              <button class="btn btn-secondary turquoise-accent" id="addTokenBtn" type="button">
                 Add AX to Wallet
               </button>
             </div>
@@ -1312,7 +1348,7 @@
                 </div>
               </div>
               <p>Buy AXION directly on PancakeSwap using BNB through the official AX / BNB swap route.</p>
-              <a class="btn btn-buy" href="https://pancakeswap.finance/swap?outputCurrency=0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">SWAP ON PANCAKESWAP</a>
+              <a class="btn btn-buy turquoise-accent" href="https://pancakeswap.finance/swap?outputCurrency=0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">SWAP ON PANCAKESWAP</a>
             </div>
           </div>
 
