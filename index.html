@@ -1306,6 +1306,35 @@
     .hero-feature-card:nth-child(2) p{ color:#d7ddff; }
     .hero-feature-card:nth-child(3) p{ color:#ffd6ec; }
 
+  
+
+    .live-dot{
+      display:inline-block;
+      width:8px;
+      height:8px;
+      margin:0 6px;
+      border-radius:50%;
+      background:#47e7d4;
+      box-shadow:0 0 8px #47e7d4, 0 0 16px rgba(71,231,212,.6);
+      animation:livePulse 1.2s infinite ease-in-out;
+      vertical-align:middle;
+    }
+
+    @keyframes livePulse{
+      0%{
+        opacity:1;
+        transform:scale(1);
+      }
+      50%{
+        opacity:0.4;
+        transform:scale(0.7);
+      }
+      100%{
+        opacity:1;
+        transform:scale(1);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1438,7 +1467,7 @@
 
             <div class="hero-bottom-box">
               <div class="mini-stat live-price-stat">
-                <div class="label">LIVE PRICE</div>
+                <div class="label">LIVE <span class="live-dot"></span> PRICE</div>
                 <div class="value" id="axPrice">$-</div>
               </div>
 
