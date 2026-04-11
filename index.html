@@ -4269,6 +4269,7 @@
     }
 
     function updateReceiveUI() {
+      if (!receiveWalletText) return;
       receiveWalletText.textContent = connectedAccount
         ? connectedAccount
         : "Connect wallet to view your receive address.";
@@ -4363,38 +4364,45 @@
         return;
       }
 
-      try {
-        const provider = browserProvider || getReadProvider();
+      const loadWithProvider = async (provider) => {
+        let bnbBal = 0;
+        let axBal = 0;
+        let usdtBal = 0;
 
-        const [bnbWei, axBal, usdtBal] = await Promise.all([
-          provider.getBalance(connectedAccount),
-          getErc20Balance(provider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals),
-          getErc20Balance(provider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals)
-        ]);
+        try {
+          const bnbWei = await provider.getBalance(connectedAccount);
+          bnbBal = Number(ethers.utils.formatEther(bnbWei));
+        } catch (error) {
+          console.error("BNB balance load error:", error);
+        }
 
-        const bnbBal = Number(ethers.utils.formatEther(bnbWei));
+        try {
+          axBal = await getErc20Balance(provider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals);
+        } catch (error) {
+          console.error("AX balance load error:", error);
+        }
+
+        try {
+          usdtBal = await getErc20Balance(provider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals);
+        } catch (error) {
+          console.error("USDT balance load error:", error);
+        }
 
         axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
         bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
         usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
+      };
+
+      try {
+        const provider = browserProvider || getReadProvider();
+        await loadWithProvider(provider);
       } catch (error) {
         console.error("Balance load error:", error);
 
         try {
           readProvider = null;
           const fallbackProvider = getReadProvider();
-
-          const [bnbWei, axBal, usdtBal] = await Promise.all([
-            fallbackProvider.getBalance(connectedAccount),
-            getErc20Balance(fallbackProvider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals),
-            getErc20Balance(fallbackProvider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals)
-          ]);
-
-          const bnbBal = Number(ethers.utils.formatEther(bnbWei));
-
-          axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
-          bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
-          usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
+          await loadWithProvider(fallbackProvider);
         } catch (fallbackError) {
           console.error("Fallback balance load error:", fallbackError);
           axBalanceEl.textContent = "0 AX";
