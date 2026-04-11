@@ -1196,6 +1196,73 @@
         0 0 22px rgba(56,207,255,.22) !important;
     }
 
+  
+
+    .hero-feature-cards{
+      display:grid !important;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:14px;
+      margin-top:34px;
+      max-width:760px;
+    }
+
+    .hero-feature-card{
+      min-height:112px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-feature-card strong{
+      font-size:18px;
+      margin-bottom:8px;
+      line-height:1.15;
+      color:#ffffff;
+    }
+
+    .hero-feature-card p{
+      margin:0;
+      font-size:14px;
+      line-height:1.55;
+      color:var(--muted);
+    }
+
+    @media (max-width: 940px){
+      .hero-feature-cards{
+        grid-template-columns:1fr;
+      }
+    }
+
+  
+
+    .hero-actions-equal{
+      display:grid !important;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:12px;
+      max-width:760px;
+      align-items:stretch;
+    }
+
+    .hero-actions-equal .btn{
+      width:100%;
+      min-height:54px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      white-space:nowrap;
+    }
+
+    @media (max-width: 940px){
+      .hero-actions-equal{
+        grid-template-columns:1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1310,18 +1377,18 @@
               <a class="btn btn-secondary" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">View on BscScan</a>
             </div>
 
-            <div class="hero-stats">
-              <div class="mini-stat">
-                <div class="label">Token</div>
-                <div class="value">AX</div>
+            <div class="hero-stats hero-feature-cards">
+              <div class="mini-card hero-feature-card">
+                <strong>Fixed Supply</strong>
+                <p>1,000,000,000 AX</p>
               </div>
-              <div class="mini-stat">
-                <div class="label">Network</div>
-                <div class="value">BNB Smart Chain</div>
+              <div class="mini-card hero-feature-card">
+                <strong>No Mint</strong>
+                <p>No hidden supply</p>
               </div>
-              <div class="mini-stat">
-                <div class="label">Supply</div>
-                <div class="value">1,000,000,000</div>
+              <div class="mini-card hero-feature-card">
+                <strong>AI-Powered DeFi</strong>
+                <p>Intelligent infrastructure</p>
               </div>
             </div>
 
