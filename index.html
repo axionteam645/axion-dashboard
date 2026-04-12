@@ -3664,111 +3664,6 @@
               <a class="btn btn-buy turquoise-accent" href="https://pancakeswap.finance/swap?outputCurrency=0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">SWAP ON PANCAKESWAP</a>
             </div>
           </div>
-
-          <div class="hero-side-stack reveal">
-          <article class="card reveal wallet-lite-gold">
-            <div class="card-inner">
-              <div class="tag">Wallet Lite</div>
-
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="3" y="7" width="18" height="10" rx="2"/>
-                    <path d="M16 10h5v4h-5a2 2 0 0 1 0-4Z"/>
-                    <circle cx="16.5" cy="12" r=".8" fill="currentColor" stroke="none"/>
-                  </svg>
-                </div>
-                <h3>Connected asset view</h3>
-              </div>
-
-              <p>
-                The connected wallet displays live AX, BNB, and USDT balances with token icons, plus a live connected-wallet counter for the current session.
-              </p>
-
-              <div class="feature-list">
-                <div class="feature">
-                  <strong>Connected Wallet Count</strong>
-                  <p>Current session live count: <span class="live-count" id="walletCountLive">0</span></p>
-                </div>
-              </div>
-
-              <div class="wallet-tiles">
-                <div class="token-tile">
-                  <div class="token-line">
-                    <img class="token-icon" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AX logo">
-                    <div class="meta">
-                      <strong>AX</strong>
-                      <span>Live connected wallet balance</span>
-                    </div>
-                    <div class="balance-value" id="axBalance">-</div>
-                  </div>
-                </div>
-
-                <div class="token-tile">
-                  <div class="token-line">
-                    <img class="token-icon" src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png" alt="BNB logo">
-                    <div class="meta">
-                      <strong>BNB</strong>
-                      <span>Native Smart Chain balance</span>
-                    </div>
-                    <div class="balance-value" id="bnbBalance">-</div>
-                  </div>
-                </div>
-
-                <div class="token-tile">
-                  <div class="token-line">
-                    <img class="token-icon" src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png" alt="USDT logo">
-                    <div class="meta">
-                      <strong>USDT</strong>
-                      <span>Live BEP-20 wallet balance</span>
-                    </div>
-                    <div class="balance-value" id="usdtBalance">-</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="feature-list">
-                <div class="feature">
-                  <strong>AX Receive</strong>
-                  <p id="receiveWalletText">Connect wallet to view your receive address.</p>
-                  <div class="inline-actions">
-                    <button class="btn btn-secondary" id="connectReceiveBtn" type="button">Connect for Receive</button>
-                    <button class="btn btn-secondary" id="copyReceiveAddressBtn" type="button">Copy Address</button>
-                  </div>
-                </div>
-
-                <div class="feature">
-                  <strong>AX Send</strong>
-                  <div class="buy-inputs">
-                    <div class="buy-field">
-                      <label for="axSendTo">Recipient Wallet Address</label>
-                      <input id="axSendTo" type="text" placeholder="0x..." />
-                    </div>
-                    <div class="buy-field">
-                      <label for="axSendAmount">AX Amount</label>
-                      <input id="axSendAmount" type="number" min="0" step="0.0001" placeholder="Example: 1000" />
-                    </div>
-                    <div class="inline-actions">
-                      <button class="btn btn-buy" id="sendAxBtn" type="button">Send AX</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="social-links">
-                <a class="social-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">
-                  <span>Telegram</span>
-                  <span>@axiondefi</span>
-                </a>
-<a class="social-link" href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">
-                  <span>X</span>
-                  <span>@axiondefix</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          </div>
         </div>
       </div>
     </section>
@@ -4776,9 +4671,9 @@
     function updateWalletCountUI() {
       try {
         const seen = JSON.parse(sessionStorage.getItem("axion_connected_wallets") || "[]");
-        walletCountLiveEl.textContent = String(seen.length);
+        if (walletCountLiveEl) walletCountLiveEl.textContent = String(seen.length);
       } catch {
-        walletCountLiveEl.textContent = "0";
+        if (walletCountLiveEl) walletCountLiveEl.textContent = "0";
       }
     }
 
@@ -4798,9 +4693,9 @@
     }
 
     function resetBalancesUI() {
-      axBalanceEl.textContent = "-";
-      bnbBalanceEl.textContent = "-";
-      usdtBalanceEl.textContent = "-";
+      if (axBalanceEl) axBalanceEl.textContent = "-";
+      if (bnbBalanceEl) bnbBalanceEl.textContent = "-";
+      if (usdtBalanceEl) usdtBalanceEl.textContent = "-";
     }
 
     function updateWalletButton() {
@@ -4808,12 +4703,14 @@
     }
 
     function updateReceiveUI() {
+      if (!receiveWalletText) return;
       receiveWalletText.textContent = connectedAccount
         ? connectedAccount
         : "Connect wallet to view your receive address.";
     }
 
     function showPresaleSuccessCard(axAmount) {
+      if (!presaleSuccessCard || !presaleSuccessTitle || !presaleSuccessText) return;
       presaleSuccessTitle.textContent = "Purchase Successful";
       presaleSuccessText.textContent =
         `Congratulations. You have successfully purchased ${formatNumber(axAmount, 2)} AX. Your tokens will be sent to the wallet used for payment on the distribution date. Please follow announcements on our official channels.`;
@@ -4912,9 +4809,9 @@
 
         const bnbBal = Number(ethers.utils.formatEther(bnbWei));
 
-        axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
-        bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
-        usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
+        if (axBalanceEl) axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
+        if (bnbBalanceEl) bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
+        if (usdtBalanceEl) usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
       } catch (error) {
         console.error("Balance load error:", error);
 
@@ -4930,14 +4827,14 @@
 
           const bnbBal = Number(ethers.utils.formatEther(bnbWei));
 
-          axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
-          bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
-          usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
+          if (axBalanceEl) axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
+          if (bnbBalanceEl) bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
+          if (usdtBalanceEl) usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
         } catch (fallbackError) {
           console.error("Fallback balance load error:", fallbackError);
-          axBalanceEl.textContent = "0 AX";
-          bnbBalanceEl.textContent = "0 BNB";
-          usdtBalanceEl.textContent = "0 USDT";
+          if (axBalanceEl) axBalanceEl.textContent = "0 AX";
+          if (bnbBalanceEl) bnbBalanceEl.textContent = "0 BNB";
+          if (usdtBalanceEl) usdtBalanceEl.textContent = "0 USDT";
         }
       }
     }
@@ -5062,6 +4959,7 @@
       }
 
       try {
+        if (!sendAxBtn) return;
         sendAxBtn.disabled = true;
         sendAxBtn.textContent = "Sending...";
 
