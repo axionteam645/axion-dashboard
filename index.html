@@ -3419,7 +3419,7 @@
       <div class="welcome-head">
         <img class="welcome-logo" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo">
         <div>
-          <h2 class="welcome-title gradient-title">Buy AX</h2>
+          <h2 class="welcome-title gradient-title"></h2>
           <p class="welcome-sub">Choose the fastest path to join AXION. Swap now with BNB or participate through the official presale flow.</p>
         </div>
       </div>
@@ -3660,7 +3660,7 @@
                   <strong>AX / BNB Swap</strong>
                 </div>
               </div>
-              <p>Buy AXION directly on PancakeSwap using BNB through the official AX / BNB swap route.</p>
+              <p>ION directly on PancakeSwap using BNB through the official AX / BNB swap route.</p>
               <a class="btn btn-buy turquoise-accent" href="https://pancakeswap.finance/swap?outputCurrency=0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">SWAP ON PANCAKESWAP</a>
             </div>
           </div>
@@ -3809,18 +3809,20 @@
 
               <div class="buy-inputs">
                 <div class="buy-field">
-                  <label for="bnbAmount">Enter BNB Amount</label>
-                  <input id="bnbAmount" type="number" min="0" step="0.0001" placeholder="Example: 0.5">
+                  <label for="bnbAmount"></label>
+                  <input id="bnbAmount" type="number" min="0" step="0.0001" placeholder="">
                 </div>
                 <div class="buy-preview">
                   You will receive approximately: <strong id="axReceivePreview">0 AX</strong>
                 </div>
                 <div class="inline-actions">
-                  <button class="btn btn-buy" id="buyAxBtn">Buy AX</button>
-                  <button class="btn btn-secondary" id="copyReceiverBtn">Copy Receiver</button>
+                  <button class="btn btn-buy" id="buyAxBtn"></button>
+                  <button class="btn btn-secondary" id="copyReceiverBtn"></button>
                 </div>
 
-                <div id="presaleSuccessCard" class="success-card">
+                <div id="presaleSuccessCard" style="margin-top:16px;"><a href="https://axion-app-eight.vercel.app/" target="_top" class="btn btn-buy">Join Presale</a></div>
+
+    <div class="success-card">
                   <strong id="presaleSuccessTitle">Purchase Successful</strong>
                   <p id="presaleSuccessText">
                     Congratulations. Your AX purchase was completed successfully. Your tokens will be sent to the wallet used for payment on the distribution date. Please follow announcements on our official channels.
@@ -4991,13 +4993,13 @@
         buyAxBtn.textContent = "Transaction Sent";
         setTimeout(() => {
           buyAxBtn.disabled = false;
-          buyAxBtn.textContent = "Buy AX";
+          buyAxBtn.textContent = "";
         }, 2200);
       } catch (error) {
         console.error(error);
         alert("Transaction was cancelled or failed.");
         buyAxBtn.disabled = false;
-        buyAxBtn.textContent = "Buy AX";
+        buyAxBtn.textContent = "";
       }
     }
 
@@ -5260,7 +5262,7 @@
         await navigator.clipboard.writeText(PRESALE_RECEIVER);
         copyReceiverBtn.textContent = "Copied";
         setTimeout(() => {
-          copyReceiverBtn.textContent = "Copy Receiver";
+          copyReceiverBtn.textContent = "";
         }, 1800);
       } catch {
         alert("Copy failed.");
