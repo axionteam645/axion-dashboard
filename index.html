@@ -3843,19 +3843,17 @@
       return "https://metamask.app.link/dapp/axion-dashboard-nine.vercel.app";
     }
 
-
     function openMetaMaskMobile() {
-      const deepLink = getMetaMaskDeepLink();
-      window.location.href = deepLink;
+      const link = getMetaMaskDeepLink();
+      window.location.href = link;
       setTimeout(() => {
         try {
-          window.open(deepLink, "_self");
+          window.open(link, "_self");
         } catch (e) {
           console.error("MetaMask deep link fallback failed:", e);
         }
       }, 120);
     }
-
 
     async function handleMissingProvider() {
       if (isMobileDevice()) {
