@@ -2209,7 +2209,6 @@
       to{opacity:1}
     }
 
-
     @media (max-width: 640px){
       .welcome-modal{
         align-items:flex-start;
@@ -2237,7 +2236,6 @@
         height:50px;
       }
     }
-
 
   
 
@@ -2445,87 +2443,629 @@
     }
 
   
-    /* Mobile hero/button alignment refinements */
-    @media (max-width: 640px){
-
-      /* 1) Top blue buttons: narrower and centered */
-      .hero-actions-equal .btn{
-        width:92% !important;
-        max-width:92% !important;
-        margin:0 auto !important;
-        display:flex !important;
-        align-items:center !important;
-        justify-content:center !important;
-        text-align:center !important;
-      }
-
-      .hero-bottom-box .btn{
-        width:92% !important;
-        max-width:92% !important;
-        margin:0 auto !important;
-        display:flex !important;
-        align-items:center !important;
-        justify-content:center !important;
-        text-align:center !important;
-      }
-
-      /* 2) Live price and 24h change pills: shorter and right-aligned */
-      .live-price-row{
-        justify-content:space-between !important;
-        gap:8px !important;
-      }
-
-      #axPriceChange,
-      #marketBarChange,
-      .price-change{
-        margin-left:0 !important;
-        margin-right:auto !important;
-        min-width:120px !important;
-        width:auto !important;
-        max-width:150px !important;
-        justify-content:center !important;
-        text-align:center !important;
-        align-self:center !important;
-      }
-
-      .hero-market-bar .market-item strong.price-change,
-      .hero-market-bar #marketBarChange{
-        display:inline-flex !important;
-      }
-
-      /* 3) Swap button: centered and logo-palette color */
-      .hero-swap-panel .btn,
-      .hero-swap-panel .btn.btn-buy,
-      .hero-swap-panel .btn.turquoise-accent{
-        width:88% !important;
-        max-width:88% !important;
-        margin:10px auto 0 !important;
-        display:flex !important;
-        align-items:center !important;
-        justify-content:center !important;
-        text-align:center !important;
-        background:linear-gradient(90deg, #4ed8ff, #5f8cff, #a85cff) !important;
-        color:#07101f !important;
-        border:1px solid rgba(255,255,255,.14) !important;
-        box-shadow:0 14px 30px rgba(95,140,255,.22), 0 0 24px rgba(168,92,255,.12) !important;
-      }
-    }
-
-  
-
 @media (max-width: 640px){
-  .welcome-modal{
-    display:none !important;
-    visibility:hidden !important;
-    opacity:0 !important;
-    pointer-events:none !important;
-  }
-
   #addTokenBtn{
-    display:none !important;
+    display: none !important;
   }
 }
 
+/* ===== AXION premium upgrades ===== */
+.wallet-identity-bar{
+  margin-top:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.08);
+}
+.wallet-identity-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+.wallet-status-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(255,255,255,.24);
+  box-shadow:none;
+  flex-shrink:0;
+}
+.wallet-status-dot.connected{
+  background:#43f3b1;
+  box-shadow:0 0 10px rgba(67,243,177,.55), 0 0 20px rgba(67,243,177,.28);
+}
+.wallet-identity-copy{
+  min-width:0;
+}
+.wallet-identity-copy strong{
+  display:block;
+  font-size:14px;
+  color:#fff;
+  margin-bottom:4px;
+}
+.wallet-identity-copy span{
+  display:block;
+  font-size:13px;
+  color:#d9e7ff;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.wallet-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.05);
+  color:#dce7ff;
+}
+.wallet-badge.connected{
+  color:#08111f;
+  background:linear-gradient(90deg, #43f3b1, #4ed8ff, #5f8cff);
+  box-shadow:0 10px 24px rgba(67,243,177,.18);
+}
+.wallet-lite-gold.connected-wallet{
+  border-color:rgba(67,243,177,.34);
+  box-shadow:
+    0 0 0 1px rgba(67,243,177,.08),
+    0 0 30px rgba(67,243,177,.16),
+    0 0 60px rgba(95,140,255,.14),
+    0 18px 60px rgba(0,0,0,.42);
+}
+.wallet-lite-gold.connected-wallet::before{
+  background:
+    linear-gradient(140deg, rgba(67,243,177,.15), transparent 30%, transparent 70%, rgba(78,216,255,.15)),
+    radial-gradient(circle at 100% 100%, rgba(95,140,255,.12), transparent 30%);
+}
+.token-tile .balance-value{
+  transition:all .22s ease;
+}
+.connected-wallet .token-tile .balance-value{
+  color:#ffffff;
+  text-shadow:0 0 12px rgba(78,216,255,.18);
+}
+
+.presale-trust-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:12px;
+  margin-top:18px;
+}
+.presale-trust-item{
+  padding:16px 18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+}
+.presale-trust-item strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:6px;
+  color:#ffffff;
+}
+.presale-trust-item p{
+  margin:0;
+  font-size:13px;
+  line-height:1.65;
+  color:var(--muted);
+}
+.presale-progress{
+  margin-top:18px;
+  padding:18px;
+  border-radius:20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.08);
+}
+.presale-progress-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+.presale-progress-head strong{
+  font-size:16px;
+  color:#fff;
+}
+.presale-progress-head span{
+  color:#d7e7ff;
+  font-size:13px;
+  font-weight:700;
+}
+.presale-progress-track{
+  width:100%;
+  height:12px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+}
+.presale-progress-fill{
+  width:0%;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg, #43f3b1, #4ed8ff, #5f8cff, #a85cff);
+  box-shadow:0 0 18px rgba(78,216,255,.25);
+  transition:width .35s ease;
+}
+.presale-progress-meta{
+  margin-top:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  color:#dce7ff;
+  font-size:13px;
+}
+.presale-security-strip{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:12px;
+}
+.presale-security-pill{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  color:#e6f6ff;
+  font-size:13px;
+  font-weight:800;
+}
+.presale-security-pill .dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#43f3b1;
+  box-shadow:0 0 10px rgba(67,243,177,.45);
+  flex-shrink:0;
+}
+
+.hero-market-bar.market-bar-upgraded{
+  grid-template-columns:repeat(6, minmax(0, 1fr));
+  gap:10px;
+  padding:16px 18px;
+}
+.hero-market-bar.market-bar-upgraded .market-item{
+  padding:8px 10px;
+  border-radius:16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+}
+.hero-market-bar.market-bar-upgraded .market-item strong{
+  font-weight:900;
+}
+.hero-market-bar.market-bar-upgraded .market-item.glow{
+  background:
+    linear-gradient(180deg, rgba(78,216,255,.10), rgba(95,140,255,.06)),
+    rgba(255,255,255,.03);
+  border-color:rgba(78,216,255,.18);
+  box-shadow:0 0 16px rgba(78,216,255,.08);
+}
+.hero-market-bar.market-bar-upgraded .market-divider{
+  display:none;
+}
+
+@media (max-width: 1180px){
+  .hero-market-bar.market-bar-upgraded{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 940px){
+  .presale-trust-grid,
+  .presale-security-strip{
+    grid-template-columns:1fr;
+  }
+  .hero-market-bar.market-bar-upgraded{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px){
+  .hero{
+    padding-top:54px;
+  }
+  .hero-copy p{
+    font-size:14px;
+    line-height:1.7;
+  }
+  .hero-actions-equal{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+  }
+  .hero-feature-cards{
+    gap:12px !important;
+    margin-top:24px !important;
+  }
+  .hero-feature-card{
+    min-height:auto !important;
+    padding:16px !important;
+  }
+  .hero-market-bar.market-bar-upgraded{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+    padding:14px !important;
+  }
+  .hero-market-bar.market-bar-upgraded .market-item{
+    padding:12px 14px !important;
+  }
+  .wallet-identity-bar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .wallet-badge{
+    width:100%;
+  }
+  .presale-progress,
+  .presale-trust-item,
+  .presale-security-pill{
+    padding:14px;
+  }
+  .presale-row{
+    align-items:flex-start;
+  }
+}
+
+/* Safari mobile SVG fallback */
+@supports (-webkit-touch-callout: none) {
+  .icon-badge svg,
+  .hero-main-icon svg,
+  .hero-feature-icon svg{
+    stroke: #7fdcff !important;
+    filter: drop-shadow(0 0 4px rgba(78,216,255,.45)) drop-shadow(0 0 8px rgba(168,92,255,.20)) !important;
+  }
+}
+
+
+
+  /* ===== 2026 SPACE AI REDESIGN LAYER ===== */
+  :root{
+    --ax-surface:rgba(7,12,28,.62);
+    --ax-surface-2:rgba(10,18,40,.72);
+    --ax-border:rgba(132,220,255,.18);
+    --ax-border-strong:rgba(132,220,255,.34);
+    --ax-glow-cyan:rgba(78,216,255,.22);
+    --ax-glow-purple:rgba(168,92,255,.18);
+    --ax-glow-pink:rgba(255,92,184,.14);
+    --ax-grid:rgba(103,164,255,.08);
+  }
+
+  body{
+    background:
+      radial-gradient(circle at 14% 12%, rgba(78,216,255,.18), transparent 0 24%),
+      radial-gradient(circle at 82% 10%, rgba(168,92,255,.18), transparent 0 26%),
+      radial-gradient(circle at 50% 120%, rgba(255,92,184,.12), transparent 0 34%),
+      linear-gradient(180deg, #01030a 0%, #040814 26%, #071021 58%, #09152a 100%) !important;
+  }
+
+  body::before{
+    background:
+      radial-gradient(circle at 12% 18%, rgba(79,168,255,.24), transparent 18%),
+      radial-gradient(circle at 90% 12%, rgba(255,92,184,.16), transparent 14%),
+      radial-gradient(circle at 78% 84%, rgba(78,216,255,.12), transparent 22%),
+      linear-gradient(transparent 0%, rgba(82,127,255,.02) 55%, transparent 100%) !important;
+    filter:saturate(120%);
+  }
+
+  body::after{
+    background-image:
+      linear-gradient(rgba(104,155,255,.065) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(104,155,255,.065) 1px, transparent 1px),
+      radial-gradient(rgba(255,255,255,.9) .7px, transparent .8px) !important;
+    background-size:52px 52px, 52px 52px, 34px 34px !important;
+    background-position:center center, center center, 0 0 !important;
+    opacity:.12 !important;
+  }
+
+  .nav-wrap{
+    background:linear-gradient(180deg, rgba(3,7,18,.84), rgba(7,13,30,.72)) !important;
+    border-bottom:1px solid rgba(116,196,255,.14) !important;
+    box-shadow:0 10px 40px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.03);
+  }
+
+  .nav{
+    position:relative;
+  }
+
+  .nav::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(78,216,255,.32), rgba(168,92,255,.24), transparent);
+    pointer-events:none;
+  }
+
+  .brand-mark{
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.09),
+      0 0 0 6px rgba(78,216,255,.04),
+      0 0 26px rgba(78,216,255,.20),
+      0 0 44px rgba(168,92,255,.12) !important;
+  }
+
+  .nav-links a{
+    padding:10px 12px;
+    border-radius:999px;
+    color:#dce7ff !important;
+    position:relative;
+  }
+
+  .nav-links a:hover{
+    color:#fff !important;
+    background:rgba(255,255,255,.045);
+    box-shadow:0 0 0 1px rgba(255,255,255,.05), 0 0 20px rgba(78,216,255,.08);
+  }
+
+  .btn,
+  .btn-buy,
+  .turquoise-accent{
+    background:linear-gradient(90deg, #67ecff 0%, #60c5ff 28%, #8d72ff 62%, #ff6fcb 100%) !important;
+    color:#05101d !important;
+    box-shadow:
+      0 12px 30px rgba(78,216,255,.18),
+      0 16px 38px rgba(122,86,255,.22) !important;
+  }
+
+  .btn-secondary{
+    background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025)) !important;
+    border:1px solid rgba(134,221,255,.14) !important;
+    color:#f5f8ff !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 8px 24px rgba(0,0,0,.18);
+  }
+
+  .hero{
+    padding-top:92px !important;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 50% 16%, rgba(78,216,255,.12), transparent 18%),
+      radial-gradient(circle at 54% 18%, rgba(168,92,255,.10), transparent 28%);
+    opacity:.9;
+  }
+
+  .hero-copy,
+  .hero-side-stack,
+  .section,
+  .card,
+  .mini-stat,
+  .whitepaper-link,
+  .phase,
+  .hero-swap-panel,
+  .binance-alpha-box,
+  .presale-extra-box,
+  .mini-card,
+  .feature,
+  .bullet,
+  .list-block,
+  .token-tile,
+  .presale-row,
+  .legend-item,
+  .welcome-card,
+  .welcome-option,
+  .social-link,
+  .summary-item,
+  .hero-market-bar,
+  .hero-feature-card{
+    position:relative;
+  }
+
+  .card,
+  .mini-stat,
+  .whitepaper-link,
+  .phase,
+  .hero-swap-panel,
+  .binance-alpha-box,
+  .presale-extra-box,
+  .mini-card,
+  .feature,
+  .bullet,
+  .list-block,
+  .token-tile,
+  .presale-row,
+  .legend-item,
+  .welcome-card,
+  .welcome-option,
+  .social-link,
+  .summary-item,
+  .hero-market-bar,
+  .hero-feature-card,
+  .success-card{
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.026)) padding-box,
+      linear-gradient(135deg, rgba(78,216,255,.28), rgba(95,140,255,.16), rgba(168,92,255,.18), rgba(255,92,184,.16)) border-box !important;
+    border:1px solid transparent !important;
+    box-shadow:
+      0 18px 50px rgba(0,0,0,.34),
+      inset 0 1px 0 rgba(255,255,255,.045),
+      0 0 26px rgba(78,216,255,.05),
+      0 0 40px rgba(168,92,255,.04) !important;
+    backdrop-filter:blur(18px) saturate(130%);
+  }
+
+  .card::before,
+  .hero-swap-panel::before,
+  .binance-alpha-box::before,
+  .live-price-stat::before{
+    opacity:.95 !important;
+  }
+
+  .card::after,
+  .phase::after,
+  .token-tile::after,
+  .btn::after{
+    background:linear-gradient(110deg, transparent 0%, rgba(255,255,255,.03) 42%, rgba(120,224,255,.16) 52%, rgba(255,255,255,.04) 58%, transparent 70%) !important;
+  }
+
+  .gradient-title,
+  .hero-copy h1,
+  .section-head h2{
+    background:linear-gradient(90deg, #ffffff 0%, #98f1ff 18%, #8fbeff 42%, #b48cff 70%, #ffd0ea 100%) !important;
+    -webkit-background-clip:text !important;
+    background-clip:text !important;
+    color:transparent !important;
+    text-shadow:0 0 22px rgba(78,216,255,.08);
+  }
+
+  .hero-copy .sub,
+  .tag,
+  .eyebrow,
+  .market-label,
+  .mini-stat .label,
+  .live-price-stat .label{
+    color:#baf2ff !important;
+    letter-spacing:.16em !important;
+  }
+
+  .hero-copy p,
+  .card p,
+  .mini-card p,
+  .feature p,
+  .bullet p,
+  .list-block ul,
+  .market-item strong,
+  .summary-item p,
+  .alpha-sub,
+  .presale-extra-box p,
+  .welcome-sub,
+  .welcome-option p{
+    color:#b8c8e8 !important;
+  }
+
+  .hero-feature-card,
+  .mini-stat,
+  .live-price-stat,
+  .hero-market-bar,
+  .wallet-lite-gold,
+  .hero-swap-panel{
+    overflow:hidden;
+  }
+
+  .hero-feature-card::before,
+  .mini-stat::before,
+  .hero-market-bar::before,
+  .wallet-lite-gold::before,
+  .welcome-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at top left, rgba(78,216,255,.15), transparent 32%),
+      radial-gradient(circle at bottom right, rgba(255,92,184,.10), transparent 28%),
+      linear-gradient(180deg, transparent, rgba(95,140,255,.03));
+  }
+
+  .hero-main-icon,
+  .icon-badge,
+  .hero-feature-icon{
+    filter:drop-shadow(0 0 10px rgba(78,216,255,.26)) drop-shadow(0 0 20px rgba(168,92,255,.18));
+  }
+
+  .hero-market-bar{
+    grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .market-divider{
+    background:linear-gradient(180deg, transparent, rgba(120,225,255,.24), rgba(143,123,255,.18), transparent) !important;
+  }
+
+  .phase{
+    border-radius:24px !important;
+  }
+
+  .phase strong,
+  .card h3,
+  .market-item strong,
+  .mini-stat .value,
+  .hero-feature-card strong,
+  .live-price-stat .value{
+    text-shadow:0 0 16px rgba(78,216,255,.07);
+  }
+
+  .welcome-modal{
+    background:rgba(3,7,16,.78) !important;
+  }
+
+  .welcome-option.swap{
+    background:
+      linear-gradient(180deg, rgba(71,231,212,.16), rgba(56,207,255,.10)),
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)) !important;
+  }
+
+  .welcome-option.presale{
+    background:
+      linear-gradient(180deg, rgba(255,201,92,.14), rgba(255,140,0,.10)),
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)) !important;
+  }
+
+  .ai-grid-overlay,
+  .ai-data-stream,
+  .ai-dashboard-hud,
+  .ai-corner-brackets{
+    mix-blend-mode:screen;
+  }
+
+  .ai-grid-overlay{ opacity:.62 !important; }
+  .ai-data-stream{ opacity:.58 !important; }
+  .ai-dashboard-hud{ opacity:.58 !important; }
+  .ai-corner-brackets{ opacity:.34 !important; }
+
+  .ai-dashboard-hud .hud-ring{
+    border-color:rgba(106,224,255,.18) !important;
+    box-shadow:
+      inset 0 0 34px rgba(78,216,255,.08),
+      0 0 30px rgba(95,140,255,.08),
+      0 0 56px rgba(168,92,255,.06) !important;
+  }
+
+  .footer{
+    border-top:1px solid rgba(120,221,255,.10) !important;
+    background:linear-gradient(180deg, transparent, rgba(8,14,30,.44)) !important;
+  }
+
+  @media (max-width: 940px){
+    .nav-links{
+      background:linear-gradient(180deg, rgba(6,10,24,.96), rgba(8,14,32,.96)) !important;
+      border:1px solid rgba(116,196,255,.16) !important;
+      box-shadow:0 18px 44px rgba(0,0,0,.42), 0 0 24px rgba(78,216,255,.06) !important;
+    }
+  }
+
+  @media (max-width: 640px){
+    body::after{
+      background-size:36px 36px, 36px 36px, 28px 28px !important;
+      opacity:.10 !important;
+    }
+
+    .hero{
+      padding-top:66px !important;
+    }
+
+    .nav-links a{
+      width:100%;
+    }
+  }
 
 </style>
 </head>
@@ -2557,7 +3097,6 @@
     </div>
   </div>
 
-
   <div class="ai-dashboard-hud">
     <div class="hud-ring left"></div>
     <div class="hud-ring right"></div>
@@ -2569,7 +3108,6 @@
   </div>
   <div class="ai-corner-brackets"></div>
 
-
   <div class="ai-grid-overlay"></div>
   <div class="ai-data-stream">
     <span></span>
@@ -2579,7 +3117,6 @@
     <span></span>
     <span></span>
   </div>
-
 
   <svg width="0" height="0" style="position:absolute">
     <defs>
@@ -2745,26 +3282,30 @@
               
             </div>
 
-
-            <div class="hero-market-bar">
-              <div class="market-item">
+            <div class="hero-market-bar market-bar-upgraded">
+              <div class="market-item glow">
                 <span class="market-label">AX</span>
                 <strong id="marketBarPrice">$-</strong>
               </div>
-              <div class="market-divider"></div>
               <div class="market-item">
                 <span class="market-label">24H CHANGE</span>
                 <strong id="marketBarChange" class="price-change neutral">--</strong>
               </div>
-              <div class="market-divider"></div>
               <div class="market-item">
                 <span class="market-label">LIQUIDITY</span>
                 <strong id="marketBarLiquidity">$-</strong>
               </div>
-              <div class="market-divider"></div>
               <div class="market-item">
                 <span class="market-label">VOLUME</span>
                 <strong id="marketBarVolume">$-</strong>
+              </div>
+              <div class="market-item">
+                <span class="market-label">24H HIGH</span>
+                <strong id="marketBarHigh">$-</strong>
+              </div>
+              <div class="market-item">
+                <span class="market-label">24H LOW</span>
+                <strong id="marketBarLow">$-</strong>
               </div>
             </div>
 
@@ -2803,6 +3344,17 @@
               <p>
                 The connected wallet displays live AX, BNB, and USDT balances with token icons, plus a live connected-wallet counter for the current session.
               </p>
+
+              <div class="wallet-identity-bar" id="walletIdentityBar">
+                <div class="wallet-identity-left">
+                  <span class="wallet-status-dot" id="walletStatusDot"></span>
+                  <div class="wallet-identity-copy">
+                    <strong id="walletIdentityTitle">Wallet not connected</strong>
+                    <span id="walletIdentityAddress">Connect wallet to unlock live AX, BNB, and USDT tracking.</span>
+                  </div>
+                </div>
+                <span class="wallet-badge" id="walletIdentityBadge">Standby</span>
+              </div>
 
               <div class="feature-list">
                 <div class="feature">
@@ -2847,14 +3399,7 @@
               </div>
 
               <div class="feature-list">
-                <div class="feature">
-                  <strong>AX Receive</strong>
-                  <p id="receiveWalletText">Connect wallet to view your receive address.</p>
-                  <div class="inline-actions">
-                    <button class="btn btn-secondary" id="connectReceiveBtn" type="button">Connect for Receive</button>
-                    <button class="btn btn-secondary" id="copyReceiveAddressBtn" type="button">Copy Address</button>
-                  </div>
-                </div>
+                
 
                 <div class="feature">
                   <strong>AX Send</strong>
@@ -2925,6 +3470,25 @@
                 <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
                 <div class="presale-row"><strong>Receiver</strong><span style="word-break:break-all;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
               </div>
+              <div class="presale-trust-grid">
+                <div class="presale-trust-item">
+                  <strong>Verified Presale Wallet</strong>
+                  <p>All BNB payments route to the official AXION receiver wallet shown in the panel for transparent verification.</p>
+                </div>
+                <div class="presale-trust-item">
+                  <strong>Tracked On-Chain</strong>
+                  <p>Every payment can be followed on BscScan, keeping the sale path visible and reviewable for participants.</p>
+                </div>
+              </div>
+
+              
+
+              <div class="presale-security-strip">
+                <div class="presale-security-pill"><span class="dot"></span> No Mint</div>
+                <div class="presale-security-pill"><span class="dot"></span> Transparent Fee Wallet</div>
+                <div class="presale-security-pill"><span class="dot"></span> Public BNB Receiver</div>
+                <div class="presale-security-pill"><span class="dot"></span> Fixed Allocation</div>
+              </div>
 
               <div class="buy-inputs">
                 <div class="buy-field">
@@ -2947,7 +3511,6 @@
                 </div>
 
                 
-
 
               </div>
             </div>
@@ -3185,7 +3748,6 @@
             </div>
           </article>
         </div>
-
 
         <div class="roadmap-bottom-grid">
           <div class="roadmap-bottom-stack">
@@ -3794,6 +4356,15 @@
     const bnbBalanceEl = document.getElementById("bnbBalance");
     const usdtBalanceEl = document.getElementById("usdtBalance");
     const walletCountLiveEl = document.getElementById("walletCountLive");
+    const walletIdentityBar = document.getElementById("walletIdentityBar");
+    const walletStatusDot = document.getElementById("walletStatusDot");
+    const walletIdentityTitle = document.getElementById("walletIdentityTitle");
+    const walletIdentityAddress = document.getElementById("walletIdentityAddress");
+    const walletIdentityBadge = document.getElementById("walletIdentityBadge");
+    const presaleProgressFill = document.getElementById("presaleProgressFill");
+    const presaleProgressLabel = document.getElementById("presaleProgressLabel");
+    const presaleSoldValue = document.getElementById("presaleSoldValue");
+    const presaleRemainingValue = document.getElementById("presaleRemainingValue");
 
     const connectReceiveBtn = document.getElementById("connectReceiveBtn");
     const copyReceiveAddressBtn = document.getElementById("copyReceiveAddressBtn");
@@ -3806,6 +4377,11 @@
     const presaleSuccessTitle = document.getElementById("presaleSuccessTitle");
     const presaleSuccessText = document.getElementById("presaleSuccessText");
 
+    const PRESALE_TOTAL_AX = 5000000;
+    const PRESALE_START_TS = Math.floor(new Date("2026-04-11T21:00:00Z").getTime() / 1000);
+    const BSCSCAN_PROGRESS_API = "https://api.bscscan.com/api";
+    const BSCSCAN_PROGRESS_API_KEY = "YourApiKeyToken";
+    let presaleSoldAX = 0;
     let connectedAccount = null;
     let browserProvider = null;
     let readProvider = null;
@@ -3840,24 +4416,18 @@
     }
 
     function getMetaMaskDeepLink() {
-      return "https://metamask.app.link/dapp/axion-dashboard-nine.vercel.app";
+      const stripped = window.location.href.replace(/^https?:\/\//, "");
+      return `https://metamask.app.link/dapp/${stripped}`;
     }
 
     function openMetaMaskMobile() {
-      const link = getMetaMaskDeepLink();
-      window.location.href = link;
-      setTimeout(() => {
-        try {
-          window.open(link, "_self");
-        } catch (e) {
-          console.error("MetaMask deep link fallback failed:", e);
-        }
-      }, 120);
+      window.location.href = getMetaMaskDeepLink();
     }
 
     async function handleMissingProvider() {
       if (isMobileDevice()) {
-        openMetaMaskMobile();
+        const goMetaMask = window.confirm("No wallet provider detected. Open this page in MetaMask Mobile?");
+        if (goMetaMask) openMetaMaskMobile();
       } else {
         alert("No wallet provider detected.");
       }
@@ -3892,6 +4462,98 @@
       }).format(num);
     }
 
+    function formatUsdCompact(value) {
+      const num = Number(value);
+      if (!Number.isFinite(num) || num <= 0) return "$-";
+      if (num >= 1_000_000_000) return "$" + (num / 1_000_000_000).toFixed(2) + "B";
+      if (num >= 1_000_000) return "$" + (num / 1_000_000).toFixed(2) + "M";
+      if (num >= 1_000) return "$" + (num / 1_000).toFixed(1) + "K";
+      return "$" + num.toFixed(2);
+    }
+
+    function formatPrice(value) {
+      const num = Number(value);
+      if (!Number.isFinite(num) || num <= 0) return "$-";
+      return num >= 1
+        ? "$" + num.toLocaleString(undefined, { maximumFractionDigits: 4 })
+        : "$" + num.toFixed(8);
+    }
+
+    function updateWalletIdentityUI() {
+      if (!walletIdentityBar || !walletStatusDot || !walletIdentityTitle || !walletIdentityAddress || !walletIdentityBadge) return;
+
+      if (connectedAccount) {
+        walletIdentityBar.classList.add("connected-wallet");
+        walletStatusDot.classList.add("connected");
+        walletIdentityTitle.textContent = "Wallet connected";
+        walletIdentityAddress.textContent = connectedAccount;
+        walletIdentityBadge.textContent = safeShort(connectedAccount);
+        walletIdentityBadge.classList.add("connected");
+      } else {
+        walletIdentityBar.classList.remove("connected-wallet");
+        walletStatusDot.classList.remove("connected");
+        walletIdentityTitle.textContent = "Wallet not connected";
+        walletIdentityAddress.textContent = "Connect wallet to unlock live AX, BNB, and USDT tracking.";
+        walletIdentityBadge.textContent = "Standby";
+        walletIdentityBadge.classList.remove("connected");
+      }
+    }
+
+    function updatePresaleProgressUI() {
+      if (!presaleProgressFill || !presaleProgressLabel || !presaleSoldValue || !presaleRemainingValue) return;
+      const sold = Math.max(0, Math.min(PRESALE_TOTAL_AX, Number(presaleSoldAX || 0)));
+      const remaining = Math.max(0, PRESALE_TOTAL_AX - sold);
+      const pct = PRESALE_TOTAL_AX > 0 ? (sold / PRESALE_TOTAL_AX) * 100 : 0;
+
+      presaleProgressFill.style.width = pct.toFixed(2) + "%";
+      presaleProgressLabel.textContent = `${formatNumber(sold, 0)} AX sold • ${pct.toFixed(2)}%`;
+      presaleSoldValue.textContent = `Sold: ${formatNumber(sold, 0)} AX`;
+      presaleRemainingValue.textContent = `Remaining: ${formatNumber(remaining, 0)} AX`;
+    }
+
+    async function fetchOnchainPresaleProgress() {
+      try {
+        const url = new URL(BSCSCAN_PROGRESS_API);
+        url.searchParams.set("module", "account");
+        url.searchParams.set("action", "txlist");
+        url.searchParams.set("address", PRESALE_RECEIVER);
+        url.searchParams.set("startblock", "0");
+        url.searchParams.set("endblock", "99999999");
+        url.searchParams.set("sort", "asc");
+        url.searchParams.set("page", "1");
+        url.searchParams.set("offset", "10000");
+        url.searchParams.set("apikey", BSCSCAN_PROGRESS_API_KEY || "YourApiKeyToken");
+
+        const response = await fetch(url.toString(), {
+          method: "GET",
+          headers: { "Accept": "application/json" },
+          cache: "no-store"
+        });
+
+        const data = await response.json();
+        const result = Array.isArray(data?.result) ? data.result : [];
+
+        const totalBnb = result.reduce((sum, tx) => {
+          const txTime = Number(tx?.timeStamp || 0);
+          const txTo = String(tx?.to || "").toLowerCase();
+          const isIncoming = txTo === PRESALE_RECEIVER.toLowerCase();
+          const isSuccess = String(tx?.isError || "0") === "0";
+          const valueWei = Number(tx?.value || 0);
+
+          if (!isIncoming || !isSuccess || !valueWei || txTime < PRESALE_START_TS) {
+            return sum;
+          }
+
+          return sum + Number(ethers.utils.formatEther(String(tx.value || "0")));
+        }, 0);
+
+        presaleSoldAX = totalBnb * PRESALE_RATE;
+        updatePresaleProgressUI();
+      } catch (error) {
+        console.error("Presale progress fetch failed:", error);
+      }
+    }
+
     function updateWalletCountUI() {
       try {
         const seen = JSON.parse(sessionStorage.getItem("axion_connected_wallets") || "[]");
@@ -3920,15 +4582,18 @@
       axBalanceEl.textContent = "-";
       bnbBalanceEl.textContent = "-";
       usdtBalanceEl.textContent = "-";
+      updateWalletIdentityUI();
     }
 
     function updateWalletButton() {
       walletBtn.textContent = connectedAccount
         ? `Disconnect ${safeShort(connectedAccount)}`
         : "Connect Wallet";
+      updateWalletIdentityUI();
     }
 
     function updateReceiveUI() {
+      if (!receiveWalletText) return;
       receiveWalletText.textContent = connectedAccount
         ? connectedAccount
         : "Connect wallet to view your receive address.";
@@ -4008,6 +4673,7 @@
       updateWalletButton();
       updateReceiveUI();
       resetBalancesUI();
+      updateWalletIdentityUI();
     }
 
     async function getErc20Balance(provider, tokenAddress, wallet, decimals = 18) {
@@ -4022,38 +4688,45 @@
         return;
       }
 
-      try {
-        const provider = browserProvider || getReadProvider();
+      const loadWithProvider = async (provider) => {
+        let bnbBal = 0;
+        let axBal = 0;
+        let usdtBal = 0;
 
-        const [bnbWei, axBal, usdtBal] = await Promise.all([
-          provider.getBalance(connectedAccount),
-          getErc20Balance(provider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals),
-          getErc20Balance(provider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals)
-        ]);
+        try {
+          const bnbWei = await provider.getBalance(connectedAccount);
+          bnbBal = Number(ethers.utils.formatEther(bnbWei));
+        } catch (error) {
+          console.error("BNB balance load error:", error);
+        }
 
-        const bnbBal = Number(ethers.utils.formatEther(bnbWei));
+        try {
+          axBal = await getErc20Balance(provider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals);
+        } catch (error) {
+          console.error("AX balance load error:", error);
+        }
+
+        try {
+          usdtBal = await getErc20Balance(provider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals);
+        } catch (error) {
+          console.error("USDT balance load error:", error);
+        }
 
         axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
         bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
         usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
+      };
+
+      try {
+        const provider = browserProvider || getReadProvider();
+        await loadWithProvider(provider);
       } catch (error) {
         console.error("Balance load error:", error);
 
         try {
           readProvider = null;
           const fallbackProvider = getReadProvider();
-
-          const [bnbWei, axBal, usdtBal] = await Promise.all([
-            fallbackProvider.getBalance(connectedAccount),
-            getErc20Balance(fallbackProvider, TOKEN_META.AX.address, connectedAccount, TOKEN_META.AX.decimals),
-            getErc20Balance(fallbackProvider, TOKEN_META.USDT.address, connectedAccount, TOKEN_META.USDT.decimals)
-          ]);
-
-          const bnbBal = Number(ethers.utils.formatEther(bnbWei));
-
-          axBalanceEl.textContent = `${formatNumber(axBal, 4)} AX`;
-          bnbBalanceEl.textContent = `${formatNumber(bnbBal, 4)} BNB`;
-          usdtBalanceEl.textContent = `${formatNumber(usdtBal, 2)} USDT`;
+          await loadWithProvider(fallbackProvider);
         } catch (fallbackError) {
           console.error("Fallback balance load error:", fallbackError);
           axBalanceEl.textContent = "0 AX";
@@ -4062,7 +4735,6 @@
         }
       }
     }
-
 
     function updateBuyPreview() {
       const bnb = Number(bnbAmountInput.value || 0);
@@ -4379,7 +5051,6 @@
       }
     });
 
-
     sendAxBtn?.addEventListener("click", sendAXToken);
     bnbAmountInput.addEventListener("input", updateBuyPreview);
     buyAxBtn.addEventListener("click", buyAx);
@@ -4426,16 +5097,20 @@
     updateWalletButton();
     updateReceiveUI();
     updateBuyPreview();
+    updateWalletIdentityUI();
+    updatePresaleProgressUI();
+    fetchOnchainPresaleProgress();
     initExistingWalletConnection();
     initTokenomicsChart();
 
     setInterval(() => {
         if (connectedAccount) loadConnectedWalletBalances();
     }, 20000);
+
+    setInterval(() => {
+      fetchOnchainPresaleProgress();
+    }, 60000);
   </script>
-
-
-
 
 <script>
   async function updateAxionData() {
@@ -4450,6 +5125,8 @@
       const change = Number(pair.priceChange?.h24 || 0);
       const liquidity = Number(pair.liquidity?.usd || 0);
       const volume = Number(pair.volume?.h24 || 0);
+      const high = Number(pair.priceMax24h || pair.high24h || pair.highPrice24h || 0);
+      const low = Number(pair.priceMin24h || pair.low24h || pair.lowPrice24h || 0);
 
       const priceEl = document.getElementById("axPrice");
       const priceChangeEl = document.getElementById("axPriceChange");
@@ -4457,18 +5134,11 @@
       const marketBarChangeEl = document.getElementById("marketBarChange");
       const marketBarLiquidityEl = document.getElementById("marketBarLiquidity");
       const marketBarVolumeEl = document.getElementById("marketBarVolume");
+      const marketBarHighEl = document.getElementById("marketBarHigh");
+      const marketBarLowEl = document.getElementById("marketBarLow");
 
-      if (priceEl) {
-        priceEl.textContent = price >= 1
-          ? "$" + price.toLocaleString(undefined, { maximumFractionDigits: 4 })
-          : "$" + price.toFixed(8);
-      }
-
-      if (marketBarPriceEl) {
-        marketBarPriceEl.textContent = price >= 1
-          ? "$" + price.toLocaleString(undefined, { maximumFractionDigits: 4 })
-          : "$" + price.toFixed(8);
-      }
+      if (priceEl) priceEl.textContent = formatPrice(price);
+      if (marketBarPriceEl) marketBarPriceEl.textContent = formatPrice(price);
 
       function applyChange(el, value) {
         if (!el) return;
@@ -4489,16 +5159,10 @@
       applyChange(priceChangeEl, change);
       applyChange(marketBarChangeEl, change);
 
-      function formatUsd(value) {
-        if (!isFinite(value) || value <= 0) return "$-";
-        if (value >= 1_000_000_000) return "$" + (value / 1_000_000_000).toFixed(2) + "B";
-        if (value >= 1_000_000) return "$" + (value / 1_000_000).toFixed(2) + "M";
-        if (value >= 1_000) return "$" + (value / 1_000).toFixed(1) + "K";
-        return "$" + value.toFixed(2);
-      }
-
-      if (marketBarLiquidityEl) marketBarLiquidityEl.textContent = formatUsd(liquidity);
-      if (marketBarVolumeEl) marketBarVolumeEl.textContent = formatUsd(volume);
+      if (marketBarLiquidityEl) marketBarLiquidityEl.textContent = formatUsdCompact(liquidity);
+      if (marketBarVolumeEl) marketBarVolumeEl.textContent = formatUsdCompact(volume);
+      if (marketBarHighEl) marketBarHighEl.textContent = formatPrice(high || price);
+      if (marketBarLowEl) marketBarLowEl.textContent = formatPrice(low || price);
 
     } catch (error) {
       console.error("AXION market data error:", error);
@@ -4509,10 +5173,6 @@
   setInterval(updateAxionData, 15000);
 </script>
 
-
-
-
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const welcomeModal = document.getElementById("welcomeModal");
@@ -4520,12 +5180,6 @@
     const welcomePresaleLink = document.getElementById("welcomePresaleLink");
 
     if (!welcomeModal) return;
-    if (window.innerWidth <= 640) {
-      welcomeModal.classList.remove("show");
-      welcomeModal.setAttribute("aria-hidden", "true");
-      welcomeModal.style.display = "none";
-      return;
-    }
 
     let closed = false;
 
