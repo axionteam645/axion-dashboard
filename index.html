@@ -3539,7 +3539,7 @@
       </div>
 
       <div class="nav-actions">
-        <button class="btn" id="walletBtn">Connect Wallet</button>
+        <button class="btn" id="walletBtn">Go to AXION App</button>
       </div>
     </nav>
   </div>
@@ -4804,9 +4804,7 @@
     }
 
     function updateWalletButton() {
-      walletBtn.textContent = connectedAccount
-        ? `Disconnect ${safeShort(connectedAccount)}`
-        : "Connect Wallet";
+      walletBtn.textContent = "Go to AXION App";
     }
 
     function updateReceiveUI() {
@@ -5228,12 +5226,8 @@
       link.addEventListener("click", () => navLinks.classList.remove("open"));
     });
 
-    walletBtn.addEventListener("click", async () => {
-      if (connectedAccount) {
-        disconnectWallet();
-      } else {
-        await connectWallet();
-      }
+    walletBtn.addEventListener("click", () => {
+      window.location.href = "https://axion-app-eight.vercel.app/";
     });
 
     addTokenBtn.addEventListener("click", addTokenToWallet);
