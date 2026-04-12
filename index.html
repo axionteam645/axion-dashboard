@@ -1084,11 +1084,6 @@
 
   
 
-
-    .wallet-lite-gold{
-      display:none !important;
-    }
-
     .hero-swap-panel{
       margin-top:18px;
       max-width:760px;
@@ -3435,7 +3430,7 @@
           <p>Use the official AX / BNB swap route on PancakeSwap and access AX directly from the live market.</p>
         </a>
 
-        <a class="welcome-option presale" href="https://axion-app-eight.vercel.app/" id="welcomePresaleLink">
+        <a class="welcome-option presale" href="#presale" id="welcomePresaleLink">
           <strong>Join Presale</strong>
           <p>Prefer early participation? Go straight to the AXION presale section and review the current sale terms.</p>
         </a>
@@ -3543,9 +3538,9 @@
         <a href="#security">Security</a>
       </div>
 
-     <div class="nav-actions">
-  <button class="btn" id="walletBtn" type="button" onclick="window.open('https://axion-app-eight.vercel.app/','_blank','noopener,noreferrer')">Go to AXION App</button>
-</div>
+      <div class="nav-actions">
+        <button class="btn" id="walletBtn">Connect Wallet</button>
+      </div>
     </nav>
   </div>
 
@@ -3572,7 +3567,7 @@
 
             <div class="hero-actions">
               <a class="btn btn-secondary turquoise-accent" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/AXION_Whitepaper_Final.pdf" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
-              <a class="btn btn-buy" href="https://axion-app-eight.vercel.app/">AXION Presale</a>
+              <a class="btn btn-buy" href="#presale">AXION Presale</a>
               
               <a class="btn btn-secondary turquoise-accent" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">View on BscScan</a>
               <button class="btn btn-secondary turquoise-accent" id="addTokenBtn" type="button">Add AX to Wallet</button>
@@ -3821,7 +3816,7 @@
                   You will receive approximately: <strong id="axReceivePreview">0 AX</strong>
                 </div>
                 <div class="inline-actions">
-                  <button class="btn btn-buy" id="buyAxBtn" type="button" onclick="window.location.href='https://axion-app-eight.vercel.app/'">Buy AX</button>
+                  <button class="btn btn-buy" id="buyAxBtn">Buy AX</button>
                   <button class="btn btn-secondary" id="copyReceiverBtn">Copy Receiver</button>
                 </div>
 
@@ -4659,7 +4654,7 @@
           <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
           <a href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">X</a>
           <a href="#whitepaper">Whitepaper</a>
-          <a href="https://axion-app-eight.vercel.app/">BUY AX</a>
+          <a href="#presale">BUY AX</a>
           <a href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">BscScan</a>
         </div>
       </div>
@@ -5233,8 +5228,12 @@
       link.addEventListener("click", () => navLinks.classList.remove("open"));
     });
 
-    walletBtn.addEventListener("click", () => {
-      window.location.href = "https://axion-app-eight.vercel.app/";
+    walletBtn.addEventListener("click", async () => {
+      if (connectedAccount) {
+        disconnectWallet();
+      } else {
+        await connectWallet();
+      }
     });
 
     addTokenBtn.addEventListener("click", addTokenToWallet);
@@ -5264,9 +5263,7 @@
 
     sendAxBtn?.addEventListener("click", sendAXToken);
     bnbAmountInput.addEventListener("input", updateBuyPreview);
-    buyAxBtn.addEventListener("click", () => {
-      window.location.href = "https://axion-app-eight.vercel.app/";
-    });
+    buyAxBtn.addEventListener("click", buyAx);
 
     copyReceiverBtn.addEventListener("click", async () => {
       try {
