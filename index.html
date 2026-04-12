@@ -593,6 +593,54 @@
       font-size:14px;
     }
 
+    .receiver-highlight{
+      background:linear-gradient(180deg, rgba(255,201,92,.14), rgba(255,140,31,.10));
+      border:1px solid rgba(255,201,92,.32);
+      box-shadow:0 0 0 1px rgba(255,201,92,.05), 0 0 18px rgba(255,201,92,.12);
+    }
+
+    .receiver-value{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:10px;
+      min-width:0;
+      flex:1;
+    }
+
+    .receiver-address{
+      word-break:break-all;
+      text-align:right;
+      max-width:100%;
+    }
+
+    .receiver-copy-btn{
+      width:34px;
+      height:34px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      flex-shrink:0;
+      color:#fff7dd;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .receiver-copy-btn:hover{
+      background:rgba(255,255,255,.12);
+    }
+
+    .receiver-copy-btn svg{
+      width:16px;
+      height:16px;
+      display:block;
+      stroke:currentColor;
+      stroke-width:2;
+      fill:none;
+    }
+
     .phase-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -3708,7 +3756,7 @@
                 <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AX</span></div>
                 <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
                 <div class="presale-row"><strong>Distribution</strong><span>09.10.2026</span></div>
-                <div class="presale-row"><strong>Receiver</strong><span style="word-break:break-all;">0x570ecca843baa357502c1e24c508576cff49f47c</span></div>
+                <div class="presale-row receiver-highlight"><strong>Receiver</strong><span class="receiver-value"><span class="receiver-address">0x570ecca843baa357502c1e24c508576cff49f47c</span><button type="button" class="receiver-copy-btn" id="receiverCopyInline" aria-label="Copy receiver address" title="Copy address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span></div>
               </div>
 
               <div class="buy-inputs">
@@ -4472,6 +4520,7 @@
     const axReceivePreview = document.getElementById("axReceivePreview");
     const buyAxBtn = document.getElementById("buyAxBtn");
     const copyReceiverBtn = document.getElementById("copyReceiverBtn");
+    const receiverCopyInline = document.getElementById("receiverCopyInline");
     const addTokenBtn = document.getElementById("addTokenBtn");
 
     const axBalanceEl = document.getElementById("axBalance");
