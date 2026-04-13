@@ -5413,23 +5413,34 @@
       window.ethereum.on?.("chainChanged", () => window.location.reload());
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("show");
-      });
-    }, { threshold: 0.12 });
+    const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    if (isMobileViewport) {
+      document.querySelectorAll(".reveal").forEach(el => el.classList.add("show"));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    }
 
     updateWalletCountUI();
     updateWalletButton();
     updateReceiveUI();
     updateBuyPreview();
-    initExistingWalletConnection();
+
+    if (isMobileViewport) {
+      setTimeout(() => initExistingWalletConnection(), 250);
+    } else {
+      initExistingWalletConnection();
+    }
 
     setInterval(() => {
-        if (connectedAccount) loadConnectedWalletBalances();
-    }, 20000);
+        if (!document.hidden && connectedAccount) loadConnectedWalletBalances();
+    }, isMobileViewport ? 35000 : 20000);
   </script>
 
 
@@ -5503,8 +5514,17 @@
     }
   }
 
-  updateAxionData();
-  setInterval(updateAxionData, 15000);
+  const isMobileDataViewport = window.matchMedia("(max-width: 768px)").matches;
+
+  if (isMobileDataViewport) {
+    setTimeout(updateAxionData, 700);
+  } else {
+    updateAxionData();
+  }
+
+  setInterval(() => {
+    if (!document.hidden) updateAxionData();
+  }, isMobileDataViewport ? 30000 : 15000);
 </script>
 
 </body>
