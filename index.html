@@ -1022,12 +1022,68 @@
       animation: shineMove 1.2s ease;
     }
 
+    
+    .security-badge-row{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin:20px 0 18px;
+    }
+
+    .security-badge{
+      position:relative;
+      padding:14px 16px;
+      border-radius:18px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 14px 34px rgba(0,0,0,.22);
+    }
+
+    .security-badge::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(67,243,177,.16), rgba(78,216,255,.08), transparent 75%);
+      pointer-events:none;
+    }
+
+    .security-badge strong,
+    .security-badge span{
+      position:relative;
+      z-index:1;
+      display:block;
+    }
+
+    .security-badge strong{
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#cffff0;
+      margin-bottom:6px;
+    }
+
+    .security-badge span{
+      font-size:13px;
+      line-height:1.55;
+      color:#d9e8ff;
+    }
+
+    .security-intro{
+      max-width:760px;
+      margin-top:14px;
+      color:#b8c6e6;
+      font-size:15px;
+      line-height:1.8;
+    }
+
     @media (max-width: 1180px){
       .hero-grid,.dashboard-grid,.split-2{grid-template-columns:1fr}
       .grid-4{grid-template-columns:repeat(2,1fr)}
       .hero-stats{grid-template-columns:repeat(2,1fr)}
       .whitepaper-nav{grid-template-columns:1fr 1fr}
       .tokenomics-grid{grid-template-columns:1fr}
+      .security-badge-row{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
 
     @media (max-width: 940px){
@@ -1054,6 +1110,7 @@
     }
 
     @media (max-width: 640px){
+      .security-badge-row{grid-template-columns:1fr}
       .container{width:min(calc(100% - 20px), var(--max))}
       .section{padding-top:72px}
       .hero{padding-top:60px}
@@ -3583,7 +3640,7 @@
         <a href="#core">Core System</a>
         <a href="#whitepaper">Whitepaper</a>
         <a href="#ecosystem">Ecosystem</a>
-        <a href="#security">Security</a>
+        <a href="#security" style="color:#43f3b1;text-shadow:0 0 12px rgba(67,243,177,.22);">Security</a>
       </div>
 
       <div class="nav-actions">
@@ -4420,6 +4477,26 @@
           <div>
             <div class="eyebrow">Security Framework</div>
             <h2>Built for stronger <span class="gradient-title">trust minimization.</span></h2>
+            <p class="security-intro">AXION is engineered with a trust-minimized architecture focused on transparency, predictability, and security. Every design decision removes unnecessary risk and reinforces confidence at the protocol level.</p>
+          </div>
+        </div>
+
+        <div class="security-badge-row reveal">
+          <div class="security-badge">
+            <strong>Low-Risk Design</strong>
+            <span>Minimal contract surface helps reduce hidden complexity and strengthens audit clarity.</span>
+          </div>
+          <div class="security-badge">
+            <strong>Fixed Supply</strong>
+            <span>No supply expansion layer. Scarcity remains transparent from deployment onward.</span>
+          </div>
+          <div class="security-badge">
+            <strong>No Owner Control</strong>
+            <span>No privileged wallet controls token behavior behind the scenes.</span>
+          </div>
+          <div class="security-badge">
+            <strong>Publicly Verifiable</strong>
+            <span>Token logic and on-chain activity stay visible for users, analysts, and exchanges.</span>
           </div>
         </div>
 
@@ -4435,7 +4512,7 @@
                 </div>
                 <h3>No Mint Functionality</h3>
               </div>
-              <p>The contract direction excludes mint capability so the total supply remains permanently fixed and easier to trust.</p>
+              <p>AXION is built with a strictly fixed-supply model. No additional tokens can ever be created, helping protect holders from hidden inflation and preserving long-term supply integrity.</p>
             </div>
           </article>
           <article class="card reveal">
@@ -4450,7 +4527,7 @@
                 </div>
                 <h3>No Hidden Backdoors</h3>
               </div>
-              <p>AXION emphasizes transparent logic and rejects hidden function design that could be executed behind the scenes.</p>
+              <p>The contract is designed with clean and transparent logic. There are no hidden control paths, no privileged execution routes, and no unexpected behaviors embedded behind the interface.</p>
             </div>
           </article>
           <article class="card reveal">
@@ -4463,9 +4540,9 @@
                     <circle cx="12" cy="12" r="9"/>
                   </svg>
                 </div>
-                <h3>Ownership Removal</h3>
+                <h3>No Owner Control</h3>
               </div>
-              <p>The ability to renounce ownership supports a more decentralized posture and reduces governance concern over time.</p>
+              <p>AXION operates without administrative control. No wallet holds special privileges over token behavior, reducing centralization risk and supporting fair participation across the ecosystem.</p>
             </div>
           </article>
           <article class="card reveal">
@@ -4480,7 +4557,7 @@
                 </div>
                 <h3>Transparent Contract Logic</h3>
               </div>
-              <p>Operations remain easier to follow when token behavior, fee structure, and ecosystem claims are aligned with visible logic.</p>
+              <p>Every transaction follows simple, verifiable rules. No hidden fees, no transfer locks, and no manipulation mechanics — just clear on-chain execution aligned with user trust.</p>
             </div>
           </article>
         </div>
