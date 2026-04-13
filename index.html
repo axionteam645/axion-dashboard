@@ -3613,32 +3613,6 @@
 </head>
 <body>
 
-  <div class="welcome-modal" id="welcomeModal" aria-hidden="true">
-    <div class="welcome-card">
-      <button class="welcome-close" id="welcomeCloseBtn" type="button" aria-label="Close">×</button>
-
-      <div class="welcome-head">
-        <img class="welcome-logo" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo">
-        <div>
-          <h2 class="welcome-title gradient-title"></h2>
-          <p class="welcome-sub">Choose the fastest path to join AXION. Swap now with BNB or participate through the official presale flow.</p>
-        </div>
-      </div>
-
-      <div class="welcome-options">
-        <a class="welcome-option swap" href="https://pancakeswap.finance/swap?outputCurrency=0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">
-          <strong>Buy Now</strong>
-          <p>Use the official AX / BNB swap route on PancakeSwap and access AX directly from the live market.</p>
-        </a>
-
-        <a class="welcome-option presale" href="#presale" id="welcomePresaleLink">
-          <strong>Join Presale</strong>
-          <p>Prefer early participation? Go straight to the AXION presale section and review the current sale terms.</p>
-        </a>
-      </div>
-    </div>
-  </div>
-
 
   <div class="ai-dashboard-hud">
     <div class="hud-ring left"></div>
@@ -4699,7 +4673,6 @@
         <div class="footer-links">
           <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
           <a href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">X</a>
-          <a href="#whitepaper">Whitepaper</a>
           <a href="#presale">BUY AX</a>
           <a href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">BscScan</a>
         </div>
@@ -5424,78 +5397,6 @@
 
   updateAxionData();
   setInterval(updateAxionData, 15000);
-</script>
-
-
-
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const welcomeModal = document.getElementById("welcomeModal");
-    const welcomeCloseBtn = document.getElementById("welcomeCloseBtn");
-    const welcomePresaleLink = document.getElementById("welcomePresaleLink");
-
-    if (!welcomeModal) return;
-    if (window.innerWidth <= 640) {
-      welcomeModal.classList.remove("show");
-      welcomeModal.setAttribute("aria-hidden", "true");
-      welcomeModal.style.display = "none";
-      return;
-    }
-
-    let closed = false;
-
-    const openWelcome = () => {
-      if (closed) return;
-      welcomeModal.classList.add("show");
-      welcomeModal.setAttribute("aria-hidden", "false");
-      welcomeModal.style.display = "flex";
-      document.body.style.overflow = "hidden";
-    };
-
-    const closeWelcome = () => {
-      closed = true;
-      welcomeModal.classList.remove("show");
-      welcomeModal.setAttribute("aria-hidden", "true");
-      welcomeModal.style.display = "none";
-      document.body.style.overflow = "";
-    };
-
-    const onBackdropClick = (e) => {
-      if (e.target === welcomeModal) closeWelcome();
-    };
-
-    const onEscape = (e) => {
-      if (e.key === "Escape") closeWelcome();
-    };
-
-    if (welcomeCloseBtn) {
-      welcomeCloseBtn.addEventListener("click", closeWelcome, { passive: true });
-      welcomeCloseBtn.addEventListener("touchend", closeWelcome, { passive: true });
-    }
-
-    if (welcomePresaleLink) {
-      welcomePresaleLink.addEventListener("click", closeWelcome, { passive: true });
-      welcomePresaleLink.addEventListener("touchend", closeWelcome, { passive: true });
-    }
-
-    welcomeModal.addEventListener("click", onBackdropClick);
-    welcomeModal.addEventListener("touchend", onBackdropClick, { passive: true });
-    document.addEventListener("keydown", onEscape);
-
-    // Open once after layout settles. Helps on Wix/Vercel embed rendering.
-    requestAnimationFrame(() => {
-      setTimeout(openWelcome, 120);
-    });
-
-    // Safety reopen if initial embedded render delays the layout, but only if still not closed.
-    setTimeout(() => {
-      if (!closed && welcomeModal.getAttribute("aria-hidden") !== "false") {
-        openWelcome();
-      }
-    }, 500);
-  });
 </script>
 
 </body>
