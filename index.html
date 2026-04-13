@@ -1983,6 +1983,99 @@
       text-overflow:ellipsis;
     }
 
+    .community-card{
+      margin-top:18px;
+      max-width:760px;
+      padding:16px 18px;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .community-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(140deg, rgba(67,243,177,.10), transparent 28%, transparent 68%, rgba(78,216,255,.08)),
+        radial-gradient(circle at 100% 100%, rgba(168,92,255,.08), transparent 22%);
+      pointer-events:none;
+    }
+
+    .community-card > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .community-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+
+    .community-head strong{
+      font-size:16px;
+      color:#ffffff;
+      letter-spacing:-.02em;
+    }
+
+    .community-head span{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(67,243,177,.12);
+      border:1px solid rgba(67,243,177,.24);
+      color:#d9fff0;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .community-links{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .community-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.08);
+      color:#dce7ff;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .community-link small{
+      display:block;
+      margin-top:3px;
+      color:#9fb2d9;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .community-link span:last-child{
+      color:#43f3b1;
+      font-size:13px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+
     .market-divider{
       width:1px;
       height:38px;
@@ -2002,6 +2095,9 @@
 
     @media (max-width: 640px){
       .hero-market-bar{
+        grid-template-columns:1fr;
+      }
+      .community-links{
         grid-template-columns:1fr;
       }
     }
@@ -3761,6 +3857,28 @@
                 <strong id="marketBarVolume">$-</strong>
               </div>
             </div>
+          <div class="community-card reveal">
+            <div class="community-head">
+              <strong>Community Channels</strong>
+              <span>Live Community</span>
+            </div>
+            <div class="community-links">
+              <a class="community-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">
+                <div>
+                  Telegram
+                  <small>Official AXION community channel</small>
+                </div>
+                <span>Join Now</span>
+              </a>
+              <a class="community-link" href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">
+                <div>
+                  X / Twitter
+                  <small>Official updates and announcements</small>
+                </div>
+                <span>Follow</span>
+              </a>
+            </div>
+          </div>
 
             <div class="hero-swap-panel">
               <div class="swap-pair">
@@ -4580,7 +4698,7 @@
 
         <div class="footer-links">
           <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://x.com/axiondefixx" target="_blank" rel="noopener noreferrer">X</a>
           <a href="#whitepaper">Whitepaper</a>
           <a href="#presale">BUY AX</a>
           <a href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">BscScan</a>
