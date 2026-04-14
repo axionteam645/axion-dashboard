@@ -2244,7 +2244,8 @@
       gap:18px;
     }
 
-    .binance-alpha-box{
+    
+.binance-alpha-box{
       padding:22px;
       border-radius:20px;
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
@@ -2269,31 +2270,102 @@
       z-index:1;
     }
 
-    .alpha-head{
+    .alpha-topline{
       display:flex;
       align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+
+    .alpha-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:#e4edff;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .alpha-kicker::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(135deg, #ffc95c, #ff8a1f);
+      box-shadow:0 0 10px rgba(255,201,92,.35);
+      flex-shrink:0;
+    }
+
+    .alpha-badge-row{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .alpha-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:28px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#fff1c7;
+      background:rgba(255,201,92,.10);
+      border:1px solid rgba(255,201,92,.22);
+    }
+
+    .alpha-badge.alt{
+      color:#dff6ff;
+      background:rgba(78,216,255,.10);
+      border-color:rgba(78,216,255,.20);
+    }
+
+    .alpha-head{
+      display:flex;
+      align-items:flex-start;
       gap:12px;
       margin-bottom:14px;
     }
 
     .alpha-logo{
-      width:42px;
-      height:42px;
+      width:46px;
+      height:46px;
       border-radius:14px;
-      object-fit:contain;
+      object-fit:cover;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
-      padding:7px;
+      padding:4px;
+      box-shadow:0 0 18px rgba(78,216,255,.10);
+      flex-shrink:0;
+    }
+
+    .alpha-head-copy{
+      min-width:0;
+      flex:1;
     }
 
     .binance-alpha-box h3{
       margin:0;
-      font-size:24px;
+      font-size:26px;
+      line-height:1.05;
       letter-spacing:-.03em;
     }
 
     .alpha-sub{
-      margin:0 0 16px;
+      margin:8px 0 0;
       color:var(--muted);
       font-size:14px;
       line-height:1.72;
@@ -2306,22 +2378,31 @@
     }
 
     .alpha-item{
-      padding:13px 14px;
+      padding:14px 15px;
       border-radius:16px;
       background:rgba(255,255,255,.035);
       border:1px solid rgba(255,255,255,.08);
       color:#dce7ff;
       font-size:14px;
-      line-height:1.6;
+      line-height:1.62;
     }
 
     .alpha-item strong{
       color:#fff1b8;
     }
 
+    .alpha-item-title{
+      display:block;
+      margin-bottom:5px;
+      color:#fff7dd;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+
     .alpha-next{
       margin-top:10px;
-      padding:14px 15px;
+      padding:15px 16px;
       border-radius:16px;
       background:rgba(255,201,92,.08);
       border:1px solid rgba(255,201,92,.18);
@@ -2347,9 +2428,7 @@
       }
     }
 
-  
-
-    .welcome-modal{
+.welcome-modal{
       position:fixed;
       inset:0;
       z-index:120;
@@ -4048,27 +4127,49 @@
           </article>
             </div>
 
-            <aside class="binance-alpha-box reveal">
-              <p class="alpha-sub">AXION is entering its next growth phase with a broader exchange visibility strategy focused on stronger reach, better liquidity positioning, and scalable market presence.</p>
+            
+<aside class="binance-alpha-box reveal">
+              <div class="alpha-topline">
+                <span class="alpha-kicker">Expansion Track</span>
+                <div class="alpha-badge-row">
+                  <span class="alpha-badge">CEX Focus</span>
+                  <span class="alpha-badge alt">DEX Layer</span>
+                </div>
+              </div>
+
+              <div class="alpha-head">
+                <img class="alpha-logo" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo">
+                <div class="alpha-head-copy">
+                  <h3>CEX / DEX Expansion</h3>
+                  <p class="alpha-sub">AXION is moving into its next market growth phase with a broader exchange visibility structure built around strategic listings, stronger market access, and scalable ecosystem positioning.</p>
+                </div>
+              </div>
 
               <div class="alpha-list">
-                <div class="alpha-item"><strong>CEX Target:</strong> LBank, XT.COM, Gate, MEXC, and Bybit remain part of the active expansion track.</div>
-                <div class="alpha-item"><strong>Global Reach:</strong> Kraken, Coinbase, Binance, OKX, and KuCoin represent long-term visibility goals.</div>
-                <div class="alpha-item"><strong>DEX Growth:</strong> PancakeSwap access, market visibility, and liquidity depth remain part of the expansion layer.</div>
-                <div class="alpha-item"><strong>Expansion Focus:</strong> Listing preparations, market visibility, and stronger ecosystem positioning continue in parallel.</div>
+                <div class="alpha-item">
+                  <span class="alpha-item-title">CEX Target</span>
+                  <strong>Under Review:</strong> LBank, XT.COM, Gate, MEXC, and Bybit remain part of the active expansion track.
+                </div>
+                <div class="alpha-item">
+                  <span class="alpha-item-title">Global Reach</span>
+                  <strong>Long-Term Visibility:</strong> Kraken, Coinbase, Binance, OKX, and KuCoin represent the broader global access layer.
+                </div>
+                <div class="alpha-item">
+                  <span class="alpha-item-title">DEX Growth</span>
+                  <strong>Expansion Layer:</strong> PancakeSwap access, market visibility, and liquidity depth remain part of the current growth structure.
+                </div>
+                <div class="alpha-item">
+                  <span class="alpha-item-title">Positioning Summary</span>
+                  <strong>Current Focus:</strong> Listing preparations, visibility strategy, community expansion, and stronger market readiness continue in parallel.
+                </div>
               </div>
 
               <div class="alpha-next">
-                <strong>Growth Summary</strong>
-                <p>AXION is building toward broader exchange reach through phased listing preparation, liquidity planning, community expansion, and stronger market readiness.</p>
+                <strong>Growth Direction</strong>
+                <p>AXION is building toward broader exchange reach through phased CEX targeting, DEX visibility strengthening, and long-term global market positioning without changing the existing premium card structure.</p>
               </div>
-
-              <div class="presale-extra-box" style="margin-top:18px;">
-                <strong>Current Direction</strong>
-                <p>The next stage centers on strategic exchange targeting, global discoverability, and a stronger foundation for wider market access without changing the current premium card design.</p>
-              </div>
-
             </aside>
+
           </div>
         </div>
       </div>
