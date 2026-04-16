@@ -1236,6 +1236,15 @@
         width:100%;
         flex-wrap:wrap;
       }
+      .hero-bottom-box{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .hero-bottom-box .mini-stat,
+      .lbank-soon-card{
+        width:100%;
+        min-width:unset;
+      }
     }
   
 
@@ -1406,6 +1415,91 @@
       border-color:rgba(0,0,0,.12) !important;
       box-shadow:none !important;
       color:#0b0b0b !important;
+    }
+
+
+    .lbank-soon-card{
+      min-width:180px;
+      padding:16px 18px;
+      border-radius:20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025)),
+        linear-gradient(135deg, rgba(95,140,255,.10), rgba(168,92,255,.08));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.04),
+        0 0 18px rgba(95,140,255,.10),
+        0 18px 60px rgba(0,0,0,.42);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .lbank-soon-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.10), transparent 35%, transparent 68%, rgba(168,92,255,.10)),
+        radial-gradient(circle at top right, rgba(78,216,255,.12), transparent 38%);
+    }
+
+    .lbank-soon-card > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .lbank-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .lbank-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#dffff2;
+      background:rgba(67,243,177,.12);
+      border:1px solid rgba(67,243,177,.26);
+      box-shadow:0 0 14px rgba(67,243,177,.08);
+    }
+
+    .lbank-logo{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      object-fit:cover;
+      background:#ffffff;
+      padding:3px;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 0 16px rgba(255,255,255,.08);
+    }
+
+    .lbank-title{
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.06em;
+      color:#ffffff;
+    }
+
+    .lbank-sub{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#b8c6e6;
     }
 
   
@@ -3989,6 +4083,16 @@
               </div>
 
               
+            
+              <div class="mini-stat lbank-soon-card">
+                <div class="lbank-top">
+                  <span class="lbank-badge">Coming Soon</span>
+                  <img class="lbank-logo" src="https://avatars.githubusercontent.com/u/39615808?v=4" alt="LBANK Logo" />
+                </div>
+                <div class="lbank-title">LBANK</div>
+                <div class="lbank-sub">Exchange Watch</div>
+              </div>
+
             </div>
 
             <div class="hero-market-bar">
