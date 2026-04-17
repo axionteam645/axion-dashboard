@@ -3996,6 +3996,74 @@
   }
 }
 
+
+
+/* ===== AxDeX mobile visibility fix ===== */
+@media (max-width: 640px){
+  .hero-stats.hero-feature-cards{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+    margin-top:24px !important;
+    max-width:100% !important;
+    width:100% !important;
+  }
+
+  .hero-stats.hero-feature-cards > .hero-feature-card,
+  .hero-stats.hero-feature-cards > .hero-feature-strip{
+    display:flex !important;
+    width:100% !important;
+    min-width:0 !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+
+  .hero-feature-strip{
+    grid-column:1 / -1 !important;
+    min-height:auto !important;
+    padding:16px !important;
+    align-items:stretch !important;
+    overflow:visible !important;
+  }
+
+  .hero-feature-strip-content{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    justify-content:flex-start !important;
+    gap:12px !important;
+    width:100% !important;
+  }
+
+  .hero-feature-strip-left{
+    width:100% !important;
+    align-items:flex-start !important;
+  }
+
+  .hero-feature-strip-copy{
+    flex:1 1 auto;
+    min-width:0 !important;
+    width:100% !important;
+  }
+
+  .hero-feature-strip-copy strong,
+  .hero-feature-strip-copy p{
+    word-break:break-word;
+  }
+
+  .hero-feature-strip-badges{
+    width:100% !important;
+    justify-content:flex-start !important;
+    align-items:center !important;
+    gap:8px !important;
+    flex-wrap:wrap !important;
+  }
+
+  .hero-strip-badge{
+    max-width:100%;
+  }
+}
+
 </style>
 </head>
 <body>
