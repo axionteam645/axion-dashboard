@@ -4104,7 +4104,7 @@
   </svg>
 
   <script>
-    const AXION_CONTRACT = "0x9e266c2C148df3456e170B759d77c91AbC67eEAB";
+    const AXION_CONTRACT = "0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D";
     const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
     const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
     const PRESALE_RATE = 10000;
@@ -4199,7 +4199,7 @@
               <a class="btn btn-secondary turquoise-accent" href="https://whitepaper.axiondefi.com/" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
               <a class="btn btn-buy" href="#presale">AXION Presale</a>
               
-              <a class="btn btn-secondary turquoise-accent" href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">View on BscScan</a>
+              <a class="btn btn-secondary turquoise-accent" href="https://bscscan.com/token/0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D" target="_blank" rel="noopener noreferrer">View on BscScan</a>
               <button class="btn btn-secondary turquoise-accent" id="addTokenBtn" type="button">Add AX to Wallet</button>
             </div>
 
@@ -4332,7 +4332,7 @@
                 </div>
               </div>
               <p>ION directly on PancakeSwap using BNB through the official AX / BNB swap route.</p>
-              <a class="btn btn-buy turquoise-accent" href="https://pancakeswap.finance/swap?outputCurrency=0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">SWAP ON PANCAKESWAP</a>
+              <a class="btn btn-buy turquoise-accent" href="https://pancakeswap.finance/swap?outputCurrency=0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D" target="_blank" rel="noopener noreferrer">SWAP ON PANCAKESWAP</a>
             </div>
 
           <div class="community-card reveal">
@@ -5174,7 +5174,7 @@
           <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
           <a href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">X</a>
           <a href="#presale">BUY AX</a>
-          <a href="https://bscscan.com/token/0x9e266c2C148df3456e170B759d77c91AbC67eEAB" target="_blank" rel="noopener noreferrer">BscScan</a>
+          <a href="https://bscscan.com/token/0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D" target="_blank" rel="noopener noreferrer">BscScan</a>
         </div>
       </div>
     </div>
@@ -5841,9 +5841,12 @@
 <script>
   async function updateAxionData() {
     try {
-      const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/bsc/0xb7d69e285583f8b444a85a0ab68d24d63ce537de");
+      const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${AXION_CONTRACT}`);
       const data = await res.json();
-      const pair = data?.pair || data?.pairs?.[0];
+      const pairs = Array.isArray(data?.pairs) ? data.pairs : [];
+      const pair = pairs
+        .filter((item) => String(item?.chainId || "").toLowerCase() === "bsc")
+        .sort((a, b) => Number(b?.liquidity?.usd || 0) - Number(a?.liquidity?.usd || 0))[0] || data?.pair || pairs[0];
 
       if (!pair) return;
 
