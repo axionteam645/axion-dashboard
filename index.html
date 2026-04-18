@@ -5801,7 +5801,24 @@
         updateReceiveUI();
       });
 
-      window.ethereum.on?.("chainChanged", () => window.location.reload());
+      window.ethereum.on?.("chainChanged", async () => {
+        try {
+          browserProvider = new ethers.providers.Web3Provider(window.ethereum);
+          const chainIdHex = await window.ethereum.request({ method: "eth_chainId" });
+          const currentChainId = parseInt(chainIdHex, 16);
+
+          if (currentChainId !== CHAIN_ID_BSC) {
+            resetBalancesUI();
+          } else if (connectedAccount) {
+            await loadConnectedWalletBalances();
+          }
+
+          updateWalletButton();
+          updateReceiveUI();
+        } catch (error) {
+          console.error("chainChanged handling failed:", error);
+        }
+      });
     }
 
     const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
