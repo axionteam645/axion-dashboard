@@ -1494,7 +1494,114 @@
       color:#ffffff;
     }
 
-    .lbank-sub{
+    .goplus-report-card{
+      min-width:180px;
+      padding:16px 18px;
+      border-radius:20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025)),
+        linear-gradient(135deg, rgba(67,243,177,.12), rgba(78,216,255,.10));
+      border:1px solid rgba(67,243,177,.18);
+      box-shadow:
+        0 0 0 1px rgba(67,243,177,.04),
+        0 0 18px rgba(67,243,177,.10),
+        0 18px 60px rgba(0,0,0,.42);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:10px;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .goplus-report-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.10), transparent 35%, transparent 68%, rgba(67,243,177,.10)),
+        radial-gradient(circle at top right, rgba(78,216,255,.12), transparent 38%);
+    }
+
+    .goplus-report-card > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .goplus-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .goplus-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#dffff2;
+      background:rgba(67,243,177,.14);
+      border:1px solid rgba(67,243,177,.28);
+      box-shadow:0 0 14px rgba(67,243,177,.08);
+    }
+
+    .goplus-logo{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(67,243,177,.18), rgba(78,216,255,.16));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 0 16px rgba(67,243,177,.08);
+      color:#dffff2;
+      flex-shrink:0;
+    }
+
+    .goplus-logo svg{
+      width:20px;
+      height:20px;
+      display:block;
+      stroke:currentColor;
+      stroke-width:2;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .goplus-title{
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.06em;
+      color:#ffffff;
+    }
+
+    .goplus-sub{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#bff6ea;
+    }
+
+    .goplus-ca{
+      font-size:11px;
+      line-height:1.6;
+      color:#d9f8f2;
+      word-break:break-all;
+      opacity:.92;
+    }
+
+.lbank-sub{
       font-size:12px;
       font-weight:700;
       letter-spacing:.08em;
@@ -4288,6 +4395,21 @@
                 <div class="lbank-title">LBANK</div>
                 <div class="lbank-sub">Exchange Watch</div>
               </div>
+
+              <a class="goplus-report-card" href="https://console.gopluslabs.io/token-security/56/0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D" target="_blank" rel="noopener noreferrer">
+                <div class="goplus-top">
+                  <span class="goplus-badge">Passed</span>
+                  <span class="goplus-logo" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 3l7 3v5c0 4.6-2.9 8.5-7 10-4.1-1.5-7-5.4-7-10V6l7-3z"></path>
+                      <path d="M8.5 12.3l2.2 2.2 4.8-5.1"></path>
+                    </svg>
+                  </span>
+                </div>
+                <div class="goplus-title">GoPlus</div>
+                <div class="goplus-sub">Security Report</div>
+                <div class="goplus-ca">0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D</div>
+              </a>
 
             </div>
             <div class="community-card reveal">
