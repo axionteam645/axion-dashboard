@@ -1240,10 +1240,19 @@
         flex-direction:column;
         align-items:stretch;
       }
+      .hero-mainnet-banner,
       .hero-bottom-box .mini-stat,
-      .lbank-soon-card{
+      .lbank-soon-card,
+      .goplus-report-card{
         width:100%;
         min-width:unset;
+      }
+      .hero-mainnet-banner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .hero-mainnet-live{
+        align-self:flex-start;
       }
     }
   
@@ -1417,6 +1426,108 @@
       color:#0b0b0b !important;
     }
 
+
+    .hero-mainnet-banner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      width:100%;
+      padding:16px 18px;
+      border-radius:20px;
+      background:
+        linear-gradient(135deg, rgba(67,243,177,.16), rgba(78,216,255,.12), rgba(95,140,255,.10)),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      border:1px solid rgba(67,243,177,.24);
+      box-shadow:
+        0 0 0 1px rgba(67,243,177,.05),
+        0 0 20px rgba(67,243,177,.10),
+        0 18px 60px rgba(0,0,0,.42);
+      position:relative;
+      overflow:hidden;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .hero-mainnet-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.12), transparent 34%, transparent 68%, rgba(67,243,177,.10)),
+        radial-gradient(circle at right center, rgba(78,216,255,.16), transparent 34%);
+    }
+
+    .hero-mainnet-banner > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-mainnet-copy{
+      min-width:0;
+    }
+
+    .hero-mainnet-title{
+      display:block;
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#ffffff;
+      margin-bottom:4px;
+    }
+
+    .hero-mainnet-sub{
+      display:block;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#c9fff0;
+    }
+
+    .hero-mainnet-live{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#e8fff7;
+      background:rgba(67,243,177,.14);
+      border:1px solid rgba(67,243,177,.30);
+      white-space:nowrap;
+      box-shadow:0 0 16px rgba(67,243,177,.12);
+    }
+
+    .hero-mainnet-live::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#43f3b1;
+      box-shadow:0 0 8px rgba(67,243,177,.85), 0 0 18px rgba(67,243,177,.55);
+      animation:mainnetLivePulse 1.15s ease-in-out infinite;
+      flex-shrink:0;
+    }
+
+    @keyframes mainnetLivePulse{
+      0%,100%{
+        opacity:1;
+        transform:scale(1);
+        box-shadow:0 0 8px rgba(67,243,177,.85), 0 0 18px rgba(67,243,177,.55);
+      }
+      50%{
+        opacity:.35;
+        transform:scale(.68);
+        box-shadow:0 0 4px rgba(67,243,177,.45), 0 0 10px rgba(67,243,177,.22);
+      }
+    }
 
     .lbank-soon-card{
       min-width:180px;
@@ -4387,6 +4498,14 @@
 
           <div class="hero-side-stack reveal">
           <div class="hero-bottom-box">
+              <a class="hero-mainnet-banner" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener noreferrer">
+                <div class="hero-mainnet-copy">
+                  <span class="hero-mainnet-title">AXION MAINNET IS LIVE</span>
+                  <span class="hero-mainnet-sub">Go to AXSCAN</span>
+                </div>
+                <span class="hero-mainnet-live">Live</span>
+              </a>
+
               <div class="mini-stat lbank-soon-card">
                 <div class="lbank-top">
                   <span class="lbank-badge">Coming Soon</span>
