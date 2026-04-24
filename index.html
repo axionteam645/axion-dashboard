@@ -1712,6 +1712,51 @@
       opacity:.92;
     }
 
+
+    .hero-bottom-box .goplus-report-card{
+      width:100%;
+      min-width:unset;
+      flex-direction:row;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 20px;
+    }
+
+    .hero-bottom-box .goplus-report-card .goplus-top{
+      flex-shrink:0;
+      justify-content:flex-start;
+    }
+
+    .hero-bottom-box .goplus-report-card .goplus-title{
+      white-space:nowrap;
+    }
+
+    .hero-bottom-box .goplus-report-card .goplus-sub{
+      white-space:nowrap;
+      color:#d7fff5;
+    }
+
+    .hero-bottom-box .goplus-report-card .goplus-ca{
+      flex:1;
+      min-width:180px;
+      max-width:420px;
+      text-align:right;
+    }
+
+    @media (max-width: 640px){
+      .hero-bottom-box .goplus-report-card{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero-bottom-box .goplus-report-card .goplus-ca{
+        min-width:0;
+        max-width:100%;
+        text-align:left;
+      }
+    }
+
 .lbank-sub{
       font-size:12px;
       font-weight:700;
@@ -4506,14 +4551,6 @@
                 <span class="hero-mainnet-live">Live</span>
               </a>
 
-              <div class="mini-stat lbank-soon-card">
-                <div class="lbank-top">
-                  <span class="lbank-badge">Coming Soon</span>
-                  <img class="lbank-logo" src="https://avatars.githubusercontent.com/u/39615808?v=4" alt="LBANK Logo" />
-                </div>
-                <div class="lbank-title">LBANK</div>
-                <div class="lbank-sub">Exchange Watch</div>
-              </div>
 
               <a class="goplus-report-card" href="https://console.gopluslabs.io/token-security/56/0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D" target="_blank" rel="noopener noreferrer">
                 <div class="goplus-top">
@@ -4543,13 +4580,6 @@
                   <small>Official AXION community channel</small>
                 </div>
                 <span>Join Now</span>
-              </a>
-              <a class="community-link" href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">
-                <div>
-                  X / Twitter
-                  <small>Official updates and announcements</small>
-                </div>
-                <span>Follow</span>
               </a>
               <a class="community-link" href="https://x.com/axiondefixx" target="_blank" rel="noopener noreferrer">
                 <div>
@@ -5375,7 +5405,7 @@
 
         <div class="footer-links">
           <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a href="https://x.com/axiondefix" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://x.com/axiondefixx" target="_blank" rel="noopener noreferrer">X</a>
           <a href="#presale">BUY AX</a>
 
         </div>
