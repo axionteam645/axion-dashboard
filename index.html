@@ -6,7 +6,7 @@
   <title>AXION | Intelligent Layer for DeFi</title>
   <meta
     name="description"
-    content="AXION is an intelligent layer for DeFi focused on transparency, fixed supply, AI-powered analytics, and trust-minimized infrastructure on BNB Smart Chain."
+    content="AXION is an intelligent infrastructure layer for DeFi with verified fixed-supply token logic, no mint function, transparent utility, AI-powered analytics direction, and official contact at axionteam@axiondefi.com."
   />
   <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/logo.png" />
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/logo.png" />
@@ -1166,6 +1166,85 @@
       font-size:15px;
       line-height:1.8;
     }
+
+    .official-info-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .proof-list{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .proof-item{
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      color:#dce7ff;
+      font-size:14px;
+    }
+
+    .proof-item strong{color:#fff;min-width:150px}
+    .proof-item span{color:#b8c6e6;text-align:right;word-break:break-word}
+
+    .bscscan-ready-banner{
+      margin-top:24px;
+      padding:20px;
+      border-radius:22px;
+      background:
+        linear-gradient(135deg, rgba(255,201,92,.18), rgba(78,216,255,.12), rgba(168,92,255,.10)),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      border:1px solid rgba(255,201,92,.26);
+      box-shadow:0 18px 60px rgba(0,0,0,.42), 0 0 26px rgba(255,201,92,.10);
+    }
+
+    .bscscan-ready-banner strong{
+      display:block;
+      font-size:18px;
+      margin-bottom:8px;
+      color:#fff4cf;
+    }
+
+    .bscscan-ready-banner p{
+      margin:0;
+      color:#e7f1ff;
+      line-height:1.75;
+      font-size:14px;
+    }
+
+    .footer-contact{
+      width:100%;
+      margin-top:20px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.06);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      color:#c7d5f2;
+      font-size:14px;
+    }
+
+    .footer-contact a{
+      color:#9edfff;
+      font-weight:800;
+    }
+
+    @media (max-width: 940px){
+      .official-info-grid{grid-template-columns:1fr}
+      .proof-item{display:block}
+      .proof-item span{display:block;text-align:left;margin-top:6px}
+    }
+
 
     @media (max-width: 1180px){
       .hero-grid,.dashboard-grid,.split-2{grid-template-columns:1fr}
@@ -4424,6 +4503,8 @@
         <a href="https://axion-app-eight.vercel.app/" target="_top">Dashboard</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#about">About</a>
+        <a href="#utility">Utility</a>
+        <a href="#contract-strength">Contract</a>
         <a href="#summary">Summary</a>
         <a href="#core">Core System</a>
         <a href="#whitepaper">Whitepaper</a>
@@ -4887,98 +4968,79 @@
         <div class="section-head reveal">
           <div>
             <div class="eyebrow">About AXION</div>
-            <h2>Structured for <span class="gradient-title">trust, intelligence, and scale.</span></h2>
+            <h2>AXION is an <span class="gradient-title">intelligent infrastructure layer for DeFi.</span></h2>
+          </div>
+        </div>
+
+        <div class="official-info-grid">
+          <article class="card reveal">
+            <div class="card-inner">
+              <div class="tag">Project Identity</div>
+              <h3>What is AXION?</h3>
+              <p>AXION is an intelligent infrastructure layer designed for decentralized finance, transparency, and trustless financial systems. AXION is not positioned as a simple token page; it is being developed as an application-layer trust protocol focused on verifiable token logic, AI-powered analytics, and user-facing DeFi tools.</p>
+              <div class="bscscan-ready-banner">
+                <strong>Official Token Description</strong>
+                <p>AXION brings a clear fixed-supply token model together with a product-oriented ecosystem: analytics dashboards, wallet visibility, market intelligence, risk-focused tooling, and future DeFi modules under one verified brand identity.</p>
+              </div>
+              <div class="proof-list">
+                <div class="proof-item"><strong>Website</strong><span>https://www.axiondefi.com</span></div>
+                <div class="proof-item"><strong>Official Email</strong><span>axionteam@axiondefi.com</span></div>
+                <div class="proof-item"><strong>Community</strong><span>Telegram and X official channels are linked across the website.</span></div>
+                <div class="proof-item"><strong>Whitepaper</strong><span>Public project documentation is available through the website.</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-inner">
+              <div class="tag">Why AXION</div>
+              <h3>Built for credibility, not noise.</h3>
+              <p>AXION focuses on simple, transparent, and verifiable foundations. Its messaging is built around long-term confidence: fixed supply, clean token behavior, visible project links, and an ecosystem roadmap that expands beyond speculation.</p>
+              <div class="subcards">
+                <div class="mini-card"><strong>Trustless Verification</strong><p>AXION highlights on-chain transparency and predictable execution rather than hidden control or unclear token behavior.</p></div>
+                <div class="mini-card"><strong>AI-Powered Direction</strong><p>The ecosystem direction includes AI analytics, risk scoring, wallet visibility, market interpretation, and future automation modules.</p></div>
+                <div class="mini-card"><strong>DeFi Utility Layer</strong><p>AXION is structured to support dashboards, token tools, explorer visibility, future DEX features, and data-driven DeFi experiences.</p></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="utility">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">AXION Utility</div>
+            <h2>Clear utility for a <span class="gradient-title">stronger DeFi ecosystem.</span></h2>
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <article class="card reveal"><div class="card-inner"><div class="tag">Utility 01</div><h3>Analytics Layer</h3><p>AXION is designed to power dashboard-based visibility for holders, wallets, token activity, and market behavior.</p></div></article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">Utility 02</div><h3>Risk Intelligence</h3><p>Future modules are positioned around token review, risk scoring, wallet behavior analysis, and safer decision support.</p></div></article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">Utility 03</div><h3>Ecosystem Access</h3><p>AXION connects website, app, explorer, presale flow, whitepaper, and future DeFi tools under one branded access layer.</p></div></article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">Utility 04</div><h3>Network Expansion</h3><p>The roadmap extends toward mainnet infrastructure, AXSCAN explorer growth, DEX development, and broader ecosystem adoption.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contract-strength">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Smart Contract Strength</div>
+            <h2>Transparent token logic with <span class="gradient-title">marketable proof points.</span></h2>
           </div>
         </div>
 
         <div class="grid-3">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Trust Layer</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
-                    <path d="M9.5 12.2l1.6 1.6 3.4-3.8"/>
-                  </svg>
-                </div>
-                <h3>Immutable Core</h3>
-              </div>
-              <p>AXION is built around a predictable token structure with fixed supply and a clean on-chain model designed to reduce trust assumptions for users.</p>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Fixed Supply</strong>
-                  <p>Total supply is permanently capped at 1,000,000,000 AX, protecting long-term clarity and reducing inflation risk.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>No Mint Function</strong>
-                  <p>The contract architecture is designed without hidden mint expansion, supporting stronger holder confidence.</p>
-                </div>
-                              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">AI Direction</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                  </svg>
-                </div>
-                <h3>Intelligent Expansion</h3>
-              </div>
-              <p>AXION is positioned beyond a standard token page. The ecosystem direction includes AI-powered analysis, risk-focused tooling, and smarter user-facing financial modules.</p>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>AI Analytics</strong>
-                  <p>Designed for future on-chain analysis, behavior tracking, and data interpretation at ecosystem level.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Trade Signals</strong>
-                  <p>Built with a product direction that supports strategic insights and automated intelligence workflows.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Risk Scoring</strong>
-                  <p>Future modules are intended to help users evaluate tokens, wallets, and opportunities with more discipline.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Brand System</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="5" y="5" width="14" height="14" rx="2"/>
-                    <path d="M9 5v-2M15 5v-2M9 21v-2M15 21v-2M5 9H3M5 15H3M21 9h-2M21 15h-2"/>
-                    <path d="M9 9h6v6H9z"/>
-                  </svg>
-                </div>
-                <h3>AXION Identity</h3>
-              </div>
-              <p>The project is presented as a polished product ecosystem rather than a generic token launch page. The interface is intentionally structured to feel stronger, clearer, and more institutional.</p>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Premium Product UX</strong>
-                  <p>A single branded experience connects dashboard tools, token logic, and ecosystem messaging.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Dashboard Ecosystem</strong>
-                  <p>Wallet view, presale access, whitepaper flow, and future utility modules are presented in one structure.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Scalable Infrastructure</strong>
-                  <p>The design system is prepared for future tools, integrations, partnerships, and network-level evolution.</p>
-                </div>
-              </div>
-            </div>
-          </article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">Supply Proof</div><h3>Fixed 1B AX Supply</h3><p>The contract defines a maximum supply of 1,000,000,000 AX with 18 decimals. Supply clarity is one of the strongest trust signals for users, aggregators, and explorers.</p></div></article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">No Inflation</div><h3>No Mint Function</h3><p>AXION has no public mint expansion path. This supports a cleaner market narrative: no hidden inflation, no surprise supply expansion, and a more predictable token economy.</p></div></article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">User Control</div><h3>Burn Function</h3><p>The burn mechanism allows circulating supply reduction through transparent on-chain execution, with events visible for tracking and verification.</p></div></article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">Efficiency</div><h3>Batch Transfer</h3><p>Batch transfer support enables multiple wallet distributions in a single structured operation, useful for ecosystem campaigns, rewards, and operational efficiency.</p></div></article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">Clean ERC-20</div><h3>Standard Transfers</h3><p>Transfer, approval, and allowance flows remain simple and readable, helping users, wallets, and explorers understand token behavior without unnecessary complexity.</p></div></article>
+          <article class="card reveal"><div class="card-inner"><div class="tag">Verification Ready</div><h3>Public Source Code</h3><p>The contract source is structured for public verification and review, strengthening the credibility profile required for token info updates.</p></div></article>
         </div>
       </div>
     </section>
@@ -5407,7 +5469,12 @@
           <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
           <a href="https://x.com/axiondefixx" target="_blank" rel="noopener noreferrer">X</a>
           <a href="#presale">BUY AX</a>
+          <a href="mailto:axionteam@axiondefi.com">Contact</a>
+        </div>
 
+        <div class="footer-contact">
+          <span>Official project contact</span>
+          <a href="mailto:axionteam@axiondefi.com">axionteam@axiondefi.com</a>
         </div>
       </div>
     </div>
