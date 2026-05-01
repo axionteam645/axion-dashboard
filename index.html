@@ -4406,6 +4406,104 @@
   }
 }
 
+
+    /* Compact top navigation fix: keeps all menu labels inside the header without changing links or wallet/app routing */
+    .nav-wrap .nav{
+      width:min(calc(100% - 28px), 1480px) !important;
+      gap:8px !important;
+    }
+
+    .nav-wrap .brand{
+      gap:10px !important;
+      padding-right:6px !important;
+      max-width:260px !important;
+    }
+
+    .nav-wrap .brand-mark{
+      width:42px !important;
+      height:42px !important;
+      flex:0 0 42px !important;
+    }
+
+    .nav-wrap .brand-text strong{
+      font-size:16px !important;
+      letter-spacing:.075em !important;
+      line-height:1.05 !important;
+    }
+
+    .nav-wrap .brand-text small{
+      font-size:9px !important;
+      letter-spacing:.085em !important;
+      line-height:1.15 !important;
+    }
+
+    .nav-wrap .nav-links{
+      gap:4px !important;
+      justify-content:center !important;
+      flex:1 1 auto !important;
+      min-width:0 !important;
+      overflow:visible !important;
+    }
+
+    .nav-wrap .nav-links a{
+      padding:8px 7px !important;
+      font-size:10px !important;
+      line-height:1 !important;
+      letter-spacing:0 !important;
+      white-space:nowrap !important;
+    }
+
+    .nav-wrap .nav-actions{
+      flex:0 0 auto !important;
+    }
+
+    .nav-wrap #walletBtn{
+      padding:12px 18px !important;
+      font-size:12px !important;
+      white-space:nowrap !important;
+    }
+
+    @media (max-width: 1280px){
+      .nav-wrap .nav-links a{
+        padding:7px 5px !important;
+        font-size:9px !important;
+      }
+      .nav-wrap .brand{
+        max-width:220px !important;
+      }
+      .nav-wrap #walletBtn{
+        padding:10px 14px !important;
+        font-size:11px !important;
+      }
+    }
+
+
+
+    /* Compact grouped desktop navigation fix */
+    .nav-wrap .nav{gap:12px !important;}
+    .nav-wrap .brand{flex:0 0 auto !important;max-width:250px !important;}
+    .nav-wrap .nav-links{gap:8px !important;overflow:visible !important;justify-content:center !important;flex:1 1 auto !important;min-width:0 !important;}
+    .nav-wrap .nav-links > a,
+    .nav-wrap .nav-more > summary{display:inline-flex !important;align-items:center !important;justify-content:center !important;min-height:34px !important;padding:9px 12px !important;border-radius:999px !important;font-size:10px !important;line-height:1 !important;font-weight:800 !important;letter-spacing:.03em !important;color:#d9e6ff !important;white-space:nowrap !important;cursor:pointer !important;transition:.18s ease !important;}
+    .nav-wrap .nav-links > a:hover,
+    .nav-wrap .nav-more > summary:hover{color:#ffffff !important;background:rgba(255,255,255,.055) !important;}
+    .nav-more{position:relative;flex:0 0 auto;}
+    .nav-more > summary{list-style:none;background:rgba(255,255,255,.04) !important;border:1px solid rgba(255,255,255,.09) !important;}
+    .nav-more > summary::-webkit-details-marker{display:none;}
+    .nav-more > summary::after{content:"▾";margin-left:7px;font-size:10px;color:#9ed7ff;transition:transform .18s ease;}
+    .nav-more[open] > summary::after{transform:rotate(180deg);}
+    .nav-dropdown{position:absolute;top:calc(100% + 12px);right:0;width:220px;display:grid;gap:6px;padding:12px;border-radius:18px;background:rgba(7,13,28,.98);border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 60px rgba(0,0,0,.46),0 0 24px rgba(78,216,255,.08);z-index:80;}
+    .nav-dropdown a{display:flex !important;align-items:center !important;justify-content:space-between !important;padding:11px 12px !important;border-radius:13px !important;font-size:12px !important;font-weight:800 !important;color:#dce7ff !important;background:rgba(255,255,255,.035) !important;border:1px solid rgba(255,255,255,.06) !important;}
+    .nav-dropdown a:hover{color:#ffffff !important;background:rgba(78,216,255,.10) !important;border-color:rgba(78,216,255,.18) !important;}
+    .nav-dropdown .security-link{color:#43f3b1 !important;text-shadow:0 0 12px rgba(67,243,177,.22) !important;}
+    @media (max-width: 940px){
+      .nav-wrap .nav-links{gap:8px !important;}
+      .nav-wrap .nav-links > a,
+      .nav-wrap .nav-more > summary{width:100% !important;justify-content:space-between !important;min-height:42px !important;padding:12px 14px !important;font-size:12px !important;background:rgba(255,255,255,.035) !important;border:1px solid rgba(255,255,255,.07) !important;}
+      .nav-more{width:100% !important;}
+      .nav-dropdown{position:static !important;width:100% !important;margin-top:8px !important;padding:8px !important;border-radius:16px !important;background:rgba(255,255,255,.035) !important;box-shadow:none !important;}
+      .nav-dropdown a{font-size:12px !important;}
+    }
 </style>
 </head>
 <body>
@@ -4503,13 +4601,18 @@
         <a href="https://axion-app-eight.vercel.app/" target="_top">Dashboard</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#about">About</a>
-        <a href="#utility">Utility</a>
-        <a href="#contract-strength">Contract</a>
-        <a href="#summary">Summary</a>
-        <a href="#core">Core System</a>
-        <a href="#whitepaper">Whitepaper</a>
-        <a href="#ecosystem">Ecosystem</a>
-        <a href="#security" style="color:#43f3b1;text-shadow:0 0 12px rgba(67,243,177,.22);">Security</a>
+        <details class="nav-more">
+          <summary>More</summary>
+          <div class="nav-dropdown">
+            <a href="#utility">Utility</a>
+            <a href="#contract-strength">Contract</a>
+            <a href="#summary">Summary</a>
+            <a href="#core">Core System</a>
+            <a href="#whitepaper">Whitepaper</a>
+            <a href="#ecosystem">Ecosystem</a>
+            <a href="#security" class="security-link">Security</a>
+          </div>
+        </details>
       </div>
 
       <div class="nav-actions">
@@ -4626,7 +4729,7 @@
           <div class="hero-bottom-box">
               <a class="hero-mainnet-banner" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener noreferrer">
                 <div class="hero-mainnet-copy">
-                  <span class="hero-mainnet-title">AXION MAINNET IS LIVE</span>
+                  <span class="hero-mainnet-title">AXION TESTNET IS LIVE</span>
                   <span class="hero-mainnet-sub">Go to AXSCAN</span>
                 </div>
                 <span class="hero-mainnet-live">Live</span>
