@@ -1915,6 +1915,111 @@
 
   
 
+
+    .hero-project-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:14px;
+      margin-top:24px;
+      max-width:760px;
+    }
+
+    .hero-project-card{
+      min-height:148px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.026)),
+        linear-gradient(135deg, rgba(78,216,255,.10), rgba(168,92,255,.08));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+      position:relative;
+      overflow:hidden;
+      text-decoration:none;
+    }
+
+    .hero-project-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(140deg, rgba(78,216,255,.10), transparent 30%, transparent 70%, rgba(255,92,184,.10)),
+        radial-gradient(circle at 100% 100%, rgba(255,201,92,.08), transparent 28%);
+    }
+
+    .hero-project-card > *{position:relative;z-index:1;}
+
+    .hero-project-card strong{
+      display:block;
+      font-size:19px;
+      line-height:1.12;
+      color:#ffffff;
+      margin-bottom:8px;
+      letter-spacing:-.02em;
+    }
+
+    .hero-project-card p{
+      margin:0;
+      font-size:13px;
+      line-height:1.6;
+      color:#cbd8f7;
+    }
+
+    .hero-project-badges{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .hero-project-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#e8fff7;
+      background:rgba(67,243,177,.14);
+      border:1px solid rgba(67,243,177,.28);
+      white-space:nowrap;
+    }
+
+    .hero-project-badge.demo{
+      color:#fff4cf;
+      background:rgba(255,201,92,.14);
+      border-color:rgba(255,201,92,.28);
+    }
+
+    .hero-project-badge.progress{
+      color:#ffdff2;
+      background:rgba(255,92,184,.14);
+      border-color:rgba(255,92,184,.24);
+    }
+
+    .hero-project-badge.live::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#43f3b1;
+      box-shadow:0 0 8px rgba(67,243,177,.85), 0 0 16px rgba(67,243,177,.45);
+      margin-right:7px;
+      animation:mainnetLivePulse 1.15s ease-in-out infinite;
+    }
+
+    @media (max-width: 940px){
+      .hero-project-grid{grid-template-columns:1fr;}
+    }
+
     .live-dot{
       display:inline-block;
       width:8px;
@@ -4391,7 +4496,7 @@
   </svg>
 
   <script>
-    const AXION_CONTRACT = "0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D";
+    const AXION_CONTRACT = "0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd";
     const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
     const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
     const PRESALE_RATE = 10000;
@@ -4493,7 +4598,41 @@
               <a class="btn btn-secondary turquoise-accent" href="https://whitepaper.axiondefi.com/" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
               <a class="btn btn-buy" href="#presale">AXION Presale</a>
               <button class="btn btn-secondary turquoise-accent" id="addTokenBtn" type="button">Add AX to Wallet</button>
-              <a class="btn btn-secondary turquoise-accent" href="https://bscscan.com/token/0x303ee670c4057cf1C02ACd49942feBb9Ca8CF69D" target="_blank" rel="noopener noreferrer">BSC SCAN</a>
+              <a class="btn btn-secondary turquoise-accent" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener noreferrer">BSC SCAN</a>
+            </div>
+
+
+            <div class="hero-project-grid">
+              <a class="hero-project-card" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <strong>AXION TESTNET IS LIVE</strong>
+                  <p>Go to AXSCAN and explore AXION network activity through the official explorer interface.</p>
+                </div>
+                <div class="hero-project-badges">
+                  <span class="hero-project-badge live">Live</span>
+                </div>
+              </a>
+
+              <a class="hero-project-card" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <strong>AxDeX</strong>
+                  <p>AXION’s exchange layer is taking shape as a dedicated DeFi trading experience designed around premium execution and ecosystem expansion.</p>
+                </div>
+                <div class="hero-project-badges">
+                  <span class="hero-project-badge demo">Demo</span>
+                  <span class="hero-project-badge progress">In Progress</span>
+                </div>
+              </a>
+
+              <a class="hero-project-card" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <strong>AXION GAME</strong>
+                  <p>AXION’s gaming layer brings interactive Web3 entertainment into the ecosystem with a dedicated game portal.</p>
+                </div>
+                <div class="hero-project-badges">
+                  <span class="hero-project-badge live">Open</span>
+                </div>
+              </a>
             </div>
 
             
@@ -4539,29 +4678,6 @@
                 <p>Built around an intelligent product direction, AXION is positioned for analytics, automation, and data-driven tools across the evolving DeFi ecosystem.</p>
               </div>
 
-              <a class="mini-card hero-feature-card hero-feature-strip" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener noreferrer">
-                <div class="hero-feature-strip-content">
-                  <div class="hero-feature-strip-left">
-                    <div class="hero-feature-icon">
-                      <svg viewBox="0 0 24 24">
-                        <path d="M4 7h9"></path>
-                        <path d="M11 4l3 3-3 3"></path>
-                        <path d="M20 17h-9"></path>
-                        <path d="M13 14l-3 3 3 3"></path>
-                      </svg>
-                    </div>
-                    <div class="hero-feature-strip-copy">
-                      <strong>AxDeX</strong>
-                      <p>AXION’s exchange layer is taking shape as a dedicated DeFi trading experience designed around premium execution and ecosystem expansion.</p>
-                    </div>
-                  </div>
-
-                  <div class="hero-feature-strip-badges">
-                    <span class="hero-strip-badge demo">Demo</span>
-                    <span class="hero-strip-badge progress">In Progress</span>
-                  </div>
-                </div>
-              </a>
             </div>
 
             
@@ -4573,16 +4689,6 @@
           </div>
 
           <div class="hero-side-stack reveal">
-          <div class="hero-bottom-box">
-              <a class="hero-mainnet-banner" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener noreferrer">
-                <div class="hero-mainnet-copy">
-                  <span class="hero-mainnet-title">AXION TESTNET IS LIVE</span>
-                  <span class="hero-mainnet-sub">Go to AXSCAN</span>
-                </div>
-                <span class="hero-mainnet-live">Live</span>
-              </a>
-
-            </div>
             <div class="community-card reveal">
             <div class="community-head">
               <strong>Community Channels</strong>
