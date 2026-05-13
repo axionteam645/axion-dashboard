@@ -1,22 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AXION | Intelligent Layer for DeFi</title>
-  <meta
-    name="description"
-    content="AXION is an intelligent infrastructure layer for DeFi with verified fixed-supply token logic, no mint function, transparent utility, AI-powered analytics direction, and official contact at axionteam@axiondefi.com."
-  />
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/logo.png" />
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AXION | Intelligent Layer for DeFi</title>
+<meta content="AXION is an intelligent infrastructure layer for DeFi with verified fixed-supply token logic, no mint function, transparent utility, AI-powered analytics direction, and official contact at axionteam@axiondefi.com." name="description"/>
+<link href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/logo.png" rel="icon" type="image/png"/>
+<link href="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/logo.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
 
     :root{
       --bg:#040814;
@@ -4456,46 +4453,242 @@
       .nav-dropdown{position:static !important;width:100% !important;margin-top:8px !important;padding:8px !important;border-radius:16px !important;background:rgba(255,255,255,.035) !important;box-shadow:none !important;}
       .nav-dropdown a{font-size:12px !important;}
     }
+
+
+/* ===== AXION HOME REDESIGN PATCH - premium screenshot layout ===== */
+.hero{padding-top:78px;}
+.hero-grid{grid-template-columns:1.05fr .95fr;align-items:start;gap:34px;}
+.hero-copy{max-width:760px;}
+.axion-clean-actions{grid-template-columns:repeat(3,minmax(0,1fr)) !important;max-width:650px;margin-top:28px;}
+.axion-clean-actions .btn{min-height:54px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.035)!important;color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 28px rgba(0,0,0,.28)!important;}
+.axion-clean-actions .btn:hover{background:rgba(255,255,255,.075)!important;}
+.hero-side-stack{align-self:start;}
+.community-card{margin-top:0!important;padding:34px 36px!important;border-radius:28px!important;min-height:0!important;height:auto!important;background:linear-gradient(145deg, rgba(42,66,105,.62), rgba(41,22,58,.50))!important;border:1px solid rgba(160,185,255,.20)!important;box-shadow:0 24px 70px rgba(0,0,0,.42),0 0 45px rgba(168,92,255,.12)!important;}
+.community-head{margin-bottom:24px!important;}
+.community-head strong{font-size:22px!important;}
+.community-head span{padding:10px 16px!important;color:#bffff0!important;background:rgba(67,243,177,.12)!important;border-color:rgba(67,243,177,.38)!important;}
+.community-links{gap:18px!important;}
+.community-link{min-height:150px;align-items:flex-start!important;flex-direction:column;justify-content:space-between!important;padding:22px!important;border-radius:22px!important;background:rgba(7,13,28,.42)!important;border:1px solid rgba(255,255,255,.14)!important;font-size:20px!important;}
+.community-link small{font-size:14px!important;line-height:1.45;margin-top:12px!important;color:#d2dcf5!important;}
+.community-link span:last-child{font-size:14px!important;color:#43f3b1!important;}
+.community-icon{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:linear-gradient(135deg,#47d8ff,#5f8cff);box-shadow:0 0 22px rgba(78,216,255,.35);color:#fff;}
+.community-icon.x-icon{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);box-shadow:0 0 22px rgba(255,255,255,.08);}
+.axion-product-showcase{max-width:none!important;margin-top:46px!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:32px!important;}
+.axion-product-card{min-height:430px!important;padding:34px 28px!important;border-radius:28px!important;text-align:center;align-items:center;justify-content:space-between!important;background:linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.025))!important;}
+.axion-product-card strong{font-size:28px!important;line-height:1.08!important;margin-top:12px!important;}
+.axion-product-card p{font-size:17px!important;line-height:1.65!important;color:#e2ebff!important;max-width:330px;margin:0 auto!important;}
+.product-orb{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;margin:0 auto 22px;position:relative;}
+.product-orb img{width:76px;height:76px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 14px currentColor);}
+.product-testnet{border-color:rgba(78,216,255,.42)!important;box-shadow:0 0 0 1px rgba(78,216,255,.08),0 0 36px rgba(78,216,255,.16),0 24px 70px rgba(0,0,0,.45)!important;}
+.product-testnet .product-orb{background:radial-gradient(circle, rgba(78,216,255,.28), rgba(78,216,255,.05) 62%, transparent 68%);color:#4ed8ff;}
+.product-testnet strong{color:#4ed8ff!important;}
+.product-dex{border-color:rgba(196,91,255,.42)!important;box-shadow:0 0 0 1px rgba(196,91,255,.08),0 0 36px rgba(196,91,255,.16),0 24px 70px rgba(0,0,0,.45)!important;}
+.product-dex .product-orb{background:radial-gradient(circle, rgba(196,91,255,.30), rgba(196,91,255,.06) 62%, transparent 68%);color:#c45bff;}
+.product-dex strong{color:#c45bff!important;}
+.product-game{border-color:rgba(255,184,44,.46)!important;box-shadow:0 0 0 1px rgba(255,184,44,.08),0 0 36px rgba(255,184,44,.18),0 24px 70px rgba(0,0,0,.45)!important;}
+.product-game .product-orb{background:radial-gradient(circle, rgba(255,184,44,.32), rgba(255,184,44,.07) 62%, transparent 68%);color:#ffbf3f;}
+.product-game strong{color:#ffbf3f!important;}
+.axion-product-card .hero-project-badges{justify-content:center!important;margin-top:20px;}
+.axion-product-card .hero-project-badge{padding:10px 24px!important;font-size:13px!important;}
+.hotcoin-launchpad-banner{margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:28px;padding:36px 42px;border-radius:30px;background:radial-gradient(circle at 92% 68%, rgba(255,92,184,.34), transparent 28%),radial-gradient(circle at 12% 18%, rgba(255,201,92,.28), transparent 22%),linear-gradient(110deg, rgba(255,94,44,.28), rgba(86,15,86,.45) 48%, rgba(255,92,184,.22));border:1px solid rgba(255,120,90,.34);box-shadow:0 26px 80px rgba(0,0,0,.48),0 0 42px rgba(255,92,184,.16);overflow:hidden;position:relative;}
+.hotcoin-launchpad-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg, rgba(255,255,255,.08), transparent 35%, rgba(255,201,92,.06));pointer-events:none;}
+.hotcoin-launchpad-banner>*{position:relative;z-index:1;}
+.hotcoin-left{display:flex;align-items:center;gap:28px;}
+.hotcoin-flame{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,rgba(255,201,92,.18),rgba(255,92,184,.14));border:1px solid rgba(255,201,92,.38);box-shadow:0 0 26px rgba(255,201,92,.22);}
+.hotcoin-launchpad-banner strong{display:block;font-size:36px;line-height:1.05;color:#fff;letter-spacing:-.03em;}
+.hotcoin-launchpad-banner strong span{color:#ffcf5a;}
+.hotcoin-launchpad-banner p{margin:12px 0 18px;font-size:17px;line-height:1.5;color:#fff4f6;max-width:650px;}
+.hotcoin-cta{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border-radius:999px;font-weight:900;color:#fff;background:linear-gradient(90deg,#ffcf5a,#ff8a1f,#ff4d6d);box-shadow:0 12px 28px rgba(255,104,74,.28);}
+.hotcoin-brand{font-size:44px;font-weight:900;color:#fff;letter-spacing:-.04em;white-space:nowrap;text-shadow:0 0 26px rgba(255,255,255,.18);}
+.hero-proof-strip{margin-top:32px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;padding:26px 24px;border-radius:28px;background:linear-gradient(180deg, rgba(6,23,42,.72), rgba(5,14,28,.62));border:1px solid rgba(78,216,255,.18);box-shadow:0 22px 70px rgba(0,0,0,.42);}
+.hero-proof-strip div{padding:8px 22px;border-right:1px solid rgba(255,255,255,.13);}
+.hero-proof-strip div:last-child{border-right:0;}
+.hero-proof-strip strong{display:block;font-size:16px;color:#fff;margin-bottom:8px;}
+.hero-proof-strip span{display:block;font-size:18px;font-weight:900;color:#c9b6ff;margin-bottom:10px;}
+.hero-proof-strip small{display:block;font-size:13px;line-height:1.5;color:#b8c6e6;}
+.presale-layout{grid-template-columns:1fr!important;}
+.roadmap-bottom-grid{grid-template-columns:1fr!important;}
+@media (max-width:1180px){.hero-grid{grid-template-columns:1fr!important}.community-card{max-width:none!important}.axion-product-showcase{grid-template-columns:1fr!important}.hero-proof-strip{grid-template-columns:1fr 1fr}.hero-proof-strip div{border-right:0;border-bottom:1px solid rgba(255,255,255,.10)}.hero-proof-strip div:last-child{border-bottom:0}.hotcoin-launchpad-banner{align-items:flex-start;flex-direction:column}.hotcoin-brand{font-size:34px}.axion-clean-actions{max-width:none}}
+@media (max-width:640px){.axion-clean-actions{grid-template-columns:1fr!important}.community-card{padding:22px!important}.community-links{grid-template-columns:1fr!important}.axion-product-card{min-height:360px!important;padding:26px 20px!important}.axion-product-card strong{font-size:24px!important}.axion-product-card p{font-size:15px!important}.hotcoin-launchpad-banner{padding:24px 20px}.hotcoin-left{align-items:flex-start;flex-direction:column;gap:16px}.hotcoin-flame{width:68px;height:68px;font-size:36px}.hotcoin-launchpad-banner strong{font-size:28px}.hero-proof-strip{grid-template-columns:1fr}.hero-copy h1{font-size:46px!important}}
+
+  
+
+/* AXION final requested homepage redesign */
+.hero-grid{grid-template-columns:1.08fr .92fr!important;align-items:start!important;gap:34px!important;}
+.hero-side-stack{display:grid!important;gap:18px!important;align-self:start!important;}
+.community-card{height:auto!important;min-height:0!important;padding:26px!important;border-radius:28px!important;background:linear-gradient(145deg,rgba(18,34,65,.82),rgba(45,17,58,.66))!important;border:1px solid rgba(168,92,255,.34)!important;box-shadow:0 24px 80px rgba(0,0,0,.45),0 0 34px rgba(168,92,255,.13)!important;}
+.community-links{grid-template-columns:1fr 1fr!important;gap:16px!important;}
+.community-link{min-height:148px!important;padding:22px!important;align-items:flex-start!important;flex-direction:column!important;border-radius:22px!important;background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025))!important;}
+.community-icon{width:58px!important;height:58px!important;border-radius:18px!important;font-size:30px!important;}
+.hotcoin-side-card{position:relative;display:block;overflow:hidden;border-radius:28px;padding:26px;text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(255,88,60,.20),rgba(255,201,92,.16),rgba(168,92,255,.14)),linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.03));border:1px solid rgba(255,201,92,.34);box-shadow:0 24px 80px rgba(0,0,0,.45),0 0 34px rgba(255,112,64,.14);min-height:230px;}
+.hotcoin-side-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 18%,rgba(255,201,92,.28),transparent 34%),radial-gradient(circle at 86% 72%,rgba(255,92,184,.22),transparent 38%),linear-gradient(110deg,transparent,rgba(255,255,255,.08),transparent);pointer-events:none;}
+.hotcoin-side-card>*{position:relative;z-index:1;}
+.hotcoin-side-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px;}
+.ai-symbol{width:70px;height:70px;border-radius:24px;display:grid;place-items:center;font-size:42px;font-weight:900;background:radial-gradient(circle,rgba(255,201,92,.32),rgba(255,92,184,.14));border:1px solid rgba(255,255,255,.18);box-shadow:0 0 24px rgba(255,201,92,.22),inset 0 1px 0 rgba(255,255,255,.16);color:#fff1b8;}
+.hotcoin-live{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(67,243,177,.13);border:1px solid rgba(67,243,177,.30);color:#dffff2;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;}
+.hotcoin-side-body strong{display:block;font-size:30px;line-height:1.02;letter-spacing:-.04em;margin-bottom:12px;color:#fff;}
+.hotcoin-side-body strong span{color:#ffc95c;}
+.hotcoin-side-body p{margin:0;color:#ffe9d6;line-height:1.6;font-size:15px;max-width:420px;}
+.hotcoin-side-action{margin-top:22px;display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;background:linear-gradient(90deg,#ffc95c,#ff7c4d,#ff5cb8);color:#130b12;font-weight:950;box-shadow:0 14px 28px rgba(255,92,120,.22);}
+.axion-product-showcase{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important;margin-top:44px!important;}
+.axion-product-card{min-height:460px!important;padding:34px 28px!important;align-items:center!important;text-align:center!important;border-radius:30px!important;}
+.product-testnet{background:radial-gradient(circle at 50% 88%,rgba(78,216,255,.24),transparent 35%),linear-gradient(180deg,rgba(78,216,255,.13),rgba(4,12,28,.86))!important;border-color:rgba(78,216,255,.42)!important;}
+.product-dex{background:radial-gradient(circle at 50% 88%,rgba(168,92,255,.26),transparent 35%),linear-gradient(180deg,rgba(168,92,255,.14),rgba(14,6,28,.86))!important;border-color:rgba(168,92,255,.44)!important;}
+.product-game{background:radial-gradient(circle at 50% 88%,rgba(255,201,92,.26),transparent 35%),linear-gradient(180deg,rgba(255,170,40,.13),rgba(24,12,4,.86))!important;border-color:rgba(255,201,92,.44)!important;}
+.ai-product-orb{width:112px!important;height:112px!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;margin:0 auto 24px!important;background:radial-gradient(circle,rgba(255,255,255,.24),rgba(78,216,255,.08))!important;border:1px solid rgba(255,255,255,.22)!important;box-shadow:0 0 38px rgba(78,216,255,.24),inset 0 1px 0 rgba(255,255,255,.18)!important;}
+.product-dex .ai-product-orb{box-shadow:0 0 38px rgba(168,92,255,.30),inset 0 1px 0 rgba(255,255,255,.18)!important;}
+.product-game .ai-product-orb{box-shadow:0 0 38px rgba(255,201,92,.30),inset 0 1px 0 rgba(255,255,255,.18)!important;}
+.ai-product-orb span{font-size:54px;line-height:1;color:#fff;text-shadow:0 0 18px currentColor;}
+.ai-product-orb small{display:block;margin-top:8px;font-size:9px;line-height:1.1;text-transform:uppercase;letter-spacing:.08em;color:#dce7ff;max-width:86px;}
+.axion-product-card strong{font-size:28px!important;line-height:1.08!important;margin-bottom:16px!important;}
+.axion-product-card p{font-size:17px!important;line-height:1.65!important;color:#e2ebff!important;}
+.axion-product-card .hero-project-badges{justify-content:center!important;margin-top:18px!important;}
+.hotcoin-launchpad-banner{display:none!important;}
+#roadmap .split-2{grid-template-columns:1.15fr .85fr!important;align-items:stretch!important;gap:22px!important;}
+#roadmap article#presale{height:100%;}
+#roadmap article#presale .card-inner{height:100%;display:flex;flex-direction:column;}
+#roadmap article#presale .buy-inputs{margin-top:auto;}
+.roadmap-bottom-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:22px!important;margin-top:22px!important;}
+.roadmap-bottom-card{height:100%;}
+@media (max-width:1180px){.hero-grid,#roadmap .split-2,.roadmap-bottom-grid{grid-template-columns:1fr!important}.axion-product-showcase{grid-template-columns:1fr!important}.community-links{grid-template-columns:1fr!important}.hotcoin-side-card{min-height:0}.axion-product-card{min-height:380px!important}}
+@media (max-width:640px){.community-card,.hotcoin-side-card{padding:22px!important;border-radius:24px!important}.hotcoin-side-body strong{font-size:26px}.axion-product-card{min-height:340px!important;padding:28px 20px!important}.ai-product-orb{width:94px!important;height:94px!important}.ai-product-orb span{font-size:44px}.axion-product-card strong{font-size:24px!important}.axion-product-card p{font-size:15px!important}}
+
+
+/* AXION final hero product layout update */
+.axion-product-showcase{
+  max-width:none!important;
+  width:100%!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:22px!important;
+  align-items:stretch!important;
+}
+.axion-product-card{
+  min-height:460px!important;
+}
+.product-launchpad{
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255,201,92,.28), transparent 28%),
+    radial-gradient(circle at 50% 92%, rgba(255,92,184,.22), transparent 38%),
+    linear-gradient(180deg, rgba(255,118,48,.14), rgba(168,92,255,.08)),
+    linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.025))!important;
+  border-color:rgba(255,201,92,.34)!important;
+  box-shadow:0 24px 80px rgba(0,0,0,.45),0 0 34px rgba(255,112,64,.15)!important;
+}
+.product-launchpad .ai-product-orb{
+  border-color:rgba(255,201,92,.48)!important;
+  background:radial-gradient(circle at 50% 50%, rgba(255,201,92,.28), rgba(255,92,184,.16), rgba(255,255,255,.04))!important;
+  box-shadow:0 0 34px rgba(255,201,92,.22), inset 0 0 28px rgba(255,255,255,.06)!important;
+}
+.product-launchpad .ai-product-orb span{color:#ffd36a!important;text-shadow:0 0 18px rgba(255,201,92,.75)!important;}
+.product-launchpad strong{color:#fff1bd!important;}
+.hero-proof-strip{display:none!important;}
+@media (max-width:1180px){
+  .axion-product-showcase{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+@media (max-width:640px){
+  .axion-product-showcase{grid-template-columns:1fr!important;}
+}
+
+
+
+/* ===== FINAL REQUEST PATCH: launchpad card beside AXION GAME, green AI card ===== */
+.hero .container{max-width:1280px!important;}
+.axion-product-showcase{
+  width:100%!important;
+  max-width:100%!important;
+  margin-top:34px!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:22px!important;
+  align-items:stretch!important;
+}
+.axion-product-showcase .axion-product-card{
+  min-height:430px!important;
+  width:100%!important;
+  padding:30px 24px!important;
+  border-radius:28px!important;
+}
+.axion-product-showcase .product-launchpad{
+  grid-column:auto!important;
+  grid-row:auto!important;
+  min-height:430px!important;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(67,243,177,.42), transparent 28%),
+    radial-gradient(circle at 82% 88%, rgba(78,216,255,.20), transparent 34%),
+    linear-gradient(180deg, rgba(67,243,177,.18), rgba(3,24,18,.92))!important;
+  border:1px solid rgba(67,243,177,.55)!important;
+  box-shadow:
+    0 0 0 1px rgba(67,243,177,.10),
+    0 0 38px rgba(67,243,177,.26),
+    0 24px 80px rgba(0,0,0,.48)!important;
+}
+.axion-product-showcase .product-launchpad::before{
+  background:
+    linear-gradient(140deg, rgba(67,243,177,.20), transparent 32%, transparent 68%, rgba(78,216,255,.14)),
+    radial-gradient(circle at 50% 100%, rgba(67,243,177,.18), transparent 42%)!important;
+}
+.product-launchpad .ai-product-orb{
+  background:radial-gradient(circle, rgba(67,243,177,.36), rgba(78,216,255,.12), rgba(255,255,255,.03))!important;
+  border:1px solid rgba(67,243,177,.55)!important;
+  box-shadow:0 0 36px rgba(67,243,177,.34), inset 0 1px 0 rgba(255,255,255,.18)!important;
+}
+.product-launchpad .ai-product-orb span{
+  color:#43f3b1!important;
+  text-shadow:0 0 18px rgba(67,243,177,.85),0 0 34px rgba(78,216,255,.38)!important;
+}
+.product-launchpad .ai-product-orb small{color:#dffff2!important;}
+.product-launchpad strong{color:#dffff2!important;text-shadow:0 0 16px rgba(67,243,177,.32)!important;}
+.product-launchpad p{color:#cffff0!important;}
+.product-launchpad .hero-project-badge.live{
+  color:#042016!important;
+  background:linear-gradient(90deg,#43f3b1,#42f5d7)!important;
+  border-color:rgba(67,243,177,.62)!important;
+}
+.product-launchpad .hero-project-badge.demo{
+  color:#dffff2!important;
+  background:rgba(67,243,177,.14)!important;
+  border-color:rgba(67,243,177,.38)!important;
+}
+@media (max-width:1180px){
+  .axion-product-showcase{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+@media (max-width:640px){
+  .axion-product-showcase{grid-template-columns:1fr!important;}
+}
+
 </style>
 </head>
 <body>
-
-
-  <div class="ai-dashboard-hud">
-    <div class="hud-ring left"></div>
-    <div class="hud-ring right"></div>
-    <div class="scanline"></div>
-    <div class="node n1"></div>
-    <div class="node n2"></div>
-    <div class="node n3"></div>
-    <div class="node n4"></div>
-  </div>
-  <div class="ai-corner-brackets"></div>
-
-
-  <div class="ai-grid-overlay"></div>
-  <div class="ai-data-stream">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-
-  <svg width="0" height="0" style="position:absolute">
-    <defs>
-      <linearGradient id="axGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#4ed8ff"/>
-        <stop offset="45%" stop-color="#7c7cff"/>
-        <stop offset="72%" stop-color="#a85cff"/>
-        <stop offset="100%" stop-color="#ff5cb8"/>
-      </linearGradient>
-    </defs>
-  </svg>
-
-  <script>
+<div class="ai-dashboard-hud">
+<div class="hud-ring left"></div>
+<div class="hud-ring right"></div>
+<div class="scanline"></div>
+<div class="node n1"></div>
+<div class="node n2"></div>
+<div class="node n3"></div>
+<div class="node n4"></div>
+</div>
+<div class="ai-corner-brackets"></div>
+<div class="ai-grid-overlay"></div>
+<div class="ai-data-stream">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+<svg height="0" style="position:absolute" width="0">
+<defs>
+<lineargradient id="axGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4ed8ff"></stop>
+<stop offset="45%" stop-color="#7c7cff"></stop>
+<stop offset="72%" stop-color="#a85cff"></stop>
+<stop offset="100%" stop-color="#ff5cb8"></stop>
+</lineargradient>
+</defs>
+</svg>
+<script>
     const AXION_CONTRACT = "0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd";
     const FEE_WALLET = "0xd543A36c00C478D211f9eB99b45B839474cea384";
     const PRESALE_RECEIVER = "0x570ecca843baa357502c1e24c508576cff49f47c";
@@ -4533,994 +4726,809 @@
       "function transfer(address to, uint256 value) returns (bool)"
     ];
   </script>
-
-  <div class="nav-wrap">
-    <nav class="nav">
-      <a class="brand" href="#home">
-        <div class="brand-mark">
-          <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo">
-        </div>
-        <div class="brand-text">
-          <strong>AXION</strong>
-          <small>INTELLIGENT LAYER FOR DEFI</small>
-        </div>
-      </a>
-
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">☰</button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="https://axion-app-eight.vercel.app/" target="_top">Dashboard</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#about">About</a>
-        <details class="nav-more">
-          <summary>More</summary>
-          <div class="nav-dropdown">
-            <a href="#utility">Utility</a>
-            <a href="#contract-strength">Contract</a>
-            <a href="#summary">Summary</a>
-            <a href="#core">Core System</a>
-            <a href="#whitepaper">Whitepaper</a>
-            <a href="#ecosystem">Ecosystem</a>
-            <a href="#security" class="security-link">Security</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="nav-actions">
-        <a class="btn" id="walletBtn" href="https://axion-app-eight.vercel.app/" target="_top">Go to AXION App</a>
-      </div>
-    </nav>
-  </div>
-
-  <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-copy reveal">
-            <div class="hero-title-row">
-              <div class="hero-main-icon">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="3.8"/>
-                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                  <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                </svg>
-              </div>
-              <h1 class="gradient-title">AXION is not just a token.</h1>
-            </div>
-
-            <div class="sub">Intelligent Layer for DeFi</div>
-            <p>
+<div class="nav-wrap">
+<nav class="nav">
+<a class="brand" href="#home">
+<div class="brand-mark">
+<img alt="AXION Logo" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png"/>
+</div>
+<div class="brand-text">
+<strong>AXION</strong>
+<small>INTELLIGENT LAYER FOR DEFI</small>
+</div>
+</a>
+<button aria-label="Toggle Menu" class="mobile-toggle" id="mobileToggle">☰</button>
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="https://axion-app-eight.vercel.app/" target="_top">Dashboard</a>
+<a href="#roadmap">Roadmap</a>
+<a href="#about">About</a>
+<details class="nav-more">
+<summary>More</summary>
+<div class="nav-dropdown">
+<a href="#utility">Utility</a>
+<a href="#contract-strength">Contract</a>
+<a href="#summary">Summary</a>
+<a href="#core">Core System</a>
+<a href="#whitepaper">Whitepaper</a>
+<a href="#ecosystem">Ecosystem</a>
+<a class="security-link" href="#security">Security</a>
+</div>
+</details>
+</div>
+<div class="nav-actions">
+<a class="btn" href="https://axion-app-eight.vercel.app/" id="walletBtn" target="_top">Go to AXION App</a>
+</div>
+</nav>
+</div>
+<main>
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-grid">
+<div class="hero-copy reveal">
+<div class="hero-title-row">
+<div class="hero-main-icon">
+<svg viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="3.8"></circle>
+<path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>
+<path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"></path>
+</svg>
+</div>
+<h1 class="gradient-title">AXION is not just a token.</h1>
+</div>
+<div class="sub">Intelligent Layer for DeFi</div>
+<p>
               AXION is designed as a trust-minimized DeFi infrastructure layer on BNB Smart Chain. It combines fixed-supply token design, anti-manipulation mechanics, and AI-oriented ecosystem expansion inside a premium product-style interface.
             </p>
-
-            <div class="hero-actions">
-              <a class="btn btn-secondary turquoise-accent" href="https://whitepaper.axiondefi.com/" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
-              <a class="btn btn-buy" href="#presale">AXION Presale</a>
-              <button class="btn btn-secondary turquoise-accent" id="addTokenBtn" type="button">Add AXION to Wallet</button>
-              <a class="btn btn-secondary turquoise-accent" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener noreferrer">BSC SCAN</a>
-            </div>
-
-
-            <div class="hero-project-grid">
-              <a class="hero-project-card" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener noreferrer">
-                <div>
-                  <strong>AXION TESTNET IS LIVE</strong>
-                  <p>Go to AXSCAN and explore AXION network activity through the official explorer interface.</p>
-                </div>
-                <div class="hero-project-badges">
-                  <span class="hero-project-badge live">Live</span>
-                </div>
-              </a>
-
-              <a class="hero-project-card" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener noreferrer">
-                <div>
-                  <strong>AxDeX</strong>
-                  <p>AXION’s exchange layer is taking shape as a dedicated DeFi trading experience designed around premium execution and ecosystem expansion.</p>
-                </div>
-                <div class="hero-project-badges">
-                  <span class="hero-project-badge demo">Demo</span>
-                  <span class="hero-project-badge progress">In Progress</span>
-                </div>
-              </a>
-
-              <a class="hero-project-card" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener noreferrer">
-                <div>
-                  <strong>AXION GAME</strong>
-                  <p>AXION’s gaming layer brings interactive Web3 entertainment into the ecosystem with a dedicated game portal.</p>
-                </div>
-                <div class="hero-project-badges">
-                  <span class="hero-project-badge live">Open</span>
-                </div>
-              </a>
-            </div>
-
-            
-            <div class="hero-stats hero-feature-cards">
-              <div class="mini-card hero-feature-card">
-                <div class="hero-feature-card-head">
-                  <div class="hero-feature-icon">
-                    <svg viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="7"></circle>
-                      <path d="M12 5v14"></path>
-                      <path d="M8 9.5c.8-.9 2.1-1.5 4-1.5 2.2 0 4 1 4 2.7 0 3.9-8 1.7-8 4.9 0 1.4 1.2 2.4 3.2 2.7"></path>
-                    </svg>
-                  </div>
-                  <strong>Fixed Supply</strong>
-                </div>
-                <p>AXION is permanently capped at 1,000,000,000 AXION, delivering a clear token economy with long-term predictability and no inflation uncertainty.</p>
-              </div>
-
-              <div class="mini-card hero-feature-card">
-                <div class="hero-feature-card-head">
-                  <div class="hero-feature-icon">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"></path>
-                      <path d="M9.5 12.2l1.6 1.6 3.4-3.8"></path>
-                    </svg>
-                  </div>
-                  <strong>No Mint</strong>
-                </div>
-                <p>No mint function means no hidden supply expansion, supporting stronger trust, cleaner token logic, and a more disciplined on-chain structure.</p>
-              </div>
-
-              <div class="mini-card hero-feature-card">
-                <div class="hero-feature-card-head">
-                  <div class="hero-feature-icon">
-                    <svg viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="3.8"></circle>
-                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>
-                      <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"></path>
-                    </svg>
-                  </div>
-                  <strong>AI-Powered DeFi</strong>
-                </div>
-                <p>Built around an intelligent product direction, AXION is positioned for analytics, automation, and data-driven tools across the evolving DeFi ecosystem.</p>
-              </div>
-
-            </div>
-
-            
-
-
-            
-
-            
-          </div>
-
-          <div class="hero-side-stack reveal">
-            <div class="community-card reveal">
-            <div class="community-head">
-              <strong>Community Channels</strong>
-              <span>Live Community</span>
-            </div>
-            <div class="community-links">
-              <a class="community-link" href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">
-                <div>
+<div class="hero-actions hero-actions-equal axion-clean-actions">
+<a class="btn btn-secondary turquoise-accent" href="https://whitepaper.axiondefi.com/" rel="noopener noreferrer" target="_blank">View Whitepaper</a>
+<button class="btn btn-secondary turquoise-accent" id="addTokenBtn" type="button">Add AXION to Wallet</button>
+<a class="btn btn-secondary turquoise-accent" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" rel="noopener noreferrer" target="_blank">BSC SCAN</a>
+</div>
+</div>
+<div class="hero-side-stack reveal">
+<div class="community-card reveal">
+<div class="community-head">
+<strong>Community Channels</strong>
+<span>Live Community</span>
+</div>
+<div class="community-links">
+<a class="community-link" href="https://t.me/axiondefi" rel="noopener noreferrer" target="_blank">
+<div class="community-icon">✈</div>
+<div>
                   Telegram
                   <small>Official AXION community channel</small>
-                </div>
-                <span>Join Now</span>
-              </a>
-              <a class="community-link" href="https://x.com/axiondefixx" target="_blank" rel="noopener noreferrer">
-                <div>
-                  X / Twitter 2
-                  <small>Additional official AXION X channel</small>
-                </div>
-                <span>Follow</span>
-              </a>
-            </div>
-          </div>
+</div>
+<span>Join Now →</span>
+</a>
+<a class="community-link" href="https://x.com/axiondefixx" rel="noopener noreferrer" target="_blank">
+<div class="community-icon x-icon">𝕏</div>
+<div>
+                  X / Twitter
+                  <small>Official AXION X channel</small>
+</div>
+<span>Follow →</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="hero-project-grid axion-product-showcase">
+<a class="hero-project-card axion-product-card product-testnet" href="https://axscan.axiondefi.com/" rel="noopener noreferrer" target="_blank">
+<div class="product-orb ai-product-orb"><span>◎</span><small>Network Intelligence</small></div>
+<div>
+<strong>AXION TESTNET IS LIVE</strong>
+<p>Go to AXSCAN and explore AXION network activity through the official explorer interface.</p>
+</div>
+<div class="hero-project-badges"><span class="hero-project-badge live">Live</span></div>
+</a>
+<a class="hero-project-card axion-product-card product-dex" href="https://axdex.axiondefi.com/" rel="noopener noreferrer" target="_blank">
+<div class="product-orb ai-product-orb"><span>⌬</span><small>DeFi Exchange Layer</small></div>
+<div>
+<strong>AxDeX</strong>
+<p>AXION’s exchange layer is taking shape as a dedicated DeFi trading experience designed around premium execution and ecosystem expansion.</p>
+</div>
+<div class="hero-project-badges"><span class="hero-project-badge demo">Demo</span><span class="hero-project-badge progress">In Progress</span></div>
+</a>
+<a class="hero-project-card axion-product-card product-game" href="https://axiongame.axiondefi.com/" rel="noopener noreferrer" target="_blank">
+<div class="product-orb ai-product-orb"><span>✦</span><small>Web3 Gaming Layer</small></div>
+<div>
+<strong>AXION GAME</strong>
+<p>AXION’s gaming layer brings interactive Web3 entertainment into the ecosystem with a dedicated game portal.</p>
+</div>
+<div class="hero-project-badges"><span class="hero-project-badge live">Open</span></div>
+</a>
+<a class="hero-project-card axion-product-card product-launchpad" href="https://www.hotcoin.com/zh_CN/ieo/details/?projectId=8" rel="noopener noreferrer" target="_blank">
+<div class="product-orb ai-product-orb"><span>⟁</span><small>Launchpad Intelligence</small></div>
+<div>
+<strong>HOTCOIN LAUNCHPAD</strong>
+<p>AXION official IEO access is live on HotCoin Launchpad. Join the launchpad through the official campaign page.</p>
+</div>
+<div class="hero-project-badges"><span class="hero-project-badge live">Live</span><span class="hero-project-badge demo">Join Now ↗</span></div>
+</a>
+</div>
 
-          </div>
-        </div>
-      </div>
-    </section>
+</div>
+</section>
 
-    <section class="section" id="dashboard">
-      <div class="container">
-        <div class="section-head reveal" style="justify-content:center; text-align:center;">
-          <div style="width:100%; display:flex; justify-content:center;">
-            <div class="eyebrow" style="justify-content:center; text-align:center;">Presale Information</div>
-          </div>
-        </div>
-        <div class="dashboard-grid">
-          <div class="presale-layout">
-            <div class="presale-main-stack">
+<section class="section" id="roadmap">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">Roadmap</div>
+<h2></h2>
+</div>
+</div>
+<div class="split-2">
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Roadmap</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M4 18c4-7 8-10 16-12"></path>
+<path d="M14 6h6v6"></path>
+<circle cx="6" cy="17" fill="currentColor" r="1.3" stroke="none"></circle>
+<circle cx="11" cy="12.5" fill="currentColor" r="1.3" stroke="none"></circle>
+<circle cx="16" cy="9" fill="currentColor" r="1.3" stroke="none"></circle>
+</svg>
+</div>
+<h3>Six growth phases</h3>
+</div>
+<div class="phase-grid">
+<div class="phase phase-cyan">
+<strong>Phase 1 — Foundation</strong>
+<ul>
+<li>Smart contract deployment</li>
+<li>Brand identity launch</li>
+<li>Community building</li>
+<li>Initial liquidity setup</li>
+</ul>
+</div>
+<div class="phase phase-blue">
+<strong>Phase 2 — Growth &amp; Visibility</strong>
+<ul>
+<li>Strategic marketing campaigns</li>
+<li>Early exchange listings</li>
+<li>Community expansion</li>
+<li>Ecosystem partnerships</li>
+</ul>
+</div>
+<div class="phase phase-purple">
+<strong>Phase 3 — Ecosystem Expansion</strong>
+<ul>
+<li>Analytics dashboard launch</li>
+<li>DeFi tools integration</li>
+<li>Utility expansion</li>
+<li>Technical collaborations</li>
+</ul>
+</div>
+<div class="phase phase-teal">
+<strong>Phase 4 — AI Integration</strong>
+<ul>
+<li>AI-powered analytics</li>
+<li>Automated DeFi tools</li>
+<li>AI partnerships</li>
+<li>Intelligent data layer</li>
+</ul>
+</div>
+<div class="phase phase-green">
+<strong>Phase 5 — Advanced Infrastructure</strong>
+<ul>
+<li>Protocol optimization</li>
+<li>Cross-chain integrations</li>
+<li>Scalable architecture</li>
+<li>Expanded AI capabilities</li>
+</ul>
+</div>
+<div class="phase phase-pink">
+<strong>Phase 6 — AXION Network</strong>
+<ul>
+<li>Proprietary network R&amp;D</li>
+<li>Layer infrastructure design</li>
+<li>Independent ecosystem</li>
+<li>Full decentralization</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
 <article class="card reveal" id="presale">
-            <div class="card-inner">
-              <div class="tag">Highlighted Presale</div>
-
-              <div class="title-row">
-                <div class="icon-badge" style="padding:0; overflow:hidden;">
-                  <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo" style="width:100%;height:100%;object-fit:cover;"/>
-                </div>
-                <h3>AXION Presale</h3>
-              </div>
-
-              <p style="margin-top:6px; margin-bottom:0; max-width:760px;">
+<div class="card-inner">
+<div class="tag">Highlighted Presale</div>
+<div class="title-row">
+<div class="icon-badge" style=""><svg viewbox="0 0 24 24"><path d="M12 2l2.8 6.2L21 11l-6.2 2.8L12 20l-2.8-6.2L3 11l6.2-2.8L12 2z"></path><path d="M18 4l.9 2.1L21 7l-2.1.9L18 10l-.9-2.1L15 7l2.1-.9L18 4z"></path></svg></div>
+<h3>AXION Presale</h3>
+</div>
+<p style="margin-top:6px; margin-bottom:0; max-width:760px;">
                 Join the AXION presale early to access stronger entry pricing, secure allocation before wider market exposure, and position ahead of upcoming ecosystem expansion on BNB Smart Chain.
               </p>
-
-              <div class="presale-box" style="grid-template-columns:1fr; gap:14px;">
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
-                  <div class="mini-card" style="padding:18px; border-radius:20px; border:1px solid rgba(255,201,92,.34); box-shadow:0 0 0 1px rgba(255,201,92,.06), 0 0 22px rgba(255,201,92,.18), 0 0 42px rgba(255,140,31,.12); background:linear-gradient(180deg, rgba(255,201,92,.10), rgba(255,255,255,.035));">
-                    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
-                      <div class="tag" style="margin-bottom:0;">ROUND 1</div>
-                      <span style="display:inline-flex; align-items:center; justify-content:center; padding:7px 12px; border-radius:999px; background:rgba(255,201,92,.14); border:1px solid rgba(255,201,92,.30); color:#fff1b8; font-size:11px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 0 18px rgba(255,201,92,.14);">Best Value</span>
-                    </div>
-                    <p style="color:#9edfff; font-weight:700; margin:0 0 14px;">EARLY ACCESS</p>
-                    <div class="presale-row"><strong>Rate</strong><span>1 AXION = 0.02 USDT</span></div>
-                    <div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AXION</span></div>
-                    <div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
-                    <div class="presale-row"><strong>Distribution</strong><span>01.07.2026</span></div>
-                  </div>
-
-                  <div class="mini-card" style="padding:18px; border-radius:20px;">
-                    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
-                      <div class="tag" style="margin-bottom:0;">ROUND 2</div>
-                      <span style="display:inline-flex; align-items:center; justify-content:center; padding:7px 12px; border-radius:999px; background:rgba(168,92,255,.14); border:1px solid rgba(168,92,255,.28); color:#eadbff; font-size:11px; font-weight:900; letter-spacing:.08em; text-transform:uppercase;">Limited Opportunity</span>
-                    </div>
-                    <p style="color:#c8b6ff; font-weight:700; margin:0 0 14px;">PRE-LISTING OPPORTUNITY</p>
-                    <div class="presale-row"><strong>Rate</strong><span>1 AXION = 0.03 USDT</span></div>
-                    <div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AXION</span></div>
-                    <div class="presale-row"><strong>End Date</strong><span>21.05.2026</span></div>
-                    <div class="presale-row"><strong>Distribution</strong><span>15.06.2026</span></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="buy-inputs">
-                <div class="buy-field" style="display:none;">
-                  <label for="bnbAmount"></label>
-                  <input id="bnbAmount" type="number" min="0" step="0.0001" placeholder="">
-                </div>
-                <div class="buy-preview" style="display:none;">
+<div class="presale-box" style="grid-template-columns:1fr; gap:14px;">
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
+<div class="mini-card" style="padding:18px; border-radius:20px; border:1px solid rgba(255,201,92,.34); box-shadow:0 0 0 1px rgba(255,201,92,.06), 0 0 22px rgba(255,201,92,.18), 0 0 42px rgba(255,140,31,.12); background:linear-gradient(180deg, rgba(255,201,92,.10), rgba(255,255,255,.035));">
+<div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
+<div class="tag" style="margin-bottom:0;">ROUND 1</div>
+<span style="display:inline-flex; align-items:center; justify-content:center; padding:7px 12px; border-radius:999px; background:rgba(255,201,92,.14); border:1px solid rgba(255,201,92,.30); color:#fff1b8; font-size:11px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 0 18px rgba(255,201,92,.14);">Best Value</span>
+</div>
+<p style="color:#9edfff; font-weight:700; margin:0 0 14px;">EARLY ACCESS</p>
+<div class="presale-row"><strong>Rate</strong><span>1 AXION = 0.02 USDT</span></div>
+<div class="presale-row"><strong>Total Allocation</strong><span>5,000,000 AXION</span></div>
+<div class="presale-row"><strong>End Date</strong><span>06.06.2026</span></div>
+<div class="presale-row"><strong>Distribution</strong><span>01.07.2026</span></div>
+</div>
+<div class="mini-card" style="padding:18px; border-radius:20px;">
+<div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
+<div class="tag" style="margin-bottom:0;">ROUND 2</div>
+<span style="display:inline-flex; align-items:center; justify-content:center; padding:7px 12px; border-radius:999px; background:rgba(168,92,255,.14); border:1px solid rgba(168,92,255,.28); color:#eadbff; font-size:11px; font-weight:900; letter-spacing:.08em; text-transform:uppercase;">Limited Opportunity</span>
+</div>
+<p style="color:#c8b6ff; font-weight:700; margin:0 0 14px;">PRE-LISTING OPPORTUNITY</p>
+<div class="presale-row"><strong>Rate</strong><span>1 AXION = 0.03 USDT</span></div>
+<div class="presale-row"><strong>Total Allocation</strong><span>2,500,000 AXION</span></div>
+<div class="presale-row"><strong>End Date</strong><span>21.05.2026</span></div>
+<div class="presale-row"><strong>Distribution</strong><span>15.06.2026</span></div>
+</div>
+</div>
+</div>
+<div class="buy-inputs">
+<div class="buy-field" style="display:none;">
+<label for="bnbAmount"></label>
+<input id="bnbAmount" min="0" placeholder="" step="0.0001" type="number"/>
+</div>
+<div class="buy-preview" style="display:none;">
                   You will receive approximately: <strong id="axReceivePreview">0 AXION</strong>
-                </div>
-                <div class="inline-actions" style="display:none;">
-                  <button class="btn btn-buy" id="buyAxBtn"></button>
-                  <button class="btn btn-secondary" id="copyReceiverBtn"></button>
-                </div>
-
-                <div id="presaleSuccessCard" style="margin-top:18px; display:flex; justify-content:center; align-items:center;"><a href="https://axion-app-eight.vercel.app/" target="_top" class="btn btn-buy" style="width:min(100%,420px); min-height:64px; display:flex; align-items:center; justify-content:center; font-size:18px; padding:18px 28px;">Join Presale</a></div>
-
-    <div class="success-card">
-                  <strong id="presaleSuccessTitle">Purchase Successful</strong>
-                  <p id="presaleSuccessText">
+</div>
+<div class="inline-actions" style="display:none;">
+<button class="btn btn-buy" id="buyAxBtn"></button>
+<button class="btn btn-secondary" id="copyReceiverBtn"></button>
+</div>
+<div id="presaleSuccessCard" style="margin-top:18px; display:flex; justify-content:center; align-items:center;"><a class="btn btn-buy" href="https://axion-app-eight.vercel.app/" style="width:min(100%,420px); min-height:64px; display:flex; align-items:center; justify-content:center; font-size:18px; padding:18px 28px;" target="_top">Join Presale</a></div>
+<div class="success-card">
+<strong id="presaleSuccessTitle">Purchase Successful</strong>
+<p id="presaleSuccessText">
                     Congratulations. Your AXION purchase was completed successfully. Your tokens will be sent to the wallet used for payment on the distribution date. Please follow announcements on our official channels.
                   </p>
-                </div>
+</div>
+</div>
+</div>
+</article></div>
+<div class="roadmap-bottom-grid">
 
-                
-
-
-              </div>
-            </div>
-          </article>
-            </div>
-
-            
-<aside class="binance-alpha-box reveal">
-              <div class="alpha-topline">
-                <span class="alpha-kicker">Expansion Track</span>
-                <div class="alpha-badge-row">
-                  <span class="alpha-badge">CEX Focus</span>
-                  <span class="alpha-badge alt">DEX Layer</span>
-                </div>
-              </div>
-
-              <div class="alpha-head">
-                <img class="alpha-logo" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo">
-                <div class="alpha-head-copy">
-                  <h3>CEX / DEX Expansion</h3>
-                  <p class="alpha-sub">AXION is moving into its next market growth phase with a broader exchange visibility structure built around strategic listings, stronger market access, and scalable ecosystem positioning.</p>
-                </div>
-              </div>
-
-              <div class="alpha-list">
-                <div class="alpha-item">
-                  <span class="alpha-item-title">CEX Target</span>
-                  <strong>Under Review:</strong> LBank, XT.COM, Gate, MEXC, and Bybit remain part of the active expansion track.
-                </div>
-                <div class="alpha-item">
-                  <span class="alpha-item-title">Global Reach</span>
-                  <strong>Long-Term Visibility:</strong> Kraken, Coinbase, Binance, OKX, and KuCoin represent the broader global access layer.
-                </div>
-                <div class="alpha-item">
-                  <span class="alpha-item-title">DEX Growth</span>
-                  <strong>Expansion Layer:</strong> PancakeSwap access, market visibility, and liquidity depth remain part of the current growth structure.
-                </div>
-                <div class="alpha-item">
-                  <span class="alpha-item-title">Positioning Summary</span>
-                  <strong>Current Focus:</strong> Listing preparations, visibility strategy, community expansion, and stronger market readiness continue in parallel.
-                </div>
-              </div>
-
-              <div class="alpha-next">
-                <strong>Growth Direction</strong>
-                <p>AXION is building toward broader exchange reach through phased CEX targeting, DEX visibility strengthening, and long-term global market positioning without changing the existing premium card structure.</p>
-              </div>
-            </aside>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="roadmap">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Roadmap</div>
-            <h2></h2>
-          </div>
-        </div>
-
-        <div class="split-2">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Roadmap</div>
-
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 18c4-7 8-10 16-12"/>
-                    <path d="M14 6h6v6"/>
-                    <circle cx="6" cy="17" r="1.3" fill="currentColor" stroke="none"/>
-                    <circle cx="11" cy="12.5" r="1.3" fill="currentColor" stroke="none"/>
-                    <circle cx="16" cy="9" r="1.3" fill="currentColor" stroke="none"/>
-                  </svg>
-                </div>
-                <h3>Six growth phases</h3>
-              </div>
-
-              <div class="phase-grid">
-                <div class="phase phase-cyan">
-                  <strong>Phase 1 — Foundation</strong>
-                  <ul>
-                    <li>Smart contract deployment</li>
-                    <li>Brand identity launch</li>
-                    <li>Community building</li>
-                    <li>Initial liquidity setup</li>
-                  </ul>
-                </div>
-                <div class="phase phase-blue">
-                  <strong>Phase 2 — Growth & Visibility</strong>
-                  <ul>
-                    <li>Strategic marketing campaigns</li>
-                    <li>Early exchange listings</li>
-                    <li>Community expansion</li>
-                    <li>Ecosystem partnerships</li>
-                  </ul>
-                </div>
-                <div class="phase phase-purple">
-                  <strong>Phase 3 — Ecosystem Expansion</strong>
-                  <ul>
-                    <li>Analytics dashboard launch</li>
-                    <li>DeFi tools integration</li>
-                    <li>Utility expansion</li>
-                    <li>Technical collaborations</li>
-                  </ul>
-                </div>
-                <div class="phase phase-teal">
-                  <strong>Phase 4 — AI Integration</strong>
-                  <ul>
-                    <li>AI-powered analytics</li>
-                    <li>Automated DeFi tools</li>
-                    <li>AI partnerships</li>
-                    <li>Intelligent data layer</li>
-                  </ul>
-                </div>
-                <div class="phase phase-green">
-                  <strong>Phase 5 — Advanced Infrastructure</strong>
-                  <ul>
-                    <li>Protocol optimization</li>
-                    <li>Cross-chain integrations</li>
-                    <li>Scalable architecture</li>
-                    <li>Expanded AI capabilities</li>
-                  </ul>
-                </div>
-                <div class="phase phase-pink">
-                  <strong>Phase 6 — AXION Network</strong>
-                  <ul>
-                    <li>Proprietary network R&amp;D</li>
-                    <li>Layer infrastructure design</li>
-                    <li>Independent ecosystem</li>
-                    <li>Full decentralization</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-
-        <div class="roadmap-bottom-grid">
-          <div class="roadmap-bottom-stack">
-            <article class="roadmap-bottom-card reveal">
-              <h3>Current Progress</h3>
-              <p>AXION continues to move through its roadmap with a focus on visibility, ecosystem growth, and stronger market readiness.</p>
-
-              <div class="progress-phase">Current Phase: Phase 2 — Growth &amp; Visibility</div>
-
-              <div class="progress-list">
-                <div class="progress-item done">
-                  <div class="progress-icon">✓</div>
-                  <div>Smart Contract Deployed</div>
-                </div>
-                <div class="progress-item done">
-                  <div class="progress-icon">✓</div>
-                  <div>Presale Live</div>
-                </div>
-                <div class="progress-item done">
-                  <div class="progress-icon">✓</div>
-                  <div>Dashboard Live</div>
-                </div>
-                <div class="progress-item pending">
-                  <div class="progress-icon">→</div>
-                  <div>Exchange Listings</div>
-                </div>
-                <div class="progress-item pending">
-                  <div class="progress-icon">→</div>
-                  <div>AI Tools Integration</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="roadmap-bottom-card reveal">
-              <h3>Next Milestones</h3>
-              <p>Near-term execution is structured around growth metrics, market traction, and exchange readiness.</p>
-
-              <div class="milestone-list">
-                <div class="milestone-item">
-                  <div class="milestone-icon">1</div>
-                  <div>5,000+ Holders</div>
-                </div>
-                <div class="milestone-item">
-                  <div class="milestone-icon">2</div>
-                  <div>$500K Daily Volume</div>
-                </div>
-                <div class="milestone-item">
-                  <div class="milestone-icon">3</div>
-                  <div>First CEX Listing</div>
-                </div>
-                <div class="milestone-item">
-                  <div class="milestone-icon">4</div>
-                  <div>AI Dashboard Expansion</div>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <article class="roadmap-bottom-card vision-card reveal">
-            <h3>Vision Snapshot</h3>
-            <p>AXION is not just positioning itself as a token project. It is evolving toward a more intelligent and structured DeFi infrastructure layer built for long-term expansion.</p>
-            <span class="vision-highlight">AXION is evolving into an AI-powered DeFi infrastructure layer focused on transparency, automation, and intelligent market analysis.</span>
-          </article>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">About AXION</div>
-            <h2>AXION is an <span class="gradient-title">intelligent infrastructure layer for DeFi.</span></h2>
-          </div>
-        </div>
-
-        <div class="official-info-grid">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Project Identity</div>
-              <h3>What is AXION?</h3>
-              <p>AXION is an intelligent infrastructure layer designed for decentralized finance, transparency, and trustless financial systems. AXION is not positioned as a simple token page; it is being developed as an application-layer trust protocol focused on verifiable token logic, AI-powered analytics, and user-facing DeFi tools.</p>
-              <div class="bscscan-ready-banner">
-                <strong>Official Token Description</strong>
-                <p>AXION brings a clear fixed-supply token model together with a product-oriented ecosystem: analytics dashboards, wallet visibility, market intelligence, risk-focused tooling, and future DeFi modules under one verified brand identity.</p>
-              </div>
-              <div class="proof-list">
-                <div class="proof-item"><strong>Website</strong><span>https://www.axiondefi.com</span></div>
-                <div class="proof-item"><strong>Official Email</strong><span>axionteam@axiondefi.com</span></div>
-                <div class="proof-item"><strong>Community</strong><span>Telegram and X official channels are linked across the website.</span></div>
-                <div class="proof-item"><strong>Whitepaper</strong><span>Public project documentation is available through the website.</span></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Why AXION</div>
-              <h3>Built for credibility, not noise.</h3>
-              <p>AXION focuses on simple, transparent, and verifiable foundations. Its messaging is built around long-term confidence: fixed supply, clean token behavior, visible project links, and an ecosystem roadmap that expands beyond speculation.</p>
-              <div class="subcards">
-                <div class="mini-card"><strong>Trustless Verification</strong><p>AXION highlights on-chain transparency and predictable execution rather than hidden control or unclear token behavior.</p></div>
-                <div class="mini-card"><strong>AI-Powered Direction</strong><p>The ecosystem direction includes AI analytics, risk scoring, wallet visibility, market interpretation, and future automation modules.</p></div>
-                <div class="mini-card"><strong>DeFi Utility Layer</strong><p>AXION is structured to support dashboards, token tools, explorer visibility, future DEX features, and data-driven DeFi experiences.</p></div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="utility">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">AXION Utility</div>
-            <h2>Clear utility for a <span class="gradient-title">stronger DeFi ecosystem.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-4">
-          <article class="card reveal"><div class="card-inner"><div class="tag">Utility 01</div><h3>Analytics Layer</h3><p>AXION is designed to power dashboard-based visibility for holders, wallets, token activity, and market behavior.</p></div></article>
-          <article class="card reveal"><div class="card-inner"><div class="tag">Utility 02</div><h3>Risk Intelligence</h3><p>Future modules are positioned around token review, risk scoring, wallet behavior analysis, and safer decision support.</p></div></article>
-          <article class="card reveal"><div class="card-inner"><div class="tag">Utility 03</div><h3>Ecosystem Access</h3><p>AXION connects website, app, explorer, presale flow, whitepaper, and future DeFi tools under one branded access layer.</p></div></article>
-          <article class="card reveal"><div class="card-inner"><div class="tag">Utility 04</div><h3>Network Expansion</h3><p>The roadmap extends toward mainnet infrastructure, AXSCAN explorer growth, DEX development, and broader ecosystem adoption.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contract-strength">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Smart Contract Strength</div>
-            <h2>Transparent token logic with <span class="gradient-title">marketable proof points.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <article class="card reveal"><div class="card-inner"><div class="tag">Supply Proof</div><h3>Fixed 1B AXION Supply</h3><p>The contract defines a maximum supply of 1,000,000,000 AXION with 18 decimals. Supply clarity is one of the strongest trust signals for users, aggregators, and explorers.</p></div></article>
-          <article class="card reveal"><div class="card-inner"><div class="tag">No Inflation</div><h3>No Mint Function</h3><p>AXION has no public mint expansion path. This supports a cleaner market narrative: no hidden inflation, no surprise supply expansion, and a more predictable token economy.</p></div></article>
-          <article class="card reveal"><div class="card-inner"><div class="tag">User Control</div><h3>Burn Function</h3><p>The burn mechanism allows circulating supply reduction through transparent on-chain execution, with events visible for tracking and verification.</p></div></article>
-          <article class="card reveal"><div class="card-inner"><div class="tag">Efficiency</div><h3>Batch Transfer</h3><p>Batch transfer support enables multiple wallet distributions in a single structured operation, useful for ecosystem campaigns, rewards, and operational efficiency.</p></div></article>
-          <article class="card reveal"><div class="card-inner"><div class="tag">Clean ERC-20</div><h3>Standard Transfers</h3><p>Transfer, approval, and allowance flows remain simple and readable, helping users, wallets, and explorers understand token behavior without unnecessary complexity.</p></div></article>
-          <article class="card reveal"><div class="card-inner"><div class="tag">Verification Ready</div><h3>Public Source Code</h3><p>The contract source is structured for public verification and review, strengthening the credibility profile required for token info updates.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="summary">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Project Summary</div>
-            <h2>Core architecture in one <span class="gradient-title">clean overview.</span></h2>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <div class="card-inner">
-            <div class="summary-list">
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l7 3v5c0 4.8-2.9 8.9-7 10-4.1-1.1-7-5.2-7-10V6l7-3Z"/>
-                    <path d="M9.5 12.2l1.8 1.8 3.6-4"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Trustless Architecture</strong>
-                  <p>AXION is designed to minimize hidden control, prioritize transparent token behavior, and support a cleaner long-term on-chain narrative.</p>
-                </div>
-              </div>
-
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="8.5"/>
-                    <path d="M3.5 12h17M12 3.5c2.6 2.5 4 5.4 4 8.5s-1.4 6-4 8.5c-2.6-2.5-4-5.4-4-8.5s1.4-6 4-8.5Z"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>BNB Smart Chain</strong>
-                  <p>The token operates on BNB Smart Chain to provide fast accessibility, broad wallet support, and a familiar DeFi environment for global users.</p>
-                </div>
-              </div>
-
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l6.5 3.7v7.4L12 17.8 5.5 14.1V6.7L12 3Z"/>
-                    <path d="M12 3v14.8M5.5 6.7L12 10l6.5-3.3"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Fixed Supply Model</strong>
-                  <p>The supply is permanently fixed at 1,000,000,000 AXION, creating strong clarity around issuance and long-term token economics.</p>
-                </div>
-              </div>
-
-              <div class="summary-item">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 7h10"/>
-                    <path d="M7 12h10"/>
-                    <path d="M7 17h10"/>
-                    <path d="M16 4l4 3-4 3"/>
-                    <path d="M8 14l-4 3 4 3"/>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Open Trading Structure</strong>
-                  <p>AXION is positioned without trade-stop controls or transfer blocking logic, supporting a cleaner market structure and more predictable token behavior for holders.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="core">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Core System</div>
-            <h2>What AXION is built to <span class="gradient-title">protect and deliver.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-4">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Objective 01</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
-                  </svg>
-                </div>
-                <h3>Security</h3>
-              </div>
-              <p>AXION is designed with a robust token structure focused on protecting user assets by removing unnecessary exploit surfaces and promoting sustainable behavior.</p>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Objective 02</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="8"/>
-                    <path d="M12 8v5l3 2"/>
-                  </svg>
-                </div>
-                <h3>Transparency</h3>
-              </div>
-              <p>Token mechanics and ecosystem direction are presented with clearer visibility so users can understand how the project operates at every level.</p>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Objective 03</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 16c2.3-3 4.8-4.5 8-4.5S17.7 13 20 16"/>
-                    <path d="M6 9l2.5-2M18 9l-2.5-2"/>
-                    <path d="M12 8a3.5 3.5 0 0 0 3.5-3.5h-7A3.5 3.5 0 0 0 12 8Z"/>
-                  </svg>
-                </div>
-                <h3>Resistance to Manipulation</h3>
-              </div>
-              <p>Anti-whale positioning and balanced token distribution are intended to reduce outsized control, strengthen fairness, and improve ecosystem stability.</p>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Objective 04</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                  </svg>
-                </div>
-                <h3>AI-Powered Financial Ecosystem</h3>
-              </div>
-              <p>AXION expands beyond token presence toward a product ecosystem built for analytics, automation, intelligence modules, and smarter financial decision support.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="whitepaper">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Whitepaper Flow</div>
-            <h2><span class="gradient-title">Whitepaper sections.</span></h2>
-          </div>
-
-          <div class="inline-actions" style="margin-top:0;">
-            <a class="btn btn-buy" href="https://whitepaper-pink.vercel.app/" target="_blank" rel="noopener noreferrer">View Whitepaper</a>
-          </div>
-        </div>
-
-        <div class="whitepaper-nav">
-          <div class="whitepaper-link reveal">
-            <div class="title-row">
-              <div class="icon-badge">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="8"/>
-                  <path d="M12 8l2.5 4H9.5L12 8Z"/>
-                </svg>
-              </div>
-              <strong style="margin:0;">Vision</strong>
-            </div>
-            <p>AXION aims to redefine finance by combining DeFi and artificial intelligence inside a unified, data-driven ecosystem.</p>
-          </div>
-
-          <div class="whitepaper-link reveal">
-            <div class="title-row">
-              <div class="icon-badge">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="8"/>
-                  <path d="M12 12l4-4M12 12l-3 5"/>
-                </svg>
-              </div>
-              <strong style="margin:0;">Mission</strong>
-            </div>
-            <p>The mission is to provide smarter investment tools, real-time analytics, and a safer user environment across the AXION ecosystem.</p>
-          </div>
-
-          <div class="whitepaper-link reveal">
-            <div class="title-row">
-              <div class="icon-badge">
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 4h8l4 4v12H7z"/>
-                  <path d="M15 4v4h4"/>
-                  <path d="M10 13h4M10 17h4"/>
-                </svg>
-              </div>
-              <strong style="margin:0;">Whitepaper Access</strong>
-            </div>
-            <p>The full whitepaper can be opened directly with the button above for fast viewing and download.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="ecosystem">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Ecosystem</div>
-            <h2>Three layers of <span class="gradient-title">smarter DeFi structure.</span></h2>
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">AI Layer</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3.8"/>
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-                    <path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/>
-                  </svg>
-                </div>
-                <h3>Intelligence modules</h3>
-              </div>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Market Predictions</strong>
-                  <p>AXION’s AI direction is designed to analyze market structures and support forward-looking insight generation.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Trade Signals</strong>
-                  <p>Future intelligence modules may provide data-driven signal logic to strengthen strategic execution.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Risk Scoring</strong>
-                  <p>Decision support improves when opportunities can be evaluated with clearer data and stronger caution signals.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Analytics Dashboard</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <line x1="5" y1="19" x2="5" y2="11"/>
-                    <line x1="10" y1="19" x2="10" y2="6"/>
-                    <line x1="15" y1="19" x2="15" y2="13"/>
-                    <line x1="20" y1="19" x2="20" y2="9"/>
-                  </svg>
-                </div>
-                <h3>Visibility and tracking</h3>
-              </div>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Wallet Analysis</strong>
-                  <p>Users can explore wallet behavior and ecosystem movement through a product-level dashboard layer.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Token Performance</strong>
-                  <p>Price activity, movement context, and market-facing metrics can be surfaced in a cleaner branded environment.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Whale Tracking</strong>
-                  <p>Monitoring large-holder behavior supports better interpretation of risk, movement, and ecosystem pressure.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Tools</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M14 6l4-4 2 2-4 4"/>
-                    <path d="M13 7l4 4"/>
-                    <path d="M3 21l6-6"/>
-                    <path d="M8 13l3 3"/>
-                  </svg>
-                </div>
-                <h3>User-facing utility</h3>
-              </div>
-              <div class="subcards">
-                <div class="mini-card">
-                  <strong>Sniper Detection</strong>
-                  <p>Tooling can be positioned to help identify bot-like activity and protect fairer market participation.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Rug Risk Checker</strong>
-                  <p>Risk evaluation modules help users review project structure more carefully before acting.</p>
-                </div>
-                <div class="mini-card">
-                  <strong>Portfolio Optimizer</strong>
-                  <p>AI-assisted portfolio support extends the ecosystem beyond token ownership into practical user value.</p>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="security">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Security Framework</div>
-            <h2>Built for <span class="gradient-title">AXION security.</span></h2>
-            <p class="security-intro">AXION is engineered with a trust-minimized architecture focused on transparency, predictability, and security. Every design decision removes unnecessary risk and reinforces confidence at the protocol level.</p>
-            <p class="security-intro">Users are fully responsible for their actions. AXION does not guarantee profits.</p>
-          </div>
-        </div>
-
-        <div class="security-badge-row reveal">
-          <div class="security-badge">
-            <strong>Low-Risk Design</strong>
-            <span>Minimal contract surface helps reduce hidden complexity and strengthens audit clarity.</span>
-          </div>
-          <div class="security-badge">
-            <strong>Fixed Supply</strong>
-            <span>No supply expansion layer. Scarcity remains transparent from deployment onward.</span>
-          </div>
-          <div class="security-badge">
-            <strong>No Owner Control</strong>
-            <span>No privileged wallet controls token behavior behind the scenes.</span>
-          </div>
-          <div class="security-badge">
-            <strong>Publicly Verifiable</strong>
-            <span>Token logic and on-chain activity stay visible for users, analysts, and exchanges.</span>
-          </div>
-        </div>
-
-        <div class="grid-4">
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Security 01</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"/>
-                  </svg>
-                </div>
-                <h3>No Mint Functionality</h3>
-              </div>
-              <p>AXION is built with a strictly fixed-supply model. No additional tokens can ever be created, helping protect holders from hidden inflation and preserving long-term supply integrity.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Security 02</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="5" y="10" width="14" height="9" rx="2"/>
-                    <path d="M8 10V8a4 4 0 0 1 8 0v2"/>
-                  </svg>
-                </div>
-                <h3>No Hidden Backdoors</h3>
-              </div>
-              <p>The contract is designed with clean and transparent logic. There are no hidden control paths, no privileged execution routes, and no unexpected behaviors embedded behind the interface.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Security 03</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 12l3 3 7-7"/>
-                    <circle cx="12" cy="12" r="9"/>
-                  </svg>
-                </div>
-                <h3>No Owner Control</h3>
-              </div>
-              <p>AXION operates without administrative control. No wallet holds special privileges over token behavior, reducing centralization risk and supporting fair participation across the ecosystem.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-inner">
-              <div class="tag">Security 04</div>
-              <div class="title-row">
-                <div class="icon-badge">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 4h10v16H7z"/>
-                    <path d="M9.5 8h5M9.5 12h5M9.5 16h3"/>
-                  </svg>
-                </div>
-                <h3>Transparent Contract Logic</h3>
-              </div>
-              <p>Every transaction follows simple, verifiable rules. No transfer locks and no manipulation mechanics — just clear on-chain execution aligned with user trust.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-row">
-        <div class="brand">
-          <div class="brand-mark">
-            <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png" alt="AXION Logo">
-          </div>
-          <div class="brand-text">
-            <strong>AXION</strong>
-            <small>Intelligent Finance. Stronger Future.</small>
-          </div>
-        </div>
-
-        <div class="footer-links">
-          <a href="https://t.me/axiondefi" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a href="https://x.com/axiondefixx" target="_blank" rel="noopener noreferrer">X</a>
-          <a href="#presale">BUY AXION</a>
-          <a href="mailto:axionteam@axiondefi.com">Contact</a>
-        </div>
-
-        <div class="footer-contact">
-          <span>Official project contact</span>
-          <a href="mailto:axionteam@axiondefi.com">axionteam@axiondefi.com</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
+<article class="roadmap-bottom-card reveal">
+<h3>Current Progress</h3>
+<p>AXION continues to move through its roadmap with a focus on visibility, ecosystem growth, and stronger market readiness.</p>
+<div class="progress-phase">Current Phase: Phase 2 — Growth &amp; Visibility</div>
+<div class="progress-list">
+<div class="progress-item done">
+<div class="progress-icon">✓</div>
+<div>Smart Contract Deployed</div>
+</div>
+<div class="progress-item done">
+<div class="progress-icon">✓</div>
+<div>Presale Live</div>
+</div>
+<div class="progress-item done">
+<div class="progress-icon">✓</div>
+<div>Dashboard Live</div>
+</div>
+<div class="progress-item pending">
+<div class="progress-icon">→</div>
+<div>Exchange Listings</div>
+</div>
+<div class="progress-item pending">
+<div class="progress-icon">→</div>
+<div>AI Tools Integration</div>
+</div>
+</div>
+</article><article class="roadmap-bottom-card reveal">
+<h3>Next Milestones</h3>
+<p>Near-term execution is structured around growth metrics, market traction, and exchange readiness.</p>
+<div class="milestone-list">
+<div class="milestone-item">
+<div class="milestone-icon">1</div>
+<div>5,000+ Holders</div>
+</div>
+<div class="milestone-item">
+<div class="milestone-icon">2</div>
+<div>$500K Daily Volume</div>
+</div>
+<div class="milestone-item">
+<div class="milestone-icon">3</div>
+<div>First CEX Listing</div>
+</div>
+<div class="milestone-item">
+<div class="milestone-icon">4</div>
+<div>AI Dashboard Expansion</div>
+</div>
+</div>
+</article></div>
+</div>
+</section>
+<section class="section" id="about">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">About AXION</div>
+<h2>AXION is an <span class="gradient-title">intelligent infrastructure layer for DeFi.</span></h2>
+</div>
+</div>
+<div class="official-info-grid">
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Project Identity</div>
+<h3>What is AXION?</h3>
+<p>AXION is an intelligent infrastructure layer designed for decentralized finance, transparency, and trustless financial systems. AXION is not positioned as a simple token page; it is being developed as an application-layer trust protocol focused on verifiable token logic, AI-powered analytics, and user-facing DeFi tools.</p>
+<div class="bscscan-ready-banner">
+<strong>Official Token Description</strong>
+<p>AXION brings a clear fixed-supply token model together with a product-oriented ecosystem: analytics dashboards, wallet visibility, market intelligence, risk-focused tooling, and future DeFi modules under one verified brand identity.</p>
+</div>
+<div class="proof-list">
+<div class="proof-item"><strong>Website</strong><span>https://www.axiondefi.com</span></div>
+<div class="proof-item"><strong>Official Email</strong><span>axionteam@axiondefi.com</span></div>
+<div class="proof-item"><strong>Community</strong><span>Telegram and X official channels are linked across the website.</span></div>
+<div class="proof-item"><strong>Whitepaper</strong><span>Public project documentation is available through the website.</span></div>
+</div>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Why AXION</div>
+<h3>Built for credibility, not noise.</h3>
+<p>AXION focuses on simple, transparent, and verifiable foundations. Its messaging is built around long-term confidence: fixed supply, clean token behavior, visible project links, and an ecosystem roadmap that expands beyond speculation.</p>
+<div class="subcards">
+<div class="mini-card"><strong>Trustless Verification</strong><p>AXION highlights on-chain transparency and predictable execution rather than hidden control or unclear token behavior.</p></div>
+<div class="mini-card"><strong>AI-Powered Direction</strong><p>The ecosystem direction includes AI analytics, risk scoring, wallet visibility, market interpretation, and future automation modules.</p></div>
+<div class="mini-card"><strong>DeFi Utility Layer</strong><p>AXION is structured to support dashboards, token tools, explorer visibility, future DEX features, and data-driven DeFi experiences.</p></div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="utility">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">AXION Utility</div>
+<h2>Clear utility for a <span class="gradient-title">stronger DeFi ecosystem.</span></h2>
+</div>
+</div>
+<div class="grid-4">
+<article class="card reveal"><div class="card-inner"><div class="tag">Utility 01</div><h3>Analytics Layer</h3><p>AXION is designed to power dashboard-based visibility for holders, wallets, token activity, and market behavior.</p></div></article>
+<article class="card reveal"><div class="card-inner"><div class="tag">Utility 02</div><h3>Risk Intelligence</h3><p>Future modules are positioned around token review, risk scoring, wallet behavior analysis, and safer decision support.</p></div></article>
+<article class="card reveal"><div class="card-inner"><div class="tag">Utility 03</div><h3>Ecosystem Access</h3><p>AXION connects website, app, explorer, presale flow, whitepaper, and future DeFi tools under one branded access layer.</p></div></article>
+<article class="card reveal"><div class="card-inner"><div class="tag">Utility 04</div><h3>Network Expansion</h3><p>The roadmap extends toward mainnet infrastructure, AXSCAN explorer growth, DEX development, and broader ecosystem adoption.</p></div></article>
+</div>
+</div>
+</section>
+<section class="section" id="contract-strength">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">Smart Contract Strength</div>
+<h2>Transparent token logic with <span class="gradient-title">marketable proof points.</span></h2>
+</div>
+</div>
+<div class="grid-3">
+<article class="card reveal"><div class="card-inner"><div class="tag">Supply Proof</div><h3>Fixed 1B AXION Supply</h3><p>The contract defines a maximum supply of 1,000,000,000 AXION with 18 decimals. Supply clarity is one of the strongest trust signals for users, aggregators, and explorers.</p></div></article>
+<article class="card reveal"><div class="card-inner"><div class="tag">No Inflation</div><h3>No Mint Function</h3><p>AXION has no public mint expansion path. This supports a cleaner market narrative: no hidden inflation, no surprise supply expansion, and a more predictable token economy.</p></div></article>
+<article class="card reveal"><div class="card-inner"><div class="tag">User Control</div><h3>Burn Function</h3><p>The burn mechanism allows circulating supply reduction through transparent on-chain execution, with events visible for tracking and verification.</p></div></article>
+<article class="card reveal"><div class="card-inner"><div class="tag">Efficiency</div><h3>Batch Transfer</h3><p>Batch transfer support enables multiple wallet distributions in a single structured operation, useful for ecosystem campaigns, rewards, and operational efficiency.</p></div></article>
+<article class="card reveal"><div class="card-inner"><div class="tag">Clean ERC-20</div><h3>Standard Transfers</h3><p>Transfer, approval, and allowance flows remain simple and readable, helping users, wallets, and explorers understand token behavior without unnecessary complexity.</p></div></article>
+<article class="card reveal"><div class="card-inner"><div class="tag">Verification Ready</div><h3>Public Source Code</h3><p>The contract source is structured for public verification and review, strengthening the credibility profile required for token info updates.</p></div></article>
+</div>
+</div>
+</section>
+<section class="section" id="summary">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">Project Summary</div>
+<h2>Core architecture in one <span class="gradient-title">clean overview.</span></h2>
+</div>
+</div>
+<div class="card reveal">
+<div class="card-inner">
+<div class="summary-list">
+<div class="summary-item">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M12 3l7 3v5c0 4.8-2.9 8.9-7 10-4.1-1.1-7-5.2-7-10V6l7-3Z"></path>
+<path d="M9.5 12.2l1.8 1.8 3.6-4"></path>
+</svg>
+</div>
+<div>
+<strong>Trustless Architecture</strong>
+<p>AXION is designed to minimize hidden control, prioritize transparent token behavior, and support a cleaner long-term on-chain narrative.</p>
+</div>
+</div>
+<div class="summary-item">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="8.5"></circle>
+<path d="M3.5 12h17M12 3.5c2.6 2.5 4 5.4 4 8.5s-1.4 6-4 8.5c-2.6-2.5-4-5.4-4-8.5s1.4-6 4-8.5Z"></path>
+</svg>
+</div>
+<div>
+<strong>BNB Smart Chain</strong>
+<p>The token operates on BNB Smart Chain to provide fast accessibility, broad wallet support, and a familiar DeFi environment for global users.</p>
+</div>
+</div>
+<div class="summary-item">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M12 3l6.5 3.7v7.4L12 17.8 5.5 14.1V6.7L12 3Z"></path>
+<path d="M12 3v14.8M5.5 6.7L12 10l6.5-3.3"></path>
+</svg>
+</div>
+<div>
+<strong>Fixed Supply Model</strong>
+<p>The supply is permanently fixed at 1,000,000,000 AXION, creating strong clarity around issuance and long-term token economics.</p>
+</div>
+</div>
+<div class="summary-item">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M7 7h10"></path>
+<path d="M7 12h10"></path>
+<path d="M7 17h10"></path>
+<path d="M16 4l4 3-4 3"></path>
+<path d="M8 14l-4 3 4 3"></path>
+</svg>
+</div>
+<div>
+<strong>Open Trading Structure</strong>
+<p>AXION is positioned without trade-stop controls or transfer blocking logic, supporting a cleaner market structure and more predictable token behavior for holders.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="core">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">Core System</div>
+<h2>What AXION is built to <span class="gradient-title">protect and deliver.</span></h2>
+</div>
+</div>
+<div class="grid-4">
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Objective 01</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"></path>
+</svg>
+</div>
+<h3>Security</h3>
+</div>
+<p>AXION is designed with a robust token structure focused on protecting user assets by removing unnecessary exploit surfaces and promoting sustainable behavior.</p>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Objective 02</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="8"></circle>
+<path d="M12 8v5l3 2"></path>
+</svg>
+</div>
+<h3>Transparency</h3>
+</div>
+<p>Token mechanics and ecosystem direction are presented with clearer visibility so users can understand how the project operates at every level.</p>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Objective 03</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M4 16c2.3-3 4.8-4.5 8-4.5S17.7 13 20 16"></path>
+<path d="M6 9l2.5-2M18 9l-2.5-2"></path>
+<path d="M12 8a3.5 3.5 0 0 0 3.5-3.5h-7A3.5 3.5 0 0 0 12 8Z"></path>
+</svg>
+</div>
+<h3>Resistance to Manipulation</h3>
+</div>
+<p>Anti-whale positioning and balanced token distribution are intended to reduce outsized control, strengthen fairness, and improve ecosystem stability.</p>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Objective 04</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="3.8"></circle>
+<path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>
+<path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"></path>
+</svg>
+</div>
+<h3>AI-Powered Financial Ecosystem</h3>
+</div>
+<p>AXION expands beyond token presence toward a product ecosystem built for analytics, automation, intelligence modules, and smarter financial decision support.</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="whitepaper">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">Whitepaper Flow</div>
+<h2><span class="gradient-title">Whitepaper sections.</span></h2>
+</div>
+<div class="inline-actions" style="margin-top:0;">
+<a class="btn btn-buy" href="https://whitepaper-pink.vercel.app/" rel="noopener noreferrer" target="_blank">View Whitepaper</a>
+</div>
+</div>
+<div class="whitepaper-nav">
+<div class="whitepaper-link reveal">
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="8"></circle>
+<path d="M12 8l2.5 4H9.5L12 8Z"></path>
+</svg>
+</div>
+<strong style="margin:0;">Vision</strong>
+</div>
+<p>AXION aims to redefine finance by combining DeFi and artificial intelligence inside a unified, data-driven ecosystem.</p>
+</div>
+<div class="whitepaper-link reveal">
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="8"></circle>
+<path d="M12 12l4-4M12 12l-3 5"></path>
+</svg>
+</div>
+<strong style="margin:0;">Mission</strong>
+</div>
+<p>The mission is to provide smarter investment tools, real-time analytics, and a safer user environment across the AXION ecosystem.</p>
+</div>
+<div class="whitepaper-link reveal">
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M7 4h8l4 4v12H7z"></path>
+<path d="M15 4v4h4"></path>
+<path d="M10 13h4M10 17h4"></path>
+</svg>
+</div>
+<strong style="margin:0;">Whitepaper Access</strong>
+</div>
+<p>The full whitepaper can be opened directly with the button above for fast viewing and download.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="ecosystem">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">Ecosystem</div>
+<h2>Three layers of <span class="gradient-title">smarter DeFi structure.</span></h2>
+</div>
+</div>
+<div class="grid-3">
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">AI Layer</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="3.8"></circle>
+<path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>
+<path d="M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"></path>
+</svg>
+</div>
+<h3>Intelligence modules</h3>
+</div>
+<div class="subcards">
+<div class="mini-card">
+<strong>Market Predictions</strong>
+<p>AXION’s AI direction is designed to analyze market structures and support forward-looking insight generation.</p>
+</div>
+<div class="mini-card">
+<strong>Trade Signals</strong>
+<p>Future intelligence modules may provide data-driven signal logic to strengthen strategic execution.</p>
+</div>
+<div class="mini-card">
+<strong>Risk Scoring</strong>
+<p>Decision support improves when opportunities can be evaluated with clearer data and stronger caution signals.</p>
+</div>
+</div>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Analytics Dashboard</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<line x1="5" x2="5" y1="19" y2="11"></line>
+<line x1="10" x2="10" y1="19" y2="6"></line>
+<line x1="15" x2="15" y1="19" y2="13"></line>
+<line x1="20" x2="20" y1="19" y2="9"></line>
+</svg>
+</div>
+<h3>Visibility and tracking</h3>
+</div>
+<div class="subcards">
+<div class="mini-card">
+<strong>Wallet Analysis</strong>
+<p>Users can explore wallet behavior and ecosystem movement through a product-level dashboard layer.</p>
+</div>
+<div class="mini-card">
+<strong>Token Performance</strong>
+<p>Price activity, movement context, and market-facing metrics can be surfaced in a cleaner branded environment.</p>
+</div>
+<div class="mini-card">
+<strong>Whale Tracking</strong>
+<p>Monitoring large-holder behavior supports better interpretation of risk, movement, and ecosystem pressure.</p>
+</div>
+</div>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Tools</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M14 6l4-4 2 2-4 4"></path>
+<path d="M13 7l4 4"></path>
+<path d="M3 21l6-6"></path>
+<path d="M8 13l3 3"></path>
+</svg>
+</div>
+<h3>User-facing utility</h3>
+</div>
+<div class="subcards">
+<div class="mini-card">
+<strong>Sniper Detection</strong>
+<p>Tooling can be positioned to help identify bot-like activity and protect fairer market participation.</p>
+</div>
+<div class="mini-card">
+<strong>Rug Risk Checker</strong>
+<p>Risk evaluation modules help users review project structure more carefully before acting.</p>
+</div>
+<div class="mini-card">
+<strong>Portfolio Optimizer</strong>
+<p>AI-assisted portfolio support extends the ecosystem beyond token ownership into practical user value.</p>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="security">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">Security Framework</div>
+<h2>Built for <span class="gradient-title">AXION security.</span></h2>
+<p class="security-intro">AXION is engineered with a trust-minimized architecture focused on transparency, predictability, and security. Every design decision removes unnecessary risk and reinforces confidence at the protocol level.</p>
+<p class="security-intro">Users are fully responsible for their actions. AXION does not guarantee profits.</p>
+</div>
+</div>
+<div class="security-badge-row reveal">
+<div class="security-badge">
+<strong>Low-Risk Design</strong>
+<span>Minimal contract surface helps reduce hidden complexity and strengthens audit clarity.</span>
+</div>
+<div class="security-badge">
+<strong>Fixed Supply</strong>
+<span>No supply expansion layer. Scarcity remains transparent from deployment onward.</span>
+</div>
+<div class="security-badge">
+<strong>No Owner Control</strong>
+<span>No privileged wallet controls token behavior behind the scenes.</span>
+</div>
+<div class="security-badge">
+<strong>Publicly Verifiable</strong>
+<span>Token logic and on-chain activity stay visible for users, analysts, and exchanges.</span>
+</div>
+</div>
+<div class="grid-4">
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Security 01</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M12 3l7 3v5c0 4.6-2.7 8.6-7 10-4.3-1.4-7-5.4-7-10V6l7-3Z"></path>
+</svg>
+</div>
+<h3>No Mint Functionality</h3>
+</div>
+<p>AXION is built with a strictly fixed-supply model. No additional tokens can ever be created, helping protect holders from hidden inflation and preserving long-term supply integrity.</p>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Security 02</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<rect height="9" rx="2" width="14" x="5" y="10"></rect>
+<path d="M8 10V8a4 4 0 0 1 8 0v2"></path>
+</svg>
+</div>
+<h3>No Hidden Backdoors</h3>
+</div>
+<p>The contract is designed with clean and transparent logic. There are no hidden control paths, no privileged execution routes, and no unexpected behaviors embedded behind the interface.</p>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Security 03</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M7 12l3 3 7-7"></path>
+<circle cx="12" cy="12" r="9"></circle>
+</svg>
+</div>
+<h3>No Owner Control</h3>
+</div>
+<p>AXION operates without administrative control. No wallet holds special privileges over token behavior, reducing centralization risk and supporting fair participation across the ecosystem.</p>
+</div>
+</article>
+<article class="card reveal">
+<div class="card-inner">
+<div class="tag">Security 04</div>
+<div class="title-row">
+<div class="icon-badge">
+<svg viewbox="0 0 24 24">
+<path d="M7 4h10v16H7z"></path>
+<path d="M9.5 8h5M9.5 12h5M9.5 16h3"></path>
+</svg>
+</div>
+<h3>Transparent Contract Logic</h3>
+</div>
+<p>Every transaction follows simple, verifiable rules. No transfer locks and no manipulation mechanics — just clear on-chain execution aligned with user trust.</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<div class="footer-row">
+<div class="brand">
+<div class="brand-mark">
+<img alt="AXION Logo" src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axion-logo.png"/>
+</div>
+<div class="brand-text">
+<strong>AXION</strong>
+<small>Intelligent Finance. Stronger Future.</small>
+</div>
+</div>
+<div class="footer-links">
+<a href="https://t.me/axiondefi" rel="noopener noreferrer" target="_blank">Telegram</a>
+<a href="https://x.com/axiondefixx" rel="noopener noreferrer" target="_blank">X</a>
+<a href="#presale">BUY AXION</a>
+<a href="mailto:axionteam@axiondefi.com">Contact</a>
+</div>
+<div class="footer-contact">
+<span>Official project contact</span>
+<a href="mailto:axionteam@axiondefi.com">axionteam@axiondefi.com</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
     const mobileToggle = document.getElementById("mobileToggle");
     const navLinks = document.getElementById("navLinks");
     const walletBtn = document.getElementById("walletBtn");
@@ -6191,10 +6199,6 @@
         if (!document.hidden && connectedAccount) loadConnectedWalletBalances();
     }, isMobileViewport ? 35000 : 20000);
   </script>
-
-
-
-
 <script>
   async function updateAxionData() {
     try {
@@ -6278,6 +6282,5 @@
     if (!document.hidden) updateAxionData();
   }, isMobileDataViewport ? 30000 : 15000);
 </script>
-
 </body>
 </html>
