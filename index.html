@@ -1192,6 +1192,153 @@
   }
 </style>
 
+
+<style id="axion-hero-image-redesign-final-override">
+  /* FINAL PATCH: hero redesigned + GAME / AXSCAN / DEX cards now use supplied GitHub visuals. Other sections untouched. */
+  .hero{
+    padding:72px 0 54px !important;
+    background:#071426 !important;
+    overflow:hidden !important;
+  }
+  .hero-grid{
+    grid-template-columns:minmax(0,1.18fr) minmax(330px,.82fr) !important;
+    gap:24px !important;
+    align-items:stretch !important;
+  }
+  .hero h1{
+    font-size:clamp(68px,10vw,128px) !important;
+    line-height:.82 !important;
+    margin:10px 0 16px !important;
+    letter-spacing:-.085em !important;
+  }
+  .hero-subtitle{
+    max-width:720px !important;
+    font-size:clamp(19px,2.2vw,30px) !important;
+    line-height:1.18 !important;
+    color:#f3f7ff !important;
+    font-weight:900 !important;
+    letter-spacing:-.04em !important;
+  }
+  .hero .lead{
+    max-width:720px !important;
+    margin-top:12px !important;
+    color:#a9bbd8 !important;
+    font-size:15.5px !important;
+    line-height:1.78 !important;
+  }
+  .hero-product-cards{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:15px !important;
+    margin-top:28px !important;
+    max-width:930px !important;
+  }
+  .hero-product-card{
+    min-height:386px !important;
+    padding:0 !important;
+    border-radius:26px !important;
+    background:#07182d !important;
+    border:1px solid rgba(110,190,255,.24) !important;
+    box-shadow:0 24px 72px rgba(0,0,0,.36) !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-start !important;
+    gap:0 !important;
+    overflow:hidden !important;
+    position:relative !important;
+    text-decoration:none !important;
+  }
+  .hero-product-card::before{
+    content:"" !important;
+    position:absolute !important;
+    inset:0 !important;
+    background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 42%,rgba(88,220,255,.055)) !important;
+    z-index:1 !important;
+    pointer-events:none !important;
+  }
+  .hero-product-card:hover{
+    transform:translateY(-6px) !important;
+    border-color:rgba(96,218,255,.58) !important;
+    box-shadow:0 30px 84px rgba(0,0,0,.48) !important;
+  }
+  .hero-card-visual{
+    width:100% !important;
+    height:165px !important;
+    background:#0a1a30 !important;
+    border-bottom:1px solid rgba(255,255,255,.10) !important;
+    position:relative !important;
+    z-index:2 !important;
+    overflow:hidden !important;
+  }
+  .hero-card-visual img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    display:block !important;
+    transform:scale(1.01) !important;
+    filter:saturate(1.08) contrast(1.04) brightness(.92) !important;
+  }
+  .hero-card-content{
+    position:relative !important;
+    z-index:2 !important;
+    padding:20px 19px 22px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+    flex:1 !important;
+  }
+  .hero-product-card strong{
+    color:#ffffff !important;
+    font-size:27px !important;
+    line-height:1 !important;
+    letter-spacing:-.045em !important;
+    font-weight:950 !important;
+  }
+  .hero-product-card em{
+    color:#dbeaff !important;
+    font-style:normal !important;
+    font-size:13px !important;
+    line-height:1.35 !important;
+    font-weight:900 !important;
+  }
+  .hero-product-card p{
+    margin:0 !important;
+    color:#9fb4d2 !important;
+    font-size:12.8px !important;
+    line-height:1.62 !important;
+    font-weight:650 !important;
+  }
+  .hero-panel{
+    background:#091a31 !important;
+    border:1px solid rgba(120,190,255,.20) !important;
+    box-shadow:0 28px 78px rgba(0,0,0,.38) !important;
+    border-radius:28px !important;
+  }
+  @media(max-width:1080px){
+    .hero-grid{grid-template-columns:1fr !important;}
+    .hero-product-cards{grid-template-columns:repeat(3,minmax(0,1fr)) !important;max-width:100% !important;}
+    .hero-product-card{min-height:360px !important;}
+    .hero-card-visual{height:150px !important;}
+  }
+  @media(max-width:760px){
+    .hero{padding:34px 0 38px !important;}
+    .hero h1{font-size:56px !important;line-height:.88 !important;margin:6px 0 12px !important;}
+    .hero-subtitle{font-size:18px !important;line-height:1.34 !important;}
+    .hero .lead{font-size:13.5px !important;line-height:1.65 !important;}
+    .hero-product-cards{grid-template-columns:1fr !important;gap:14px !important;margin-top:22px !important;}
+    .hero-product-card{min-height:auto !important;border-radius:22px !important;}
+    .hero-card-visual{height:178px !important;}
+    .hero-card-content{padding:18px !important;gap:8px !important;}
+    .hero-product-card strong{font-size:25px !important;}
+    .hero-product-card em{font-size:13px !important;}
+    .hero-product-card p{font-size:12.6px !important;line-height:1.58 !important;}
+    .hero-panel{border-radius:22px !important;}
+  }
+  @media(max-width:420px){
+    .hero-card-visual{height:155px !important;}
+    .hero-product-card strong{font-size:23px !important;}
+  }
+</style>
 </head>
 <body>
   <div class="nav-wrap">
@@ -1217,19 +1364,28 @@
           <p class="lead">AXION combines on-chain transparency, developer access, market utility and community-facing products under one premium Web3 infrastructure brand.</p>
           <div class="hero-product-cards">
             <a class="hero-product-card card-game" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener">
-              <strong>GAME</strong>
-              <em>Launch AXION Game</em>
-              <p>Enter the AXION gaming layer built for ecosystem utility, user engagement and community rewards inside the AXION brand experience.</p>
+              <div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/GAME.jpg" alt="AXION Game preview" loading="lazy" /></div>
+              <div class="hero-card-content">
+                <strong>GAME</strong>
+                <em>Launch AXION Game</em>
+                <p>Enter the AXION gaming layer built for ecosystem utility, user engagement and community rewards inside the AXION brand experience.</p>
+              </div>
             </a>
             <a class="hero-product-card card-testnet" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener">
-              <strong>TESTNET</strong>
-              <em>Open AXSCAN Explorer</em>
-              <p>Track testnet blocks, transactions, wallet activity and network data through the official AXSCAN explorer infrastructure.</p>
+              <div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/explorer.jpg" alt="AXSCAN Explorer preview" loading="lazy" /></div>
+              <div class="hero-card-content">
+                <strong>TESTNET</strong>
+                <em>Open AXSCAN Explorer</em>
+                <p>Track testnet blocks, transactions, wallet activity and network data through the official AXSCAN explorer infrastructure.</p>
+              </div>
             </a>
             <a class="hero-product-card card-dex" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener">
-              <strong>DEX</strong>
-              <em>Enter AXION DEX</em>
-              <p>Access the AXION decentralized exchange module designed for token market access, swaps and ecosystem trading utility.</p>
+              <div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/dex.jpg" alt="AXION DEX preview" loading="lazy" /></div>
+              <div class="hero-card-content">
+                <strong>DEX</strong>
+                <em>Enter AXION DEX</em>
+                <p>Access the AXION decentralized exchange module designed for token market access, swaps and ecosystem trading utility.</p>
+              </div>
             </a>
           </div>
         </div>
