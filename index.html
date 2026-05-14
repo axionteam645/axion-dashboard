@@ -71,9 +71,28 @@
     .product-map{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.map-list{display:grid;gap:12px}.map-item{display:grid;grid-template-columns:42px 1fr auto;gap:14px;align-items:center;padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}.map-item b{display:block;margin-bottom:3px}.map-item span{color:#9fb0cf;font-size:13px}.state{font-size:10px;font-weight:900;border-radius:999px;padding:7px 9px;background:rgba(79,240,183,.1);border:1px solid rgba(79,240,183,.2);color:#ddfff3;text-transform:uppercase;letter-spacing:.1em}.state.dev{background:rgba(255,211,111,.1);border-color:rgba(255,211,111,.22);color:#fff2c6}
     .table-card{padding:0}.table-row{display:grid;grid-template-columns:220px 1fr;gap:16px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.075)}.table-row:last-child{border-bottom:0}.table-row b{color:#fff}.table-row span{color:#b6c6e4;word-break:break-word}.status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.status-card{padding:18px}.status-card span{display:flex;align-items:center;gap:8px;color:#dffbed;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.09em}.status-card p{margin-top:12px;color:#9fb0cf;font-size:13px;line-height:1.6}
     .cta{margin-top:86px;padding:42px;border-radius:30px;background:linear-gradient(135deg,rgba(88,220,255,.14),rgba(157,108,255,.12),rgba(79,240,183,.08));border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow);display:flex;justify-content:space-between;gap:24px;align-items:center}.cta h2{font-size:clamp(30px,4vw,54px);line-height:1;letter-spacing:-.055em}.cta p{color:#b5c6e2;line-height:1.75;margin-top:12px;max-width:690px}.footer{margin-top:90px;padding:34px 0 50px;border-top:1px solid rgba(255,255,255,.075);color:#aebedf}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer a{color:#dce8ff;font-weight:800}
+
+    .action-tile,.metric{text-align:center;align-items:center;justify-content:center}
+    .action-tile{border-radius:16px}
+    .action-tile b,.action-tile span,.metric span,.metric strong,.metric em{text-align:center}
+    .action-tile:after{right:12px;top:10px}
+    .launchpad-card{margin-top:14px;display:block;padding:18px;border-radius:18px;background:linear-gradient(135deg,rgba(255,211,111,.20),rgba(255,111,143,.11));border:1px solid rgba(255,211,111,.25);box-shadow:0 18px 48px rgba(0,0,0,.28);position:relative;overflow:hidden}
+    .launchpad-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(255,211,111,.16),transparent 38%);pointer-events:none}
+    .launchpad-card>*{position:relative;z-index:1}
+    .launchpad-card span{display:block;font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#fff1bf;margin-bottom:8px}
+    .launchpad-card strong{display:block;font-size:22px;letter-spacing:-.035em;color:#fff;margin-bottom:7px}
+    .launchpad-card p{color:#ffe8f1;font-size:13px;line-height:1.55;margin:0}
+    .link-card{display:block;color:inherit;text-decoration:none}
+    .link-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18)}
+    .social-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+    .social-card{display:flex;align-items:center;justify-content:center;gap:12px;min-height:64px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);font-weight:900;color:#fff;box-shadow:0 14px 40px rgba(0,0,0,.24)}
+    .social-card svg{width:22px;height:22px;fill:currentColor;flex-shrink:0}
+    .social-card.telegram{background:linear-gradient(135deg,rgba(88,220,255,.20),rgba(102,140,255,.10))}
+    .social-card.twitter{background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(157,108,255,.10))}
+
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.reveal.show{opacity:1;transform:translateY(0)}
     @media(max-width:1080px){.hero-grid,.product-map,.split{grid-template-columns:1fr}.hero-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-4,.status-grid,.metric-strip{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr 1fr}.nav-links{position:absolute;left:16px;right:16px;top:78px;display:none;flex-direction:column;align-items:flex-start;background:rgba(5,9,21,.96);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}.nav-links.open{display:flex}.menu{display:block}}
-    @media(max-width:680px){.container{width:min(calc(100% - 22px),var(--max))}.nav-actions .btn{display:none}.brand small{white-space:normal;font-size:8px}.hero{padding-top:58px}h1{font-size:64px;line-height:.86}.hero-subtitle{font-size:19px}.hero-actions{grid-template-columns:1fr}.action-tile{min-height:96px}.hero-actions .btn{width:100%}.grid-3,.grid-4,.status-grid,.metric-strip{grid-template-columns:1fr}.metric{min-height:auto;padding:18px;gap:7px}.metric strong{font-size:24px;line-height:1.15}.metric em{font-size:13px}.section-head{display:block}.section-head p{margin-top:14px}.table-row{grid-template-columns:1fr;gap:6px}.map-item{grid-template-columns:40px 1fr}.state{grid-column:2}.cta{display:block;padding:26px}.cta .hero-actions{margin-top:20px}}
+    @media(max-width:680px){.social-grid{grid-template-columns:1fr}.social-card{min-height:54px;font-size:13px}.launchpad-card{padding:15px}.launchpad-card strong{font-size:19px}.launchpad-card p{font-size:12px}.container{width:min(calc(100% - 22px),var(--max))}.nav-actions .btn{display:none}.brand small{white-space:normal;font-size:8px}.hero{padding-top:58px}h1{font-size:64px;line-height:.86}.hero-subtitle{font-size:19px}.hero-actions{grid-template-columns:1fr}.action-tile{min-height:86px;padding:13px}.action-tile b{font-size:13px}.action-tile span{font-size:9px}.action-tile:after{font-size:12px}.metric span{font-size:9px}.metric strong{font-size:21px}.metric em{font-size:12px}.hero-actions .btn{width:100%}.grid-3,.grid-4,.status-grid,.metric-strip{grid-template-columns:1fr}.metric{min-height:auto;padding:18px;gap:7px}.metric strong{font-size:24px;line-height:1.15}.metric em{font-size:13px}.section-head{display:block}.section-head p{margin-top:14px}.table-row{grid-template-columns:1fr;gap:6px}.map-item{grid-template-columns:40px 1fr}.state{grid-column:2}.cta{display:block;padding:26px}.cta .hero-actions{margin-top:20px}}
   </style>
 </head>
 <body>
@@ -95,7 +114,6 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="reveal">
-          <div class="eyebrow"><i class="dot"></i> AXION Infrastructure Layer</div>
           <h1><span class="gradient">AXION</span></h1>
           <div class="hero-subtitle">Public blockchain infrastructure for ecosystem access and network services.</div>
           <p class="lead">A unified DeFi infrastructure ecosystem combining AXSCAN Testnet Explorer, RPC/API endpoints, AI-powered analytics, developer tools, AXION Game and AXION DEX under one official brand.</p>
@@ -123,6 +141,11 @@
             <div class="network-line"><span>API</span><strong>api.axscan.axiondefi.com</strong></div>
             <div class="network-line"><span>Contract</span><strong id="contractShort">0x605a...652bd</strong><button class="copy" data-copy="0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd">Copy</button></div>
           </div>
+          <a class="launchpad-card" href="https://www.hotcoin.com/zh_CN/ieo/details/?projectId=8" target="_blank" rel="noopener">
+            <span>Hotcoin Launchpad</span>
+            <strong>AXION Launchpad</strong>
+            <p>Official launchpad access for AXION market entry and ecosystem participation.</p>
+          </a>
         </aside>
       </div>
     </section>
@@ -176,8 +199,8 @@
         <div class="grid-4">
           <article class="card reveal"><span class="tag">Supply</span><h3>Fixed Supply</h3><p>1,000,000,000 AXION total supply messaging is clearly separated from circulating and locked allocations.</p></article>
           <article class="card reveal"><span class="tag">Lock</span><h3>750M Locked</h3><p>Locked token information is surfaced as a dedicated trust signal instead of being hidden in long text.</p></article>
-          <article class="card reveal"><span class="tag">Explorer</span><h3>BscScan Proof</h3><p>Token and lock-contract links provide direct access to on-chain verification pages.</p></article>
-          <article class="card reveal"><span class="tag">Security</span><h3>GoPlus Report</h3><p>Security report access is tied to the current official AXION contract address.</p></article>
+          <a class="card link-card reveal" href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener"><span class="tag">Explorer</span><h3>AXSCAN</h3><p>Contract Studio access for AXION testnet contract tools and explorer-side verification.</p></a>
+          <a class="card link-card reveal" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span class="tag">Security</span><h3>GoPlus Report</h3><p>Security reference for the current official AXION contract address.</p></a>
         </div>
       </div>
     </section>
@@ -210,7 +233,7 @@
         <div class="section-head reveal"><div><div class="eyebrow">Ecosystem</div><h2>Built around <span class="gradient">utility, data and access.</span></h2></div><p>Application access, market infrastructure, community channels and product expansion.</p></div>
         <div class="grid-3">
           <article class="card reveal"><span class="tag">Market Access</span><h3>Launchpad & Listings</h3><p>Launchpad, liquidity preparation and exchange readiness support structured market access for AXION.</p></article>
-          <article class="card reveal"><span class="tag">Community</span><h3>Official Channels</h3><p>Telegram, X and official email are kept visible for authenticity checks and project communication.</p></article>
+          <article class="card reveal"><span class="tag">Community</span><h3>Official Channels</h3><p>Telegram, X and official email support direct community access and public identity checks.</p></article>
           <article class="card reveal"><span class="tag">Growth</span><h3>Ecosystem Roadmap</h3><p>AI tools, AXSCAN testnet growth, AXION DEX expansion, AXION Game and ecosystem partnerships support the long-term roadmap.</p></article>
         </div>
       </div>
@@ -226,8 +249,17 @@
           <div class="status-card reveal"><span><i class="dot"></i> API / RPC</span><p>Infrastructure endpoints for data and integrations.</p></div>
         </div>
         <div class="cta reveal">
-          <div><h2>DeFi infrastructure with ecosystem utility.</h2><p>Official links, developer access, Testnet Explorer visibility, security references, AXION Game and AXION DEX under one unified platform.</p></div>
-          <div class="hero-actions"><a class="btn" href="https://t.me/axiondefi" target="_blank" rel="noopener">Telegram</a><a class="btn secondary" href="https://x.com/axiondefixx" target="_blank" rel="noopener">X / Twitter</a></div>
+          <div><h2>DeFi infrastructure with ecosystem utility.</h2><p>Official access for AXION App, AXSCAN Testnet Explorer, AXION Game, AXION DEX, developer endpoints and security references.</p></div>
+          <div class="social-grid">
+            <a class="social-card telegram" href="https://t.me/axiondefi" target="_blank" rel="noopener" aria-label="AXION Telegram">
+              <svg viewBox="0 0 240 240" aria-hidden="true"><path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm55.7 82.1-19.7 92.8c-1.5 6.6-5.4 8.2-10.9 5.1l-30.2-22.3-14.6 14.1c-1.6 1.6-3 3-6.1 3l2.2-30.8 56-50.6c2.4-2.2-.5-3.4-3.8-1.2l-69.2 43.6-29.8-9.3c-6.5-2-6.6-6.5 1.4-9.6l116.6-45c5.4-2 10.1 1.3 8.4 10.2z"/></svg>
+              <span>Telegram</span>
+            </a>
+            <a class="social-card twitter" href="https://x.com/axiondefixx" target="_blank" rel="noopener" aria-label="AXION X">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.9 7.9L23.2 22h-6.4l-5-7.4L5.4 22H2.3l7.4-8.5L1.8 2h6.6l4.5 6.5L18.9 2zm-1.1 17.9h1.7L7.5 4H5.7l12.1 15.9z"/></svg>
+              <span>X / Twitter</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
