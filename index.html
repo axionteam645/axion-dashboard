@@ -108,6 +108,24 @@
     @media(max-width:1180px){.infra-dashboard{grid-template-columns:1fr}.proof-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.preview-grid{grid-template-columns:1fr}}
     @media(max-width:680px){.dash-panel{padding:18px}.dash-head{display:block}.live-pill{margin-top:12px}.dash-grid{grid-template-columns:1fr}.dash-stat{min-height:auto;padding:15px}.dash-stat strong{font-size:23px}.endpoint{grid-template-columns:1fr}.endpoint a{justify-self:start}.proof-strip{grid-template-columns:1fr}.proof-badge{min-height:76px;padding:13px}.proof-badge b{font-size:13px}.preview-body{min-height:180px;padding:18px}.preview-body h3{font-size:20px}.preview-body p{font-size:12px}.preview-footer{align-items:flex-start;flex-direction:column}.preview-open{font-size:11px}.nav-links a{font-size:11px}}
 
+  
+
+    /* V10 clean content pass: safer card text, less repetition, corporate spacing */
+    .action-tile{min-height:128px;padding:18px 14px;align-items:center;text-align:center;gap:10px}
+    .action-tile span{display:block;min-height:28px;line-height:1.35;overflow-wrap:anywhere}
+    .action-tile b{display:block;line-height:1.25;overflow-wrap:anywhere;max-width:100%}
+    .metric{min-height:142px;padding:20px 16px;gap:10px}
+    .metric strong{line-height:1.12;overflow-wrap:anywhere}
+    .card p,.card li,.section-head p,.lead,.hero-subtitle{overflow-wrap:anywhere}
+    .map-item{align-items:flex-start}.map-item .state{align-self:center}
+    .preview-body p,.dash-head p,.endpoint span{overflow-wrap:anywhere}
+    @media(max-width:680px){
+      .hero-subtitle{font-size:18px;line-height:1.36}.lead{font-size:14px;line-height:1.72}
+      .action-tile{min-height:92px;padding:14px 12px}.action-tile span{min-height:auto;font-size:9px}.action-tile b{font-size:14px}
+      .metric{padding:16px 12px}.metric strong{font-size:22px}.metric em{font-size:12px}
+      .section-head h2{font-size:33px}.card h3{font-size:22px}
+    }
+
   </style>
 </head>
 <body>
@@ -130,12 +148,12 @@
       <div class="container hero-grid">
         <div class="reveal">
           <h1><span class="gradient">AXION</span></h1>
-          <div class="hero-subtitle">Public blockchain infrastructure for ecosystem access and network services.</div>
-          <p class="lead">A unified DeFi infrastructure ecosystem combining AXSCAN Testnet Explorer, RPC/API endpoints, AI-powered analytics, developer tools, AXION Game and AXION DEX under one official brand.</p>
+          <div class="hero-subtitle">AXION-powered DeFi access, verified token identity and utility-driven ecosystem growth.</div>
+          <p class="lead">AXION brings a fixed-supply BEP-20 asset, locked allocation transparency, launchpad access, DeFi utility and community-facing products under one official brand.</p>
           <div class="hero-actions">
-            <a class="action-tile action-app" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><span>Application</span><b>Launch App</b></a>
-            <a class="action-tile action-explorer" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>AXSCAN</span><b>Open Testnet Explorer</b></a>
-            <button class="action-tile action-wallet" id="addTokenBtn" type="button"><span>Wallet</span><b>Add AXION to Wallet</b></button>
+            <a class="action-tile action-app" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><span>Dashboard</span><b>AXION App</b></a>
+            <a class="action-tile action-explorer" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>Explorer</span><b>AXSCAN Testnet</b></a>
+            <button class="action-tile action-wallet" id="addTokenBtn" type="button"><span>Wallet</span><b>Add Token</b></button>
             <a class="action-tile action-game" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><span>Ecosystem App</span><b>AXION Game</b></a>
             <a class="action-tile action-dex" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><span>Market Module</span><b>AXION DEX</b></a>
           </div>
@@ -146,7 +164,7 @@
           </div>
         </div>
         <aside class="card hero-panel reveal">
-          <div class="panel-head"><h3>Official infrastructure identity</h3><span class="badge"><i class="dot"></i> Verified Links</span></div>
+          <div class="panel-head"><h3>Official AXION identity</h3><span class="badge"><i class="dot"></i> Verified Links</span></div>
           <div class="network-lines">
             <div class="network-line"><span>Website</span><strong>axiondefi.com</strong></div>
             <div class="network-line"><span>Application</span><strong>app.axiondefi.com</strong></div>
@@ -158,7 +176,7 @@
           <a class="launchpad-card" href="https://www.hotcoin.com/zh_CN/ieo/details/?projectId=8" target="_blank" rel="noopener">
             <span>Hotcoin Launchpad</span>
             <strong>AXION Launchpad</strong>
-            <p>Official launchpad access for AXION market entry and ecosystem participation.</p>
+            <p>Public launchpad page for AXION allocation access, market preparation and community participation.</p>
           </a>
         </aside>
       </div>
@@ -166,22 +184,22 @@
 
     <section id="network">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Network Layer</div><h2>A visible <span class="gradient">infrastructure stack.</span></h2></div><p>Network access, data visibility, ecosystem applications and verifiable token infrastructure for the AXION platform.</p></div>
+        <div class="section-head reveal"><div><div class="eyebrow">Network Layer</div><h2>A stronger <span class="gradient">DeFi market identity.</span></h2></div><p>Token transparency, market access, community trust and product utility positioned for long-term AXION growth.</p></div>
         <div class="grid-4">
-          <article class="card reveal"><div class="icon">01</div><span class="tag">Testnet Explorer</span><h3>AXSCAN Testnet</h3><p>Dedicated testnet explorer layer for blocks, transactions, wallets, token pages, and ecosystem visibility.</p></article>
-          <article class="card reveal"><div class="icon">02</div><span class="tag">RPC</span><h3>RPC Gateway</h3><p>Official RPC access point for wallet connection, dApp interaction, and network integration.</p></article>
-          <article class="card reveal"><div class="icon">03</div><span class="tag">Data</span><h3>API Layer</h3><p>Public API infrastructure for indexed blocks, token metadata, transfer history, and dashboard data.</p></article>
-          <article class="card reveal"><div class="icon">04</div><span class="tag">AI</span><h3>Analytics Engine</h3><p>AI-oriented market intelligence, risk interpretation, wallet visibility, and future automation modules.</p></article>
+          <article class="card reveal"><div class="icon">01</div><span class="tag">Due Diligence</span><h3>Public Review Layer</h3><p>Public verification layer for project review, technical due diligence and on-chain confidence.</p></article>
+          <article class="card reveal"><div class="icon">02</div><span class="tag">Wallet Access</span><h3>Network Configuration</h3><p>Clear wallet and network configuration path for users, partners and technical reviewers.</p></article>
+          <article class="card reveal"><div class="icon">03</div><span class="tag">Listings</span><h3>Structured References</h3><p>Structured data references for listings, dashboards, partner checks and ecosystem reporting.</p></article>
+          <article class="card reveal"><div class="icon">04</div><span class="tag">Intelligence</span><h3>AI Direction</h3><p>AI direction focused on market intelligence, DeFi visibility and smarter ecosystem decision support.</p></article>
         </div>
       </div>
     </section>
 
     <section id="dashboard">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Testnet Infrastructure Dashboard</div><h2>Live AXSCAN data for <span class="gradient">network visibility.</span></h2></div><p>Testnet explorer metrics, official endpoints and developer access from the AXION infrastructure stack.</p></div>
+        <div class="section-head reveal"><div><div class="eyebrow">Testnet Infrastructure Dashboard</div><h2>AXION network profile for <span class="gradient">public review.</span></h2></div><p>Chain identity, gas token, explorer access and documentation presented as a clean technical profile.</p></div>
         <div class="infra-dashboard">
           <article class="dash-panel reveal">
-            <div class="dash-head"><div><h3>AXSCAN Testnet Metrics</h3><p>Core network information for the AXION Testnet environment.</p></div><span class="live-pill">Testnet</span></div>
+            <div class="dash-head"><div><h3>AXION Testnet Profile</h3><p>Core network parameters for wallet setup and partner review.</p></div><span class="live-pill">Testnet</span></div>
             <div class="dash-grid">
               <a class="dash-stat dash-block" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>Chain ID</span><strong>303030</strong><em>AXION Testnet network</em></a>
               <a class="dash-stat dash-tx" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>Gas Token</span><strong>AXION</strong><em>Native network currency</em></a>
@@ -190,7 +208,7 @@
             </div>
           </article>
           <article class="dash-panel reveal">
-            <div class="dash-head"><div><h3>Developer Access</h3><p>Official access points for network review, API documentation and testnet contract tools.</p></div></div>
+            <div class="dash-head"><div><h3>Technical Access</h3><p>Direct references for technical review, documentation and contract tooling.</p></div></div>
             <div class="endpoint-list">
               <div class="endpoint"><div><b>AXSCAN Testnet Explorer</b><span>https://axscan.axiondefi.com/</span></div><a href="https://axscan.axiondefi.com/" target="_blank" rel="noopener">Open</a></div>
               <div class="endpoint"><div><b>AXSCAN API Docs</b><span>https://axscan.axiondefi.com/api-docs</span></div><a href="https://axscan.axiondefi.com/api-docs" target="_blank" rel="noopener">Docs</a></div>
@@ -203,19 +221,19 @@
 
     <section id="products">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Product Ecosystem</div><h2>AXION operates as <span class="gradient">a product ecosystem.</span></h2></div><p>Application access, Testnet Explorer visibility, RPC/API infrastructure, AXION DEX, AXION Game, documentation and security references.</p></div>
+        <div class="section-head reveal"><div><div class="eyebrow">Product Ecosystem</div><h2>AXION is positioned for <span class="gradient">market expansion.</span></h2></div><p>Launchpad access, locked supply, security references, DeFi utility and public community channels support the AXION market narrative.</p></div>
         <div class="product-map">
           <article class="card reveal">
-            <span class="tag">Ecosystem Map</span><h3>One brand, multiple infrastructure surfaces.</h3>
+            <span class="tag">Ecosystem Map</span><h3>Market presence and utility channels.</h3>
             <div class="map-list">
-              <a class="map-item" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">A</div><div><b>AXION App</b><span>AI-powered DeFi dashboard and holder interface.</span></div><span class="state">Live</span></a>
-              <a class="map-item" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">S</div><div><b>AXSCAN Testnet Explorer</b><span>Dedicated testnet block explorer and chain visibility layer.</span></div><span class="state">Live</span></a>
-              <a class="map-item" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">G</div><div><b>AXION Game</b><span>Gamified ecosystem experience for community engagement.</span></div><span class="state">Live</span></a>
-              <a class="map-item" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">D</div><div><b>AXION DEX</b><span>Trading interface and liquidity ecosystem module.</span></div><span class="state">Live</span></a>
+              <a class="map-item" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">A</div><div><b>AXION App</b><span>Main access point for the AXION holder experience.</span></div><span class="state">Live</span></a>
+              <a class="map-item" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">S</div><div><b>AXSCAN Testnet Explorer</b><span>Public proof layer for testnet activity and technical confidence.</span></div><span class="state">Live</span></a>
+              <a class="map-item" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">G</div><div><b>AXION Game</b><span>Community utility product built around activity and retention.</span></div><span class="state">Live</span></a>
+              <a class="map-item" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">D</div><div><b>AXION DEX</b><span>Market access module for swap and liquidity visibility.</span></div><span class="state">Live</span></a>
             </div>
           </article>
           <article class="card reveal">
-            <span class="tag">Corporate Positioning</span><h3>Infrastructure-first brand identity.</h3><p>AXION focuses on verifiable supply, official endpoints, testnet explorer visibility, developer access and ecosystem products for exchange, launchpad, market-maker and community review.</p><br><p>The AXION brand is structured around technology, transparency, utility and long-term ecosystem growth.</p>
+            <span class="tag">Corporate Positioning</span><h3>Exchange-ready positioning.</h3><p>AXION presents a clean review package for launchpads, exchanges, market makers, aggregators and community verification.</p><br><p>The brand message stays focused on fixed supply, locked allocation, security references, DeFi access and real product utility.</p>
           </article>
         </div>
       </div>
@@ -223,35 +241,35 @@
 
     <section id="previews">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Product Previews</div><h2>Real product surfaces for <span class="gradient">the AXION ecosystem.</span></h2></div><p>AXSCAN, AXION Game, AXION DEX and AXION App are presented as live ecosystem modules instead of simple external links.</p></div>
+        <div class="section-head reveal"><div><div class="eyebrow">Product Previews</div><h2>Public products for <span class="gradient">community confidence.</span></h2></div><p>The main AXION products support utility, trust, market access and user engagement without repeating the same link blocks.</p></div>
         <div class="preview-grid">
-          <a class="preview-card reveal" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axscan.axiondefi.com</span></div><div class="preview-body"><div><h3>AXSCAN Testnet Explorer</h3><p>Blocks, transactions, contract tools, API documentation and testnet network visibility.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open Explorer</span></div></div></a>
-          <a class="preview-card reveal" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">app.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION App</h3><p>AI-powered DeFi dashboard, holder interface and ecosystem access layer.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Launch App</span></div></div></a>
-          <a class="preview-card reveal" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axdex.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION DEX</h3><p>Market interface, swap access and liquidity module for the AXION ecosystem.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open DEX</span></div></div></a>
-          <a class="preview-card reveal" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axiongame.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION Game</h3><p>Gamified ecosystem application for community activity and product expansion.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open Game</span></div></div></a>
+          <a class="preview-card reveal" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axscan.axiondefi.com</span></div><div class="preview-body"><div><h3>AXSCAN Testnet Explorer</h3><p>Technical review, contract tooling and public testnet activity in one explorer interface.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open Explorer</span></div></div></a>
+          <a class="preview-card reveal" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">app.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION App</h3><p>Holder-facing access point for AXION utilities and DeFi interaction.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Launch App</span></div></div></a>
+          <a class="preview-card reveal" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axdex.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION DEX</h3><p>Swap interface and liquidity-focused market module for AXION users.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open DEX</span></div></div></a>
+          <a class="preview-card reveal" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axiongame.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION Game</h3><p>Utility product for engagement, retention and community activity.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open Game</span></div></div></a>
         </div>
       </div>
     </section>
 
     <section id="developers">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Developers</div><h2>Developer-ready <span class="gradient">access layer.</span></h2></div><p>Public RPC access, indexed data, documentation and ecosystem integration endpoints.</p></div>
+        <div class="section-head reveal"><div><div class="eyebrow">Developers</div><h2>Partner-ready <span class="gradient">technical package.</span></h2></div><p>Technical references for wallets, integrations, exchanges, aggregators and partner review.</p></div>
         <div class="grid-3">
-          <article class="card reveal"><span class="tag">RPC</span><h3>Wallet & dApp RPC</h3><p>Use the official RPC endpoint for network integrations and wallet configuration.</p><br><div class="network-line"><span>RPC URL</span><strong>https://rpc.axiondefi.com</strong></div></article>
-          <article class="card reveal"><span class="tag">API</span><h3>Indexed Data API</h3><p>Connect applications to indexed AXSCAN testnet data: blocks, latest transactions, token transfers, and explorer metadata.</p><br><div class="network-line"><span>API URL</span><strong>https://api.axscan.axiondefi.com</strong></div></article>
-          <article class="card reveal"><span class="tag">Docs</span><h3>Developer Docs</h3><p>Official whitepaper and documentation links provide a clear navigation path for reviewers, users and partners.</p><br><a class="btn secondary small" href="https://whitepaper.axiondefi.com/" target="_blank" rel="noopener">Open Whitepaper</a></article>
+          <article class="card reveal"><span class="tag">RPC</span><h3>Wallet & dApp RPC</h3><p>Network configuration reference for wallets, integrations and technical checks.</p><br><div class="network-line"><span>RPC URL</span><strong>https://rpc.axiondefi.com</strong></div></article>
+          <article class="card reveal"><span class="tag">API</span><h3>Indexed Data API</h3><p>Data reference for dashboards, explorers, internal checks and ecosystem reporting.</p><br><div class="network-line"><span>API URL</span><strong>https://api.axscan.axiondefi.com</strong></div></article>
+          <article class="card reveal"><span class="tag">Docs</span><h3>Developer Docs</h3><p>Whitepaper and documentation create a direct information path for reviewers, users and partners.</p><br><a class="btn secondary small" href="https://whitepaper.axiondefi.com/" target="_blank" rel="noopener">Open Whitepaper</a></article>
         </div>
       </div>
     </section>
 
     <section id="security">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Security & Trust</div><h2>Trust signals made <span class="gradient">visible and verifiable.</span></h2></div><p>Official links, clean contract identity, locked supply records and public verification references.</p></div>
+        <div class="section-head reveal"><div><div class="eyebrow">Security & Trust</div><h2>Trust signals for <span class="gradient">market confidence.</span></h2></div><p>Contract identity, locked allocation, security references and launchpad visibility in one trust layer.</p></div>
         <div class="grid-4">
-          <article class="card reveal"><span class="tag">Supply</span><h3>Fixed Supply</h3><p>1,000,000,000 AXION total supply messaging is clearly separated from circulating and locked allocations.</p></article>
-          <article class="card reveal"><span class="tag">Lock</span><h3>750M Locked</h3><p>Locked token information is surfaced as a dedicated trust signal instead of being hidden in long text.</p></article>
-          <a class="card link-card reveal" href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener"><span class="tag">Explorer</span><h3>AXSCAN</h3><p>Contract Studio access for AXION testnet contract tools and explorer-side verification.</p></a>
-          <a class="card link-card reveal" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span class="tag">Security</span><h3>GoPlus Report</h3><p>Security reference for the current official AXION contract address.</p></a>
+          <article class="card reveal"><span class="tag">Supply</span><h3>Fixed Supply</h3><p>Total supply is fixed at 1,000,000,000 AXION with no mint-function narrative.</p></article>
+          <article class="card reveal"><span class="tag">Lock</span><h3>750M Locked</h3><p>750,000,000 AXION is presented as locked allocation for public supply confidence.</p></article>
+          <a class="card link-card reveal" href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener"><span class="tag">Explorer</span><h3>AXSCAN</h3><p>AXSCAN contract tools for testnet verification and technical review.</p></a>
+          <a class="card link-card reveal" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span class="tag">Security</span><h3>GoPlus Report</h3><p>Security reference for the official AXION BEP-20 contract.</p></a>
         </div>
         <div class="proof-strip reveal">
           <a class="proof-badge green" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span>Security</span><b>GoPlus Report</b></a>
@@ -275,8 +293,8 @@
           <div class="table-row"><b>Locked Supply</b><span>750,000,000 AXION</span></div>
         </article>
         <article class="card reveal">
-          <span class="tag">Official Links</span><h3>Listing-ready verification package.</h3>
-          <p>Direct links support CMC review, exchange due diligence, launchpad review, and community verification.</p>
+          <span class="tag">Official Links</span><h3>Public verification package.</h3>
+          <p>Direct links support token checks, security review, lock verification and partner due diligence.</p>
           <div class="hero-actions">
             <a class="btn secondary small" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener">Token Explorer</a>
             <a class="btn secondary small" href="https://bscscan.com/address/0x72d50c808a51073d2c31c6d3dd4168f22e432e4c" target="_blank" rel="noopener">Lock Contract</a>
@@ -288,26 +306,26 @@
 
     <section id="ecosystem">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Ecosystem</div><h2>Built around <span class="gradient">utility, data and access.</span></h2></div><p>Application access, market infrastructure, community channels and product expansion.</p></div>
+        <div class="section-head reveal"><div><div class="eyebrow">Ecosystem</div><h2>Built around <span class="gradient">trust, access and growth.</span></h2></div><p>Launchpad visibility, product utility, locked supply confidence and active community channels.</p></div>
         <div class="grid-3">
-          <article class="card reveal"><span class="tag">Market Access</span><h3>Launchpad & Listings</h3><p>Launchpad, liquidity preparation and exchange readiness support structured market access for AXION.</p></article>
-          <article class="card reveal"><span class="tag">Community</span><h3>Official Channels</h3><p>Telegram, X and official email support direct community access and public identity checks.</p></article>
-          <article class="card reveal"><span class="tag">Growth</span><h3>Ecosystem Roadmap</h3><p>AI tools, AXSCAN testnet growth, AXION DEX expansion, AXION Game and ecosystem partnerships support the long-term roadmap.</p></article>
+          <article class="card reveal"><span class="tag">Market Access</span><h3>Launchpad & Listings</h3><p>Launchpad exposure and liquidity preparation support AXION’s transition into broader market access.</p></article>
+          <article class="card reveal"><span class="tag">Community</span><h3>Official Channels</h3><p>Telegram, X and official email provide clear communication channels for community and partner checks.</p></article>
+          <article class="card reveal"><span class="tag">Growth</span><h3>Ecosystem Roadmap</h3><p>Future growth focuses on AI utilities, product usage, liquidity access, strategic listings and ecosystem partnerships.</p></article>
         </div>
       </div>
     </section>
 
     <section id="status">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Infrastructure Status</div><h2>Operational surfaces for <span class="gradient">the AXION platform.</span></h2></div><p>Network status, infrastructure uptime, official endpoints and ecosystem modules.</p></div>
+        <div class="section-head reveal"><div><div class="eyebrow">Infrastructure Status</div><h2>Public access points for <span class="gradient">AXION users.</span></h2></div><p>Core destinations for users, reviewers, partners and community members.</p></div>
         <div class="status-grid">
-          <div class="status-card reveal"><span><i class="dot"></i> Website</span><p>Official brand portal and verification center.</p></div>
-          <div class="status-card reveal"><span><i class="dot"></i> App</span><p>AXION dashboard and user-facing DeFi interface.</p></div>
-          <div class="status-card reveal"><span><i class="dot"></i> Testnet Explorer</span><p>AXSCAN testnet explorer for blocks and transaction visibility.</p></div>
-          <div class="status-card reveal"><span><i class="dot"></i> Network Info</span><p>Chain ID 303030, AXION gas token and AXSCAN testnet visibility.</p></div>
+          <div class="status-card reveal"><span><i class="dot"></i> Website</span><p>Official AXION brand and information portal.</p></div>
+          <div class="status-card reveal"><span><i class="dot"></i> App</span><p>Main DeFi access point for AXION users.</p></div>
+          <div class="status-card reveal"><span><i class="dot"></i> Testnet Explorer</span><p>Testnet explorer for technical review and network visibility.</p></div>
+          <div class="status-card reveal"><span><i class="dot"></i> Network Info</span><p>Chain ID 303030, AXION gas token and public testnet references.</p></div>
         </div>
         <div class="cta reveal">
-          <div><h2>DeFi infrastructure with ecosystem utility.</h2><p>Official access for AXION App, AXSCAN Testnet Explorer, AXION Game, AXION DEX, developer endpoints and security references.</p></div>
+          <div><h2>AXION community and market access.</h2><p>Official channels, launchpad visibility, product utility and verified token references for AXION growth.</p></div>
           <div class="social-grid">
             <a class="social-card telegram" href="https://t.me/axiondefi" target="_blank" rel="noopener" aria-label="AXION Telegram">
               <svg viewBox="0 0 240 240" aria-hidden="true"><path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm55.7 82.1-19.7 92.8c-1.5 6.6-5.4 8.2-10.9 5.1l-30.2-22.3-14.6 14.1c-1.6 1.6-3 3-6.1 3l2.2-30.8 56-50.6c2.4-2.2-.5-3.4-3.8-1.2l-69.2 43.6-29.8-9.3c-6.5-2-6.6-6.5 1.4-9.6l116.6-45c5.4-2 10.1 1.3 8.4 10.2z"/></svg>
