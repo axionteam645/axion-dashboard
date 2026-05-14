@@ -337,6 +337,114 @@
       .section-head h2{font-size:32px !important;}
     }
 
+  
+
+    /* FINAL ALIGNMENT PATCH: hero shortcut cards + token metric cards */
+    .hero-actions{
+      align-items:stretch !important;
+    }
+    .action-tile{
+      min-height:118px !important;
+      height:100% !important;
+      padding:16px !important;
+      display:grid !important;
+      grid-template-rows:auto 1fr !important;
+      gap:14px !important;
+      align-items:start !important;
+      justify-items:start !important;
+      justify-content:stretch !important;
+      text-align:left !important;
+    }
+    .action-tile:after{
+      content:none !important;
+      display:none !important;
+    }
+    .action-tile span,
+    .metric span{
+      width:max-content !important;
+      max-width:100% !important;
+      min-height:24px !important;
+      display:inline-flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      padding:6px 10px !important;
+      border-radius:999px !important;
+      background:rgba(255,255,255,.095) !important;
+      border:1px solid rgba(255,255,255,.14) !important;
+      color:#f4f8ff !important;
+      font-size:10px !important;
+      line-height:1 !important;
+      font-weight:900 !important;
+      letter-spacing:.08em !important;
+      text-transform:uppercase !important;
+      white-space:nowrap !important;
+      overflow:hidden !important;
+      text-overflow:ellipsis !important;
+      margin:0 !important;
+      text-align:center !important;
+    }
+    .action-tile b{
+      align-self:center !important;
+      width:100% !important;
+      min-width:0 !important;
+      display:block !important;
+      color:#fff !important;
+      font-size:16px !important;
+      line-height:1.18 !important;
+      letter-spacing:-.02em !important;
+      text-align:left !important;
+      overflow-wrap:anywhere !important;
+      word-break:normal !important;
+    }
+    .metric-strip{
+      align-items:stretch !important;
+    }
+    .metric{
+      min-height:132px !important;
+      height:100% !important;
+      padding:18px !important;
+      display:grid !important;
+      grid-template-rows:auto 1fr auto !important;
+      gap:10px !important;
+      align-items:start !important;
+      justify-items:start !important;
+      text-align:left !important;
+    }
+    .metric strong{
+      align-self:center !important;
+      width:100% !important;
+      min-width:0 !important;
+      display:block !important;
+      font-size:clamp(24px,2.15vw,32px) !important;
+      line-height:1.05 !important;
+      letter-spacing:-.035em !important;
+      text-align:left !important;
+      overflow-wrap:anywhere !important;
+    }
+    .metric em{
+      width:100% !important;
+      display:block !important;
+      color:#d2def7 !important;
+      font-size:13px !important;
+      line-height:1.25 !important;
+      font-weight:800 !important;
+      text-align:left !important;
+      margin:0 !important;
+      overflow-wrap:anywhere !important;
+    }
+    @media(max-width:1080px){
+      .hero-actions{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+      .action-tile{min-height:104px !important;}
+    }
+    @media(max-width:680px){
+      .hero-actions,.metric-strip{grid-template-columns:1fr !important;}
+      .action-tile{min-height:88px !important;padding:14px !important;gap:10px !important;}
+      .action-tile b{font-size:14px !important;line-height:1.22 !important;}
+      .metric{min-height:112px !important;padding:16px !important;gap:8px !important;}
+      .metric strong{font-size:24px !important;}
+      .action-tile span,.metric span{font-size:9px !important;min-height:22px !important;padding:5px 9px !important;}
+    }
+
   </style>
 
   <style id="axion-user-cleanup">
@@ -349,6 +457,33 @@
       background:none !important;
       content:none !important;
     }
+  </style>
+
+  <style id="axion-final-edits">
+    /* Final requested edits */
+    .action-tile:after{content:none !important;display:none !important;}
+    .action-tile span,
+    .metric span{
+      display:inline-flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      width:auto !important;
+      max-width:max-content !important;
+      margin:0 auto 10px !important;
+      padding:7px 10px !important;
+      border-radius:999px !important;
+      border:1px solid rgba(255,255,255,.14) !important;
+      background:rgba(255,255,255,.06) !important;
+      color:#dff8ff !important;
+      font-size:10px !important;
+      font-weight:900 !important;
+      letter-spacing:.13em !important;
+      text-transform:uppercase !important;
+    }
+    .metric span{margin-bottom:12px !important;}
+    .hero-panel .launchpad-card{margin:0 0 16px !important;text-decoration:none !important;}
+    .hero-panel .launchpad-card strong{font-size:22px !important;}
+    #token .container.split{grid-template-columns:1fr !important;}
   </style>
 </head>
 <body>
@@ -388,6 +523,11 @@
         </div>
         <aside class="card hero-panel reveal">
           <div class="panel-head"><h3>Official infrastructure identity</h3><span class="badge"><i class="dot"></i> Verified Links</span></div>
+          <a class="launchpad-card" href="https://www.hotcoin.com/zh_CN/ieo/details/?projectId=8" target="_blank" rel="noopener">
+            <span>Hotcoin Launchpad</span>
+            <strong>AXION Launchpad</strong>
+            <p>Official launchpad access for AXION market entry and ecosystem participation.</p>
+          </a>
           <div class="network-lines">
             <div class="network-line"><span>Website</span><strong>axiondefi.com</strong></div>
             <div class="network-line"><span>Application</span><strong>app.axiondefi.com</strong></div>
@@ -423,14 +563,6 @@
               <a class="dash-stat dash-tx" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>Gas Token</span><strong>AXION</strong><em>Native network currency</em></a>
               <a class="dash-stat dash-consensus" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>Explorer</span><strong>AXSCAN</strong><em>Testnet blocks and transactions</em></a>
               <a class="dash-stat dash-docs" href="https://axscan.axiondefi.com/api-docs" target="_blank" rel="noopener"><span>API Docs</span><strong>Open</strong><em>AXSCAN developer reference</em></a>
-            </div>
-          </article>
-          <article class="dash-panel reveal">
-            <div class="dash-head"><div><h3>Developer Access</h3><p>Official access points for network review, API documentation and testnet contract tools.</p></div></div>
-            <div class="endpoint-list">
-              <div class="endpoint"><div><b>AXSCAN Testnet Explorer</b><span>https://axscan.axiondefi.com/</span></div><a href="https://axscan.axiondefi.com/" target="_blank" rel="noopener">Open</a></div>
-              <div class="endpoint"><div><b>AXSCAN API Docs</b><span>https://axscan.axiondefi.com/api-docs</span></div><a href="https://axscan.axiondefi.com/api-docs" target="_blank" rel="noopener">Docs</a></div>
-              <div class="endpoint"><div><b>Contract Studio</b><span>https://axscan.axiondefi.com/contract-studio</span></div><a href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener">Studio</a></div>
             </div>
           </article>
         </div>
@@ -479,27 +611,7 @@
         </div>
       </div>
     </section>
-
-    <section id="security">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Security & Trust</div><h2>Trust signals made <span class="gradient">visible and verifiable.</span></h2></div><p>Official links, clean contract identity, locked supply records and public verification references.</p></div>
-        <div class="grid-4">
-          <article class="card reveal"><span class="tag">Supply</span><h3>Fixed Supply</h3><p>1,000,000,000 AXION total supply messaging is clearly separated from circulating and locked allocations.</p></article>
-          <article class="card reveal"><span class="tag">Lock</span><h3>750M Locked</h3><p>Locked token information is surfaced as a dedicated trust signal instead of being hidden in long text.</p></article>
-          <a class="card link-card reveal" href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener"><span class="tag">Explorer</span><h3>AXSCAN</h3><p>Contract Studio access for AXION testnet contract tools and explorer-side verification.</p></a>
-          <a class="card link-card reveal" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span class="tag">Security</span><h3>GoPlus Report</h3><p>Security reference for the current official AXION contract address.</p></a>
-        </div>
-        <div class="proof-strip reveal">
-          <a class="proof-badge green" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span>Security</span><b>GoPlus Report</b></a>
-          <a class="proof-badge blue" href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener"><span>Explorer</span><b>AXSCAN Contract Studio</b></a>
-          <a class="proof-badge gold" href="https://www.hotcoin.com/zh_CN/ieo/details/?projectId=8" target="_blank" rel="noopener"><span>Launchpad</span><b>Hotcoin Launchpad</b></a>
-          <a class="proof-badge violet" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span>Contract</span><b>BscScan Token Page</b></a>
-          <a class="proof-badge dark" href="https://bscscan.com/address/0x72d50c808a51073d2c31c6d3dd4168f22e432e4c" target="_blank" rel="noopener"><span>Locked Supply</span><b>Lock Contract</b></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="token">
+<section id="token">
       <div class="container split">
         <article class="table-card reveal">
           <div class="table-row"><b>Token Name</b><span>AXION</span></div>
@@ -509,15 +621,6 @@
           <div class="table-row"><b>Total Supply</b><span>1,000,000,000 AXION</span></div>
           <div class="table-row"><b>Circulating Supply</b><span>250,000,000 AXION</span></div>
           <div class="table-row"><b>Locked Supply</b><span>750,000,000 AXION</span></div>
-        </article>
-        <article class="card reveal">
-          <span class="tag">Official Links</span><h3>Listing-ready verification package.</h3>
-          <p>Direct links support CMC review, exchange due diligence, launchpad review, and community verification.</p>
-          <div class="hero-actions">
-            <a class="btn secondary small" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener">Token Explorer</a>
-            <a class="btn secondary small" href="https://bscscan.com/address/0x72d50c808a51073d2c31c6d3dd4168f22e432e4c" target="_blank" rel="noopener">Lock Contract</a>
-            <a class="btn secondary small" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener">GoPlus Report</a>
-          </div>
         </article>
       </div>
     </section>
