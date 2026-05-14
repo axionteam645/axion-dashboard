@@ -793,6 +793,97 @@
   }
 </style>
 
+
+<style id="axion-three-hero-cards-final">
+  .hero-product-cards{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:18px !important;
+    margin-top:34px !important;
+    max-width:760px !important;
+  }
+  .hero-product-card{
+    min-height:230px !important;
+    border-radius:24px !important;
+    padding:22px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:space-between !important;
+    align-items:flex-start !important;
+    text-decoration:none !important;
+    border:1px solid rgba(120,190,255,.22) !important;
+    background:#0b1b31 !important;
+    box-shadow:0 22px 55px rgba(0,0,0,.32) !important;
+    position:relative !important;
+    overflow:hidden !important;
+    transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease !important;
+  }
+  .hero-product-card::before{
+    content:"" !important;
+    position:absolute !important;
+    inset:0 !important;
+    background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0)) !important;
+    pointer-events:none !important;
+  }
+  .hero-product-card::after{
+    content:"↗" !important;
+    position:absolute !important;
+    right:20px !important;
+    top:18px !important;
+    color:#dcecff !important;
+    font-size:18px !important;
+    font-weight:900 !important;
+    opacity:.82 !important;
+  }
+  .hero-product-card:hover{
+    transform:translateY(-5px) !important;
+    border-color:rgba(90,210,255,.55) !important;
+    box-shadow:0 28px 70px rgba(0,0,0,.42) !important;
+  }
+  .hero-product-card .card-number{
+    width:42px !important;
+    height:42px !important;
+    border-radius:13px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    background:rgba(84,184,255,.12) !important;
+    border:1px solid rgba(130,210,255,.25) !important;
+    color:#ffffff !important;
+    font-size:13px !important;
+    font-weight:900 !important;
+    letter-spacing:.06em !important;
+    position:relative !important;
+    z-index:2 !important;
+  }
+  .hero-product-card strong{
+    color:#ffffff !important;
+    font-size:30px !important;
+    line-height:1 !important;
+    letter-spacing:-.04em !important;
+    font-weight:900 !important;
+    position:relative !important;
+    z-index:2 !important;
+  }
+  .hero-product-card em{
+    color:#abc2e4 !important;
+    font-style:normal !important;
+    font-size:14px !important;
+    line-height:1.4 !important;
+    font-weight:700 !important;
+    position:relative !important;
+    z-index:2 !important;
+  }
+  .card-game{background:#0b1b31 !important;}
+  .card-testnet{background:#0b1b31 !important;}
+  .card-dex{background:#0b1b31 !important;}
+  @media(max-width:900px){
+    .hero-product-cards{grid-template-columns:1fr !important;max-width:100% !important;gap:14px !important;}
+    .hero-product-card{min-height:145px !important;border-radius:20px !important;}
+    .hero-product-card strong{font-size:26px !important;}
+  }
+</style>
+
 </head>
 <body>
   <div class="nav-wrap">
@@ -816,17 +907,22 @@
           <h1><span class="gradient">AXION</span></h1>
           <div class="hero-subtitle">Intelligent infrastructure for Web3, DeFi and ecosystem utility.</div>
           <p class="lead">AXION combines on-chain transparency, developer access, market utility and community-facing products under one premium Web3 infrastructure brand.</p>
-          <div class="hero-actions">
-            <a class="action-tile action-app" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><span>Application</span><b>Launch App</b></a>
-            <a class="action-tile action-explorer" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>AXSCAN</span><b>Open Testnet Explorer</b></a>
-            <button class="action-tile action-wallet" id="addTokenBtn" type="button"><span>Wallet</span><b>Add AXION to Wallet</b></button>
-            <a class="action-tile action-game" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><span>Ecosystem App</span><b>AXION Game</b></a>
-            <a class="action-tile action-dex" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><span>Market Module</span><b>AXION DEX</b></a>
-          </div>
-          <div class="metric-strip">
-            <a class="metric metric-standard" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span>Token Standard</span><strong>BEP-20</strong><em>BNB Smart Chain</em></a>
-            <a class="metric metric-supply" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span>Fixed Supply</span><strong>1B AXION</strong><em>No mint function</em></a>
-            <a class="metric metric-circulating" href="https://bscscan.com/address/0x72d50c808a51073d2c31c6d3dd4168f22e432e4c" target="_blank" rel="noopener"><span>Circulating</span><strong>250M</strong><em>750M locked</em></a>
+          <div class="hero-product-cards">
+            <a class="hero-product-card card-game" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener">
+              <span class="card-number">01</span>
+              <strong>GAME</strong>
+              <em>Launch AXION Game</em>
+            </a>
+            <a class="hero-product-card card-testnet" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener">
+              <span class="card-number">02</span>
+              <strong>TESTNET</strong>
+              <em>Open AXSCAN Explorer</em>
+            </a>
+            <a class="hero-product-card card-dex" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener">
+              <span class="card-number">03</span>
+              <strong>DEX</strong>
+              <em>Enter AXION DEX</em>
+            </a>
           </div>
         </div>
         <aside class="card hero-panel reveal">
