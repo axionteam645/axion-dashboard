@@ -888,65 +888,47 @@
   }
 
 
-/* AXION FIX: Kutulardaki hareket/hover efektleri kaldırıldı */
-.card,
-.action-tile,
-.hero-product-card,
-.metric,
-.status-card,
-.dash-panel,
-.preview-card,
-.proof-badge,
-.link-card,
-.launchpad-card,
-.social-card,
-.product-card,
-.stat-card,
-.info-card,
-.tile,
-.panel,
-.box {
-  transition: none !important;
-  animation: none !important;
-  transform: none !important;
-}
-
-.card:hover,
-.action-tile:hover,
-.hero-product-card:hover,
-.metric:hover,
-.status-card:hover,
-.dash-panel:hover,
-.preview-card:hover,
-.proof-badge:hover,
-.link-card:hover,
-.launchpad-card:hover,
-.social-card:hover,
-.product-card:hover,
-.stat-card:hover,
-.info-card:hover,
-.tile:hover,
-.panel:hover,
-.box:hover {
-  transition: none !important;
-  animation: none !important;
-  transform: none !important;
-}
-
-.reveal,
-.reveal.show {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-  animation: none !important;
-}
-
-.live-pill:before {
-  animation: none !important;
-  transform: none !important;
-}
-
-/* Buton dışındaki kart hareketleri kapalı; layout ve linkler korunur. */
+    /* Mobile corporate compact adjustments */
+    @media(max-width:680px){
+      body{font-size:13px;line-height:1.45}
+      section{padding:48px 0 0;scroll-margin-top:82px}
+      .container{width:min(calc(100% - 24px),var(--max))}
+      h1{font-size:46px;line-height:.92;letter-spacing:-.055em}
+      .hero-subtitle{font-size:15px;line-height:1.55}
+      .section-head{margin-bottom:18px}
+      .section-head h2{font-size:28px;line-height:1.05;letter-spacing:-.045em;margin-top:9px}
+      .section-head p{font-size:12px;line-height:1.55;margin-top:10px;max-width:none}
+      .eyebrow{font-size:9px;letter-spacing:.16em}
+      .card{padding:17px;border-radius:20px}
+      .card h3{font-size:19px;line-height:1.15;margin-bottom:8px}
+      .card p,.card li{font-size:12px;line-height:1.55}
+      .tag{font-size:8px;padding:6px 8px;margin-bottom:10px;letter-spacing:.12em}
+      .icon{width:36px;height:36px;border-radius:12px;margin-bottom:10px;font-size:12px}
+      .grid-3,.grid-4,.status-grid,.metric-strip,.preview-grid,.dash-grid{gap:12px}
+      .dash-panel{padding:17px;border-radius:20px}
+      .dash-head{gap:12px;margin-bottom:12px}
+      .dash-head h3{font-size:19px}
+      .dash-head p{font-size:12px;line-height:1.5}
+      .dash-stat{min-height:auto;padding:14px;border-radius:15px}
+      .dash-stat strong{font-size:22px}
+      .dash-stat em{font-size:11px}
+      .preview-card{border-radius:20px}
+      .preview-body{padding:16px}
+      .preview-body h3{font-size:18px}
+      .preview-body p{font-size:12px;line-height:1.55}
+      .network-line{padding:12px;border-radius:14px;gap:8px}
+      .network-line span{font-size:11px}
+      .network-line strong{font-size:12px}
+      .cta{margin-top:46px;padding:19px;border-radius:20px}
+      .cta h2{font-size:26px;line-height:1.08}
+      .cta p{font-size:12px;line-height:1.55;margin-top:8px}
+      .footer{margin-top:46px;padding:20px 0 24px;font-size:11px;line-height:1.45}
+      .footer-row{gap:10px;align-items:flex-start}
+      .footer-links{gap:8px}
+      .footer a{font-size:11px;font-weight:700}
+      .brand strong{font-size:14px}
+      .brand small{font-size:7px;line-height:1.2}
+    }
 </style>
 
 </head>
@@ -1040,28 +1022,7 @@
         </div>
       </div>
     </section>
-
-    <section id="products">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Product Ecosystem</div><h2>AXION operates as <span class="gradient">a product ecosystem.</span></h2></div><p>Application access, Testnet Explorer visibility, RPC/API infrastructure, AXION DEX, AXION Game, documentation and security references.</p></div>
-        <div class="product-map">
-          <article class="card reveal">
-            <span class="tag">Ecosystem Map</span><h3>One brand, multiple infrastructure surfaces.</h3>
-            <div class="map-list">
-              <a class="map-item" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">A</div><div><b>AXION App</b><span>AI-powered DeFi dashboard and holder interface.</span></div><span class="state">Live</span></a>
-              <a class="map-item" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">S</div><div><b>AXSCAN Testnet Explorer</b><span>Dedicated testnet block explorer and chain visibility layer.</span></div><span class="state">Live</span></a>
-              <a class="map-item" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">G</div><div><b>AXION Game</b><span>Gamified ecosystem experience for community engagement.</span></div><span class="state">Live</span></a>
-              <a class="map-item" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><div class="icon">D</div><div><b>AXION DEX</b><span>Trading interface and liquidity ecosystem module.</span></div><span class="state">Live</span></a>
-            </div>
-          </article>
-          <article class="card reveal">
-            <span class="tag">Corporate Positioning</span><h3>Infrastructure-first brand identity.</h3><p>AXION focuses on verifiable supply, official endpoints, testnet explorer visibility, developer access and ecosystem products for exchange, launchpad, market-maker and community review.</p><br><p>The AXION brand is structured around technology, transparency, utility and long-term ecosystem growth.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="previews">
+<section id="previews">
       <div class="container">
         <div class="section-head reveal"><div><div class="eyebrow">Product Previews</div><h2>Real product surfaces for <span class="gradient">the AXION ecosystem.</span></h2></div><p>AXSCAN, AXION Game, AXION DEX and AXION App are presented as live ecosystem modules instead of simple external links.</p></div>
         <div class="preview-grid">
