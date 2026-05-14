@@ -1339,6 +1339,401 @@
     .hero-product-card strong{font-size:23px !important;}
   }
 </style>
+
+
+<style id="axion-wallet-preview-section-final">
+  /* AXION Wallet Preview Section - added without changing existing sections */
+  .wallet-preview-section{
+    position:relative;
+    padding:92px 0 0;
+    overflow:hidden;
+  }
+  .wallet-preview-shell{
+    position:relative;
+    display:grid;
+    grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+    gap:34px;
+    align-items:center;
+    padding:34px;
+    border:1px solid rgba(125,211,252,.16);
+    border-radius:34px;
+    background:
+      radial-gradient(circle at 86% 14%, rgba(45,212,191,.18), transparent 34%),
+      radial-gradient(circle at 18% 0%, rgba(59,130,246,.16), transparent 35%),
+      linear-gradient(135deg, rgba(8,20,38,.92), rgba(4,11,22,.96));
+    box-shadow:0 30px 90px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .wallet-preview-copy{position:relative;z-index:2;}
+  .wallet-preview-copy .eyebrow{margin-bottom:12px;}
+  .wallet-preview-copy h2{
+    margin:0;
+    max-width:680px;
+    font-size:clamp(34px,4vw,62px);
+    line-height:.96;
+    letter-spacing:-.06em;
+  }
+  .wallet-preview-copy p{
+    max-width:650px;
+    margin:18px 0 0;
+    color:rgba(226,232,240,.74);
+    font-size:15px;
+    line-height:1.75;
+  }
+  .wallet-feature-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+    margin-top:22px;
+    max-width:650px;
+  }
+  .wallet-feature{
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:20px;
+    padding:15px;
+    background:rgba(2,6,23,.42);
+  }
+  .wallet-feature span{
+    display:block;
+    color:rgba(148,163,184,.82);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    margin-bottom:6px;
+  }
+  .wallet-feature strong{
+    display:block;
+    color:#f8fafc;
+    font-size:15px;
+    letter-spacing:-.02em;
+  }
+  .wallet-badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:24px;
+  }
+  .wallet-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:12px 15px;
+    border-radius:999px;
+    border:1px solid rgba(125,211,252,.18);
+    background:rgba(15,23,42,.58);
+    color:#e5f6ff;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.02em;
+  }
+  .wallet-badge i{
+    width:8px;height:8px;border-radius:999px;
+    background:linear-gradient(135deg,#38bdf8,#2dd4bf);
+    box-shadow:0 0 18px rgba(45,212,191,.85);
+  }
+  .wallet-device-wrap{
+    position:relative;
+    min-height:560px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .wallet-device-glow{
+    position:absolute;
+    width:360px;
+    height:360px;
+    border-radius:999px;
+    background:radial-gradient(circle, rgba(45,212,191,.28), rgba(59,130,246,.12) 45%, transparent 70%);
+    filter:blur(10px);
+    opacity:.9;
+  }
+  .wallet-phone{
+    position:relative;
+    z-index:2;
+    width:292px;
+    border-radius:42px;
+    padding:12px;
+    background:linear-gradient(145deg, rgba(226,232,240,.22), rgba(15,23,42,.9));
+    box-shadow:0 34px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.12);
+  }
+  .wallet-screen{
+    min-height:520px;
+    border-radius:33px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 82% 8%, rgba(45,212,191,.20), transparent 33%),
+      linear-gradient(180deg,#071426,#020617 68%);
+    border:1px solid rgba(255,255,255,.08);
+    padding:18px;
+  }
+  .wallet-phone-top{
+    display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;
+  }
+  .wallet-mini-logo{
+    display:flex;align-items:center;gap:9px;color:#f8fafc;font-weight:900;font-size:13px;letter-spacing:.04em;
+  }
+  .wallet-mini-logo i{
+    width:28px;height:28px;border-radius:10px;background:linear-gradient(135deg,#38bdf8,#2dd4bf);box-shadow:0 0 18px rgba(45,212,191,.35);
+  }
+  .wallet-status{font-size:10px;color:#67e8f9;border:1px solid rgba(103,232,249,.22);padding:6px 8px;border-radius:999px;background:rgba(8,47,73,.35);}
+  .wallet-balance-card{
+    padding:18px;
+    border-radius:24px;
+    background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(45,212,191,.12));
+    border:1px solid rgba(125,211,252,.18);
+  }
+  .wallet-balance-card span{display:block;color:rgba(226,232,240,.62);font-size:11px;text-transform:uppercase;letter-spacing:.14em;}
+  .wallet-balance-card strong{display:block;color:#fff;font-size:32px;letter-spacing:-.06em;margin-top:10px;}
+  .wallet-balance-card em{display:block;color:#67e8f9;font-style:normal;font-size:12px;margin-top:7px;}
+  .wallet-actions-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0;}
+  .wallet-actions-mini button{border:0;border-radius:16px;padding:12px 6px;background:rgba(255,255,255,.07);color:#dff7ff;font-size:11px;font-weight:800;}
+  .wallet-asset-list{display:grid;gap:10px;margin-top:18px;}
+  .wallet-asset{display:flex;align-items:center;justify-content:space-between;padding:13px;border-radius:17px;background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.10);}
+  .wallet-asset-left{display:flex;align-items:center;gap:10px;}
+  .wallet-coin{width:32px;height:32px;border-radius:12px;background:rgba(56,189,248,.14);display:grid;place-items:center;color:#67e8f9;font-weight:900;font-size:11px;}
+  .wallet-asset b{display:block;color:#f8fafc;font-size:12px;}
+  .wallet-asset small{display:block;color:rgba(148,163,184,.8);font-size:10px;margin-top:3px;}
+  .wallet-asset strong{color:#f8fafc;font-size:12px;}
+  .wallet-browser-card{
+    position:absolute;
+    z-index:3;
+    right:6px;
+    bottom:62px;
+    width:218px;
+    border-radius:22px;
+    padding:14px;
+    background:rgba(2,6,23,.78);
+    border:1px solid rgba(125,211,252,.20);
+    box-shadow:0 22px 60px rgba(0,0,0,.45);
+    backdrop-filter:blur(18px);
+  }
+  .wallet-browser-card span{display:block;color:#67e8f9;font-size:10px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:6px;}
+  .wallet-browser-card strong{display:block;color:#fff;font-size:15px;margin-bottom:6px;}
+  .wallet-browser-card p{margin:0;color:rgba(226,232,240,.68);font-size:11px;line-height:1.55;}
+  @media(max-width:980px){
+    .wallet-preview-shell{grid-template-columns:1fr;padding:24px;border-radius:28px;gap:22px;}
+    .wallet-device-wrap{min-height:520px;}
+    .wallet-browser-card{right:8%;bottom:24px;}
+  }
+  @media(max-width:640px){
+    .wallet-preview-section{padding:42px 0 0;}
+    .wallet-preview-shell{padding:18px;border-radius:24px;}
+    .wallet-preview-copy h2{font-size:34px;line-height:1;}
+    .wallet-preview-copy p{font-size:13px;line-height:1.65;}
+    .wallet-feature-grid{grid-template-columns:1fr;gap:10px;}
+    .wallet-badges{gap:8px;}
+    .wallet-badge{width:100%;justify-content:center;padding:11px 12px;}
+    .wallet-device-wrap{min-height:510px;align-items:flex-start;padding-top:8px;}
+    .wallet-phone{width:min(280px,100%);}
+    .wallet-screen{min-height:488px;padding:15px;}
+    .wallet-balance-card strong{font-size:28px;}
+    .wallet-browser-card{position:relative;right:auto;bottom:auto;width:100%;margin-top:-30px;}
+  }
+</style>
+
+
+<style id="axion-hero-wallet-panel-final">
+  /* Premium AXION Wallet Preview - fixed layout, no text/image overlap */
+  .hero-wallet-panel{
+    position:relative;
+    min-height:560px;
+    overflow:hidden;
+    padding:26px !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,.82fr) minmax(300px,1.18fr);
+    gap:24px;
+    align-items:center;
+    background:
+      radial-gradient(circle at 84% 18%, rgba(56,189,248,.22), transparent 30%),
+      radial-gradient(circle at 22% 10%, rgba(45,212,191,.16), transparent 28%),
+      radial-gradient(circle at 54% 92%, rgba(250,204,21,.12), transparent 34%),
+      linear-gradient(145deg, rgba(5,14,29,.98), rgba(2,6,23,.98)) !important;
+    border:1px solid rgba(125,211,252,.20) !important;
+    box-shadow:0 28px 80px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.06) !important;
+  }
+  .hero-wallet-panel:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size:34px 34px;
+    mask-image:radial-gradient(circle at 70% 50%, #000 0%, transparent 70%);
+    opacity:.35;
+    pointer-events:none;
+  }
+  .hero-wallet-copy{position:relative;z-index:4;max-width:330px;align-self:center;}
+   .wallet-panel-top{display:flex;align-items:center;justify-content:flex-start;gap:12px;margin-bottom:18px;}
+  .wallet-panel-soon{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:10px 14px;border-radius:999px;
+    font-size:11px;font-weight:950;letter-spacing:.12em;
+    color:#160c00;
+    background:linear-gradient(135deg,#fde047,#fb923c 58%,#f97316);
+    box-shadow:0 0 34px rgba(250,204,21,.42), inset 0 1px 0 rgba(255,255,255,.48);
+    animation:walletSoonPulse 2.1s ease-in-out infinite;
+    white-space:nowrap;
+  }
+  @keyframes walletSoonPulse{0%,100%{transform:translateY(0);filter:saturate(1)}50%{transform:translateY(-1px);filter:saturate(1.25)}}
+  .hero-wallet-panel h3{margin:12px 0 10px;font-size:clamp(30px,3vw,46px);line-height:.94;letter-spacing:-.06em;color:#fff;}
+  .hero-wallet-panel p{margin:0;color:rgba(226,232,240,.74);font-size:13.5px;line-height:1.68;max-width:320px;}
+  .wallet-micro-list{
+    grid-column:1/-1;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+    margin-top:6px;
+    position:relative;
+    z-index:5;
+  }
+  .wallet-micro-list span{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    min-width:0;
+    padding:2px 4px;
+    background:transparent;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    font-size:12px;
+    line-height:1.25;
+    font-weight:850;
+    text-align:center;
+    white-space:normal;
+    word-break:normal;
+    overflow-wrap:anywhere;
+  }
+  .wallet-micro-list span:nth-child(1){color:#67e8f9;text-shadow:0 0 18px rgba(103,232,249,.28);}
+  .wallet-micro-list span:nth-child(2){color:#2dd4bf;text-shadow:0 0 18px rgba(45,212,191,.28);}
+  .wallet-micro-list span:nth-child(3){color:#facc15;text-shadow:0 0 18px rgba(250,204,21,.22);}
+  .wallet-micro-list span:before{
+    content:"";
+    flex:0 0 auto;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:currentColor;
+    box-shadow:0 0 14px currentColor;
+  }
+
+  .hero-wallet-device{
+    position:relative;
+    z-index:3;
+    min-height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 4px;
+    perspective:1100px;
+  }
+  .hero-wallet-device:before{
+    content:"";
+    position:absolute;
+    width:360px;height:360px;border-radius:999px;
+    background:radial-gradient(circle, rgba(56,189,248,.28), rgba(45,212,191,.11) 42%, transparent 70%);
+    filter:blur(14px);
+    opacity:.95;
+  }
+  .wallet-phone-3d{
+    position:relative;
+    width:238px;
+    height:540px;
+    border-radius:42px;
+    padding:12px;
+    background:linear-gradient(145deg,#e5edf7 0%,#64748b 12%,#111827 42%,#020617 100%);
+    box-shadow:
+      38px 42px 70px rgba(0,0,0,.58),
+      -8px -8px 30px rgba(125,211,252,.10),
+      inset 0 0 0 1px rgba(255,255,255,.22);
+    transform:rotateY(-16deg) rotateX(4deg) rotateZ(2deg);
+    transform-style:preserve-3d;
+  }
+  .wallet-phone-3d:before{
+    content:"";position:absolute;inset:10px;border-radius:34px;border:1px solid rgba(255,255,255,.10);pointer-events:none;z-index:4;
+  }
+  .wallet-phone-3d:after{
+    content:"";position:absolute;right:-12px;top:62px;width:12px;height:412px;border-radius:0 18px 18px 0;background:linear-gradient(180deg,#334155,#020617);filter:brightness(.9);transform:translateZ(-12px);
+  }
+  .wallet-phone-notch{position:absolute;z-index:7;top:19px;left:50%;transform:translateX(-50%);width:88px;height:25px;border-radius:999px;background:#020617;border:1px solid rgba(255,255,255,.08);}
+  .wallet-phone-screen{
+    position:relative;
+    height:100%;
+    border-radius:32px;
+    overflow:hidden;
+    padding:40px 13px 12px;
+    background:
+      radial-gradient(circle at 78% 8%, rgba(255,211,111,.18), transparent 28%),
+      radial-gradient(circle at 18% 16%, rgba(88,220,255,.24), transparent 34%),
+      radial-gradient(circle at 50% 58%, rgba(157,108,255,.10), transparent 42%),
+      linear-gradient(180deg,#071426,#030712 72%);
+    border:1px solid rgba(255,255,255,.09);
+  }
+  .wallet-screen-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;}
+  .wallet-screen-brand{display:flex;align-items:center;gap:8px;color:#fff;font-size:10px;font-weight:900;letter-spacing:.04em;}
+  .wallet-screen-brand img{width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 18px rgba(56,189,248,.38);border:1px solid rgba(255,255,255,.16);}
+  .wallet-live-pill{font-size:8px;color:#9fffe0;border:1px solid rgba(45,212,191,.25);background:rgba(6,78,59,.22);border-radius:999px;padding:5px 7px;font-weight:800;}
+  .wallet-total-card{padding:12px;border-radius:20px;background:linear-gradient(135deg,rgba(88,220,255,.18),rgba(255,211,111,.10) 55%,rgba(157,108,255,.12));border:1px solid rgba(125,211,252,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 16px 34px rgba(0,0,0,.22);}
+  .wallet-total-card span{display:block;color:rgba(226,232,240,.62);font-size:8px;text-transform:uppercase;letter-spacing:.12em;}
+  .wallet-total-card strong{display:block;margin-top:7px;color:#fff;font-size:20px;line-height:1;letter-spacing:-.045em;}
+  .wallet-total-card em{display:block;margin-top:6px;color:#ffd36f;font-size:9px;font-style:normal;font-weight:800;}
+  .wallet-mini-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0 10px;}
+  .wallet-mini-actions button{border:0;border-radius:13px;padding:8px 2px;background:rgba(255,255,255,.075);color:#e0faff;font-size:8px;font-weight:850;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+  .wallet-token-list{display:grid;gap:7px;}
+  .wallet-token-row{display:flex;align-items:center;justify-content:space-between;gap:7px;padding:7px;border-radius:14px;background:rgba(15,23,42,.70);border:1px solid rgba(148,163,184,.10);}
+  .wallet-token-left{display:flex;align-items:center;gap:7px;min-width:0;}
+  .wallet-token-icon{width:24px;height:24px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(45,212,191,.13));color:#67e8f9;font-size:8px;font-weight:900;border:1px solid rgba(125,211,252,.14);overflow:hidden;}
+  .wallet-token-icon img{width:76%;height:76%;object-fit:contain;border-radius:0;}
+  .wallet-token-icon.axion img{width:100%;height:100%;object-fit:cover;border-radius:inherit;}
+  .wallet-token-icon.bnb{background:linear-gradient(135deg,#f3ba2f,#8a6a00);color:#111827;}
+  .wallet-token-icon.usdt{background:linear-gradient(135deg,#26a17b,#0f513f);color:#fff;}
+  .wallet-token-icon.eth{background:linear-gradient(135deg,#8ea2ff,#3b4cca);color:#fff;}
+  .wallet-token-icon.axion{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.22),transparent 28%),linear-gradient(135deg,#58dcff,#071426 55%,#ffd36f);color:#fff;}
+  .wallet-token-left b{display:block;color:#f8fafc;font-size:9px;line-height:1.1;}
+  .wallet-token-left small{display:block;color:rgba(148,163,184,.82);font-size:7.5px;margin-top:2px;}
+  .wallet-token-row strong{color:#fff;font-size:9px;white-space:nowrap;}
+  .wallet-bottom-nav{position:absolute;left:18px;right:18px;bottom:13px;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:7px;border-radius:18px;background:rgba(2,6,23,.78);border:1px solid rgba(125,211,252,.10);box-shadow:0 16px 36px rgba(0,0,0,.30);}
+  .wallet-bottom-nav span{display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(226,232,240,.62);font-size:7px;font-weight:750;}
+  .wallet-bottom-nav span:before{content:"";width:7px;height:7px;border-radius:50%;background:rgba(148,163,184,.55);}
+  .wallet-bottom-nav span.active{color:#67e8f9;}
+  .wallet-bottom-nav span.active:before{background:#22d3ee;box-shadow:0 0 14px rgba(34,211,238,.80);}
+
+  @media(max-width:980px){
+    .hero-wallet-panel{grid-template-columns:1fr;gap:20px;min-height:auto;}
+    .hero-wallet-copy{max-width:100%;}
+    .hero-wallet-panel p{max-width:620px;}
+    .wallet-micro-list{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .hero-wallet-device{min-height:500px;}
+    .wallet-phone-3d{transform:rotateY(-10deg) rotateX(3deg) rotateZ(1deg);}
+  }
+  @media(max-width:640px){
+    .hero-wallet-panel{padding:20px !important;border-radius:24px !important;}
+    .wallet-panel-top{margin-bottom:14px;}
+    .wallet-panel-logo{width:44px;height:44px;}
+    .wallet-panel-soon{font-size:10px;padding:9px 12px;}
+    .hero-wallet-panel h3{font-size:36px;}
+    .hero-wallet-panel p{font-size:13px;line-height:1.62;}
+    .wallet-micro-list{grid-template-columns:1fr;gap:9px;margin-top:10px;}
+    .wallet-micro-list span{justify-content:flex-start;text-align:left;font-size:12px;padding:0 2px;}
+    .hero-wallet-device{min-height:455px;padding-top:4px;}
+    .wallet-phone-3d{width:210px;height:475px;border-radius:38px;padding:10px;transform:rotateY(-8deg) rotateX(3deg) rotateZ(1deg);}
+    .wallet-phone-screen{border-radius:29px;padding:38px 13px 13px;}
+    .wallet-phone-notch{top:16px;width:78px;height:22px;}
+    .wallet-total-card strong{font-size:20px;}
+    .wallet-mini-actions button{font-size:7.5px;padding:7px 2px;}
+    .wallet-token-row{padding:7px;}
+    .wallet-bottom-nav{left:15px;right:15px;bottom:12px;padding:6px;}
+  }
+  @media(max-width:420px){
+    .hero-wallet-panel h3{font-size:33px;}
+    .hero-wallet-device{min-height:430px;}
+    .wallet-phone-3d{width:198px;height:455px;}
+    .wallet-total-card{padding:14px;}
+    .wallet-total-card strong{font-size:19px;}
+  }
+</style>
+
 </head>
 <body>
   <div class="nav-wrap">
@@ -1389,17 +1784,88 @@
             </a>
           </div>
         </div>
-        <aside class="card hero-panel reveal">
-          <div class="panel-head"><h3>Official infrastructure identity</h3><span class="badge"><i class="dot"></i> Verified Links</span></div>
-          <div class="network-lines">
-            <div class="network-line"><span>Website</span><strong>axiondefi.com</strong></div>
-            <div class="network-line"><span>Application</span><strong>app.axiondefi.com</strong></div>
-            <div class="network-line"><span>Testnet Explorer</span><strong>axscan.axiondefi.com</strong></div>
-            <div class="network-line"><span>RPC</span><strong>rpc.axiondefi.com</strong></div>
-            <div class="network-line"><span>API</span><strong>api.axscan.axiondefi.com</strong></div>
-            <div class="network-line"><span>Contract</span><strong id="contractShort">0x605a...652bd</strong><button class="copy" data-copy="0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd">Copy</button></div>
+        <aside class="card hero-panel hero-wallet-panel reveal" id="wallet">
+          <div class="hero-wallet-copy">
+            <div class="wallet-panel-top">
+              <span class="wallet-panel-soon">COMING SOON</span>
+            </div>
+            <span class="tag">Wallet Preview</span>
+            <h3>AXION Wallet</h3>
+            <p>A premium wallet interface being prepared for AXION assets, ecosystem access, dApp connections and future mainnet interaction.</p>
           </div>
-</aside>
+
+          <div class="hero-wallet-device" aria-label="AXION Wallet phone interface preview">
+            <div class="wallet-phone-3d">
+              <div class="wallet-phone-notch"></div>
+              <div class="wallet-phone-screen">
+                <div class="wallet-screen-top">
+                  <div class="wallet-screen-brand">
+                    <img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" />
+                    <span>AXION</span>
+                  </div>
+                  <div class="wallet-live-pill">Preview</div>
+                </div>
+
+                <div class="wallet-total-card">
+                  <span>Total Balance</span>
+                  <strong>$18,742.56</strong>
+                  <em>USDT estimated portfolio value</em>
+                </div>
+
+                <div class="wallet-mini-actions">
+                  <button type="button">Send</button>
+                  <button type="button">Receive</button>
+                  <button type="button">Swap</button>
+                  <button type="button">Earn</button>
+                </div>
+
+                <div class="wallet-token-list">
+                  <div class="wallet-token-row">
+                    <div class="wallet-token-left">
+                      <div class="wallet-token-icon axion"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION" loading="lazy" /></div>
+                      <div><b>AXION</b><small>AXION Ecosystem</small></div>
+                    </div>
+                    <strong>250,000</strong>
+                  </div>
+                  <div class="wallet-token-row">
+                    <div class="wallet-token-left">
+                      <div class="wallet-token-icon bnb"><img src="https://cryptologos.cc/logos/bnb-bnb-logo.svg?v=040" alt="BNB" loading="lazy" /></div>
+                      <div><b>BNB</b><small>BNB Smart Chain</small></div>
+                    </div>
+                    <strong>1.42</strong>
+                  </div>
+                  <div class="wallet-token-row">
+                    <div class="wallet-token-left">
+                      <div class="wallet-token-icon usdt"><img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=040" alt="USDT" loading="lazy" /></div>
+                      <div><b>USDT</b><small>Stable balance</small></div>
+                    </div>
+                    <strong>4,850.00</strong>
+                  </div>
+                  <div class="wallet-token-row">
+                    <div class="wallet-token-left">
+                      <div class="wallet-token-icon eth"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=040" alt="ETH" loading="lazy" /></div>
+                      <div><b>ETH</b><small>Ethereum asset</small></div>
+                    </div>
+                    <strong>0.86</strong>
+                  </div>
+                </div>
+
+                <div class="wallet-bottom-nav" aria-label="Wallet navigation preview">
+                  <span class="active">Home</span>
+                  <span>Swap</span>
+                  <span>dApps</span>
+                  <span>Settings</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wallet-micro-list" aria-label="AXION Wallet features">
+            <span>Mobile wallet experience</span>
+            <span>AXION ecosystem access</span>
+            <span>Future mainnet ready</span>
+          </div>
+        </aside>
       </div>
     </section>
 
