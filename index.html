@@ -929,6 +929,14 @@
       .brand strong{font-size:14px}
       .brand small{font-size:7px;line-height:1.2}
     }
+
+
+    /* AXSCAN live data panel */
+    .axscan-live-panel{padding:24px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .axscan-live-panel:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(88,220,255,.08),transparent 36%,rgba(79,240,183,.07));pointer-events:none}.axscan-live-panel>*{position:relative;z-index:1}
+    .live-summary{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.live-mini{padding:15px;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045)}.live-mini span{display:block;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#aebedf;margin-bottom:8px}.live-mini strong{font-size:24px;line-height:1;letter-spacing:-.04em;color:#fff;overflow-wrap:anywhere}.live-mini em{display:block;margin-top:7px;font-style:normal;font-size:11px;font-weight:800;color:#7f90b3}
+    .tx-list{display:flex;flex-direction:column;gap:8px}.tx-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 12px;border-radius:15px;border:1px solid rgba(255,255,255,.09);background:rgba(5,11,26,.48);text-decoration:none;color:inherit}.tx-item b{font-size:12px;letter-spacing:.01em;color:#eaf2ff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tx-item span{font-size:10px;color:#8ea0c2;font-weight:800}.tx-item small{font-size:10px;color:#4ff0b7;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.live-error{padding:11px 12px;border-radius:14px;background:rgba(255,111,143,.08);border:1px solid rgba(255,111,143,.18);font-size:12px;color:#ffc6d3;font-weight:800}.live-loading{padding:11px 12px;border-radius:14px;background:rgba(255,255,255,.04);font-size:12px;color:#aebedf;font-weight:800}
+    @media(max-width:680px){.axscan-live-panel{padding:17px;border-radius:20px}.live-summary{grid-template-columns:1fr;gap:10px}.live-mini{padding:13px;border-radius:15px}.live-mini strong{font-size:22px}.tx-item{grid-template-columns:1fr;padding:10px}.tx-item b{font-size:11px}.tx-item span,.tx-item small{font-size:9px}}
 </style>
 
 </head>
@@ -1019,6 +1027,14 @@
               <a class="dash-stat dash-docs" href="https://axscan.axiondefi.com/api-docs" target="_blank" rel="noopener"><span>API Docs</span><strong>Open</strong><em>AXSCAN developer reference</em></a>
             </div>
           </article>
+          <article class="axscan-live-panel reveal">
+            <div class="dash-head"><div><h3>AXSCAN Live Activity</h3><p>Latest block status and the last 5 transactions directly from the AXSCAN API layer.</p></div><span class="live-pill">Live API</span></div>
+            <div class="live-summary">
+              <a class="live-mini" href="https://axscan.axiondefi.com/blocks" target="_blank" rel="noopener"><span>Latest Block</span><strong id="axLatestBlock">Loading</strong><em id="axLatestBlockTime">AXSCAN block feed</em></a>
+              <a class="live-mini" href="https://axscan.axiondefi.com/txs" target="_blank" rel="noopener"><span>Latest Transactions</span><strong id="axLatestTxCount">Loading</strong><em>Last 5 network moves</em></a>
+            </div>
+            <div id="axTxList" class="tx-list"><div class="live-loading">Loading latest AXSCAN activity...</div></div>
+          </article>
         </div>
       </div>
     </section>
@@ -1106,6 +1122,79 @@
         alert("Token could not be added automatically.");
       }
     });
+
+
+
+    const AXSCAN_API_BASE = "https://api.axscan.axiondefi.com";
+    const AXSCAN_WEB_BASE = "https://axscan.axiondefi.com";
+    const shortHash = (value) => {
+      const v = String(value || "");
+      if (!v) return "Pending transaction";
+      return v.length > 18 ? `${v.slice(0, 10)}...${v.slice(-8)}` : v;
+    };
+    const normalizeList = (payload) => {
+      if (Array.isArray(payload)) return payload;
+      if (Array.isArray(payload?.txs)) return payload.txs;
+      if (Array.isArray(payload?.transactions)) return payload.transactions;
+      if (Array.isArray(payload?.data)) return payload.data;
+      if (Array.isArray(payload?.items)) return payload.items;
+      if (Array.isArray(payload?.result)) return payload.result;
+      return [];
+    };
+    const pickBlockNumber = (payload) => {
+      return payload?.blockNumber ?? payload?.latestBlock ?? payload?.latest_block ?? payload?.block ?? payload?.number ?? payload?.height ?? payload?.data?.blockNumber ?? payload?.data?.latestBlock ?? payload?.data?.number ?? null;
+    };
+    async function loadAxscanLiveActivity(){
+      const blockEl = document.getElementById("axLatestBlock");
+      const blockTimeEl = document.getElementById("axLatestBlockTime");
+      const txCountEl = document.getElementById("axLatestTxCount");
+      const listEl = document.getElementById("axTxList");
+      if(!blockEl || !txCountEl || !listEl) return;
+      try{
+        const [latestRes, txRes] = await Promise.allSettled([
+          fetch(`${AXSCAN_API_BASE}/latest`, { cache:"no-store" }),
+          fetch(`${AXSCAN_API_BASE}/txs?page=1&limit=5`, { cache:"no-store" })
+        ]);
+        let latestPayload = null;
+        if(latestRes.status === "fulfilled" && latestRes.value.ok){
+          latestPayload = await latestRes.value.json();
+        }
+        let txPayload = null;
+        if(txRes.status === "fulfilled" && txRes.value.ok){
+          txPayload = await txRes.value.json();
+        }
+        const blockNumber = pickBlockNumber(latestPayload);
+        blockEl.textContent = blockNumber !== null && blockNumber !== undefined ? `#${blockNumber}` : "Live";
+        const blockTime = latestPayload?.timestamp ?? latestPayload?.time ?? latestPayload?.data?.timestamp ?? latestPayload?.data?.time;
+        if(blockTime){
+          const d = new Date(typeof blockTime === "number" && blockTime < 20000000000 ? blockTime * 1000 : blockTime);
+          blockTimeEl.textContent = isNaN(d.getTime()) ? "Latest indexed block" : d.toLocaleString(undefined, { hour12:false });
+        } else {
+          blockTimeEl.textContent = "Latest indexed block";
+        }
+        const txs = normalizeList(txPayload).slice(0,5);
+        txCountEl.textContent = txs.length ? `${txs.length} TX` : "0 TX";
+        if(!txs.length){
+          listEl.innerHTML = `<div class="live-error">No latest transaction data returned from AXSCAN API.</div>`;
+          return;
+        }
+        listEl.innerHTML = txs.map((tx, index) => {
+          const hash = tx.hash || tx.txHash || tx.transactionHash || tx.id || "";
+          const block = tx.blockNumber || tx.block || tx.block_height || tx.height || "Latest";
+          const from = shortHash(tx.from || tx.fromAddress || tx.sender || "");
+          const to = shortHash(tx.to || tx.toAddress || tx.receiver || "");
+          const href = hash ? `${AXSCAN_WEB_BASE}/tx/${hash}` : `${AXSCAN_WEB_BASE}/txs`;
+          return `<a class="tx-item" href="${href}" target="_blank" rel="noopener"><div><b>${shortHash(hash) || `Transaction ${index + 1}`}</b><span>${from} → ${to}</span></div><small>Block ${block}</small></a>`;
+        }).join("");
+      }catch(error){
+        console.error("AXSCAN live activity error", error);
+        blockEl.textContent = "Offline";
+        txCountEl.textContent = "Error";
+        listEl.innerHTML = `<div class="live-error">AXSCAN API data could not be loaded right now.</div>`;
+      }
+    }
+    loadAxscanLiveActivity();
+    setInterval(loadAxscanLiveActivity, 30000);
 
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("show"); }), { threshold:.12 });
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
