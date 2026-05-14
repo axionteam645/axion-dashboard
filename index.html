@@ -93,6 +93,21 @@
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.reveal.show{opacity:1;transform:translateY(0)}
     @media(max-width:1080px){.hero-grid,.product-map,.split{grid-template-columns:1fr}.hero-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-4,.status-grid,.metric-strip{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr 1fr}.nav-links{position:absolute;left:16px;right:16px;top:78px;display:none;flex-direction:column;align-items:flex-start;background:rgba(5,9,21,.96);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}.nav-links.open{display:flex}.menu{display:block}}
     @media(max-width:680px){.social-grid{grid-template-columns:1fr}.social-card{min-height:54px;font-size:13px}.launchpad-card{padding:15px}.launchpad-card strong{font-size:19px}.launchpad-card p{font-size:12px}.container{width:min(calc(100% - 22px),var(--max))}.nav-actions .btn{display:none}.brand small{white-space:normal;font-size:8px}.hero{padding-top:58px}h1{font-size:64px;line-height:.86}.hero-subtitle{font-size:19px}.hero-actions{grid-template-columns:1fr}.action-tile{min-height:86px;padding:13px}.action-tile b{font-size:13px}.action-tile span{font-size:9px}.action-tile:after{font-size:12px}.metric span{font-size:9px}.metric strong{font-size:21px}.metric em{font-size:12px}.hero-actions .btn{width:100%}.grid-3,.grid-4,.status-grid,.metric-strip{grid-template-columns:1fr}.metric{min-height:auto;padding:18px;gap:7px}.metric strong{font-size:24px;line-height:1.15}.metric em{font-size:13px}.section-head{display:block}.section-head p{margin-top:14px}.table-row{grid-template-columns:1fr;gap:6px}.map-item{grid-template-columns:40px 1fr}.state{grid-column:2}.cta{display:block;padding:26px}.cta .hero-actions{margin-top:20px}}
+
+
+    /* V8: Testnet dashboard, proof badges and product previews */
+    .infra-dashboard{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:stretch}
+    .dash-panel{padding:24px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .dash-panel:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,240,183,.09),transparent 34%,rgba(88,220,255,.08));pointer-events:none}.dash-panel>*{position:relative;z-index:1}
+    .dash-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px}.dash-head h3{font-size:25px;letter-spacing:-.04em}.dash-head p{color:#aebedf;line-height:1.65;font-size:14px;margin-top:7px}.live-pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 11px;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;background:rgba(79,240,183,.10);border:1px solid rgba(79,240,183,.24);color:#dcfff3;white-space:nowrap}.live-pill:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 16px rgba(79,240,183,.75);animation:pulse 1.15s ease-in-out infinite}
+    .dash-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.dash-stat{min-height:126px;padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,.10);display:flex;flex-direction:column;justify-content:space-between;gap:10px}.dash-stat span{font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#dfe9ff}.dash-stat strong{font-size:28px;line-height:1.05;letter-spacing:-.04em;overflow-wrap:anywhere}.dash-stat em{font-style:normal;color:#aebedf;font-size:12px;font-weight:800;line-height:1.35}.dash-block{background:linear-gradient(135deg,rgba(88,220,255,.18),rgba(102,140,255,.08))}.dash-tx{background:linear-gradient(135deg,rgba(79,240,183,.18),rgba(88,220,255,.08))}.dash-rpc{background:linear-gradient(135deg,rgba(255,211,111,.18),rgba(255,159,67,.08))}.dash-api{background:linear-gradient(135deg,rgba(157,108,255,.18),rgba(255,111,143,.08))}
+    .endpoint-list{display:grid;gap:12px}.endpoint{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:15px 16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}.endpoint b{display:block;font-size:14px}.endpoint span{display:block;color:#9fb0cf;font-size:12px;margin-top:4px;word-break:break-all}.endpoint a{font-size:11px;font-weight:900;color:#dff7ff;border:1px solid rgba(255,255,255,.12);padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.055);white-space:nowrap}
+    .proof-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:22px}.proof-badge{min-height:92px;border-radius:18px;padding:15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);display:flex;flex-direction:column;justify-content:space-between;gap:10px}.proof-badge span{font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#c9d8f5}.proof-badge b{font-size:15px;line-height:1.15}.proof-badge.green{background:linear-gradient(135deg,rgba(79,240,183,.17),rgba(88,220,255,.07))}.proof-badge.blue{background:linear-gradient(135deg,rgba(88,220,255,.17),rgba(102,140,255,.07))}.proof-badge.gold{background:linear-gradient(135deg,rgba(255,211,111,.18),rgba(255,159,67,.07))}.proof-badge.violet{background:linear-gradient(135deg,rgba(157,108,255,.18),rgba(255,111,143,.07))}.proof-badge.dark{background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(157,108,255,.07))}
+    .preview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.preview-card{border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;position:relative}.preview-top{height:40px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035)}.preview-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.35)}.preview-url{margin-left:8px;color:#aebedf;font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.preview-body{min-height:220px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;background:radial-gradient(circle at 15% 0%,rgba(88,220,255,.14),transparent 34%),radial-gradient(circle at 90% 12%,rgba(157,108,255,.13),transparent 34%)}.preview-body h3{font-size:25px;letter-spacing:-.04em}.preview-body p{color:#b6c7e3;line-height:1.65;font-size:14px}.preview-bars{display:grid;gap:9px}.preview-bars i{height:11px;border-radius:999px;background:rgba(255,255,255,.10);display:block}.preview-bars i:nth-child(1){width:92%}.preview-bars i:nth-child(2){width:68%}.preview-bars i:nth-child(3){width:82%}.preview-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}.preview-state{font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#dcfff3;background:rgba(79,240,183,.11);border:1px solid rgba(79,240,183,.22);padding:7px 10px;border-radius:999px}.preview-open{font-size:12px;font-weight:900;color:#07101c;background:linear-gradient(90deg,var(--cyan),var(--blue));padding:10px 12px;border-radius:999px}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+    @media(max-width:1180px){.infra-dashboard{grid-template-columns:1fr}.proof-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.preview-grid{grid-template-columns:1fr}}
+    @media(max-width:680px){.dash-panel{padding:18px}.dash-head{display:block}.live-pill{margin-top:12px}.dash-grid{grid-template-columns:1fr}.dash-stat{min-height:auto;padding:15px}.dash-stat strong{font-size:23px}.endpoint{grid-template-columns:1fr}.endpoint a{justify-self:start}.proof-strip{grid-template-columns:1fr}.proof-badge{min-height:76px;padding:13px}.proof-badge b{font-size:13px}.preview-body{min-height:180px;padding:18px}.preview-body h3{font-size:20px}.preview-body p{font-size:12px}.preview-footer{align-items:flex-start;flex-direction:column}.preview-open{font-size:11px}.nav-links a{font-size:11px}}
+
   </style>
 </head>
 <body>
@@ -162,6 +177,32 @@
       </div>
     </section>
 
+    <section id="dashboard">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">Testnet Infrastructure Dashboard</div><h2>Live AXSCAN data for <span class="gradient">network visibility.</span></h2></div><p>Testnet explorer metrics, official endpoints and developer access from the AXION infrastructure stack.</p></div>
+        <div class="infra-dashboard">
+          <article class="dash-panel reveal">
+            <div class="dash-head"><div><h3>AXSCAN Testnet Metrics</h3><p>Live values are pulled from AXSCAN API endpoints when available.</p></div><span class="live-pill">Live Check</span></div>
+            <div class="dash-grid">
+              <a class="dash-stat dash-block" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>Latest Block</span><strong id="dashLatestBlock">Loading</strong><em>AXSCAN testnet explorer</em></a>
+              <a class="dash-stat dash-tx" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><span>Indexed Transactions</span><strong id="dashTxCount">Loading</strong><em>Explorer transaction index</em></a>
+              <a class="dash-stat dash-rpc" href="https://rpc.axiondefi.com" target="_blank" rel="noopener"><span>RPC Status</span><strong id="dashRpcStatus">Checking</strong><em>Official RPC endpoint</em></a>
+              <a class="dash-stat dash-api" href="https://api.axscan.axiondefi.com/health" target="_blank" rel="noopener"><span>API Status</span><strong id="dashApiStatus">Checking</strong><em>AXSCAN API health</em></a>
+            </div>
+          </article>
+          <article class="dash-panel reveal">
+            <div class="dash-head"><div><h3>Developer Access</h3><p>Official access points for network review, API documentation and testnet contract tools.</p></div></div>
+            <div class="endpoint-list">
+              <div class="endpoint"><div><b>AXSCAN Testnet Explorer</b><span>https://axscan.axiondefi.com/</span></div><a href="https://axscan.axiondefi.com/" target="_blank" rel="noopener">Open</a></div>
+              <div class="endpoint"><div><b>AXSCAN API Docs</b><span>https://axscan.axiondefi.com/api-docs</span></div><a href="https://axscan.axiondefi.com/api-docs" target="_blank" rel="noopener">Docs</a></div>
+              <div class="endpoint"><div><b>Contract Studio</b><span>https://axscan.axiondefi.com/contract-studio</span></div><a href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener">Studio</a></div>
+              <div class="endpoint"><div><b>Official RPC</b><span>https://rpc.axiondefi.com</span></div><a href="https://rpc.axiondefi.com" target="_blank" rel="noopener">RPC</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="products">
       <div class="container">
         <div class="section-head reveal"><div><div class="eyebrow">Product Ecosystem</div><h2>AXION operates as <span class="gradient">a product ecosystem.</span></h2></div><p>Application access, Testnet Explorer visibility, RPC/API infrastructure, AXION DEX, AXION Game, documentation and security references.</p></div>
@@ -178,6 +219,18 @@
           <article class="card reveal">
             <span class="tag">Corporate Positioning</span><h3>Infrastructure-first brand identity.</h3><p>AXION focuses on verifiable supply, official endpoints, testnet explorer visibility, developer access and ecosystem products for exchange, launchpad, market-maker and community review.</p><br><p>The AXION brand is structured around technology, transparency, utility and long-term ecosystem growth.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="previews">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">Product Previews</div><h2>Real product surfaces for <span class="gradient">the AXION ecosystem.</span></h2></div><p>AXSCAN, AXION Game, AXION DEX and AXION App are presented as live ecosystem modules instead of simple external links.</p></div>
+        <div class="preview-grid">
+          <a class="preview-card reveal" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axscan.axiondefi.com</span></div><div class="preview-body"><div><h3>AXSCAN Testnet Explorer</h3><p>Blocks, transactions, contract tools, API documentation and testnet network visibility.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open Explorer</span></div></div></a>
+          <a class="preview-card reveal" href="https://app.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">app.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION App</h3><p>AI-powered DeFi dashboard, holder interface and ecosystem access layer.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Launch App</span></div></div></a>
+          <a class="preview-card reveal" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axdex.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION DEX</h3><p>Market interface, swap access and liquidity module for the AXION ecosystem.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open DEX</span></div></div></a>
+          <a class="preview-card reveal" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><div class="preview-top"><i class="preview-dot"></i><i class="preview-dot"></i><i class="preview-dot"></i><span class="preview-url">axiongame.axiondefi.com</span></div><div class="preview-body"><div><h3>AXION Game</h3><p>Gamified ecosystem application for community activity and product expansion.</p></div><div class="preview-bars"><i></i><i></i><i></i></div><div class="preview-footer"><span class="preview-state">Live Product</span><span class="preview-open">Open Game</span></div></div></a>
         </div>
       </div>
     </section>
@@ -201,6 +254,13 @@
           <article class="card reveal"><span class="tag">Lock</span><h3>750M Locked</h3><p>Locked token information is surfaced as a dedicated trust signal instead of being hidden in long text.</p></article>
           <a class="card link-card reveal" href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener"><span class="tag">Explorer</span><h3>AXSCAN</h3><p>Contract Studio access for AXION testnet contract tools and explorer-side verification.</p></a>
           <a class="card link-card reveal" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span class="tag">Security</span><h3>GoPlus Report</h3><p>Security reference for the current official AXION contract address.</p></a>
+        </div>
+        <div class="proof-strip reveal">
+          <a class="proof-badge green" href="https://console.gopluslabs.io/token-security/56/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span>Security</span><b>GoPlus Report</b></a>
+          <a class="proof-badge blue" href="https://axscan.axiondefi.com/contract-studio" target="_blank" rel="noopener"><span>Explorer</span><b>AXSCAN Contract Studio</b></a>
+          <a class="proof-badge gold" href="https://www.hotcoin.com/zh_CN/ieo/details/?projectId=8" target="_blank" rel="noopener"><span>Launchpad</span><b>Hotcoin Launchpad</b></a>
+          <a class="proof-badge violet" href="https://bscscan.com/token/0x605a27F7c21430A836D2a53Fb13a46AB2b3652bd" target="_blank" rel="noopener"><span>Contract</span><b>BscScan Token Page</b></a>
+          <a class="proof-badge dark" href="https://bscscan.com/address/0x72d50c808a51073d2c31c6d3dd4168f22e432e4c" target="_blank" rel="noopener"><span>Locked Supply</span><b>Lock Contract</b></a>
         </div>
       </div>
     </section>
@@ -312,6 +372,52 @@
         alert("Token could not be added automatically.");
       }
     });
+
+
+
+    async function updateAxscanDashboard() {
+      const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+      try {
+        const latestRes = await fetch("https://api.axscan.axiondefi.com/latest", { cache: "no-store" });
+        if (latestRes.ok) {
+          const latest = await latestRes.json();
+          const block = latest?.blockNumber || latest?.number || latest?.latestBlock || latest?.block || latest?.height;
+          if (block !== undefined && block !== null) setText("dashLatestBlock", Number(block).toLocaleString());
+        }
+      } catch (e) { console.warn("Latest block unavailable", e); }
+
+      try {
+        const txRes = await fetch("https://api.axscan.axiondefi.com/txs?page=1", { cache: "no-store" });
+        if (txRes.ok) {
+          const txData = await txRes.json();
+          const total = txData?.total || txData?.count || txData?.totalTransactions || (Array.isArray(txData?.txs) ? txData.txs.length : Array.isArray(txData) ? txData.length : null);
+          if (total !== null && total !== undefined) setText("dashTxCount", Number(total).toLocaleString());
+        }
+      } catch (e) { console.warn("Transaction index unavailable", e); }
+
+      try {
+        const apiRes = await fetch("https://api.axscan.axiondefi.com/health", { cache: "no-store" });
+        setText("dashApiStatus", apiRes.ok ? "Online" : "Limited");
+      } catch (e) { setText("dashApiStatus", "Limited"); }
+
+      try {
+        const rpcRes = await fetch("https://rpc.axiondefi.com", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ jsonrpc: "2.0", method: "eth_blockNumber", params: [], id: 1 })
+        });
+        if (rpcRes.ok) {
+          const rpc = await rpcRes.json();
+          if (rpc?.result) {
+            setText("dashRpcStatus", "Online");
+            const rpcBlock = parseInt(rpc.result, 16);
+            if (!Number.isNaN(rpcBlock)) setText("dashLatestBlock", rpcBlock.toLocaleString());
+          } else setText("dashRpcStatus", "Limited");
+        } else setText("dashRpcStatus", "Limited");
+      } catch (e) { setText("dashRpcStatus", "Limited"); }
+    }
+    updateAxscanDashboard();
+    setInterval(updateAxscanDashboard, 30000);
 
     async function updateAxionMarket() {
       try {
