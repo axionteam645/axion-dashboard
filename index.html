@@ -1148,6 +1148,50 @@
   }
 </style>
 
+
+
+<style id="axion-product-previews-desktop-cleanup">
+  /* Desktop cleanup: remove meaningless empty lines in Product Previews section. */
+  #previews .preview-bars{
+    display:none !important;
+  }
+  #previews .preview-top{
+    border-bottom:0 !important;
+  }
+  #previews .preview-card::before,
+  #previews .preview-card::after,
+  #previews .preview-body::before,
+  #previews .preview-body::after{
+    content:none !important;
+    display:none !important;
+  }
+  #previews .preview-body{
+    background:#0b1b31 !important;
+    background-image:none !important;
+  }
+  @media(min-width:681px){
+    #previews{
+      padding-top:68px !important;
+    }
+    #previews .section-head{
+      margin-bottom:24px !important;
+      align-items:flex-end !important;
+    }
+    #previews .preview-grid{
+      gap:18px !important;
+    }
+    #previews .preview-body{
+      min-height:178px !important;
+      padding:22px !important;
+      justify-content:space-between !important;
+      gap:18px !important;
+    }
+    #previews .preview-footer{
+      margin-top:4px !important;
+    }
+  }
+</style>
+
 </head>
 <body>
   <div class="nav-wrap">
