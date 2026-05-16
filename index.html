@@ -1726,6 +1726,163 @@ border:1px solid rgba(255,255,255,.09);
 }
 </style>
 
+
+<style id="axion-market-ticker-v1">
+/* Fixed corporate crypto market ticker */
+body{
+  padding-bottom:64px !important;
+}
+.axion-market-ticker{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:9999;
+  min-height:58px;
+  border-top:1px solid rgba(255,255,255,.12);
+  background:
+    linear-gradient(180deg,rgba(7,20,38,.92),rgba(3,8,18,.96)),
+    radial-gradient(circle at 8% 0%,rgba(88,220,255,.10),transparent 34%);
+  backdrop-filter:blur(18px);
+  box-shadow:0 -18px 48px rgba(0,0,0,.42);
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+.axion-market-label{
+  position:relative;
+  z-index:2;
+  height:58px;
+  min-width:178px;
+  padding:0 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:4px;
+  border-right:1px solid rgba(255,255,255,.10);
+  background:linear-gradient(90deg,rgba(7,20,38,.98),rgba(7,20,38,.86));
+}
+.axion-market-label strong{
+  display:block;
+  color:#fff;
+  font-size:12px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.axion-market-label span{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#9fb0cf;
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.axion-market-label span:before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:999px;
+  background:#4ff0b7;
+  box-shadow:0 0 14px rgba(79,240,183,.78);
+}
+.axion-market-track-wrap{
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%);
+}
+.axion-market-track{
+  display:flex;
+  align-items:center;
+  width:max-content;
+  min-width:100%;
+  animation:axMarketMarquee 46s linear infinite;
+}
+.axion-market-track:hover{
+  animation-play-state:paused;
+}
+.axion-market-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:58px;
+  padding:0 22px;
+  border-right:1px solid rgba(255,255,255,.075);
+  white-space:nowrap;
+}
+.axion-market-symbol{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.axion-market-symbol b{
+  color:#f4f8ff;
+  font-size:13px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:.06em;
+}
+.axion-market-symbol small{
+  color:#7f91b1;
+  font-size:9px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.axion-market-price{
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+  font-variant-numeric:tabular-nums;
+}
+.axion-market-change{
+  min-width:58px;
+  text-align:right;
+  font-size:12px;
+  font-weight:950;
+  font-variant-numeric:tabular-nums;
+}
+.axion-market-change.up{color:#4ff0b7}
+.axion-market-change.down{color:#ff6f8f}
+.axion-market-status{
+  color:#8fa1c1;
+  font-size:11px;
+  font-weight:850;
+  padding:0 22px;
+}
+@keyframes axMarketMarquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@media(max-width:760px){
+  body{padding-bottom:54px !important;}
+  .axion-market-ticker{min-height:50px}
+  .axion-market-label{
+    min-width:108px;
+    height:50px;
+    padding:0 10px;
+  }
+  .axion-market-label strong{font-size:9px;letter-spacing:.09em}
+  .axion-market-label span{font-size:8px;gap:5px}
+  .axion-market-label span:before{width:6px;height:6px}
+  .axion-market-track{animation-duration:34s}
+  .axion-market-item{
+    min-height:50px;
+    gap:8px;
+    padding:0 14px;
+  }
+  .axion-market-symbol b{font-size:11px}
+  .axion-market-symbol small{font-size:8px}
+  .axion-market-price{font-size:12px}
+  .axion-market-change{font-size:10px;min-width:48px}
+}
+</style>
+
 </head><body><div class="nav-wrap"><div class="container nav"><a class="brand" href="#home" aria-label="AXION Home"><div class="brand-mark"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" /></div><div><strong>AXION</strong><small>Web3 Infrastructure for DeFi</small></div></a><button class="menu" id="menuBtn" aria-label="Open menu">☰</button><div class="nav-links" id="navLinks"><a href="https://axscan.axiondefi.com/" target="_blank" rel="noopener">Network</a><a href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener">Game</a><a href="https://axdex.axiondefi.com/" target="_blank" rel="noopener">DEX</a><a href="#developers">Developers</a><a href="#token">Token</a></div><div class="nav-actions"><a class="btn small" href="https://app.axiondefi.com/" target="_blank" rel="noopener">Open AXION App</a></div></div></div><main id="home"><section class="hero">
 <div class="hero-premium-orbit"></div><div class="hero-premium-pulse"></div><div class="container hero-grid"><div class="reveal"><h1><span class="gradient">AXION</span></h1><div class="hero-subtitle">Intelligent infrastructure for Web3, DeFi and ecosystem utility.</div><p class="lead">AXION combines on-chain transparency, developer access, market utility and community-facing products under one premium Web3 infrastructure brand.</p><div class="hero-product-cards"><a class="hero-product-card card-game" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/GAME.jpg" alt="AXION Game preview" loading="lazy" /></div><div class="hero-card-content"><strong>GAME</strong><em>Launch AXION Game</em><p>Enter the AXION gaming layer built for ecosystem utility, user engagement and community rewards inside the AXION brand experience.</p></div></a><a class="hero-product-card card-testnet" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/explorer.jpg" alt="AXSCAN Explorer preview" loading="lazy" /></div><div class="hero-card-content"><strong>TESTNET</strong><em>Open AXSCAN Explorer</em><p>Track testnet blocks, transactions, wallet activity and network data through the official AXSCAN explorer infrastructure.</p></div></a><a class="hero-product-card card-dex" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/dex.jpg" alt="AXION DEX preview" loading="lazy" /></div><div class="hero-card-content"><strong>DEX</strong><em>Enter AXION DEX</em><p>Access the AXION decentralized exchange module designed for token market access, swaps and ecosystem trading utility.</p></div></a></div></div><aside class="card hero-panel hero-wallet-panel reveal" id="wallet"><div class="hero-wallet-copy"><div class="wallet-panel-top"><span class="wallet-panel-soon">COMING SOON</span></div><span class="tag">Wallet Preview</span><h3>AXION Wallet</h3><p>A premium wallet interface being prepared for AXION assets, ecosystem access, dApp connections and future mainnet interaction.</p></div><div class="hero-wallet-device" aria-label="AXION Wallet phone interface preview"><div class="wallet-phone-3d"><div class="wallet-phone-notch"></div><div class="wallet-phone-screen"><div class="wallet-screen-top"><div class="wallet-screen-brand"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /><span>AXION</span></div><div class="wallet-live-pill">Preview</div></div><div class="wallet-total-card"><span>Total Balance</span><strong>$18,742.56</strong><em>USDT estimated portfolio value</em></div><div class="wallet-mini-actions"><button type="button">Send</button><button type="button">Receive</button><button type="button">Swap</button><button type="button">Earn</button></div><div class="wallet-token-list"><div class="wallet-token-row"><div class="wallet-token-left"><div class="wallet-token-icon axion"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION" loading="lazy" /></div><div><b>AXION</b><small>AXION Ecosystem</small></div></div><strong>250,000</strong></div><div class="wallet-token-row"><div class="wallet-token-left"><div class="wallet-token-icon bnb"><img src="https://cryptologos.cc/logos/bnb-bnb-logo.svg?v=040" alt="BNB" loading="lazy" /></div><div><b>BNB</b><small>BNB Smart Chain</small></div></div><strong>1.42</strong></div><div class="wallet-token-row"><div class="wallet-token-left"><div class="wallet-token-icon usdt"><img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=040" alt="USDT" loading="lazy" /></div><div><b>USDT</b><small>Stable balance</small></div></div><strong>4,850.00</strong></div><div class="wallet-token-row"><div class="wallet-token-left"><div class="wallet-token-icon eth"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=040" alt="ETH" loading="lazy" /></div><div><b>ETH</b><small>Ethereum asset</small></div></div><strong>0.86</strong></div></div><div class="wallet-bottom-nav" aria-label="Wallet navigation preview"><span class="active">Home</span><span>Swap</span><span>dApps</span><span>Settings</span></div></div></div></div><div class="wallet-micro-list" aria-label="AXION Wallet features"><span>Mobile wallet experience</span><span>AXION ecosystem access</span><span>Future mainnet ready</span></div></aside></div></section>
 
@@ -1986,4 +2143,88 @@ updateAxionListingCountdown();
 setInterval(updateAxionListingCountdown,1000);
 const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("show"); }), { threshold:.12 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-</script></body></html>
+</script>
+<div class="axion-market-ticker" aria-label="Live crypto market prices">
+  <div class="axion-market-label">
+    <strong>Market Watch</strong>
+    <span>Live Prices</span>
+  </div>
+  <div class="axion-market-track-wrap">
+    <div class="axion-market-track" id="axionMarketTrack">
+      <div class="axion-market-status">Loading live crypto market data...</div>
+    </div>
+  </div>
+</div>
+
+
+<script id="axion-market-ticker-js">
+(function(){
+  const track = document.getElementById('axionMarketTrack');
+  if(!track) return;
+
+  const coins = [
+    { id:'bitcoin', symbol:'BTC', name:'Bitcoin' },
+    { id:'ethereum', symbol:'ETH', name:'Ethereum' },
+    { id:'tether', symbol:'USDT', name:'Tether' },
+    { id:'binancecoin', symbol:'BNB', name:'BNB' },
+    { id:'solana', symbol:'SOL', name:'Solana' },
+    { id:'usd-coin', symbol:'USDC', name:'USD Coin' },
+    { id:'ripple', symbol:'XRP', name:'XRP' },
+    { id:'dogecoin', symbol:'DOGE', name:'Dogecoin' },
+    { id:'cardano', symbol:'ADA', name:'Cardano' },
+    { id:'tron', symbol:'TRX', name:'TRON' }
+  ];
+
+  function formatPrice(value){
+    const n = Number(value || 0);
+    if(!n) return '—';
+    if(n >= 1000) return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    if(n >= 1) return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 6 });
+  }
+
+  function formatChange(value){
+    const n = Number(value || 0);
+    const sign = n > 0 ? '+' : '';
+    return sign + n.toFixed(2) + '%';
+  }
+
+  function render(data){
+    const items = coins.map(coin => {
+      const market = data[coin.id] || {};
+      const change = Number(market.usd_24h_change || 0);
+      const dir = change >= 0 ? 'up' : 'down';
+      return `
+        <div class="axion-market-item">
+          <div class="axion-market-symbol">
+            <b>${coin.symbol}</b>
+            <small>${coin.name}</small>
+          </div>
+          <div class="axion-market-price">${formatPrice(market.usd)}</div>
+          <div class="axion-market-change ${dir}">${formatChange(change)}</div>
+        </div>
+      `;
+    }).join('');
+
+    track.innerHTML = items + items;
+  }
+
+  async function loadMarket(){
+    try{
+      const ids = coins.map(c => c.id).join(',');
+      const url = 'https://api.coingecko.com/api/v3/simple/price?ids=' + encodeURIComponent(ids) + '&vs_currencies=usd&include_24hr_change=true';
+      const res = await fetch(url, { cache:'no-store' });
+      if(!res.ok) throw new Error('Market API error');
+      const data = await res.json();
+      render(data);
+    }catch(err){
+      track.innerHTML = '<div class="axion-market-status">Live market data temporarily unavailable.</div>';
+    }
+  }
+
+  loadMarket();
+  setInterval(loadMarket, 60000);
+})();
+</script>
+
+</body></html>
