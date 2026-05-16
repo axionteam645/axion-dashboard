@@ -2226,6 +2226,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
 
 
+
 <script id="axion-market-ticker-js">
 (function(){
   const track = document.getElementById('axionMarketTrack');
@@ -2233,74 +2234,74 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
   const coins = [
     {
-      id:'axion',
+      id:'AXIONUSDT',
       symbol:'AXION',
       name:'AXION',
       logo:'https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg',
       native:true,
-      staticPrice:'0.045',
-      staticChange:'+12.40'
+      staticPrice:0.045,
+      staticChange:0.00
     },
     {
-      id:'bitcoin',
+      id:'BTCUSDT',
       symbol:'BTC',
       name:'Bitcoin',
       logo:'https://assets.coingecko.com/coins/images/1/large/bitcoin.png'
     },
     {
-      id:'ethereum',
+      id:'ETHUSDT',
       symbol:'ETH',
       name:'Ethereum',
       logo:'https://assets.coingecko.com/coins/images/279/large/ethereum.png'
     },
     {
-      id:'binancecoin',
+      id:'BNBUSDT',
       symbol:'BNB',
       name:'BNB',
       logo:'https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png'
     },
     {
-      id:'solana',
+      id:'SOLUSDT',
       symbol:'SOL',
       name:'Solana',
       logo:'https://assets.coingecko.com/coins/images/4128/large/solana.png'
     },
     {
-      id:'ripple',
+      id:'XRPUSDT',
       symbol:'XRP',
       name:'XRP',
       logo:'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png'
     },
     {
-      id:'dogecoin',
+      id:'DOGEUSDT',
       symbol:'DOGE',
       name:'Dogecoin',
       logo:'https://assets.coingecko.com/coins/images/5/large/dogecoin.png'
     },
     {
-      id:'cardano',
+      id:'ADAUSDT',
       symbol:'ADA',
       name:'Cardano',
       logo:'https://assets.coingecko.com/coins/images/975/large/cardano.png'
     },
     {
-      id:'tron',
+      id:'TRXUSDT',
       symbol:'TRX',
       name:'TRON',
       logo:'https://assets.coingecko.com/coins/images/1094/large/tron-logo.png'
     },
     {
-      id:'tether',
-      symbol:'USDT',
-      name:'Tether',
-      logo:'https://assets.coingecko.com/coins/images/325/large/Tether.png'
+      id:'USDCUSDT',
+      symbol:'USDC',
+      name:'USD Coin',
+      logo:'https://assets.coingecko.com/coins/images/6319/large/usdc.png'
     }
   ];
 
   function formatPrice(value){
     const n = Number(value || 0);
     if(!n) return '—';
-    if(n >= 1000) return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    if(n >= 1000) return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     if(n >= 1) return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 6 });
   }
@@ -2311,12 +2312,8 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     return sign + n.toFixed(2) + '%';
   }
 
-  function sparkClass(change){
-    return Number(change || 0) >= 0 ? 'up' : 'down';
-  }
-
   function sparkHTML(change){
-    const cls = sparkClass(change);
+    const cls = Number(change || 0) >= 0 ? 'up' : 'down';
     return `
       <div class="axion-market-spark ${cls}">
         <i></i><i></i><i></i><i></i><i></i>
@@ -2324,18 +2321,14 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     `;
   }
 
-  function render(data){
+  function render(marketMap){
     const items = coins.map(coin => {
-      let price = 0;
-      let change = 0;
+      let price = coin.staticPrice || 0;
+      let change = coin.staticChange || 0;
 
-      if(coin.native){
-        price = coin.staticPrice;
-        change = coin.staticChange;
-      }else{
-        const market = data[coin.id] || {};
-        price = market.usd || 0;
-        change = market.usd_24h_change || 0;
+      if(!coin.native && marketMap[coin.id]){
+        price = Number(marketMap[coin.id].lastPrice || 0);
+        change = Number(marketMap[coin.id].priceChangePercent || 0);
       }
 
       const dir = Number(change) >= 0 ? 'up' : 'down';
@@ -2345,21 +2338,13 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
           <div class="axion-market-logo">
             <img src="${coin.logo}" alt="${coin.symbol}" loading="lazy">
           </div>
-
           <div class="axion-market-symbol">
             <b>${coin.symbol}</b>
             <small>${coin.name}</small>
           </div>
-
-          <div class="axion-market-price">
-            ${formatPrice(price)}
-          </div>
-
+          <div class="axion-market-price">${formatPrice(price)}</div>
           ${sparkHTML(change)}
-
-          <div class="axion-market-change ${dir}">
-            ${formatChange(change)}
-          </div>
+          <div class="axion-market-change ${dir}">${formatChange(change)}</div>
         </div>
       `;
     }).join('');
@@ -2369,31 +2354,30 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
   async function loadMarket(){
     try{
-      const ids = coins
-        .filter(c => !c.native)
-        .map(c => c.id)
-        .join(',');
-
-      const url = 'https://api.coingecko.com/api/v3/simple/price?ids=' +
-        encodeURIComponent(ids) +
-        '&vs_currencies=usd&include_24hr_change=true';
-
+      const symbols = coins.filter(c => !c.native).map(c => c.id);
+      const url = 'https://api.binance.com/api/v3/ticker/24hr?symbols=' + encodeURIComponent(JSON.stringify(symbols));
       const res = await fetch(url, { cache:'no-store' });
+      if(!res.ok) throw new Error('Binance ticker API error');
 
-      if(!res.ok) throw new Error('API error');
+      const rows = await res.json();
+      const marketMap = {};
+      rows.forEach(row => {
+        marketMap[row.symbol] = row;
+      });
 
-      const data = await res.json();
-      render(data);
-
+      render(marketMap);
     }catch(err){
+      /* fallback: keep AXION visible and show placeholders for market data instead of breaking the ticker */
       render({});
     }
   }
 
+  render({});
   loadMarket();
-  setInterval(loadMarket, 60000);
+  setInterval(loadMarket, 15000);
 })();
 </script>
+
 
 
 </body></html>
