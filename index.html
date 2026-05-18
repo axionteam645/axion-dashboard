@@ -2437,6 +2437,228 @@ body{
 }
 </style>
 
+
+
+<style id="axion-team-logo-name-fix-v3">
+/* Team logo integration + AXION logo-color names */
+#team .team-card{
+  isolation:isolate !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.028)),
+    radial-gradient(circle at 12% 8%,rgba(88,220,255,.13),transparent 34%),
+    radial-gradient(circle at 88% 12%,rgba(255,211,111,.11),transparent 30%),
+    radial-gradient(circle at 50% 100%,rgba(157,108,255,.10),transparent 38%) !important;
+}
+#team .team-card::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  border-radius:inherit !important;
+  pointer-events:none !important;
+  background:linear-gradient(135deg,rgba(88,220,255,.18),rgba(255,211,111,.12),rgba(157,108,255,.14),rgba(255,79,195,.10)) !important;
+  opacity:.18 !important;
+  mix-blend-mode:screen !important;
+  z-index:0 !important;
+}
+#team .team-card > *{
+  position:relative !important;
+  z-index:2 !important;
+}
+#team .team-avatar{
+  position:relative !important;
+  width:82px !important;
+  height:82px !important;
+  min-width:82px !important;
+  padding:0 !important;
+  border-radius:24px !important;
+  overflow:hidden !important;
+  background:#071426 !important;
+  border:1px solid rgba(255,255,255,.20) !important;
+  box-shadow:
+    0 0 0 1px rgba(88,220,255,.20),
+    0 0 34px rgba(88,220,255,.18),
+    0 0 44px rgba(255,211,111,.08),
+    inset 0 1px 0 rgba(255,255,255,.16) !important;
+}
+#team .team-avatar::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  border-radius:inherit !important;
+  background:linear-gradient(135deg,rgba(88,220,255,.35),rgba(255,211,111,.24),rgba(157,108,255,.30),rgba(255,79,195,.18)) !important;
+  opacity:.22 !important;
+  pointer-events:none !important;
+  z-index:2 !important;
+}
+#team .team-avatar::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:4px !important;
+  border-radius:20px !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  pointer-events:none !important;
+  z-index:3 !important;
+}
+#team .team-avatar img{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  border-radius:inherit !important;
+  background:#071426 !important;
+  transform:scale(1.08) !important;
+  filter:saturate(1.18) contrast(1.08) brightness(.96) !important;
+  z-index:1 !important;
+}
+#team .team-card h3{
+  display:inline-block !important;
+  width:max-content !important;
+  max-width:100% !important;
+  background:linear-gradient(90deg,#58dcff 0%,#ffffff 18%,#ffd36f 42%,#9d6cff 68%,#ff4fc3 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color:transparent !important;
+  text-shadow:0 0 28px rgba(88,220,255,.12) !important;
+}
+#team .team-main-card h3{
+  font-size:36px !important;
+}
+#team .team-contributor-card h3{
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align:center !important;
+  font-size:25px !important;
+}
+#team .team-card:nth-of-type(2n) h3{
+  background:linear-gradient(90deg,#ffd36f 0%,#58dcff 30%,#ffffff 48%,#9d6cff 74%,#ff4fc3 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+}
+#team .team-contributor-grid .team-card:nth-child(1) h3{background:linear-gradient(90deg,#58dcff,#ffffff,#ffd36f) !important;-webkit-background-clip:text!important;background-clip:text!important;}
+#team .team-contributor-grid .team-card:nth-child(2) h3{background:linear-gradient(90deg,#ffd36f,#ff4fc3,#9d6cff) !important;-webkit-background-clip:text!important;background-clip:text!important;}
+#team .team-contributor-grid .team-card:nth-child(3) h3{background:linear-gradient(90deg,#4ff0b7,#58dcff,#ffffff) !important;-webkit-background-clip:text!important;background-clip:text!important;}
+#team .team-contributor-grid .team-card:nth-child(4) h3{background:linear-gradient(90deg,#9d6cff,#58dcff,#ffd36f) !important;-webkit-background-clip:text!important;background-clip:text!important;}
+#team .team-contributor-grid .team-card:nth-child(5) h3{background:linear-gradient(90deg,#ff4fc3,#ffd36f,#ffffff) !important;-webkit-background-clip:text!important;background-clip:text!important;}
+#team .team-contributor-grid .team-card:nth-child(6) h3{background:linear-gradient(90deg,#58dcff,#9d6cff,#ff4fc3) !important;-webkit-background-clip:text!important;background-clip:text!important;}
+#team .team-role{
+  background:rgba(255,255,255,.055) !important;
+  border:1px solid rgba(88,220,255,.20) !important;
+  color:#eaf6ff !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+#team .team-role::before{
+  background:linear-gradient(135deg,#58dcff,#ffd36f,#9d6cff) !important;
+  box-shadow:0 0 16px rgba(88,220,255,.70) !important;
+}
+@media(max-width:620px){
+  #team .team-avatar{
+    width:72px !important;
+    height:72px !important;
+    min-width:72px !important;
+    border-radius:22px !important;
+  }
+  #team .team-avatar::after{border-radius:18px !important;}
+  #team .team-main-card h3{font-size:30px !important;}
+  #team .team-contributor-card h3{font-size:24px !important;}
+}
+</style>
+
+
+<style id="axion-team-final-logo-name-fix-v2">
+/* FINAL TEAM POLISH: logo fully integrated into avatar boxes + white-to-logo-color names */
+#team .team-avatar{
+  position:relative !important;
+  width:86px !important;
+  height:86px !important;
+  min-width:86px !important;
+  padding:0 !important;
+  border-radius:24px !important;
+  overflow:hidden !important;
+  display:grid !important;
+  place-items:center !important;
+  background:
+    radial-gradient(circle at 35% 18%, rgba(255,255,255,.16), transparent 30%),
+    linear-gradient(135deg, rgba(88,220,255,.20), rgba(255,211,111,.14) 34%, rgba(157,108,255,.17) 68%, rgba(255,79,195,.12)),
+    #071426 !important;
+  border:1px solid rgba(255,255,255,.20) !important;
+  box-shadow:
+    0 0 0 1px rgba(88,220,255,.22),
+    0 18px 46px rgba(0,0,0,.32),
+    0 0 34px rgba(88,220,255,.16),
+    inset 0 1px 0 rgba(255,255,255,.18) !important;
+}
+#team .team-avatar::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:url('https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg') center/cover no-repeat !important;
+  border-radius:inherit !important;
+  transform:scale(1.02) !important;
+  filter:saturate(1.14) contrast(1.08) brightness(.98) !important;
+  opacity:1 !important;
+  z-index:1 !important;
+}
+#team .team-avatar::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  border-radius:inherit !important;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.20), transparent 24%, rgba(88,220,255,.12) 52%, rgba(255,211,111,.12) 78%, rgba(255,79,195,.10)),
+    inset 0 0 0 1px rgba(255,255,255,.12) !important;
+  box-shadow:inset 0 0 0 5px rgba(7,20,38,.18) !important;
+  pointer-events:none !important;
+  z-index:2 !important;
+}
+#team .team-avatar img{
+  display:none !important;
+}
+#team .team-card h3{
+  display:inline-block !important;
+  width:auto !important;
+  max-width:100% !important;
+  background:linear-gradient(90deg,
+    #ffffff 0%,
+    #ffffff 36%,
+    #dff8ff 50%,
+    #58dcff 64%,
+    #ffd36f 78%,
+    #9d6cff 90%,
+    #ff4fc3 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color:transparent !important;
+  text-shadow:0 0 28px rgba(88,220,255,.11) !important;
+  filter:drop-shadow(0 0 8px rgba(255,211,111,.05)) !important;
+}
+#team .team-contributor-card h3{
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align:center !important;
+}
+#team .team-top{
+  align-items:center !important;
+}
+#team .team-contributor-card .team-top{
+  justify-content:center !important;
+}
+#team .team-main-card .team-top{
+  min-height:92px !important;
+}
+@media(max-width:620px){
+  #team .team-avatar{
+    width:76px !important;
+    height:76px !important;
+    min-width:76px !important;
+    border-radius:22px !important;
+  }
+}
+</style>
+
 </head><body><div class="nav-wrap"><div class="container nav"><a class="brand" href="#home" aria-label="AXION Home"><div class="brand-mark"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" /></div><div><strong>AXION</strong><small>Web3 Infrastructure for DeFi</small></div></a><button class="menu" id="menuBtn" aria-label="Open menu">☰</button><div class="nav-links" id="navLinks"><a href="https://axscan.axiondefi.com/" target="_blank" rel="noopener">Network</a><a href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener">Game</a><a href="https://axdex.axiondefi.com/" target="_blank" rel="noopener">DEX</a><a href="https://invest.axiondefi.com" target="_blank" rel="noopener">Investor</a><a href="#developers">Developers</a><a href="#token">Token</a><a href="#team">Team</a></div><div class="nav-actions"><a class="btn small" href="https://app.axiondefi.com/" target="_blank" rel="noopener">Open AXION App</a></div></div></div><main id="home"><section class="hero">
 <div class="hero-premium-orbit"></div><div class="hero-premium-pulse"></div><div class="container hero-grid"><div class="reveal"><h1><span class="gradient">AXION</span></h1><div class="hero-subtitle">Intelligent infrastructure for Web3, DeFi and ecosystem utility.</div><p class="lead">AXION combines on-chain transparency, developer access, market utility and community-facing products under one premium Web3 infrastructure brand.</p><div class="hero-product-cards"><a class="hero-product-card card-game" href="https://axiongame.axiondefi.com/" target="_blank" rel="noopener"><div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/GAME.jpg" alt="AXION Game preview" loading="lazy" /></div><div class="hero-card-content"><strong>GAME</strong><em>Launch AXION Game</em><p>Enter the AXION gaming layer built for ecosystem utility, user engagement and community rewards inside the AXION brand experience.</p></div></a><a class="hero-product-card card-testnet" href="https://axscan.axiondefi.com/" target="_blank" rel="noopener"><div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/explorer.jpg" alt="AXSCAN Explorer preview" loading="lazy" /></div><div class="hero-card-content"><strong>TESTNET</strong><em>Open AXSCAN Explorer</em><p>Track testnet blocks, transactions, wallet activity and network data through the official AXSCAN explorer infrastructure.</p></div></a><a class="hero-product-card card-dex" href="https://axdex.axiondefi.com/" target="_blank" rel="noopener"><div class="hero-card-visual"><img src="https://raw.githubusercontent.com/axionteam645/axion-app/main/dex.jpg" alt="AXION DEX preview" loading="lazy" /></div><div class="hero-card-content"><strong>DEX</strong><em>Enter AXION DEX</em><p>Access the AXION decentralized exchange module designed for token market access, swaps and ecosystem trading utility.</p></div></a></div></div><aside class="card hero-panel hero-wallet-panel reveal" id="wallet" role="link" tabindex="0" style="cursor:pointer" onclick="window.open('https://walletmobilapp.axiondefi.com/','_blank','noopener')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('https://walletmobilapp.axiondefi.com/','_blank','noopener')}"><div class="hero-wallet-copy"><div class="wallet-panel-top"><span class="wallet-panel-soon">COMING SOON</span></div><span class="tag">Wallet Preview</span><h3>AXION Wallet</h3><p>A premium wallet interface being prepared for AXION assets, ecosystem access, dApp connections and future mainnet interaction.</p></div><div class="hero-wallet-device" aria-label="AXION Wallet phone interface preview"><div class="wallet-phone-3d"><div class="wallet-phone-notch"></div><div class="wallet-phone-screen"><div class="wallet-screen-top"><div class="wallet-screen-brand"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /><span>AXION</span></div><div class="wallet-live-pill">Preview</div></div><div class="wallet-total-card"><span>Total Balance</span><strong>$18,742.56</strong><em>USDT estimated portfolio value</em></div><div class="wallet-mini-actions"><button type="button">Send</button><button type="button">Receive</button><button type="button">Swap</button><button type="button">Earn</button></div><div class="wallet-token-list"><div class="wallet-token-row"><div class="wallet-token-left"><div class="wallet-token-icon axion"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION" loading="lazy" /></div><div><b>AXION</b><small>AXION Ecosystem</small></div></div><strong>250,000</strong></div><div class="wallet-token-row"><div class="wallet-token-left"><div class="wallet-token-icon bnb"><img src="https://cryptologos.cc/logos/bnb-bnb-logo.svg?v=040" alt="BNB" loading="lazy" /></div><div><b>BNB</b><small>BNB Smart Chain</small></div></div><strong>1.42</strong></div><div class="wallet-token-row"><div class="wallet-token-left"><div class="wallet-token-icon usdt"><img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=040" alt="USDT" loading="lazy" /></div><div><b>USDT</b><small>Stable balance</small></div></div><strong>4,850.00</strong></div><div class="wallet-token-row"><div class="wallet-token-left"><div class="wallet-token-icon eth"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=040" alt="ETH" loading="lazy" /></div><div><b>ETH</b><small>Ethereum asset</small></div></div><strong>0.86</strong></div></div><div class="wallet-bottom-nav" aria-label="Wallet navigation preview"><span class="active">Home</span><span>Swap</span><span>dApps</span><span>Settings</span></div></div></div></div><div class="wallet-micro-list" aria-label="AXION Wallet features"><span>Mobile wallet experience</span><span>AXION ecosystem access</span><span>Future mainnet ready</span></div></aside></div></section>
 
