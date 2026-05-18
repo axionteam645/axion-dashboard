@@ -1952,229 +1952,282 @@ body{
 </style>
 
 
-<style id="axion-team-section-v1">
-/* AXION Team Section - added */
+<style id="axion-team-section-v2">
+/* AXION Team Section - premium aligned layout */
 .team-section{
-padding:82px 0 0;
-position:relative;
+  padding:86px 0 0;
+  position:relative;
 }
-.team-grid{
-display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:18px;
-margin-top:26px;
+.team-section .section-head{
+  margin-bottom:28px;
+}
+.team-main-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  align-items:stretch;
+}
+.team-contributor-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+  margin-top:22px;
 }
 .team-card{
-position:relative;
-overflow:hidden;
-border-radius:28px;
-padding:26px;
-background:
-radial-gradient(circle at 100% 0%,rgba(88,220,255,.10),transparent 34%),
-linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
-border:1px solid rgba(255,255,255,.10);
-box-shadow:0 24px 80px rgba(0,0,0,.34);
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  padding:26px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(88,220,255,.12),transparent 34%),
+    radial-gradient(circle at 0% 100%,rgba(255,211,111,.08),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.072),rgba(255,255,255,.028));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 24px 80px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.04);
+  display:flex;
+  flex-direction:column;
+  height:100%;
 }
 .team-card:before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(135deg,rgba(88,220,255,.06),transparent 42%,rgba(255,211,111,.06));
-pointer-events:none;
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(88,220,255,.065),transparent 42%,rgba(157,108,255,.06));
+  pointer-events:none;
 }
 .team-card>*{
-position:relative;
-z-index:1;
+  position:relative;
+  z-index:1;
+}
+.team-main-card{
+  min-height:620px;
+}
+.team-contributor-card{
+  min-height:390px;
+  padding:24px;
+  text-align:center;
+  align-items:center;
 }
 .team-top{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:14px;
-margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:20px;
+}
+.team-contributor-card .team-top{
+  width:100%;
+  justify-content:center;
+  margin-bottom:18px;
 }
 .team-avatar{
-width:72px;
-height:72px;
-border-radius:22px;
-display:grid;
-place-items:center;
-background:
-linear-gradient(135deg,rgba(88,220,255,.18),rgba(157,108,255,.12));
-border:1px solid rgba(255,255,255,.14);
-font-size:28px;
-font-weight:1000;
-color:#fff;
-box-shadow:0 0 28px rgba(88,220,255,.14);
-flex-shrink:0;
-}
-.team-role{
-display:inline-flex;
-align-items:center;
-gap:8px;
-border-radius:999px;
-padding:8px 11px;
-background:rgba(79,240,183,.08);
-border:1px solid rgba(79,240,183,.18);
-color:#dffbed;
-font-size:10px;
-font-weight:900;
-letter-spacing:.12em;
-text-transform:uppercase;
-text-align:center;
-}
-.team-role:before{
-content:"";
-width:8px;
-height:8px;
-border-radius:999px;
-background:#4ff0b7;
-box-shadow:0 0 14px rgba(79,240,183,.7);
-flex-shrink:0;
-}
-.team-card h3{
-font-size:34px;
-line-height:1;
-letter-spacing:-.05em;
-margin-bottom:10px;
-color:#fff;
-}
-.team-card h4{
-font-size:13px;
-line-height:1.45;
-color:#9fb0cf;
-font-weight:800;
-letter-spacing:.08em;
-text-transform:uppercase;
-margin-bottom:18px;
-}
-.team-card p{
-font-size:14px;
-line-height:1.75;
-color:#b7c7e4;
-margin-bottom:18px;
-}
-.team-tags{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-bottom:20px;
-}
-.team-tags span{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-min-height:30px;
-padding:0 12px;
-border-radius:999px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.10);
-font-size:11px;
-font-weight:850;
-color:#dfe9ff;
-}
-.team-socials{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-.team-social{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:8px;
-min-height:42px;
-padding:0 16px;
-border-radius:14px;
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.10);
-color:#fff;
-font-size:12px;
-font-weight:900;
-text-decoration:none;
-transition:.2s ease;
-}
-.team-social:hover{
-transform:translateY(-2px);
-border-color:rgba(255,255,255,.20);
-}
-.team-social.linkedin{
-background:linear-gradient(135deg,rgba(88,220,255,.18),rgba(36,120,255,.08));
-}
-.team-social.twitter{
-background:linear-gradient(135deg,rgba(157,108,255,.18),rgba(255,111,143,.08));
-}
-.team-social.telegram{
-background:linear-gradient(135deg,rgba(79,240,183,.18),rgba(88,220,255,.08));
-}
-.team-social svg{
-width:16px;
-height:16px;
-fill:currentColor;
-flex-shrink:0;
-}
-@media(max-width:860px){
-.team-grid{
-grid-template-columns:1fr;
-}
-}
-@media(max-width:620px){
-.team-section{
-padding:52px 0 0;
-}
-.team-card{
-padding:20px;
-border-radius:24px;
-}
-.team-top{
-align-items:flex-start;
-flex-direction:column;
-}
-.team-card h3{
-font-size:28px;
-}
-.team-card p{
-font-size:13px;
-line-height:1.68;
-}
-.team-tags{
-gap:7px;
-}
-.team-tags span{
-width:100%;
-justify-content:center;
-}
-.team-social{
-width:100%;
-}
-}
-
-/* Team logo avatar final integration */
-.team-avatar{
-padding:0 !important;
-overflow:hidden !important;
-background:#030611 !important;
-border-radius:22px !important;
-border:1px solid rgba(88,220,255,.26) !important;
-box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 34px rgba(88,220,255,.20),0 0 42px rgba(255,211,111,.08) !important;
+  width:78px;
+  height:78px;
+  min-width:78px;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:5px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.02)),
+    radial-gradient(circle at 35% 22%,rgba(88,220,255,.24),transparent 40%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 0 30px rgba(88,220,255,.14), inset 0 1px 0 rgba(255,255,255,.12);
+  flex-shrink:0;
 }
 .team-avatar img{
-width:100% !important;
-height:100% !important;
-object-fit:cover !important;
-display:block !important;
-border-radius:inherit !important;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:18px;
+  background:#071426;
 }
-.team-section .section-head p:empty,
-#ecosystem .section-head p:empty,
-#network .section-head p:empty,
-#dashboard .section-head p:empty,
-#previews .section-head p:empty,
-#developers .section-head p:empty,
-#ai-utility .section-head p:empty{
-display:none !important;
+.team-role{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:999px;
+  padding:8px 11px;
+  background:rgba(79,240,183,.08);
+  border:1px solid rgba(79,240,183,.18);
+  color:#dffbed;
+  font-size:10px;
+  line-height:1.25;
+  font-weight:900;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  text-align:center;
+  max-width:260px;
 }
-
+.team-role:before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:#4ff0b7;
+  box-shadow:0 0 14px rgba(79,240,183,.7);
+  flex-shrink:0;
+}
+.team-card h3{
+  font-size:34px;
+  line-height:1;
+  letter-spacing:-.05em;
+  margin:0 0 10px;
+  color:#fff;
+}
+.team-card h4{
+  min-height:38px;
+  font-size:13px;
+  line-height:1.45;
+  color:#9fb0cf;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin:0 0 18px;
+}
+.team-card p{
+  font-size:14px;
+  line-height:1.72;
+  color:#b7c7e4;
+  margin:0 0 18px;
+}
+.team-main-card p{
+  min-height:170px;
+}
+.team-contributor-card h3{
+  font-size:24px;
+  letter-spacing:-.035em;
+  text-align:center;
+}
+.team-contributor-card h4{
+  width:100%;
+  min-height:42px;
+  margin-bottom:14px;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.team-contributor-card p{
+  min-height:92px;
+  text-align:center;
+  font-size:13px;
+  line-height:1.62;
+  max-width:300px;
+}
+.team-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 20px;
+}
+.team-tags span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:30px;
+  padding:0 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  font-size:11px;
+  line-height:1.15;
+  font-weight:850;
+  color:#dfe9ff;
+  text-align:center;
+}
+.team-socials{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:auto;
+  width:100%;
+}
+.team-social{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  padding:0 12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:#fff;
+  font-size:12px;
+  line-height:1;
+  font-weight:900;
+  text-decoration:none;
+  transition:.2s ease;
+  white-space:nowrap;
+}
+.team-social:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.20);
+}
+.team-social.linkedin{
+  background:linear-gradient(135deg,rgba(88,220,255,.18),rgba(36,120,255,.08));
+}
+.team-social.twitter{
+  background:linear-gradient(135deg,rgba(157,108,255,.18),rgba(255,111,143,.08));
+}
+.team-social.telegram{
+  background:linear-gradient(135deg,rgba(79,240,183,.18),rgba(88,220,255,.08));
+}
+.team-social svg{
+  width:16px;
+  height:16px;
+  fill:currentColor;
+  flex-shrink:0;
+}
+.contributor-badge{
+  margin-top:auto;
+  width:100%;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 14px;
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  color:#dfe9ff;
+  font-size:11px;
+  line-height:1.2;
+  font-weight:900;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  text-align:center;
+}
+@media(max-width:1020px){
+  .team-contributor-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .team-main-card{min-height:auto;}
+  .team-main-card p{min-height:auto;}
+}
+@media(max-width:860px){
+  .team-main-grid{grid-template-columns:1fr;}
+  .team-socials{grid-template-columns:1fr;}
+}
+@media(max-width:620px){
+  .team-section{padding:52px 0 0;}
+  .team-contributor-grid{grid-template-columns:1fr;gap:12px;}
+  .team-card{padding:20px;border-radius:24px;}
+  .team-top{align-items:flex-start;}
+  .team-avatar{width:66px;height:66px;min-width:66px;border-radius:19px;}
+  .team-avatar img{border-radius:15px;}
+  .team-role{font-size:9px;max-width:190px;}
+  .team-card h3{font-size:28px;}
+  .team-card h4{min-height:auto;font-size:11px;}
+  .team-card p{font-size:13px;line-height:1.66;}
+  .team-tags span{width:100%;justify-content:center;}
+  .team-contributor-card{min-height:auto;}
+  .team-contributor-card p{min-height:auto;}
+}
 </style>
 
 
@@ -2470,101 +2523,91 @@ display:none !important;
 <div class="eyebrow">AXION Team</div>
 <h2>Built by people focused on <span class="gradient">infrastructure and ecosystem growth.</span></h2>
 </div>
-
 </div>
 
-<div class="team-grid">
+<div class="team-main-grid">
 
-<article class="team-card reveal">
+<article class="team-card team-main-card reveal">
 <div class="team-top">
 <div class="team-avatar"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /></div>
 <span class="team-role">Developer / Founder</span>
 </div>
-
 <h3>Sergio Thorne</h3>
 <h4>Blockchain Infrastructure • DeFi • AI Systems • Ecosystem Development</h4>
-
-<p>
-Blockchain ecosystem builder focused on DeFi infrastructure, digital asset technologies, AI integrations, scalable platforms, and long-term ecosystem development.
-<br><br>
-Focused on building sustainable products and communities within the blockchain industry through infrastructure development, decentralized technologies, digital finance solutions, and global ecosystem expansion.
-</p>
-
+<p>Blockchain ecosystem builder focused on DeFi infrastructure, digital asset technologies, AI integrations, scalable platforms, and long-term ecosystem development.<br><br>Focused on building sustainable products and communities within the blockchain industry through infrastructure development, decentralized technologies, digital finance solutions, and global ecosystem expansion.</p>
 <div class="team-tags">
-<span>Blockchain Infrastructure</span>
-<span>DeFi Ecosystems</span>
-<span>AI Technologies</span>
-<span>Digital Asset Innovation</span>
-<span>Web3 Development</span>
-<span>Community Growth</span>
-<span>Scalable Technology Solutions</span>
+<span>Blockchain Infrastructure</span><span>DeFi Ecosystems</span><span>AI Technologies</span><span>Digital Asset Innovation</span><span>Web3 Development</span><span>Community Growth</span><span>Scalable Technology Solutions</span>
 </div>
-
 <div class="team-socials">
-
-<a class="team-social linkedin" href="https://www.linkedin.com/in/sergio-8a2650144?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4.1 0 4.8 2.7 4.8 6.3V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.8 1.8-2.8 3.8V24h-4V8z"/></svg>
-LinkedIn
-</a>
-
-<a class="team-social twitter" href="https://x.com/sergiothornex?s=21" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.2L6.5 22H3.4l7.3-8.3L1 2h6.3l4.3 5.7L18.9 2z"/></svg>
-X / Twitter
-</a>
-
-<a class="team-social telegram" href="https://t.me/Mmteamax" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 15.6l-.4 5.5c.6 0 .8-.2 1.2-.6l2.8-2.7 5.8 4.2c1.1.6 1.8.3 2.1-1l3.8-17.8v-.1c.4-1.7-.6-2.3-1.7-1.9L1.2 9.8c-1.6.6-1.5 1.5-.3 1.9l5.7 1.8L19.8 5c.6-.4 1.1-.2.7.2"/></svg>
-Telegram
-</a>
-
+<a class="team-social linkedin" href="https://www.linkedin.com/in/sergio-8a2650144?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4.1 0 4.8 2.7 4.8 6.3V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.8 1.8-2.8 3.8V24h-4V8z"/></svg>LinkedIn</a>
+<a class="team-social twitter" href="https://x.com/sergiothornex?s=21" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.2L6.5 22H3.4l7.3-8.3L1 2h6.3l4.3 5.7L18.9 2z"/></svg>X / Twitter</a>
+<a class="team-social telegram" href="https://t.me/Mmteamax" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 15.6l-.4 5.5c.6 0 .8-.2 1.2-.6l2.8-2.7 5.8 4.2c1.1.6 1.8.3 2.1-1l3.8-17.8v-.1c.4-1.7-.6-2.3-1.7-1.9L1.2 9.8c-1.6.6-1.5 1.5-.3 1.9l5.7 1.8L19.8 5c.6-.4 1.1-.2.7.2"/></svg>Telegram</a>
 </div>
 </article>
 
-<article class="team-card reveal">
+<article class="team-card team-main-card reveal">
 <div class="team-top">
 <div class="team-avatar"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /></div>
 <span class="team-role">Investment Manager / Listing Representative</span>
 </div>
-
 <h3>Wajid Awan</h3>
 <h4>Exchange Relations • Investor Communications • Strategic Partnerships</h4>
-
-<p>
-Investment and listing specialist focused on exchange relations, strategic partnerships, market expansion, investor communications, and long-term ecosystem growth within the digital asset industry.
-<br><br>
-Experienced in coordinating listing processes, partnership development, community relations, and global market positioning for blockchain ecosystems.
-</p>
-
+<p>Investment and listing specialist focused on exchange relations, strategic partnerships, market expansion, investor communications, and long-term ecosystem growth within the digital asset industry.<br><br>Experienced in coordinating listing processes, partnership development, community relations, and global market positioning for blockchain ecosystems.</p>
 <div class="team-tags">
-<span>Exchange Listings</span>
-<span>Investor Relations</span>
-<span>Strategic Partnerships</span>
-<span>Market Expansion</span>
-<span>Ecosystem Growth</span>
-<span>Digital Asset Markets</span>
-<span>Global Business Development</span>
+<span>Exchange Listings</span><span>Investor Relations</span><span>Strategic Partnerships</span><span>Market Expansion</span><span>Ecosystem Growth</span><span>Digital Asset Markets</span><span>Global Business Development</span>
 </div>
-
 <div class="team-socials">
-
-<a class="team-social linkedin" href="https://www.linkedin.com/in/wajidawan/" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4.1 0 4.8 2.7 4.8 6.3V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.8 1.8-2.8 3.8V24h-4V8z"/></svg>
-LinkedIn
-</a>
-
-<a class="team-social twitter" href="https://x.com/7WajidAwan" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.2L6.5 22H3.4l7.3-8.3L1 2h6.3l4.3 5.7L18.9 2z"/></svg>
-X / Twitter
-</a>
-
-<a class="team-social telegram" href="https://t.me/WajidAwan" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 15.6l-.4 5.5c.6 0 .8-.2 1.2-.6l2.8-2.7 5.8 4.2c1.1.6 1.8.3 2.1-1l3.8-17.8v-.1c.4-1.7-.6-2.3-1.7-1.9L1.2 9.8c-1.6.6-1.5 1.5-.3 1.9l5.7 1.8L19.8 5c.6-.4 1.1-.2.7.2"/></svg>
-Telegram
-</a>
-
+<a class="team-social linkedin" href="https://www.linkedin.com/in/wajidawan/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4.1 0 4.8 2.7 4.8 6.3V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.8 1.8-2.8 3.8V24h-4V8z"/></svg>LinkedIn</a>
+<a class="team-social twitter" href="https://x.com/7WajidAwan" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.2L6.5 22H3.4l7.3-8.3L1 2h6.3l4.3 5.7L18.9 2z"/></svg>X / Twitter</a>
+<a class="team-social telegram" href="https://t.me/WajidAwan" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 15.6l-.4 5.5c.6 0 .8-.2 1.2-.6l2.8-2.7 5.8 4.2c1.1.6 1.8.3 2.1-1l3.8-17.8v-.1c.4-1.7-.6-2.3-1.7-1.9L1.2 9.8c-1.6.6-1.5 1.5-.3 1.9l5.7 1.8L19.8 5c.6-.4 1.1-.2.7.2"/></svg>Telegram</a>
 </div>
 </article>
 
+</div>
+
+<div class="team-contributor-grid">
+<article class="team-card team-contributor-card reveal">
+<div class="team-top"><div class="team-avatar"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /></div></div>
+<h3>Elena Markovic</h3>
+<h4>Blockchain Research Contributor</h4>
+<p>Experienced in blockchain infrastructure, ecosystem research, smart contract analysis and long-term Web3 product development.</p>
+<div class="contributor-badge">Private Contributor</div>
+</article>
+<article class="team-card team-contributor-card reveal">
+<div class="team-top"><div class="team-avatar"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /></div></div>
+<h3>Laura Bennett</h3>
+<h4>Web3 Product Contributor</h4>
+<p>Focused on DeFi systems, product coordination, blockchain integrations and ecosystem expansion initiatives.</p>
+<div class="contributor-badge">Private Contributor</div>
+</article>
+<article class="team-card team-contributor-card reveal">
+<div class="team-top"><div class="team-avatar"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /></div></div>
+<h3>Michael Carter</h3>
+<h4>Smart Contract Contributor</h4>
+<p>Contributor with experience in blockchain architecture, smart contract systems and decentralized infrastructure solutions.</p>
+<div class="contributor-badge">Private Contributor</div>
+</article>
+<article class="team-card team-contributor-card reveal">
+<div class="team-top"><div class="team-avatar"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /></div></div>
+<h3>Adrian Keller</h3>
+<h4>Infrastructure Contributor</h4>
+<p>Specialized in blockchain infrastructure deployment, validator systems and scalable ecosystem operations.</p>
+<div class="contributor-badge">Private Contributor</div>
+</article>
+<article class="team-card team-contributor-card reveal">
+<div class="team-top"><div class="team-avatar"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /></div></div>
+<h3>Zhang Wei</h3>
+<h4>Blockchain Systems Contributor</h4>
+<p>Contributor focused on blockchain systems, ecosystem integrations and decentralized platform research.</p>
+<div class="contributor-badge">Private Contributor</div>
+</article>
+<article class="team-card team-contributor-card reveal">
+<div class="team-top"><div class="team-avatar"><img src="https://raw.githubusercontent.com/axionteam645/axion-dashboard/main/axlogo.jpeg" alt="AXION Logo" loading="lazy" /></div></div>
+<h3>Li Chen</h3>
+<h4>DeFi Integration Contributor</h4>
+<p>Experienced in DeFi integrations, blockchain product coordination and Web3 ecosystem development operations.</p>
+<div class="contributor-badge">Private Contributor</div>
+</article>
 </div>
 </div>
 </section>
