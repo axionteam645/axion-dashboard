@@ -3436,6 +3436,85 @@ body{
   white-space:nowrap;
 }
 .input-suffix img{width:18px;height:18px;border-radius:50%;}
+
+.presale-quick-amounts{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+  margin-top:10px;
+}
+.presale-quick-btn{
+  min-height:34px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  background:rgba(255,255,255,.055);
+  color:#eaf2ff;
+  font-size:11px;
+  font-weight:950;
+  cursor:pointer;
+  transition:.18s ease;
+}
+.presale-quick-btn:hover,
+.presale-quick-btn.active{
+  color:#06101c;
+  background:linear-gradient(90deg,#4ff0b7,#58dcff,#ffd36f);
+  border-color:rgba(79,240,183,.36);
+  transform:translateY(-1px);
+}
+.presale-balance-card{
+  margin-top:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 13px;
+  border-radius:16px;
+  background:rgba(79,240,183,.06);
+  border:1px solid rgba(79,240,183,.15);
+}
+.presale-balance-card span{
+  color:#9fb0cf;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.presale-balance-card strong{
+  color:#ddfff3;
+  font-size:15px;
+  font-weight:950;
+  white-space:nowrap;
+}
+.presale-trust-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  margin-top:12px;
+}
+.presale-trust-box{
+  padding:11px 10px;
+  border-radius:15px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.095);
+}
+.presale-trust-box span{
+  display:block;
+  color:#8ea0c2;
+  font-size:8.5px;
+  font-weight:950;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.presale-trust-box strong{
+  display:block;
+  color:#fff;
+  font-size:12px;
+  line-height:1.25;
+  font-weight:950;
+  overflow-wrap:anywhere;
+}
+
 .presale-output{
   margin-top:12px;
   display:grid;
@@ -3542,6 +3621,11 @@ body{
   .presale-output{grid-template-columns:1fr;gap:8px;}
   .presale-buttons{grid-template-columns:1fr;gap:8px;}
   .presale-btn{min-height:46px;}
+  .presale-quick-amounts{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;}
+  .presale-quick-btn{min-height:38px;font-size:11px;border-radius:12px;}
+  .presale-balance-card{align-items:flex-start;flex-direction:column;gap:5px;padding:11px;border-radius:14px;}
+  .presale-trust-grid{grid-template-columns:1fr;gap:7px;}
+  .presale-trust-box{padding:10px;border-radius:14px;}
 }
 </style>
 
@@ -3575,10 +3659,21 @@ body{
           <span class="usdt-pill"><img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png" alt="USDT"> USDT Payment</span>
         </div>
         <div class="presale-field">
-          <label for="presaleUsdAmount">Purchase Amount <small>Minimum: 1 USDT</small></label>
+          <label for="presaleUsdAmount">Purchase Amount</label>
           <div class="presale-input-wrap">
-            <input id="presaleUsdAmount" type="number" min="1" step="0.01" inputmode="decimal" placeholder="Enter amount in USDT">
+            <input id="presaleUsdAmount" type="number" min="5" step="0.01" inputmode="decimal" placeholder="Enter amount in USDT">
             <span class="input-suffix"><img src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png" alt="USDT"> USDT</span>
+          </div>
+          <div class="presale-quick-amounts" aria-label="Quick USDT amounts">
+            <button class="presale-quick-btn" type="button" data-amount="5">5 USDT</button>
+            <button class="presale-quick-btn" type="button" data-amount="25">25 USDT</button>
+            <button class="presale-quick-btn" type="button" data-amount="50">50 USDT</button>
+            <button class="presale-quick-btn" type="button" data-amount="100">100 USDT</button>
+            <button class="presale-quick-btn" type="button" data-amount="500">500 USDT</button>
+          </div>
+          <div class="presale-balance-card">
+            <span>Connected USDT Balance</span>
+            <strong id="presaleUsdtBalance">Connect wallet to view</strong>
           </div>
         </div>
         <div class="presale-output">
@@ -3590,6 +3685,11 @@ body{
           <div class="presale-input-wrap">
             <input id="presaleReceiveWallet" type="text" autocomplete="off" placeholder="0x... receiving wallet address">
           </div>
+        </div>
+        <div class="presale-trust-grid" aria-label="Presale trust details">
+          <div class="presale-trust-box"><span>Minimum</span><strong>5 USDT</strong></div>
+          <div class="presale-trust-box"><span>Payment Address</span><strong>0x195C...26e9</strong></div>
+          <div class="presale-trust-box"><span>Network</span><strong>BNB Smart Chain</strong></div>
         </div>
         <div class="presale-note">Distribution note: AX tokens will be sent automatically to the wallet address after payment confirmation.</div>
         <div class="presale-buttons">
@@ -4150,6 +4250,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 <script id="axion-final-round-presale-js-v1">
 (function(){
   const SALE_PRICE_USDT = 0.045;
+  const MIN_PURCHASE_USDT = 5;
   const PAYMENT_ADDRESS = '0x195Cc7cC9EAbDCCfc28B7C3f153F4233C7d826e9';
   const BSC_CHAIN_ID_HEX = '0x38';
   const BSC_CHAIN_ID_DEC = 56;
@@ -4166,6 +4267,8 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   const connectBtn = document.getElementById('presaleConnectBtn');
   const payBtn = document.getElementById('presalePayBtn');
   const statusBox = document.getElementById('presaleStatus');
+  const balanceBox = document.getElementById('presaleUsdtBalance');
+  const quickButtons = Array.prototype.slice.call(document.querySelectorAll('.presale-quick-btn'));
   if(!amountInput || !receiveInput || !axOutput || !connectBtn || !payBtn || !statusBox) return;
 
   let connectedAccount = '';
@@ -4186,6 +4289,12 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     const n = Number(value || 0);
     if(!Number.isFinite(n) || n <= 0) return '0 AX';
     return n.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' AX';
+  }
+
+  function formatUsdt(value){
+    const n = Number(value || 0);
+    if(!Number.isFinite(n)) return '0 USDT';
+    return n.toLocaleString('en-US', { maximumFractionDigits: 4 }) + ' USDT';
   }
 
   function updateEstimate(){
@@ -4216,6 +4325,24 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     }
   }
 
+
+  async function updateUsdtBalance(){
+    if(!balanceBox) return;
+    if(!connectedAccount || !provider){
+      balanceBox.textContent = 'Connect wallet to view';
+      return;
+    }
+    try{
+      const readProvider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+      const usdt = new ethers.Contract(USDT_BSC, USDT_ABI, readProvider);
+      const decimals = await usdt.decimals();
+      const balance = await usdt.balanceOf(connectedAccount);
+      balanceBox.textContent = formatUsdt(ethers.utils.formatUnits(balance, decimals));
+    }catch(err){
+      balanceBox.textContent = 'Balance unavailable';
+    }
+  }
+
   async function connectWallet(){
     if(!window.ethereum){
       setStatus('Wallet not found. Please use MetaMask, Trust Wallet, SafePal, Binance Wallet, or another Web3 wallet browser.', 'error');
@@ -4231,6 +4358,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
       if(Number(network.chainId) !== BSC_CHAIN_ID_DEC) throw new Error('Please switch to BNB Smart Chain.');
       connectBtn.textContent = 'Connected: ' + shortAddress(connectedAccount);
       setStatus('Wallet connected on BNB Smart Chain: <b>' + shortAddress(connectedAccount) + '</b>', 'success');
+      await updateUsdtBalance();
       return connectedAccount;
     }catch(err){
       setStatus((err && err.message) ? err.message : 'Wallet connection failed.', 'error');
@@ -4242,7 +4370,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     try{
       const usdtAmount = Number(amountInput.value || 0);
       const receiveWallet = (receiveInput.value || '').trim();
-      if(!usdtAmount || usdtAmount < 1) throw new Error('Please enter a valid USDT amount.');
+      if(!usdtAmount || usdtAmount < MIN_PURCHASE_USDT) throw new Error('Minimum purchase amount is ' + MIN_PURCHASE_USDT + ' USDT.');
       if(!ethers.utils.isAddress(receiveWallet)) throw new Error('Please enter a valid AX receiving wallet address.');
       if(!connectedAccount){
         const account = await connectWallet();
@@ -4272,7 +4400,17 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     }
   }
 
-  amountInput.addEventListener('input', updateEstimate);
+  amountInput.addEventListener('input', function(){
+    updateEstimate();
+    quickButtons.forEach(function(btn){ btn.classList.toggle('active', Number(btn.dataset.amount) === Number(amountInput.value)); });
+  });
+  quickButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      amountInput.value = btn.dataset.amount;
+      updateEstimate();
+      quickButtons.forEach(function(item){ item.classList.toggle('active', item === btn); });
+    });
+  });
   connectBtn.addEventListener('click', connectWallet);
   payBtn.addEventListener('click', payUsdt);
   updateEstimate();
@@ -4281,10 +4419,12 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     window.ethereum.on('accountsChanged', function(accounts){
       connectedAccount = accounts && accounts[0] ? accounts[0] : '';
       connectBtn.textContent = connectedAccount ? 'Connected: ' + shortAddress(connectedAccount) : 'Connect Wallet';
+      updateUsdtBalance();
     });
     window.ethereum.on('chainChanged', function(){
       connectedAccount = '';
       connectBtn.textContent = 'Connect Wallet';
+      updateUsdtBalance();
     });
   }
 })();
