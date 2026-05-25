@@ -4174,7 +4174,10 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
       let price = coin.staticPrice || 0;
       let change = coin.staticChange || 0;
 
-      if(!coin.native && marketMap[coin.id]){
+      if(coin.native && marketMap[coin.id]){
+        price = Number(marketMap[coin.id].lastPrice || coin.staticPrice || 0);
+        change = Number(marketMap[coin.id].priceChangePercent || coin.staticChange || 0);
+      }else if(!coin.native && marketMap[coin.id]){
         price = Number(marketMap[coin.id].lastPrice || 0);
         change = Number(marketMap[coin.id].priceChangePercent || 0);
       }
@@ -4201,6 +4204,21 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   }
 
   async function loadMarket(){
+    const marketMap = {};
+
+    try{
+      const axionPoolUrl = 'https://api.geckoterminal.com/api/v2/networks/bsc/pools/0x43c550c535e7eca6a9b7159fac6e1a679a6882d0';
+      const axionRes = await fetch(axionPoolUrl, { cache:'no-store' });
+      if(axionRes.ok){
+        const axionData = await axionRes.json();
+        const attr = axionData && axionData.data && axionData.data.attributes ? axionData.data.attributes : {};
+        marketMap.AXIONUSDT = {
+          lastPrice: attr.base_token_price_usd || attr.quote_token_price_usd || 0,
+          priceChangePercent: attr.price_change_percentage && attr.price_change_percentage.h24 ? attr.price_change_percentage.h24 : 0
+        };
+      }
+    }catch(err){}
+
     try{
       const symbols = coins.filter(c => !c.native).map(c => c.id);
       const url = 'https://api.binance.com/api/v3/ticker/24hr?symbols=' + encodeURIComponent(JSON.stringify(symbols));
@@ -4208,7 +4226,6 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
       if(!res.ok) throw new Error('Binance ticker API error');
 
       const rows = await res.json();
-      const marketMap = {};
       rows.forEach(row => {
         marketMap[row.symbol] = row;
       });
@@ -4216,7 +4233,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
       render(marketMap);
     }catch(err){
       /* fallback: keep AXION visible and show placeholders for market data instead of breaking the ticker */
-      render({});
+      render(marketMap);
     }
   }
 
