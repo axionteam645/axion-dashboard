@@ -1817,6 +1817,110 @@ transform:translateY(-1px) !important;
   .exchange-logo-wrap b{font-size:12px;}
 }
 
+
+/* FINAL FIX: Exchange roadmap visible logos + aligned cards */
+.exchange-roadmap-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:16px !important;
+  align-items:stretch !important;
+}
+.exchange-step{
+  min-height:238px !important;
+  padding:18px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+  align-items:stretch !important;
+  gap:14px !important;
+}
+.exchange-step > span{
+  align-self:flex-start !important;
+  min-height:28px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:8px 12px !important;
+  border-radius:999px !important;
+  font-size:9px !important;
+  line-height:1 !important;
+}
+.exchange-step:not(.hotcoin) > span{
+  background:linear-gradient(135deg,#fff3b0,#ffd36f,#ff7a2f) !important;
+  color:#071426 !important;
+  border:1px solid rgba(255,211,111,.78) !important;
+  box-shadow:0 12px 28px rgba(255,122,47,.28) !important;
+}
+.exchange-logo-wrap{
+  width:100% !important;
+  height:98px !important;
+  min-height:98px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  padding:14px !important;
+  margin:0 !important;
+  border-radius:18px !important;
+  overflow:hidden !important;
+}
+.exchange-logo-wrap img{display:none !important;}
+.exchange-logo-mark{
+  width:44px !important;
+  height:44px !important;
+  min-width:44px !important;
+  border-radius:14px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  color:#071426 !important;
+  font-size:18px !important;
+  line-height:1 !important;
+  font-weight:950 !important;
+  letter-spacing:-.03em !important;
+  background:#ffffff !important;
+  box-shadow:0 12px 28px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.65) !important;
+}
+.exchange-logo-text{
+  width:100% !important;
+  display:block !important;
+  color:#ffffff !important;
+  font-size:18px !important;
+  line-height:1 !important;
+  font-weight:950 !important;
+  letter-spacing:.06em !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.exchange-step strong{
+  min-height:24px !important;
+  text-align:center !important;
+}
+.exchange-step em{
+  min-height:30px !important;
+  text-align:center !important;
+}
+.hotcoin-logo .exchange-logo-mark{background:linear-gradient(135deg,#4ff0b7,#58dcff) !important;}
+.lbank-logo .exchange-logo-mark{background:linear-gradient(135deg,#58dcff,#668cff) !important;}
+.bitmart-logo .exchange-logo-mark{background:linear-gradient(135deg,#668cff,#9d6cff) !important;}
+.xt-logo .exchange-logo-mark{background:linear-gradient(135deg,#ffd36f,#ff9f43) !important;}
+.mexc-logo .exchange-logo-mark{background:linear-gradient(135deg,#9d6cff,#ff6f8f) !important;}
+.binance-logo .exchange-logo-mark{background:linear-gradient(135deg,#fff1b6,#ffd36f) !important;}
+@media(max-width:1180px){
+  .exchange-roadmap-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+}
+@media(max-width:680px){
+  .exchange-roadmap-grid{grid-template-columns:1fr !important;gap:12px !important;}
+  .exchange-step{min-height:210px !important;padding:16px !important;border-radius:18px !important;}
+  .exchange-logo-wrap{height:84px !important;min-height:84px !important;border-radius:16px !important;}
+  .exchange-logo-mark{width:38px !important;height:38px !important;min-width:38px !important;border-radius:12px !important;font-size:15px !important;}
+  .exchange-logo-text{font-size:15px !important;letter-spacing:.05em !important;}
+  .exchange-step strong{font-size:20px !important;}
+  .exchange-step em{font-size:11px !important;min-height:auto !important;}
+}
+
 </style>
 <style id="axion-launchpad-click-fix">
 .axion-launch-card,
@@ -4067,32 +4171,50 @@ body{
     <div class="exchange-roadmap-grid">
       <div class="exchange-step hotcoin">
         <span>Launch Completed</span>
-        <div class="exchange-logo-wrap"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/hotjar.svg" alt="Hotcoin logo" loading="lazy" onerror="this.style.display='none'" /><b>HOTCOIN</b></div>
+        <div class="exchange-logo-wrap hotcoin-logo">
+          <div class="exchange-logo-mark">H</div>
+          <div class="exchange-logo-text">HOTCOIN</div>
+        </div>
         <div><strong>Hotcoin</strong><em>Initial CEX listing phase</em></div>
       </div>
       <div class="exchange-step lbank">
         <span>SOON</span>
-        <div class="exchange-logo-wrap"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/lbank.svg" alt="LBank logo" loading="lazy" onerror="this.style.display='none'" /><b>LBANK</b></div>
+        <div class="exchange-logo-wrap lbank-logo">
+          <div class="exchange-logo-mark">L</div>
+          <div class="exchange-logo-text">LBANK</div>
+        </div>
         <div><strong>LBank</strong><em>Liquidity and exposure expansion</em></div>
       </div>
       <div class="exchange-step bitmart">
         <span>SOON</span>
-        <div class="exchange-logo-wrap"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/bitmart.svg" alt="BitMart logo" loading="lazy" onerror="this.style.display='none'" /><b>BITMART</b></div>
+        <div class="exchange-logo-wrap bitmart-logo">
+          <div class="exchange-logo-mark">B</div>
+          <div class="exchange-logo-text">BITMART</div>
+        </div>
         <div><strong>BitMart</strong><em>Global retail market access</em></div>
       </div>
       <div class="exchange-step xt">
         <span>SOON</span>
-        <div class="exchange-logo-wrap"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/xtdotcom.svg" alt="XT logo" loading="lazy" onerror="this.style.display='none'" /><b>XT</b></div>
+        <div class="exchange-logo-wrap xt-logo">
+          <div class="exchange-logo-mark">XT</div>
+          <div class="exchange-logo-text">XT.COM</div>
+        </div>
         <div><strong>XT</strong><em>Additional trading reach</em></div>
       </div>
       <div class="exchange-step mexc">
         <span>SOON</span>
-        <div class="exchange-logo-wrap"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/mexc.svg" alt="MEXC logo" loading="lazy" onerror="this.style.display='none'" /><b>MEXC</b></div>
+        <div class="exchange-logo-wrap mexc-logo">
+          <div class="exchange-logo-mark">M</div>
+          <div class="exchange-logo-text">MEXC</div>
+        </div>
         <div><strong>MEXC</strong><em>High-volume CEX visibility</em></div>
       </div>
       <div class="exchange-step binance-alpha">
         <span>SOON</span>
-        <div class="exchange-logo-wrap"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/binance.svg" alt="Binance Alpha logo" loading="lazy" onerror="this.style.display='none'" /><b>BINANCE</b></div>
+        <div class="exchange-logo-wrap binance-logo">
+          <div class="exchange-logo-mark">◆</div>
+          <div class="exchange-logo-text">BINANCE ALPHA</div>
+        </div>
         <div><strong>Binance Alpha</strong><em>Long-term ecosystem milestone</em></div>
       </div>
     </div>
