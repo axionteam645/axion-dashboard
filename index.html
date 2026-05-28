@@ -617,7 +617,7 @@ border:1px solid rgba(255,255,255,.10) !important;
 width:100% !important;
 padding:10px 8px !important;
 border-radius:10px !important;
-background:linear-gradient(135deg,#ffcf48,#ff7a2f) !important;color:#071426 !important;font-weight:900 !important;
+background:rgba(255,255,255,.035) !important;
 }
 .hero{
 padding:24px 0 20px !important;
@@ -3856,7 +3856,7 @@ body{
           <div class="presale-output-box"><span>Sale Price</span><strong>0.045</strong></div>
         </div>
         <div class="presale-field">
-          <label for="presaleReceiveWallet">AX Receiving Wallet <small>Distribution address</small></label>
+          <label for="presaleReceiveWallet">AXION Receiving Wallet <small>Distribution address</small></label>
           <div class="presale-input-wrap">
             <input id="presaleReceiveWallet" type="text" autocomplete="off" placeholder="0x... receiving wallet address">
           </div>
@@ -4558,6 +4558,14 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     }
   }
 
+  function autofillReceiveWallet(){
+    if(!receiveInput || !connectedAccount) return;
+    const currentValue = (receiveInput.value || '').trim();
+    if(!currentValue){
+      receiveInput.value = connectedAccount;
+    }
+  }
+
   async function connectWallet(){
     const walletProvider = getWalletProvider();
     if(!walletProvider){
@@ -4571,6 +4579,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
       await provider.send('eth_requestAccounts', []);
       signer = provider.getSigner();
       connectedAccount = await signer.getAddress();
+      autofillReceiveWallet();
       const network = await provider.getNetwork();
       if(Number(network.chainId) !== BSC_CHAIN_ID_DEC) throw new Error('Please switch to BNB Smart Chain.');
       connectBtn.textContent = 'Connected: ' + shortAddress(connectedAccount);
@@ -4636,6 +4645,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   if(eventProvider && eventProvider.on){
     eventProvider.on('accountsChanged', function(accounts){
       connectedAccount = accounts && accounts[0] ? accounts[0] : '';
+      autofillReceiveWallet();
       connectBtn.textContent = connectedAccount ? 'Connected: ' + shortAddress(connectedAccount) : 'Connect Wallet';
       updateUsdtBalance();
     });
