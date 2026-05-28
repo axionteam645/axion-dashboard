@@ -3836,7 +3836,7 @@ body{
           <div class="presale-trust-box"><span>Minimum</span><strong>5 USDT</strong></div>
           <div class="presale-trust-box"><span>Network</span><strong>BNB Smart Chain</strong></div>
         </div>
-        <div class="presale-note">Distribution note: AX tokens will be sent automatically to the wallet address after payment confirmation.</div>
+        <div class="presale-note">Distribution note: AXION tokens will be sent automatically to the wallet address after payment confirmation.</div>
         <div class="presale-buttons">
           <button class="presale-btn secondary" type="button" id="presaleConnectBtn">Connect Wallet</button>
           <button class="presale-btn" type="button" id="presalePayBtn">Pay USDT</button>
@@ -4399,6 +4399,12 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
 
 
+
+<style id="axion-mobile-wallet-link-fix">
+.presale-mini-link{display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;border-radius:999px;background:rgba(88,220,255,.12);border:1px solid rgba(88,220,255,.26);color:#dff7ff!important;font-size:11px;font-weight:900;text-decoration:none!important}
+.presale-mini-link:hover{background:rgba(88,220,255,.20)}
+</style>
+
 <script id="axion-final-round-presale-js-v1">
 (function(){
   const SALE_PRICE_USDT = 0.045;
@@ -4426,6 +4432,33 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   let connectedAccount = '';
   let provider = null;
   let signer = null;
+
+  function getWalletProvider(){
+    if(window.ethereum){
+      if(Array.isArray(window.ethereum.providers) && window.ethereum.providers.length){
+        const preferred = window.ethereum.providers.find(function(p){ return p.isMetaMask || p.isTrust || p.isTrustWallet || p.isSafePal || p.isBinance; });
+        return preferred || window.ethereum.providers[0];
+      }
+      return window.ethereum;
+    }
+    if(window.trustwallet && window.trustwallet.ethereum) return window.trustwallet.ethereum;
+    if(window.BinanceChain) return window.BinanceChain;
+    return null;
+  }
+
+  function isMobileDevice(){
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || '');
+  }
+
+  function walletOpenLinks(){
+    const cleanUrl = window.location.href.replace(/^https?:\/\//, '');
+    const encodedUrl = encodeURIComponent(window.location.href);
+    return '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">'
+      + '<a class="presale-mini-link" href="https://metamask.app.link/dapp/' + cleanUrl + '" target="_blank" rel="noopener">Open in MetaMask</a>'
+      + '<a class="presale-mini-link" href="https://link.trustwallet.com/open_url?coin_id=20000714&url=' + encodedUrl + '" target="_blank" rel="noopener">Open in Trust Wallet</a>'
+      + '<a class="presale-mini-link" href="https://link.safepal.io/open_url?url=' + encodedUrl + '" target="_blank" rel="noopener">Open in SafePal</a>'
+      + '</div>';
+  }
 
   function setStatus(message, type){
     statusBox.className = 'presale-status show' + (type ? ' ' + type : '');
@@ -4456,12 +4489,13 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   }
 
   async function switchToBsc(){
-    if(!window.ethereum) throw new Error('Wallet provider not found. Please open this page in MetaMask or a Web3 wallet browser.');
+    const walletProvider = getWalletProvider();
+    if(!walletProvider) throw new Error('Wallet provider not found. Please open this page in MetaMask, Trust Wallet, SafePal, Binance Wallet, or another Web3 wallet browser.');
     try{
-      await window.ethereum.request({ method:'wallet_switchEthereumChain', params:[{ chainId:BSC_CHAIN_ID_HEX }] });
+      await walletProvider.request({ method:'wallet_switchEthereumChain', params:[{ chainId:BSC_CHAIN_ID_HEX }] });
     }catch(err){
       if(err && err.code === 4902){
-        await window.ethereum.request({
+        await walletProvider.request({
           method:'wallet_addEthereumChain',
           params:[{
             chainId:BSC_CHAIN_ID_HEX,
@@ -4485,7 +4519,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
       return;
     }
     try{
-      const readProvider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+      const readProvider = new ethers.providers.Web3Provider(getWalletProvider(), 'any');
       const usdt = new ethers.Contract(USDT_BSC, USDT_ABI, readProvider);
       const decimals = await usdt.decimals();
       const balance = await usdt.balanceOf(connectedAccount);
@@ -4496,13 +4530,15 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   }
 
   async function connectWallet(){
-    if(!window.ethereum){
-      setStatus('Wallet not found. Please use MetaMask, Trust Wallet, SafePal, Binance Wallet, or another Web3 wallet browser.', 'error');
+    const walletProvider = getWalletProvider();
+    if(!walletProvider){
+      const mobileHelp = isMobileDevice() ? walletOpenLinks() : '';
+      setStatus('Wallet not found. Open this page inside a Web3 wallet browser, then tap Connect Wallet again.' + mobileHelp, 'error');
       return null;
     }
     try{
       await switchToBsc();
-      provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+      provider = new ethers.providers.Web3Provider(walletProvider, 'any');
       await provider.send('eth_requestAccounts', []);
       signer = provider.getSigner();
       connectedAccount = await signer.getAddress();
@@ -4529,7 +4565,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
         if(!account) return;
       }
       await switchToBsc();
-      provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+      provider = new ethers.providers.Web3Provider(getWalletProvider(), 'any');
       signer = provider.getSigner();
       const usdt = new ethers.Contract(USDT_BSC, USDT_ABI, signer);
       const decimals = await usdt.decimals();
@@ -4567,13 +4603,14 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   payBtn.addEventListener('click', payUsdt);
   updateEstimate();
 
-  if(window.ethereum && window.ethereum.on){
-    window.ethereum.on('accountsChanged', function(accounts){
+  const eventProvider = getWalletProvider();
+  if(eventProvider && eventProvider.on){
+    eventProvider.on('accountsChanged', function(accounts){
       connectedAccount = accounts && accounts[0] ? accounts[0] : '';
       connectBtn.textContent = connectedAccount ? 'Connected: ' + shortAddress(connectedAccount) : 'Connect Wallet';
       updateUsdtBalance();
     });
-    window.ethereum.on('chainChanged', function(){
+    eventProvider.on('chainChanged', function(){
       connectedAccount = '';
       connectBtn.textContent = 'Connect Wallet';
       updateUsdtBalance();
