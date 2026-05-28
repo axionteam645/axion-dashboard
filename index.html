@@ -1922,6 +1922,110 @@ transform:translateY(-1px) !important;
   .exchange-step em{font-size:11px !important;min-height:auto !important;}
 }
 
+
+/* FINAL MOBILE PATCH: Join Presale visibility + exchange logo fit. Payment and wallet JS untouched. */
+@media (max-width: 760px){
+  .mobile-presale-link,
+  .nav-links a[href="#final-round"],
+  .nav-links a[href="#presale"],
+  .nav-links a[href="#investor"],
+  .nav-links a[href="#token-sale"],
+  .nav-links a[href="#finalRound"],
+  .nav-links a[href="#final-round"].mobile-join-presale{
+    background:linear-gradient(135deg,#fff1b6 0%,#ffcf48 38%,#ff7a2f 100%) !important;
+    color:#071426 !important;
+    border:1px solid rgba(255,207,72,.75) !important;
+    box-shadow:0 12px 34px rgba(255,122,47,.32), inset 0 1px 0 rgba(255,255,255,.72) !important;
+    font-weight:950 !important;
+    text-align:center !important;
+  }
+
+  .exchange-roadmap-grid,
+  .exchange-grid,
+  .roadmap-exchange-grid,
+  .exchange-cards,
+  .roadmap-grid{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+  }
+
+  .exchange-card,
+  .roadmap-exchange-card,
+  .exchange-roadmap-card,
+  .roadmap-card{
+    min-height:auto !important;
+    height:auto !important;
+    padding:14px !important;
+    overflow:visible !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:10px !important;
+  }
+
+  .exchange-logo-wrap,
+  .exchange-logo-box,
+  .exchange-logo-area,
+  .roadmap-logo-wrap,
+  .roadmap-logo-box,
+  .roadmap-logo-area{
+    width:100% !important;
+    height:74px !important;
+    min-height:74px !important;
+    max-height:74px !important;
+    padding:12px 16px !important;
+    overflow:hidden !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:16px !important;
+  }
+
+  .exchange-logo-wrap img,
+  .exchange-logo-box img,
+  .exchange-logo-area img,
+  .roadmap-logo-wrap img,
+  .roadmap-logo-box img,
+  .roadmap-logo-area img,
+  .exchange-card img,
+  .roadmap-exchange-card img,
+  .exchange-roadmap-card img,
+  .roadmap-card img{
+    display:block !important;
+    width:auto !important;
+    height:auto !important;
+    max-width:82% !important;
+    max-height:42px !important;
+    object-fit:contain !important;
+    object-position:center !important;
+    transform:none !important;
+    margin:0 auto !important;
+  }
+
+  .exchange-card strong,
+  .roadmap-exchange-card strong,
+  .exchange-roadmap-card strong,
+  .roadmap-card strong,
+  .exchange-card h3,
+  .roadmap-exchange-card h3,
+  .exchange-roadmap-card h3,
+  .roadmap-card h3{
+    text-align:center !important;
+    width:100% !important;
+    line-height:1.15 !important;
+    margin-top:2px !important;
+  }
+
+  .exchange-card p,
+  .roadmap-exchange-card p,
+  .exchange-roadmap-card p,
+  .roadmap-card p{
+    text-align:center !important;
+    width:100% !important;
+  }
+}
+
 </style>
 <style id="axion-launchpad-click-fix">
 .axion-launch-card,
