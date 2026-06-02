@@ -289,15 +289,18 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   async function loadMarket(){
     const marketMap = {};
     try{
-      const axionPoolUrl = 'https://api.geckoterminal.com/api/v2/networks/bsc/pools/0x43c550c535e7eca6a9b7159fac6e1a679a6882d0';
-      const axionRes = await fetch(axionPoolUrl, { cache:'no-store' });
-      if(axionRes.ok){
-        const axionData = await axionRes.json();
-        const attr = axionData && axionData.data && axionData.data.attributes ? axionData.data.attributes : {};
-        marketMap.AXIONUSDT = {
-          lastPrice: attr.base_token_price_usd || attr.quote_token_price_usd || 0,
-          priceChangePercent: attr.price_change_percentage && attr.price_change_percentage.h24 ? attr.price_change_percentage.h24 : 0
-        };
+      const hotcoinTickerApi = 'https://api.hotcoinfin.com/v1/market/ticker';
+      const hotcoinRes = await fetch(hotcoinTickerApi, { cache:'no-store' });
+      if(hotcoinRes.ok){
+        const hotcoinData = await hotcoinRes.json();
+        const hotcoinList = Array.isArray(hotcoinData.ticker) ? hotcoinData.ticker : [];
+        const axionRow = hotcoinList.find(row => String(row.symbol || '').toLowerCase() === 'axion_usdt');
+        if(axionRow){
+          marketMap.AXIONUSDT = {
+            lastPrice: axionRow.last || axionRow.close || axionRow.price || 0,
+            priceChangePercent: axionRow.change || axionRow.rose || axionRow.priceChangePercent || 0
+          };
+        }
       }
     }catch(err){}
     try{
